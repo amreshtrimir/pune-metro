@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import { BookOpen, FolderGit2, LayoutGrid, Image, FileText, MessageSquare, Tag } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -14,6 +14,10 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
+import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
+import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
+import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -21,6 +25,29 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+];
+
+const cmsNavItems: NavItem[] = [
+    {
+        title: 'Media Library',
+        href: MediaController.index.url(),
+        icon: Image,
+    },
+    {
+        title: 'Posts',
+        href: PostController.index.url(),
+        icon: FileText,
+    },
+    {
+        title: 'Categories',
+        href: CategoryController.index.url(),
+        icon: Tag,
+    },
+    {
+        title: 'Comments',
+        href: CommentController.index.url(),
+        icon: MessageSquare,
     },
 ];
 
@@ -54,6 +81,7 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain items={mainNavItems} />
+                <NavMain items={cmsNavItems} />
             </SidebarContent>
 
             <SidebarFooter>

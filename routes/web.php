@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Blog\CategoryController;
+use App\Http\Controllers\Blog\CommentController;
+use App\Http\Controllers\Blog\PostController;
+use App\Http\Controllers\Blog\PublicBlogController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Media\MediaController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -8,8 +13,44 @@ Route::inertia('/', 'welcome', [
     'canRegister' => Features::enabled(Features::registration()),
 ])->name('home');
 
+// Public Blog
+Route::prefix('blog')->name('blog.')->group(function (): void {
+    Route::get('/', [PublicBlogController::class, 'index'])->name('index');
+    Route::get('/{slug}', [PublicBlogController::class, 'show'])->name('show');
+    Route::post('/{post}/comments', [PublicBlogController::class, 'storeComment'])->name('comments.store');
+});
+
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Admin-only routes
+    Route::middleware('admin')->prefix('dashboard')->name('dashboard.')->group(function (): void {
+        // Media
+        Route::get('/media', [MediaController::class, 'index'])->name('media.index');
+        Route::post('/media', [MediaController::class, 'store'])->name('media.store');
+        Route::get('/media/dimensions', [MediaController::class, 'dimensions'])->name('media.dimensions');
+        Route::get('/media/{id}', [MediaController::class, 'show'])->name('media.show');
+        Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
+
+        // Posts
+        Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+        Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+        Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+        Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+        Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+        Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+        // Categories
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+        Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+        // Comments
+        Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
+        Route::patch('/comments/{comment}/moderate', [CommentController::class, 'moderate'])->name('comments.moderate');
+        Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    });
 });
 
 require __DIR__.'/settings.php';
