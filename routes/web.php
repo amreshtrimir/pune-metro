@@ -6,6 +6,7 @@ use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\PublicBlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Media\MediaController;
+use App\Http\Controllers\Slider\SliderController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -52,7 +53,21 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
         Route::patch('/comments/{comment}/moderate', [CommentController::class, 'moderate'])->name('comments.moderate');
         Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+        // Sliders
+        Route::get('/sliders', [SliderController::class, 'index'])->name('sliders.index');
+        Route::post('/sliders', [SliderController::class, 'store'])->name('sliders.store');
+        Route::get('/sliders/{slider}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+        Route::put('/sliders/{slider}', [SliderController::class, 'update'])->name('sliders.update');
+        Route::delete('/sliders/{slider}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+        Route::post('/sliders/{slider}/slides', [SliderController::class, 'storeSlide'])->name('sliders.slides.store');
+        Route::put('/sliders/{slider}/slides/{slide}', [SliderController::class, 'updateSlide'])->name('sliders.slides.update');
+        Route::delete('/sliders/{slider}/slides/{slide}', [SliderController::class, 'destroySlide'])->name('sliders.slides.destroy');
+        Route::post('/sliders/{slider}/slides/reorder', [SliderController::class, 'reorderSlides'])->name('sliders.slides.reorder');
     });
 });
+
+// Public slider API
+Route::get('/api/sliders/{slug}', [SliderController::class, 'show'])->name('sliders.show');
 
 require __DIR__.'/settings.php';

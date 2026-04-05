@@ -123,3 +123,30 @@ export type PaginatedData<T> = {
     to: number;
     links: Array<{ url: string | null; label: string; active: boolean }>;
 };
+
+export type SliderSlide = {
+    id: number;
+    slider_id: number;
+    heading_line1: string;
+    heading_line2: string | null;
+    paragraph: string | null;
+    desktop_media_id: number | null;
+    mobile_media_id: number | null;
+    position: number;
+    is_active: boolean;
+    desktop_media?: Media | null;
+    mobile_media?: Media | null;
+    created_at: string;
+    updated_at: string;
+};
+
+export type Slider = {
+    id: number;
+    name: string;
+    slug: string;
+    is_active: boolean;
+    slides?: SliderSlide[];
+    slides_count?: number;
+    created_at: string;
+    updated_at: string;
+};

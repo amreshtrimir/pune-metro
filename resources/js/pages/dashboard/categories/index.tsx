@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Head, Form, router } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -38,7 +37,7 @@ export default function CategoriesIndex({ categories }: Props) {
     };
 
     return (
-        <AppLayout>
+        <>
             <Head title="Categories" />
 
             <div className="space-y-6 p-6">
@@ -165,6 +164,6 @@ export default function CategoriesIndex({ categories }: Props) {
                     )}
                 </div>
             </div>
-        </AppLayout>
+        </>
     );
 }
