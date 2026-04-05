@@ -134,6 +134,14 @@ class MediaService
         return $query->paginate(24);
     }
 
+    public function updateMedia(int $id, array $data): Media
+    {
+        $media = Media::with('variants')->findOrFail($id);
+        $media->update($data);
+
+        return $media;
+    }
+
     public function deleteMedia(int $id): void
     {
         $media = Media::with('variants')->findOrFail($id);

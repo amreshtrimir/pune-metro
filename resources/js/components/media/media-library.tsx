@@ -2,12 +2,22 @@ import { useCallback, useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
 import { MediaCard } from '@/components/media/media-card';
 import { MediaUploader } from '@/components/media/media-uploader';
 import type { Media, MediaDimension, PaginatedData } from '@/types';
 import { Search, Upload, LayoutGrid } from 'lucide-react';
 import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
+
+const MODULES = [
+    { value: '', label: 'General' },
+    { value: 'blog', label: 'Blog' },
+    { value: 'pages', label: 'Pages' },
+    { value: 'banners', label: 'Banners' },
+    { value: 'gallery', label: 'Gallery' },
+];
 
 type MediaLibraryProps = {
     media: PaginatedData<Media>;
@@ -19,6 +29,10 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
     const [showUploader, setShowUploader] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [search, setSearch] = useState(filters.search ?? '');
+    const [editingMedia, setEditingMedia] = useState<Media | null>(null);
+    const [editFileName, setEditFileName] = useState('');
+    const [editModule, setEditModule] = useState('');
+    const [saving, setSaving] = useState(false);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -30,11 +44,13 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
         dimensionIds: number[],
         customDimensions: Array<{ width: number; height: number }>,
         onProgress: (pct: number) => void,
+        module: string,
     ) => {
         setUploading(true);
         try {
             const formData = new FormData();
             formData.append('file', file);
+            if (module) formData.append('module', module);
             dimensionIds.forEach((id) => formData.append('dimension_ids[]', String(id)));
             customDimensions.forEach((d, i) => {
                 formData.append(`custom_dimensions[${i}][width]`, String(d.width));
@@ -78,6 +94,36 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
         router.delete(MediaController.destroy.url({ id }), { preserveScroll: true });
     }, []);
 
+    const openEdit = useCallback((m: Media) => {
+        setEditingMedia(m);
+        setEditFileName(m.file_name);
+        setEditModule(m.module ?? '');
+    }, []);
+
+    const handleSaveEdit = async () => {
+        if (!editingMedia) return;
+        setSaving(true);
+        try {
+            const xsrfToken = decodeURIComponent(
+                document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '',
+            );
+            const res = await fetch(MediaController.update.url({ id: editingMedia.id }), {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-XSRF-TOKEN': xsrfToken,
+                },
+                body: JSON.stringify({ file_name: editFileName, module: editModule || null }),
+            });
+            if (!res.ok) throw new Error('Save failed');
+            setEditingMedia(null);
+            router.reload({ only: ['media'] });
+        } finally {
+            setSaving(false);
+        }
+    };
+
     return (
         <div className="space-y-4">
             <div className="flex items-center justify-between gap-4">
@@ -107,7 +153,7 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
             ) : (
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                     {media.data.map((m) => (
-                        <MediaCard key={m.id} media={m} onDelete={handleDelete} />
+                        <MediaCard key={m.id} media={m} onDelete={handleDelete} onEdit={openEdit} />
                     ))}
                 </div>
             )}
@@ -133,6 +179,61 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
                         <DialogTitle>Upload Media</DialogTitle>
                     </DialogHeader>
                     <MediaUploader dimensions={dimensions} onUpload={handleUpload} uploading={uploading} />
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={!!editingMedia} onOpenChange={(open) => !open && setEditingMedia(null)}>
+                <DialogContent className="max-w-sm">
+                    <DialogHeader>
+                        <DialogTitle>Edit Media</DialogTitle>
+                    </DialogHeader>
+
+                    {editingMedia && (
+                        <div className="space-y-4">
+                            <div className="overflow-hidden rounded-lg border">
+                                <img
+                                    src={`/storage/${editingMedia.variants[0]?.file_path ?? editingMedia.file_path}`}
+                                    alt={editingMedia.file_name}
+                                    className="max-h-40 w-full object-cover"
+                                />
+                            </div>
+
+                            <div className="space-y-1.5">
+                                <Label htmlFor="edit-file-name">File name</Label>
+                                <Input
+                                    id="edit-file-name"
+                                    value={editFileName}
+                                    onChange={(e) => setEditFileName(e.target.value)}
+                                    placeholder="File name"
+                                />
+                            </div>
+
+                            <div className="space-y-1.5">
+                                <Label>Module</Label>
+                                <div className="flex flex-wrap gap-2">
+                                    {MODULES.map((m) => (
+                                        <Badge
+                                            key={m.value}
+                                            variant={editModule === m.value ? 'default' : 'outline'}
+                                            className="cursor-pointer"
+                                            onClick={() => setEditModule(m.value)}
+                                        >
+                                            {m.label}
+                                        </Badge>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    <DialogFooter>
+                        <Button variant="outline" onClick={() => setEditingMedia(null)} disabled={saving}>
+                            Cancel
+                        </Button>
+                        <Button onClick={handleSaveEdit} disabled={saving || !editFileName.trim()}>
+                            {saving ? 'Saving…' : 'Save'}
+                        </Button>
+                    </DialogFooter>
                 </DialogContent>
             </Dialog>
         </div>

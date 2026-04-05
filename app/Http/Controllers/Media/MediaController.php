@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Media;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Media\StoreMediaRequest;
+use App\Http\Requests\Media\UpdateMediaRequest;
 use App\Models\MediaDimension;
 use App\Services\Media\MediaService;
 use Illuminate\Http\JsonResponse;
@@ -58,6 +59,13 @@ class MediaController extends Controller
     public function show(int $id): JsonResponse
     {
         $media = $this->mediaService->getMediaWithVariants($id);
+
+        return response()->json($media);
+    }
+
+    public function update(UpdateMediaRequest $request, int $id): JsonResponse
+    {
+        $media = $this->mediaService->updateMedia($id, $request->validated());
 
         return response()->json($media);
     }

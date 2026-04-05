@@ -3,11 +3,12 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { Media } from '@/types';
-import { Trash2, Eye } from 'lucide-react';
+import { Trash2, Eye, Pencil } from 'lucide-react';
 
 type MediaCardProps = {
     media: Media;
     onDelete?: (id: number) => void;
+    onEdit?: (media: Media) => void;
     onSelect?: (media: Media) => void;
     selectable?: boolean;
     selected?: boolean;
@@ -27,7 +28,7 @@ function getTypeLabel(fileType: string): string {
     return fileType.split('/')[1]?.toUpperCase() ?? 'FILE';
 }
 
-export function MediaCard({ media, onDelete, onSelect, selectable = false, selected = false }: MediaCardProps) {
+export function MediaCard({ media, onDelete, onEdit, onSelect, selectable = false, selected = false }: MediaCardProps) {
     const [showVariants, setShowVariants] = useState(false);
 
     const previewVariant = media.variants[0];
@@ -57,7 +58,7 @@ export function MediaCard({ media, onDelete, onSelect, selectable = false, selec
                     </div>
                 )}
                 {!selectable && (
-                    <div className="absolute inset-0 flex items-end gap-1 bg-gradient-to-t from-black/60 to-transparent p-2 opacity-0 transition-opacity group-hover:opacity-100">
+                    <div className="absolute inset-0 flex items-end gap-1 bg-linear-to-t from-black/60 to-transparent p-2 opacity-0 transition-opacity group-hover:opacity-100">
                         <Button
                             size="sm"
                             variant="secondary"
@@ -66,6 +67,16 @@ export function MediaCard({ media, onDelete, onSelect, selectable = false, selec
                         >
                             <Eye className="mr-1 size-3" /> {media.variants.length} variants
                         </Button>
+                        {onEdit && (
+                            <Button
+                                size="sm"
+                                variant="secondary"
+                                className="h-7 text-xs"
+                                onClick={(e) => { e.stopPropagation(); onEdit(media); }}
+                            >
+                                <Pencil className="size-3" />
+                            </Button>
+                        )}
                         {onDelete && (
                             <Button
                                 size="sm"

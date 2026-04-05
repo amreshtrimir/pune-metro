@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::post('/media', [MediaController::class, 'store'])->name('media.store');
         Route::get('/media/dimensions', [MediaController::class, 'dimensions'])->name('media.dimensions');
         Route::get('/media/{id}', [MediaController::class, 'show'])->name('media.show');
+        Route::put('/media/{id}', [MediaController::class, 'update'])->name('media.update');
         Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Posts

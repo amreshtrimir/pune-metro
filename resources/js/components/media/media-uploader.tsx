@@ -6,6 +6,14 @@ import { cn } from '@/lib/utils';
 import type { MediaDimension } from '@/types';
 import { Upload, X, Plus, Image, CheckCircle2, Loader2 } from 'lucide-react';
 
+const MODULES = [
+    { value: '', label: 'General (no module)' },
+    { value: 'blog', label: 'Blog' },
+    { value: 'pages', label: 'Pages' },
+    { value: 'banners', label: 'Banners' },
+    { value: 'gallery', label: 'Gallery' },
+];
+
 type PreviewFile = {
     file: File;
     preview: string;
@@ -18,6 +26,7 @@ type MediaUploaderProps = {
         dimensionIds: number[],
         customDimensions: Array<{ width: number; height: number }>,
         onProgress: (pct: number) => void,
+        module: string,
     ) => Promise<void>;
 };
 
@@ -33,7 +42,8 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
     const [preview, setPreview] = useState<PreviewFile | null>(null);
     const [dragging, setDragging] = useState(false);
     const [selectedDimensionIds, setSelectedDimensionIds] = useState<number[]>([]);
-    const [customDimensions, setCustomDimensions] = useState<Array<{ width: string; height: string }>>([])
+    const [customDimensions, setCustomDimensions] = useState<Array<{ width: string; height: string }>>([]);
+    const [module, setModule] = useState('');
     const [progress, setProgress] = useState<number | null>(null);
     const [done, setDone] = useState(false);
     const uploading = progress !== null && !done;;
@@ -87,7 +97,7 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
         setProgress(0);
         setDone(false);
         try {
-            await onUpload(preview.file, selectedDimensionIds, validCustom, setProgress);
+            await onUpload(preview.file, selectedDimensionIds, validCustom, setProgress, module);
             setDone(true);
             setTimeout(() => {
                 setPreview(null);
@@ -95,6 +105,7 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
                 setCustomDimensions([]);
                 setProgress(null);
                 setDone(false);
+                setModule('');
             }, 1200);
         } catch {
             setProgress(null);
@@ -223,6 +234,22 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
                             <Button type="button" size="sm" variant="outline" className="h-7 text-xs" onClick={addCustomDimension} disabled={uploading}>
                                 <Plus className="mr-1 size-3" /> Add custom
                             </Button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className="mb-1.5 text-sm font-medium">Module</p>
+                        <div className="flex flex-wrap gap-2">
+                            {MODULES.map((m) => (
+                                <Badge
+                                    key={m.value}
+                                    variant={module === m.value ? 'default' : 'outline'}
+                                    className="cursor-pointer"
+                                    onClick={() => setModule(m.value)}
+                                >
+                                    {m.label}
+                                </Badge>
+                            ))}
                         </div>
                     </div>
 
