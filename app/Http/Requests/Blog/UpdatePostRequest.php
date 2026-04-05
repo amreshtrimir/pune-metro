@@ -43,6 +43,8 @@ class UpdatePostRequest extends FormRequest
             'meta_description' => ['nullable', 'string', 'max:500'],
             'category_ids' => ['nullable', 'array'],
             'category_ids.*' => ['integer', 'exists:categories,id'],
+            'featured_image_media_id' => ['nullable', 'integer', 'exists:media,id'],
+            'card_image_media_id' => ['nullable', 'integer', 'exists:media,id'],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['string', 'max:100'],
             'sections' => ['nullable', 'array'],

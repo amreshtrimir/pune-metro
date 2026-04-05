@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
     'is_featured',
     'is_trending',
     'user_id',
+    'featured_image_media_id',
+    'card_image_media_id',
     'meta_title',
     'meta_description',
 ])]
@@ -31,12 +33,24 @@ class Post extends Model
             'published_at' => 'datetime',
             'is_featured' => 'boolean',
             'is_trending' => 'boolean',
+            'featured_image_media_id' => 'integer',
+            'card_image_media_id' => 'integer',
         ];
     }
 
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function featuredImage(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'featured_image_media_id');
+    }
+
+    public function cardImage(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'card_image_media_id');
     }
 
     public function sections(): HasMany

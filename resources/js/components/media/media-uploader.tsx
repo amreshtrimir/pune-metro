@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { MediaDimension } from '@/types';
-import { Upload, X, Plus, Image } from 'lucide-react';
+import { Upload, X, Plus, Image, CheckCircle2, Loader2 } from 'lucide-react';
 
 type PreviewFile = {
     file: File;
@@ -13,8 +13,12 @@ type PreviewFile = {
 
 type MediaUploaderProps = {
     dimensions: MediaDimension[];
-    onUpload: (file: File, dimensionIds: number[], customDimensions: Array<{ width: number; height: number }>) => Promise<void>;
-    uploading?: boolean;
+    onUpload: (
+        file: File,
+        dimensionIds: number[],
+        customDimensions: Array<{ width: number; height: number }>,
+        onProgress: (pct: number) => void,
+    ) => Promise<void>;
 };
 
 const PREDEFINED_DIMENSIONS = [
@@ -25,11 +29,14 @@ const PREDEFINED_DIMENSIONS = [
     { label: 'Banner (1920×400)', width: 1920, height: 400 },
 ];
 
-export function MediaUploader({ dimensions, onUpload, uploading = false }: MediaUploaderProps) {
+export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
     const [preview, setPreview] = useState<PreviewFile | null>(null);
     const [dragging, setDragging] = useState(false);
     const [selectedDimensionIds, setSelectedDimensionIds] = useState<number[]>([]);
-    const [customDimensions, setCustomDimensions] = useState<Array<{ width: string; height: string }>>([]);
+    const [customDimensions, setCustomDimensions] = useState<Array<{ width: string; height: string }>>([])
+    const [progress, setProgress] = useState<number | null>(null);
+    const [done, setDone] = useState(false);
+    const uploading = progress !== null && !done;;
 
     const handleFile = useCallback((file: File) => {
         const url = URL.createObjectURL(file);
@@ -71,17 +78,27 @@ export function MediaUploader({ dimensions, onUpload, uploading = false }: Media
     };
 
     const handleSubmit = async () => {
-        if (!preview) return;
+        if (!preview || uploading) return;
 
         const validCustom = customDimensions
             .filter((d) => d.width && d.height)
             .map((d) => ({ width: parseInt(d.width), height: parseInt(d.height) }));
 
-        await onUpload(preview.file, selectedDimensionIds, validCustom);
-
-        setPreview(null);
-        setSelectedDimensionIds([]);
-        setCustomDimensions([]);
+        setProgress(0);
+        setDone(false);
+        try {
+            await onUpload(preview.file, selectedDimensionIds, validCustom, setProgress);
+            setDone(true);
+            setTimeout(() => {
+                setPreview(null);
+                setSelectedDimensionIds([]);
+                setCustomDimensions([]);
+                setProgress(null);
+                setDone(false);
+            }, 1200);
+        } catch {
+            setProgress(null);
+        }
     };
 
     return (
@@ -114,13 +131,41 @@ export function MediaUploader({ dimensions, onUpload, uploading = false }: Media
                         <img
                             src={preview.preview}
                             alt="Preview"
-                            className="max-h-64 w-full object-contain"
+                            className={cn('max-h-64 w-full object-contain transition-opacity', uploading && 'opacity-60')}
                         />
+
+                        {/* Progress overlay */}
+                        {progress !== null && (
+                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/60 backdrop-blur-sm">
+                                {done ? (
+                                    <>
+                                        <CheckCircle2 className="size-10 text-green-500" />
+                                        <p className="text-sm font-medium text-green-600">Uploaded!</p>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Loader2 className="size-8 animate-spin text-primary" />
+                                        <p className="text-sm font-medium">
+                                            {progress < 100 ? `Uploading… ${progress}%` : 'Processing…'}
+                                        </p>
+                                        <div className="h-1.5 w-3/4 overflow-hidden rounded-full bg-muted">
+                                            <div
+                                                className="h-full rounded-full bg-primary transition-all duration-200"
+                                                style={{ width: `${progress}%` }}
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        )}
+
                         <Button
+                            type="button"
                             size="icon"
                             variant="destructive"
                             className="absolute right-2 top-2 size-7"
                             onClick={() => setPreview(null)}
+                            disabled={uploading}
                         >
                             <X className="size-3" />
                         </Button>
@@ -170,20 +215,23 @@ export function MediaUploader({ dimensions, onUpload, uploading = false }: Media
                                         min={1}
                                         max={5000}
                                     />
-                                    <Button size="icon" variant="ghost" className="size-8" onClick={() => removeCustomDimension(i)}>
+                                    <Button type="button" size="icon" variant="ghost" className="size-8" onClick={() => removeCustomDimension(i)} disabled={uploading}>
                                         <X className="size-3" />
                                     </Button>
                                 </div>
                             ))}
-                            <Button size="sm" variant="outline" className="h-7 text-xs" onClick={addCustomDimension}>
+                            <Button type="button" size="sm" variant="outline" className="h-7 text-xs" onClick={addCustomDimension} disabled={uploading}>
                                 <Plus className="mr-1 size-3" /> Add custom
                             </Button>
                         </div>
                     </div>
 
-                    <Button onClick={handleSubmit} disabled={uploading} className="w-full">
-                        <Upload className="mr-2 size-4" />
-                        {uploading ? 'Uploading...' : 'Upload'}
+                    <Button type="button" onClick={handleSubmit} disabled={uploading} className="w-full">
+                        {uploading ? (
+                            <><Loader2 className="mr-2 size-4 animate-spin" /> {progress !== null && progress < 100 ? `Uploading ${progress}%` : 'Processing…'}</>
+                        ) : (
+                            <><Upload className="mr-2 size-4" /> Upload</>
+                        )}
                     </Button>
                 </div>
             )}

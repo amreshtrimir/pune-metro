@@ -7,6 +7,7 @@ use App\Http\Requests\Blog\StorePostRequest;
 use App\Http\Requests\Blog\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Services\Blog\PostService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -33,9 +34,11 @@ class PostController extends Controller
     public function create(): Response
     {
         $categories = Category::orderBy('name')->get(['id', 'name']);
+        $allTags = Tag::orderBy('name')->get(['id', 'name', 'slug']);
 
         return Inertia::render('dashboard/posts/create', [
             'categories' => $categories,
+            'allTags' => $allTags,
         ]);
     }
 
@@ -54,10 +57,12 @@ class PostController extends Controller
     {
         $postData = $this->postService->getPostForEdit($post->id);
         $categories = Category::orderBy('name')->get(['id', 'name']);
+        $allTags = Tag::orderBy('name')->get(['id', 'name', 'slug']);
 
         return Inertia::render('dashboard/posts/edit', [
             'post' => $postData,
             'categories' => $categories,
+            'allTags' => $allTags,
         ]);
     }
 

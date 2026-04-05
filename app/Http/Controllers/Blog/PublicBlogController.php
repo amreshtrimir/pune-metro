@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\StoreCommentRequest;
-use App\Models\Comment;
 use App\Models\Post;
 use App\Models\PostView;
 use Illuminate\Http\RedirectResponse;

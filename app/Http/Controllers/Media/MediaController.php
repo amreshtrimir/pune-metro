@@ -47,7 +47,7 @@ class MediaController extends Controller
             $validated['module'] ?? null,
         );
 
-        if (!empty($customDimensions)) {
+        if (! empty($customDimensions)) {
             $this->mediaService->generateVariants($media, $customDimensions);
             $media->load('variants');
         }

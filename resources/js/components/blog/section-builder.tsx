@@ -11,12 +11,12 @@ type SectionBuilderProps = {
     onChange: (sections: PostSection[]) => void;
 };
 
-const SECTION_TYPES: Array<{ type: SectionType; label: string; icon: React.ComponentType<{ className?: string }> }> = [
-    { type: 'text', label: 'Text', icon: Type },
-    { type: 'image', label: 'Image', icon: Image },
-    { type: 'image_text', label: 'Image + Text', icon: AlignLeft },
-    { type: 'gallery', label: 'Gallery', icon: Images },
-    { type: 'quote', label: 'Quote', icon: Quote },
+const SECTION_TYPES: Array<{ type: SectionType; label: string; description: string; icon: React.ComponentType<{ className?: string }> }> = [
+    { type: 'text', label: 'Text', description: 'Rich paragraph', icon: Type },
+    { type: 'image', label: 'Image', description: 'Full-width photo', icon: Image },
+    { type: 'image_text', label: 'Image + Text', description: 'Side by side', icon: AlignLeft },
+    { type: 'gallery', label: 'Gallery', description: 'Photo grid', icon: Images },
+    { type: 'quote', label: 'Quote', description: 'Pull quote', icon: Quote },
 ];
 
 function defaultContent(type: SectionType): PostSection['content'] {
@@ -34,9 +34,14 @@ type SectionEditorProps = {
     onChange: (section: PostSection) => void;
     onDelete: () => void;
     index: number;
+    isDragging: boolean;
+    onDragStart: () => void;
+    onDragOver: (e: React.DragEvent) => void;
+    onDrop: () => void;
+    onDragEnd: () => void;
 };
 
-function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProps) {
+function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragStart, onDragOver, onDrop, onDragEnd }: SectionEditorProps) {
     const [pickerOpen, setPickerOpen] = useState(false);
     const [galleryPickerOpen, setGalleryPickerOpen] = useState(false);
 
@@ -75,22 +80,33 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
             case 'image': {
                 const c = section.content as ImageContent;
                 return (
-                    <div className="space-y-2">
+                    <div className="flex items-start gap-4">
                         {c.media_id > 0 && c.variant.file_path ? (
-                            <div className="relative overflow-hidden rounded-lg border">
-                                <img src={`/storage/${c.variant.file_path}`} alt="" className="max-h-48 w-full object-cover" />
-                                <Badge variant="secondary" className="absolute bottom-2 right-2 text-[10px]">
+                            <div className="relative shrink-0 overflow-hidden rounded-lg border w-48 h-32">
+                                <img src={`/storage/${c.variant.file_path}`} alt="" className="h-full w-full object-cover" />
+                                <Badge variant="secondary" className="absolute bottom-1.5 right-1.5 text-[10px]">
                                     {c.variant.width}×{c.variant.height}
                                 </Badge>
                             </div>
                         ) : (
-                            <div className="flex h-32 items-center justify-center rounded-lg border-2 border-dashed text-muted-foreground text-sm">
+                            <div className="flex shrink-0 h-32 w-48 items-center justify-center rounded-lg border-2 border-dashed text-muted-foreground text-xs">
                                 No image selected
                             </div>
                         )}
-                        <Button size="sm" variant="outline" onClick={() => setPickerOpen(true)}>
-                            <Image className="mr-2 size-3" /> {c.media_id > 0 ? 'Change' : 'Select'} Image
-                        </Button>
+                        <div className="flex flex-col gap-2 justify-center">
+                            <Button type="button" size="sm" variant="outline" onClick={() => setPickerOpen(true)}>
+                                <Image className="mr-2 size-3" /> {c.media_id > 0 ? 'Change' : 'Select'} Image
+                            </Button>
+                            {c.media_id > 0 && (
+                                <button
+                                    type="button"
+                                    onClick={() => updateContent({ media_id: 0, variant: { width: 0, height: 0, file_path: '' } } as Partial<ImageContent>)}
+                                    className="text-xs text-muted-foreground hover:text-destructive transition-colors text-left"
+                                >
+                                    Remove
+                                </button>
+                            )}
+                        </div>
                         <MediaPicker open={pickerOpen} onClose={() => setPickerOpen(false)} onSelect={handleMediaSelect} />
                     </div>
                 );
@@ -100,7 +116,7 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
                 return (
                     <div className="space-y-3">
                         <div className="flex items-start gap-3">
-                            <div className="flex-shrink-0">
+                            <div className="shrink-0">
                                 {c.media_id > 0 ? (
                                     <div className="overflow-hidden rounded-lg border w-32 h-24">
                                         <img src={`/storage/${c.media_id}`} alt="" className="h-full w-full object-cover" />
@@ -110,7 +126,7 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
                                         No image
                                     </div>
                                 )}
-                                <Button size="sm" variant="outline" className="mt-1 w-full text-xs" onClick={() => setPickerOpen(true)}>
+                                <Button type="button" size="sm" variant="outline" className="mt-1 w-full text-xs" onClick={() => setPickerOpen(true)}>
                                     Select
                                 </Button>
                             </div>
@@ -134,6 +150,7 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
                                 <div key={i} className="group relative aspect-square overflow-hidden rounded-lg border">
                                     <img src={`/storage/${item.variant.file_path}`} alt="" className="h-full w-full object-cover" />
                                     <button
+                                        type="button"
                                         className="absolute right-1 top-1 hidden rounded bg-destructive p-0.5 group-hover:block"
                                         onClick={() => {
                                             const newItems = c.items.filter((_, idx) => idx !== i);
@@ -145,6 +162,7 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
                                 </div>
                             ))}
                             <button
+                                type="button"
                                 className="flex aspect-square items-center justify-center rounded-lg border-2 border-dashed text-muted-foreground hover:border-primary hover:text-primary transition-colors"
                                 onClick={() => setGalleryPickerOpen(true)}
                             >
@@ -180,14 +198,26 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
     const Icon = typeInfo?.icon ?? Type;
 
     return (
-        <div className="rounded-xl border bg-card">
+        <div
+            className={`rounded-xl border bg-card transition-opacity ${isDragging ? 'opacity-40' : 'opacity-100'}`}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+        >
             <div className="flex items-center gap-3 border-b px-4 py-2">
-                <GripVertical className="size-4 cursor-grab text-muted-foreground" />
+                <div
+                    draggable
+                    onDragStart={onDragStart}
+                    onDragEnd={onDragEnd}
+                    className="cursor-grab active:cursor-grabbing touch-none"
+                    title="Drag to reorder"
+                >
+                    <GripVertical className="size-4 text-muted-foreground" />
+                </div>
                 <Icon className="size-4 text-muted-foreground" />
                 <Badge variant="secondary" className="text-xs">{typeInfo?.label}</Badge>
                 <span className="text-xs text-muted-foreground">#{index + 1}</span>
                 <div className="ml-auto">
-                    <Button size="icon" variant="ghost" className="size-7 text-destructive hover:text-destructive" onClick={onDelete}>
+                    <Button type="button" size="icon" variant="ghost" className="size-7 text-destructive hover:text-destructive" onClick={onDelete}>
                         <Trash2 className="size-3" />
                     </Button>
                 </div>
@@ -200,7 +230,7 @@ function SectionEditor({ section, onChange, onDelete, index }: SectionEditorProp
 }
 
 export function SectionBuilder({ sections, onChange }: SectionBuilderProps) {
-    const [showTypeMenu, setShowTypeMenu] = useState(false);
+    const [dragIndex, setDragIndex] = useState<number | null>(null);
 
     const addSection = (type: SectionType) => {
         const newSection: PostSection = {
@@ -209,7 +239,6 @@ export function SectionBuilder({ sections, onChange }: SectionBuilderProps) {
             position: sections.length,
         };
         onChange([...sections, newSection]);
-        setShowTypeMenu(false);
     };
 
     const updateSection = (index: number, section: PostSection) => {
@@ -223,6 +252,18 @@ export function SectionBuilder({ sections, onChange }: SectionBuilderProps) {
         onChange(updated.map((s, i) => ({ ...s, position: i })));
     };
 
+    const handleDrop = (targetIndex: number) => {
+        if (dragIndex === null || dragIndex === targetIndex) {
+            setDragIndex(null);
+            return;
+        }
+        const updated = [...sections];
+        const [moved] = updated.splice(dragIndex, 1);
+        updated.splice(targetIndex, 0, moved);
+        onChange(updated.map((s, i) => ({ ...s, position: i })));
+        setDragIndex(null);
+    };
+
     return (
         <div className="space-y-3">
             {sections.map((section, i) => (
@@ -232,35 +273,34 @@ export function SectionBuilder({ sections, onChange }: SectionBuilderProps) {
                     index={i}
                     onChange={(s) => updateSection(i, s)}
                     onDelete={() => deleteSection(i)}
+                    isDragging={dragIndex === i}
+                    onDragStart={() => setDragIndex(i)}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={() => handleDrop(i)}
+                    onDragEnd={() => setDragIndex(null)}
                 />
             ))}
 
-            <div className="relative">
-                <Button
-                    type="button"
-                    variant="outline"
-                    className="w-full border-dashed"
-                    onClick={() => setShowTypeMenu(!showTypeMenu)}
-                >
-                    <Plus className="mr-2 size-4" /> Add Section
-                </Button>
-
-                {showTypeMenu && (
-                    <div className="absolute top-full left-0 z-10 mt-1 w-full rounded-xl border bg-popover shadow-lg">
-                        <div className="grid grid-cols-2 gap-1 p-2 sm:grid-cols-5">
-                            {SECTION_TYPES.map(({ type, label, icon: Icon }) => (
-                                <button
-                                    key={type}
-                                    className="flex flex-col items-center gap-1.5 rounded-lg p-3 text-xs hover:bg-accent transition-colors"
-                                    onClick={() => addSection(type)}
-                                >
-                                    <Icon className="size-5" />
-                                    {label}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                )}
+            <div className="rounded-xl border border-dashed p-4 space-y-3">
+                <p className="text-xs font-medium text-muted-foreground">Add a block</p>
+                <div className="grid grid-cols-5 gap-2">
+                    {SECTION_TYPES.map(({ type, label, description, icon: Icon }) => (
+                        <button
+                            key={type}
+                            type="button"
+                            onClick={() => addSection(type)}
+                            className="group flex flex-col items-center gap-2 rounded-lg border bg-card p-3 text-center transition-all hover:border-primary/50 hover:bg-accent hover:shadow-sm"
+                        >
+                            <div className="flex size-9 items-center justify-center rounded-lg bg-muted transition-colors group-hover:bg-primary/10">
+                                <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
+                            </div>
+                            <div>
+                                <p className="text-xs font-medium leading-tight text-foreground">{label}</p>
+                                <p className="mt-0.5 text-[10px] leading-tight text-muted-foreground">{description}</p>
+                            </div>
+                        </button>
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -2,7 +2,6 @@
 
 namespace App\Services\Blog;
 
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -34,7 +33,7 @@ class PostService
      */
     public function updatePost(Post $post, array $data, array $sections = []): Post
     {
-        if (isset($data['title']) && !isset($data['slug'])) {
+        if (isset($data['title']) && ! isset($data['slug'])) {
             $data['slug'] = Str::slug($data['title']);
         }
 
@@ -86,11 +85,11 @@ class PostService
             ->withCount('views')
             ->latest();
 
-        if (!empty($filters['search'])) {
-            $query->where('title', 'like', '%' . $filters['search'] . '%');
+        if (! empty($filters['search'])) {
+            $query->where('title', 'like', '%'.$filters['search'].'%');
         }
 
-        if (!empty($filters['status'])) {
+        if (! empty($filters['status'])) {
             $query->where('status', $filters['status']);
         }
 
@@ -99,7 +98,7 @@ class PostService
 
     public function getPostForEdit(int $id): Post
     {
-        return Post::with(['sections', 'categories', 'tags'])->findOrFail($id);
+        return Post::with(['sections', 'categories', 'tags', 'featuredImage.variants', 'cardImage.variants'])->findOrFail($id);
     }
 
     public function deletePost(Post $post): void

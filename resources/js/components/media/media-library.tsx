@@ -29,6 +29,7 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
         file: File,
         dimensionIds: number[],
         customDimensions: Array<{ width: number; height: number }>,
+        onProgress: (pct: number) => void,
     ) => {
         setUploading(true);
         try {
@@ -40,16 +41,33 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
                 formData.append(`custom_dimensions[${i}][height]`, String(d.height));
             });
 
-            const res = await fetch(MediaController.store.url(), {
-                method: 'POST',
-                headers: { 'X-CSRF-TOKEN': document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content ?? '' },
-                body: formData,
+            const xsrfToken = decodeURIComponent(
+                document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '',
+            );
+
+            await new Promise<void>((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', MediaController.store.url());
+                xhr.setRequestHeader('X-XSRF-TOKEN', xsrfToken);
+                xhr.setRequestHeader('Accept', 'application/json');
+                xhr.upload.onprogress = (e) => {
+                    if (e.lengthComputable) {
+                        onProgress(Math.round((e.loaded / e.total) * 100));
+                    }
+                };
+                xhr.onload = () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve();
+                    } else {
+                        reject(new Error(`Upload failed: ${xhr.status}`));
+                    }
+                };
+                xhr.onerror = () => reject(new Error('Network error'));
+                xhr.send(formData);
             });
 
-            if (res.ok) {
-                setShowUploader(false);
-                router.reload({ only: ['media'] });
-            }
+            setShowUploader(false);
+            router.reload({ only: ['media'] });
         } finally {
             setUploading(false);
         }

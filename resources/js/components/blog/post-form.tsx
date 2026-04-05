@@ -2,72 +2,60 @@ import { useState } from 'react';
 import { Form } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
+import { MultiSelect } from '@/components/ui/multi-select';
+import { MediaPicker } from '@/components/media/media-picker';
 import { SectionBuilder } from '@/components/blog/section-builder';
-import type { Category, Post, PostSection } from '@/types';
-import { X, Plus, Loader2, Check } from 'lucide-react';
+import type { Category, Post, PostSection, Tag } from '@/types';
+import { ImagePlus, X } from 'lucide-react';
 import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
 
 type PostFormProps = {
     post?: Post;
     categories: Category[];
+    allTags: Tag[];
     action: string;
     method?: 'post' | 'put';
 };
 
-export function PostForm({ post, categories, action, method = 'post' }: PostFormProps) {
+export function PostForm({ post, categories, allTags, action, method = 'post' }: PostFormProps) {
     const [sections, setSections] = useState<PostSection[]>(post?.sections ?? []);
-    const [tagInput, setTagInput] = useState('');
     const [tags, setTags] = useState<string[]>(post?.tags?.map((t) => t.name) ?? []);
     const [localCategories, setLocalCategories] = useState<Category[]>(categories);
     const [selectedCategories, setSelectedCategories] = useState<number[]>(post?.categories?.map((c) => c.id) ?? []);
-    const [newCatInput, setNewCatInput] = useState('');
-    const [creatingCat, setCreatingCat] = useState(false);
-    const [showCatInput, setShowCatInput] = useState(false);
 
-    const addTag = () => {
-        const trimmed = tagInput.trim();
-        if (trimmed && !tags.includes(trimmed)) {
-            setTags((prev) => [...prev, trimmed]);
+    const [featuredImageId, setFeaturedImageId] = useState<number | null>(post?.featured_image_media_id ?? null);
+    const [featuredImagePath, setFeaturedImagePath] = useState<string | null>(
+        post?.featured_image?.variants?.[0]?.file_path ?? post?.featured_image?.file_path ?? null,
+    );
+    const [featuredPickerOpen, setFeaturedPickerOpen] = useState(false);
+
+    const [cardImageId, setCardImageId] = useState<number | null>(post?.card_image_media_id ?? null);
+    const [cardImagePath, setCardImagePath] = useState<string | null>(
+        post?.card_image?.variants?.[0]?.file_path ?? post?.card_image?.file_path ?? null,
+    );
+    const [cardPickerOpen, setCardPickerOpen] = useState(false);
+
+    const handleCreateCategory = async (name: string): Promise<string | null> => {
+        const xsrfToken = decodeURIComponent(
+            document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '',
+        );
+        const response = await fetch(CategoryController.store.url(), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                'X-XSRF-TOKEN': xsrfToken,
+            },
+            body: JSON.stringify({ name }),
+        });
+
+        if (response.ok) {
+            const created = (await response.json()) as Category;
+            setLocalCategories((prev) => [...prev, created]);
+            return String(created.id);
         }
-        setTagInput('');
-    };
 
-    const removeTag = (tag: string) => setTags((prev) => prev.filter((t) => t !== tag));
-
-    const toggleCategory = (id: number) => {
-        setSelectedCategories((prev) => prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id]);
-    };
-
-    const handleCreateCategory = async () => {
-        const name = newCatInput.trim();
-        if (!name || creatingCat) return;
-
-        setCreatingCat(true);
-        try {
-            const xsrfToken = decodeURIComponent(
-                document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '',
-            );
-            const response = await fetch(CategoryController.store.url(), {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-XSRF-TOKEN': xsrfToken,
-                },
-                body: JSON.stringify({ name }),
-            });
-
-            if (response.ok) {
-                const created = await response.json() as Category;
-                setLocalCategories((prev) => [...prev, created]);
-                setSelectedCategories((prev) => [...prev, created.id]);
-                setNewCatInput('');
-                setShowCatInput(false);
-            }
-        } finally {
-            setCreatingCat(false);
-        }
+        return null;
     };
 
     return (
@@ -176,59 +164,15 @@ export function PostForm({ post, categories, action, method = 'post' }: PostForm
                         </div>
 
                         <div className="rounded-xl border p-4 space-y-3">
-                            <div className="flex items-center justify-between">
-                                <h3 className="text-sm font-semibold">Categories</h3>
-                                <button
-                                    type="button"
-                                    onClick={() => setShowCatInput((v) => !v)}
-                                    className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
-                                >
-                                    <Plus className="size-3" />
-                                    New
-                                </button>
-                            </div>
-
-                            {showCatInput && (
-                                <div className="flex gap-2">
-                                    <Input
-                                        placeholder="Category name"
-                                        value={newCatInput}
-                                        onChange={(e) => setNewCatInput(e.target.value)}
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter') { e.preventDefault(); void handleCreateCategory(); }
-                                            if (e.key === 'Escape') { setShowCatInput(false); setNewCatInput(''); }
-                                        }}
-                                        className="flex-1 h-8 text-xs"
-                                        autoFocus
-                                    />
-                                    <Button
-                                        type="button"
-                                        size="sm"
-                                        variant="outline"
-                                        className="h-8 px-2"
-                                        onClick={() => void handleCreateCategory()}
-                                        disabled={creatingCat || !newCatInput.trim()}
-                                    >
-                                        {creatingCat ? <Loader2 className="size-3 animate-spin" /> : <Check className="size-3" />}
-                                    </Button>
-                                </div>
-                            )}
-
-                            <div className="flex flex-wrap gap-2">
-                                {localCategories.length === 0 && !showCatInput && (
-                                    <p className="text-xs text-muted-foreground">No categories yet. Click "New" to add one.</p>
-                                )}
-                                {localCategories.map((cat) => (
-                                    <Badge
-                                        key={cat.id}
-                                        variant={selectedCategories.includes(cat.id) ? 'default' : 'outline'}
-                                        className="cursor-pointer"
-                                        onClick={() => toggleCategory(cat.id)}
-                                    >
-                                        {cat.name}
-                                    </Badge>
-                                ))}
-                            </div>
+                            <h3 className="text-sm font-semibold">Categories</h3>
+                            <MultiSelect
+                                options={localCategories.map((c) => ({ value: String(c.id), label: c.name }))}
+                                selected={selectedCategories.map(String)}
+                                onChange={(vals) => setSelectedCategories(vals.map(Number))}
+                                placeholder="Search categories..."
+                                onCreateOption={handleCreateCategory}
+                                createLabel="Create category"
+                            />
                             {selectedCategories.map((id) => (
                                 <input key={id} type="hidden" name="category_ids[]" value={id} />
                             ))}
@@ -236,31 +180,121 @@ export function PostForm({ post, categories, action, method = 'post' }: PostForm
 
                         <div className="rounded-xl border p-4 space-y-3">
                             <h3 className="text-sm font-semibold">Tags</h3>
-                            <div className="flex flex-wrap gap-1.5 min-h-8">
-                                {tags.map((tag) => (
-                                    <Badge key={tag} variant="secondary" className="gap-1">
-                                        {tag}
-                                        <button type="button" onClick={() => removeTag(tag)}>
-                                            <X className="size-2.5" />
-                                        </button>
-                                    </Badge>
-                                ))}
-                            </div>
-                            <div className="flex gap-2">
-                                <Input
-                                    placeholder="Add tag..."
-                                    value={tagInput}
-                                    onChange={(e) => setTagInput(e.target.value)}
-                                    onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
-                                    className="flex-1 h-8 text-xs"
-                                />
-                                <Button type="button" size="sm" variant="outline" className="h-8 text-xs" onClick={addTag}>
-                                    Add
-                                </Button>
-                            </div>
+                            <MultiSelect
+                                options={allTags.map((t) => ({ value: t.name, label: t.name }))}
+                                selected={tags}
+                                onChange={setTags}
+                                placeholder="Search or add tags..."
+                                allowCustom
+                                createLabel="Add tag"
+                            />
                             {tags.map((tag) => (
                                 <input key={tag} type="hidden" name="tags[]" value={tag} />
                             ))}
+                        </div>
+
+                        {/* Featured Image */}
+                        <div className="rounded-xl border p-4 space-y-3">
+                            <h3 className="text-sm font-semibold">Featured Image</h3>
+                            <p className="text-xs text-muted-foreground">Hero image shown on the full post page</p>
+                            {featuredImagePath ? (
+                                <div className="relative overflow-hidden rounded-lg border">
+                                    <img
+                                        src={`/storage/${featuredImagePath}`}
+                                        className="w-full max-h-32 object-cover"
+                                        alt="Featured"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => { setFeaturedImageId(null); setFeaturedImagePath(null); }}
+                                        className="absolute top-1 right-1 rounded bg-black/50 p-0.5 text-white hover:bg-black/70"
+                                    >
+                                        <X className="size-3" />
+                                    </button>
+                                </div>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={() => setFeaturedPickerOpen(true)}
+                                    className="flex w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed py-6 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                                >
+                                    <ImagePlus className="size-5" />
+                                    <span className="text-xs">Select image</span>
+                                </button>
+                            )}
+                            {featuredImagePath && (
+                                <Button
+                                    type="button"
+                                    size="sm"
+                                    variant="outline"
+                                    className="w-full text-xs"
+                                    onClick={() => setFeaturedPickerOpen(true)}
+                                >
+                                    Change
+                                </Button>
+                            )}
+                            <input type="hidden" name="featured_image_media_id" value={featuredImageId ?? ''} />
+                            <MediaPicker
+                                open={featuredPickerOpen}
+                                onClose={() => setFeaturedPickerOpen(false)}
+                                onSelect={(s) => {
+                                    setFeaturedImageId(s.media_id);
+                                    setFeaturedImagePath(s.variant.file_path);
+                                    setFeaturedPickerOpen(false);
+                                }}
+                            />
+                        </div>
+
+                        {/* Card Image */}
+                        <div className="rounded-xl border p-4 space-y-3">
+                            <h3 className="text-sm font-semibold">Card Image</h3>
+                            <p className="text-xs text-muted-foreground">Thumbnail shown on the blog listing page</p>
+                            {cardImagePath ? (
+                                <div className="relative overflow-hidden rounded-lg border">
+                                    <img
+                                        src={`/storage/${cardImagePath}`}
+                                        className="w-full max-h-32 object-cover"
+                                        alt="Card"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => { setCardImageId(null); setCardImagePath(null); }}
+                                        className="absolute top-1 right-1 rounded bg-black/50 p-0.5 text-white hover:bg-black/70"
+                                    >
+                                        <X className="size-3" />
+                                    </button>
+                                </div>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={() => setCardPickerOpen(true)}
+                                    className="flex w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed py-6 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                                >
+                                    <ImagePlus className="size-5" />
+                                    <span className="text-xs">Select image</span>
+                                </button>
+                            )}
+                            {cardImagePath && (
+                                <Button
+                                    type="button"
+                                    size="sm"
+                                    variant="outline"
+                                    className="w-full text-xs"
+                                    onClick={() => setCardPickerOpen(true)}
+                                >
+                                    Change
+                                </Button>
+                            )}
+                            <input type="hidden" name="card_image_media_id" value={cardImageId ?? ''} />
+                            <MediaPicker
+                                open={cardPickerOpen}
+                                onClose={() => setCardPickerOpen(false)}
+                                onSelect={(s) => {
+                                    setCardImageId(s.media_id);
+                                    setCardImagePath(s.variant.file_path);
+                                    setCardPickerOpen(false);
+                                }}
+                            />
                         </div>
 
                         <Button type="submit" className="w-full" disabled={processing}>

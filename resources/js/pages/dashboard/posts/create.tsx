@@ -1,13 +1,14 @@
 import { Head } from '@inertiajs/react';
 import { PostForm } from '@/components/blog/post-form';
-import type { Category } from '@/types';
+import type { Category, Tag } from '@/types';
 import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
 
 type Props = {
     categories: Category[];
+    allTags: Tag[];
 };
 
-export default function PostCreate({ categories }: Props) {
+export default function PostCreate({ categories, allTags }: Props) {
     return (
         <>
             <Head title="Create Post" />
@@ -18,6 +19,7 @@ export default function PostCreate({ categories }: Props) {
                 </div>
                 <PostForm
                     categories={categories}
+                    allTags={allTags}
                     action={PostController.store.url()}
                     method="post"
                 />

@@ -96,6 +96,10 @@ export type Post = {
     is_featured: boolean;
     is_trending: boolean;
     user_id: number;
+    featured_image_media_id: number | null;
+    card_image_media_id: number | null;
+    featured_image?: Media | null;
+    card_image?: Media | null;
     meta_title: string | null;
     meta_description: string | null;
     author?: { id: number; name: string };
