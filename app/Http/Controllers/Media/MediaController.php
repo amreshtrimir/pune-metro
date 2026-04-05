@@ -63,6 +63,11 @@ class MediaController extends Controller
         return response()->json($media);
     }
 
+    public function usages(int $id): JsonResponse
+    {
+        return response()->json($this->mediaService->getUsages($id));
+    }
+
     public function update(UpdateMediaRequest $request, int $id): JsonResponse
     {
         $media = $this->mediaService->updateMedia($id, $request->validated());

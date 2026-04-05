@@ -5,6 +5,8 @@ namespace App\Services\Media;
 use App\Models\Media;
 use App\Models\MediaDimension;
 use App\Models\MediaVariant;
+use App\Models\Post;
+use App\Models\PostSection;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
@@ -17,7 +19,7 @@ class MediaService
     public function upload(UploadedFile $file, array $dimensionIds, User $user, ?string $module = null): Media
     {
         $fileName = $file->getClientOriginalName();
-        $safeName = Str::slug(pathinfo($fileName, PATHINFO_FILENAME)) . '_' . time() . '.' . $file->getClientOriginalExtension();
+        $safeName = Str::slug(pathinfo($fileName, PATHINFO_FILENAME)).'_'.time().'.'.$file->getClientOriginalExtension();
         $filePath = $file->storeAs('media/originals', $safeName, 'public');
 
         $media = Media::create([
@@ -29,7 +31,7 @@ class MediaService
             'module' => $module,
         ]);
 
-        if (!empty($dimensionIds)) {
+        if (! empty($dimensionIds)) {
             $dimensions = MediaDimension::whereIn('id', $dimensionIds)->get();
             $this->generateVariants($media, $dimensions->toArray());
         }
@@ -77,8 +79,8 @@ class MediaService
             $resized = imagecreatetruecolor($width, $height);
             imagecopyresampled($resized, $source, 0, 0, $cropX, $cropY, $width, $height, $cropWidth, $cropHeight);
 
-            $variantName = pathinfo($media->file_path, PATHINFO_FILENAME) . "_{$width}x{$height}.jpg";
-            $variantPath = 'media/variants/' . $variantName;
+            $variantName = pathinfo($media->file_path, PATHINFO_FILENAME)."_{$width}x{$height}.jpg";
+            $variantPath = 'media/variants/'.$variantName;
             $fullVariantPath = Storage::disk('public')->path($variantPath);
 
             Storage::disk('public')->makeDirectory('media/variants');
@@ -119,15 +121,15 @@ class MediaService
     {
         $query = Media::with('variants')->latest();
 
-        if (!empty($filters['search'])) {
-            $query->where('file_name', 'like', '%' . $filters['search'] . '%');
+        if (! empty($filters['search'])) {
+            $query->where('file_name', 'like', '%'.$filters['search'].'%');
         }
 
-        if (!empty($filters['file_type'])) {
-            $query->where('file_type', 'like', $filters['file_type'] . '%');
+        if (! empty($filters['file_type'])) {
+            $query->where('file_type', 'like', $filters['file_type'].'%');
         }
 
-        if (!empty($filters['module'])) {
+        if (! empty($filters['module'])) {
             $query->where('module', $filters['module']);
         }
 
@@ -152,6 +154,34 @@ class MediaService
 
         Storage::disk('public')->delete($media->file_path);
         $media->delete();
+    }
+
+    /**
+     * @return array{items: array<int, array{label: string, count: int}>, total: int}
+     */
+    public function getUsages(int $id): array
+    {
+        $featuredImageCount = Post::where('featured_image_media_id', $id)->count();
+        $cardImageCount = Post::where('card_image_media_id', $id)->count();
+
+        $sectionDirectCount = PostSection::whereIn('type', ['image', 'image_text'])
+            ->whereRaw('JSON_EXTRACT(content, "$.media_id") = ?', [$id])
+            ->count();
+
+        $sectionGalleryCount = PostSection::where('type', 'gallery')
+            ->whereRaw("JSON_SEARCH(content, 'one', ?, NULL, '$.items[*].media_id') IS NOT NULL", [(string) $id])
+            ->count();
+
+        $items = [
+            ['label' => 'Post featured image', 'count' => $featuredImageCount],
+            ['label' => 'Post card image', 'count' => $cardImageCount],
+            ['label' => 'Post section block', 'count' => $sectionDirectCount + $sectionGalleryCount],
+        ];
+
+        return [
+            'items' => $items,
+            'total' => $featuredImageCount + $cardImageCount + $sectionDirectCount + $sectionGalleryCount,
+        ];
     }
 
     public function listDimensions(?string $module = null): Collection

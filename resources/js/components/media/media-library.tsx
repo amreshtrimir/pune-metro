@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { MediaCard } from '@/components/media/media-card';
 import { MediaUploader } from '@/components/media/media-uploader';
 import type { Media, MediaDimension, PaginatedData } from '@/types';
-import { Search, Upload, LayoutGrid } from 'lucide-react';
+import { Search, Upload, LayoutGrid, Loader2 } from 'lucide-react';
 import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 
 const MODULES = [
@@ -18,6 +18,11 @@ const MODULES = [
     { value: 'banners', label: 'Banners' },
     { value: 'gallery', label: 'Gallery' },
 ];
+
+type MediaUsage = {
+    items: Array<{ label: string; count: number }>;
+    total: number;
+};
 
 type MediaLibraryProps = {
     media: PaginatedData<Media>;
@@ -33,6 +38,8 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
     const [editFileName, setEditFileName] = useState('');
     const [editModule, setEditModule] = useState('');
     const [saving, setSaving] = useState(false);
+    const [usages, setUsages] = useState<MediaUsage | null>(null);
+    const [loadingUsages, setLoadingUsages] = useState(false);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -94,10 +101,22 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
         router.delete(MediaController.destroy.url({ id }), { preserveScroll: true });
     }, []);
 
-    const openEdit = useCallback((m: Media) => {
+    const openEdit = useCallback(async (m: Media) => {
         setEditingMedia(m);
         setEditFileName(m.file_name);
         setEditModule(m.module ?? '');
+        setUsages(null);
+        setLoadingUsages(true);
+        try {
+            const res = await fetch(MediaController.usages.url({ id: m.id }), {
+                headers: { 'Accept': 'application/json' },
+            });
+            if (res.ok) {
+                setUsages(await res.json());
+            }
+        } finally {
+            setLoadingUsages(false);
+        }
     }, []);
 
     const handleSaveEdit = async () => {
@@ -222,6 +241,40 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
                                         </Badge>
                                     ))}
                                 </div>
+                            </div>
+
+                            <div className="rounded-lg border p-3 space-y-2">
+                                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Used in</p>
+                                {loadingUsages ? (
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                        <Loader2 className="size-3 animate-spin" /> Checking usages…
+                                    </div>
+                                ) : usages ? (
+                                    <>
+                                        {usages.total === 0 ? (
+                                            <p className="text-xs text-muted-foreground">Not used anywhere</p>
+                                        ) : (
+                                            <>
+                                                <div className="flex items-center gap-1.5">
+                                                    <span className="text-sm font-semibold">{usages.total}</span>
+                                                    <span className="text-xs text-muted-foreground">
+                                                        {usages.total === 1 ? 'place' : 'places'} — changes will apply everywhere
+                                                    </span>
+                                                </div>
+                                                <div className="space-y-1">
+                                                    {usages.items.filter((item) => item.count > 0).map((item) => (
+                                                        <div key={item.label} className="flex items-center justify-between text-xs">
+                                                            <span className="text-muted-foreground">{item.label}</span>
+                                                            <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                                                                {item.count}
+                                                            </Badge>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+                                    </>
+                                ) : null}
                             </div>
                         </div>
                     )}
