@@ -27,13 +27,6 @@ const slides: Slide[] = [
     },
 ];
 
-const stats = [
-    { value: '23.3', label: 'Route Length (km)' },
-    { value: '23', label: 'Metro Stations' },
-    { value: '100%', label: 'Elevated Corridor' },
-    { value: '02', label: 'Depot Facilities' },
-];
-
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
     const [transitioning, setTransitioning] = useState(false);
@@ -125,25 +118,6 @@ export default function HeroSection() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
-            </div>
-
-            {/* ── Stats bar ── */}
-            <div className="absolute bottom-0 left-0 right-0 bg-brand-dark">
-                <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-0 px-6 py-5 lg:grid-cols-4 lg:px-16">
-                    {stats.map((stat, i) => (
-                        <div
-                            key={stat.label}
-                            className={`px-6 ${i === 0 ? 'pl-0' : 'border-l border-white/20'}`}
-                        >
-                            <p className="font-montserrat text-2xl font-bold text-white lg:text-3xl">
-                                {stat.value}
-                            </p>
-                            <p className="font-montserrat text-xs font-medium text-white/70">
-                                {stat.label}
-                            </p>
-                        </div>
-                    ))}
-                </div>
             </div>
         </section>
     );
