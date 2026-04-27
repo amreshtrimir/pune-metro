@@ -102,20 +102,20 @@ export default function HeroSection() {
                 {/* Prev / Next arrows */}
                 <button
                     onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-                    className="absolute right-20 bottom-[82px] flex h-8 w-8 items-center justify-center rounded-full border border-white/40 text-white transition-colors hover:border-brand hover:text-brand lg:right-24"
+                    className="absolute right-20 bottom-[82px] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white/60 transition hover:border-white/60 hover:text-white lg:right-24"
                     aria-label="Previous slide"
                 >
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 12H5M11 6l-6 6 6 6" />
                     </svg>
                 </button>
                 <button
                     onClick={() => goTo((current + 1) % slides.length)}
-                    className="absolute right-8 bottom-[82px] flex h-8 w-8 items-center justify-center rounded-full border border-white/40 text-white transition-colors hover:border-brand hover:text-brand lg:right-12"
+                    className="absolute right-8 bottom-[82px] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-brand text-brand transition hover:bg-brand hover:text-white lg:right-12"
                     aria-label="Next slide"
                 >
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                 </button>
             </div>

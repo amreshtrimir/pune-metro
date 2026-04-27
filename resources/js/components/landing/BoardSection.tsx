@@ -1,37 +1,32 @@
 const directors = [
-    { name: 'Dr. Praveer Sinha', role: 'Chairman' },
-    { name: 'Dr. Mangu Singh', role: 'Independent Director' },
-    { name: 'Mr. Sudip Mullick', role: 'Independent Director' },
-    { name: 'Ms. Sukriti Sood', role: 'Director' },
-    { name: 'Mr. Basil Watters', role: 'Director' },
+    { name: 'Dr. Praveer Sinha', role: 'Chairman', image: '/landing/board-section/dr-praveer-sinha.png' },
+    { name: 'Dr. Mangu Singh', role: 'Independent Director', image: '/landing/board-section/dr-mangu-singh.png' },
+    { name: 'Mr. Sudip Mullick', role: 'Independent Director', image: '/landing/board-section/mr-sudip-mullick.png' },
+    { name: 'Ms. Sukriti Sood', role: 'Director', image: '/landing/board-section/ms-sukriti-sood.png' },
+    { name: 'Mr. Basil Watters', role: 'Director', image: '/landing/board-section/mr-basil-watters.png' },
 ];
 
 const others = [
-    { name: 'Mr. Deepak Singla', role: 'Nominee Director' },
-    { name: 'Ms. Anjali Gupta', role: 'Company Secretary' },
+    { name: 'Mr. Deepak Singla', role: 'Nominee Director', image: '/landing/board-section/mr-deepak-singla.png' },
+    { name: 'Ms. Anjali Gupta', role: 'Company Secretary', image: '/landing/board-section/ms-anjali-gupta.png' },
 ];
 
-function DirectorAvatar({ name, role }: { name: string; role: string }) {
-    const initials = name
-        .split(' ')
-        .filter((w) => w.length > 2)
-        .slice(-2)
-        .map((w) => w[0])
-        .join('');
-
+function DirectorAvatar({ name, role, image }: { name: string; role: string; image: string }) {
     return (
         <div className="flex flex-col items-center gap-3 text-center">
-            {/* Photo placeholder */}
-            <div className="flex h-45 w-[160px] items-center justify-center overflow-hidden rounded-2xl bg-gray-100">
-                <span className="font-montserrat text-3xl font-bold text-gray-400">
-                    {initials}
-                </span>
+            {/* Photo */}
+            <div className="h-45 w-[160px] overflow-hidden rounded-2xl bg-gray-100">
+                <img
+                    src={image}
+                    alt={name}
+                    className="h-full w-full object-cover object-top"
+                />
             </div>
             <div>
-                <p className="font-montserrat text-sm font-semibold text-gray-900">
+                <p className="font-montserrat text-sm font-semibold" style={{ color: '#000000' }}>
                     {name}
                 </p>
-                <p className="font-montserrat text-xs font-normal text-gray-500">
+                <p className="font-montserrat text-xs font-normal" style={{ color: '#000000' }}>
                     {role}
                 </p>
                 <div className="mt-1 flex justify-center">
@@ -59,14 +54,14 @@ export default function BoardSection() {
                 {/* Main directors row */}
                 <div className="mb-10 flex flex-wrap justify-center gap-8">
                     {directors.map((d) => (
-                        <DirectorAvatar key={d.name} name={d.name} role={d.role} />
+                        <DirectorAvatar key={d.name} name={d.name} role={d.role} image={d.image} />
                     ))}
                 </div>
 
                 {/* Secondary row */}
                 <div className="flex flex-wrap justify-center gap-8">
                     {others.map((d) => (
-                        <DirectorAvatar key={d.name} name={d.name} role={d.role} />
+                        <DirectorAvatar key={d.name} name={d.name} role={d.role} image={d.image} />
                     ))}
                 </div>
             </div>
