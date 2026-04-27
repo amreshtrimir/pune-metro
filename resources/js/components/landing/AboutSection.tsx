@@ -35,7 +35,7 @@ export default function AboutSection() {
                             <img
                                 src="/landing/metro-interior.png"
                                 alt="Metro Interior"
-                                className="h-72 w-full object-cover grayscale"
+                                className="h-[480px] w-full object-cover grayscale"
                             />
                         </div>
 
@@ -50,15 +50,6 @@ export default function AboutSection() {
                         >
                             Fast &amp; Time-Saving Travel
                         </span>
-
-                        {/* Smaller overlapping color image */}
-                        <div className="relative z-10 -mt-10 ml-auto w-[60%] overflow-hidden rounded-xl shadow-xl">
-                            <img
-                                src="/landing/train-side.jpg"
-                                alt="Pune Metro Train"
-                                className="h-48 w-full object-cover"
-                            />
-                        </div>
 
                         {/* Far-right rotated label: SMART TICKETING OPTIONS */}
                         <span

@@ -30,7 +30,7 @@ export default function KeyFeaturesSection() {
                 className="relative flex flex-col justify-center"
                 style={{
                     backgroundImage: "url('/landing/city-light-bg.png')",
-                    backgroundSize: 'contain',
+                    backgroundSize: '100% 100%',
                     backgroundPosition: 'center top',
                     backgroundRepeat: 'no-repeat',
                     backgroundColor: '#fff',
@@ -64,7 +64,7 @@ export default function KeyFeaturesSection() {
             </div>
 
             {/* ── Cards — icon circles straddle the boundary ── */}
-            <div className="bg-white pb-16">
+            <div className="bg-white pb-16" style={{ marginTop: '-3%' }}>
                 <div
                     className="relative z-10 mx-auto max-w-[791px] px-4"
                     style={{ marginTop: '-38px' }}
@@ -75,7 +75,6 @@ export default function KeyFeaturesSection() {
                                 key={feature.title}
                                 className={`flex flex-col items-center transition-all duration-700 ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                                 style={{ transitionDelay: cardsInView ? `${i * 120}ms` : '0ms' }}
-                            >
                             >
                                 {/* Icon circle — top half above card */}
                                 <div

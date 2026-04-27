@@ -27,7 +27,7 @@ const mainNavLinks = [
 function PuneMetroLogo() {
     return (
         <a href="/">
-            <img src="/assets/pune-metro-log.png" alt="Pune Metro" className="h-14 w-auto" />
+            <img src="/assets/pune-metro-log.png" alt="Pune Metro" className="h-18 w-auto" />
         </a>
     );
 }
@@ -42,12 +42,12 @@ export default function Navbar() {
                 <div className="mx-auto flex max-w-[1440px] items-stretch px-4 lg:px-8">
 
                     {/* Logo — left, vertically centred across both rows */}
-                    <div className="flex items-center py-3 pr-6">
+                    <div className="flex items-center py-5 pr-8">
                         <PuneMetroLogo />
                     </div>
 
                     {/* Right side — stacked: contact on top, quick links below */}
-                    <div className="hidden flex-1 flex-col justify-between py-2 lg:flex">
+                    <div className="hidden flex-1 flex-col justify-between py-4 lg:flex">
                         {/* Top: Contact buttons */}
                         <div className="flex items-center justify-end gap-3">
                             <a
@@ -111,12 +111,12 @@ export default function Navbar() {
 
             {/* ── Row 3: Main Nav Bar (pink) ── hidden on small screens */}
             <nav className="hidden overflow-x-auto bg-brand lg:block">
-                <div className="mx-auto flex max-w-[1440px] items-stretch">
+                <div className="mx-auto flex max-w-[1440px] items-stretch justify-center">
                     {mainNavLinks.map((link) => (
                         <a
                             key={link.label}
                             href={link.href}
-                            className={`whitespace-nowrap px-4 py-3 font-montserrat text-xs font-bold tracking-wide text-white transition-colors hover:bg-white/20 ${
+                            className={`whitespace-nowrap px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide text-white transition-colors hover:bg-white/20 ${
                                 link.active ? 'bg-brand-dark' : ''
                             }`}
                         >

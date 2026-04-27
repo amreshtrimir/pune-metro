@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 
 interface Slide {
     image: string;
@@ -30,6 +30,19 @@ const slides: Slide[] = [
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
     const [transitioning, setTransitioning] = useState(false);
+    const [navHeight, setNavHeight] = useState(0);
+
+    useLayoutEffect(() => {
+        const header = document.querySelector('header');
+        if (!header) return;
+        const update = () => setNavHeight(header.offsetHeight);
+        update();
+        const ro = new ResizeObserver(update);
+        ro.observe(header);
+        return () => ro.disconnect();
+    }, []);
+
+    const heroHeight = navHeight > 0 ? `calc(100vh - ${navHeight}px)` : '100vh';
 
     const goTo = useCallback(
         (index: number) => {
@@ -53,7 +66,7 @@ export default function HeroSection() {
     const slide = slides[current];
 
     return (
-        <section className="relative w-full overflow-hidden bg-metro-dark" style={{ minHeight: '627.66px' }}>
+        <section className="relative w-full overflow-hidden bg-metro-dark" style={{ minHeight: heroHeight }}>
 
             {/* ── Full-width background image ── */}
             {slides.map((s, i) => (
@@ -73,14 +86,20 @@ export default function HeroSection() {
 
             {/* ── Text content — layered on top ── */}
             <div
-                className="relative mx-auto flex max-w-[1440px] flex-col justify-center px-6 lg:px-16"
-                style={{ minHeight: '627.66px', paddingBottom: '110px', paddingTop: '80px' }}
+                className="relative mx-auto flex max-w-[1440px] flex-col justify-end px-6 lg:px-16"
+                style={{ minHeight: heroHeight, paddingBottom: '110px', paddingTop: '80px' }}
             >
-                <div className={`max-w-2xl transition-opacity duration-300 ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
-                    <h1 className="mb-5 font-montserrat text-3xl font-bold leading-tight text-white lg:text-5xl">
+                <div className={`w-4/5 transition-opacity duration-300 ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+                    <h1
+                        className="mb-5 font-montserrat font-bold text-white"
+                        style={{ fontSize: 'clamp(28px, 5vw, 66px)', lineHeight: 'clamp(36px, 6.25vw, 80px)' }}
+                    >
                         {slide.heading}
                     </h1>
-                    <p className="font-montserrat text-sm leading-relaxed text-white/80 lg:text-base">
+                    <p
+                        className="font-montserrat text-white/80"
+                        style={{ fontSize: 'clamp(14px, 1.72vw, 22px)', lineHeight: 'clamp(22px, 2.5vw, 32px)' }}
+                    >
                         {slide.description}
                     </p>
                 </div>
