@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Page Not Found - 404</title>
+    <link href="/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body { background: #f8f9fa; }
+        .error-container { margin-top: 10%; text-align: center; }
+        .error-code { font-size: 6rem; font-weight: bold; color: #dc3545; }
+        .error-message { font-size: 1.5rem; margin-bottom: 1rem; }
+        .btn-home { margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container error-container">
+        <div class="error-code">404</div>
+        <div class="error-message">Oops! The page you are looking for does not exist.</div>
+        <p>It might have been moved or deleted. Please check the URL or return to the homepage.</p>
+        <a href="/index.aspx" class="btn btn-primary btn-home">Go to Homepage</a>
+    </div>
+</body>
+</html>

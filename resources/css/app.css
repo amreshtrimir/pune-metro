@@ -13,6 +13,13 @@
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 
+    --font-montserrat: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+    --color-brand: #f91c91;
+    --color-brand-dark: #9a0052;
+    --color-brand-alt: #e6469d;
+    --color-metro-dark: #1a0a2e;
+
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
