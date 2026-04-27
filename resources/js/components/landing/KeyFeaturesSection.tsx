@@ -1,3 +1,5 @@
+import { useInView } from '@/hooks/useInView';
+
 const features = [
     {
         icon: <img src="/landing/key-features-icons/clock-urban-connectivity.png" alt="Clock icon representing urban connectivity" className="h-10 w-10 object-contain" />,
@@ -18,6 +20,9 @@ const features = [
 ];
 
 export default function KeyFeaturesSection() {
+    const { ref: headingRef, inView: headingInView } = useInView<HTMLDivElement>();
+    const { ref: cardsRef, inView: cardsInView } = useInView<HTMLDivElement>();
+
     return (
         <div id="features">
             {/* ── Top row: pill + heading + description — with bg image ── */}
@@ -34,7 +39,7 @@ export default function KeyFeaturesSection() {
                     paddingBottom: '76px', /* 38px for icon circle half + 38px breathing room */
                 }}
             >
-                <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-4 px-6 lg:px-16">
+                <div ref={headingRef} className={`mx-auto flex w-full max-w-[1440px] flex-col items-center gap-4 px-6 transition-all duration-700 lg:px-16 ${headingInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     {/* Pill badge */}
                     <div className="inline-flex items-center rounded-full px-5 py-1.5" style={{ background: 'rgba(154, 0, 82, 0.1)' }}>
                         <span className="font-montserrat text-xs font-semibold" style={{ color: '#9A0052' }}>
@@ -64,9 +69,14 @@ export default function KeyFeaturesSection() {
                     className="relative z-10 mx-auto max-w-[791px] px-4"
                     style={{ marginTop: '-38px' }}
                 >
-                    <div className="grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4">
-                        {features.map((feature) => (
-                            <div key={feature.title} className="flex flex-col items-center">
+                    <div ref={cardsRef} className="grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4">
+                        {features.map((feature, i) => (
+                            <div
+                                key={feature.title}
+                                className={`flex flex-col items-center transition-all duration-700 ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                                style={{ transitionDelay: cardsInView ? `${i * 120}ms` : '0ms' }}
+                            >
+                            >
                                 {/* Icon circle — top half above card */}
                                 <div
                                     className="relative z-10 flex shrink-0 items-center justify-center"

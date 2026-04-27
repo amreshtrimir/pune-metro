@@ -1,3 +1,5 @@
+import { useInView } from '@/hooks/useInView';
+
 const facilities = [
     {
         icon: '/landing/facilities-icons/last-mile-connectivity.png',
@@ -32,12 +34,15 @@ const facilities = [
 ];
 
 export default function FacilitiesSection() {
+    const { ref: leftRef, inView: leftInView } = useInView<HTMLDivElement>();
+    const { ref: cardsRef, inView: cardsInView } = useInView<HTMLDivElement>();
+
     return (
         <section id="facilities" className="bg-white py-20">
             <div className="mx-auto max-w-360 px-6 lg:px-16">
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
                     {/* Left: sticky header */}
-                    <div className="lg:sticky lg:top-24 lg:self-start">
+                    <div ref={leftRef} className={`lg:sticky lg:top-24 lg:self-start transition-all duration-700 ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                         <div className="mb-4 inline-flex items-center rounded-full bg-brand/10 px-4 py-1.5">
                             <span className="font-montserrat text-xs font-semibold text-brand">
                                 Metro Facilities
@@ -56,12 +61,12 @@ export default function FacilitiesSection() {
 
                     {/* Right: 2-column card grid */}
                     <div className="lg:col-span-2">
-                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: '1fr' }}>
-                            {facilities.map((facility) => (
+                        <div ref={cardsRef} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: '1fr' }}>
+                            {facilities.map((facility, i) => (
                                 <div
                                     key={facility.title}
-                                    className="flex h-full flex-col rounded-2xl p-5 transition-shadow hover:shadow-md"
-                                    style={{ background: '#FEE9F4' }}
+                                    className={`flex h-full flex-col rounded-2xl p-5 transition-all duration-500 hover:shadow-md ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                                    style={{ background: '#FEE9F4', transitionDelay: cardsInView ? `${i * 80}ms` : '0ms' }}
                                 >
                                     {/* Icon */}
                                     <div

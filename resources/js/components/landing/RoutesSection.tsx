@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useInView } from '@/hooks/useInView';
 
 type Line = {
     id: string;
@@ -38,6 +39,8 @@ const lines: Line[] = [
 export default function RoutesSection() {
     const [activeId, setActiveId] = useState('all');
     const active = lines.find((l) => l.id === activeId) ?? lines[0];
+    const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>();
+    const { ref: contentRef, inView: contentInView } = useInView<HTMLDivElement>();
 
     return (
         <section id="routes" className="pt-16 pb-0" style={{
@@ -56,7 +59,7 @@ export default function RoutesSection() {
             <div className="mx-auto max-w-[1440px] px-6 lg:px-16">
 
                 {/* ── Header ── */}
-                <div className="mb-6">
+                <div ref={headerRef} className={`mb-6 transition-all duration-700 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="mb-4 inline-flex items-center rounded-full border border-white/40 bg-white/10 px-4 py-1.5">
                         <span className="font-montserrat text-xs font-semibold text-white">
                             PUNERI Metro Route
@@ -101,7 +104,7 @@ export default function RoutesSection() {
                 </div>
 
                 {/* ── Map + Stats ── */}
-                <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_260px]">
+                <div ref={contentRef} className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_260px]">
 
                     {/* Route map image — rounded top, flush bottom */}
                     <div
@@ -122,11 +125,14 @@ export default function RoutesSection() {
 
                     {/* Stats column */}
                     <div className="flex flex-col gap-4">
-                        {active.stats.map((stat) => (
+                        {active.stats.map((stat, i) => (
                             <div
                                 key={stat.label}
-                                className="rounded-xl px-6 py-5"
-                                style={{ background: 'linear-gradient(149.32deg, rgba(109, 0, 58, 0) 55.02%, #6D003A 102.53%)' }}
+                                className={`rounded-xl px-6 py-5 transition-all duration-500 ${contentInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                                style={{
+                                    background: 'linear-gradient(149.32deg, rgba(109, 0, 58, 0) 55.02%, #6D003A 102.53%)',
+                                    transitionDelay: contentInView ? `${i * 100}ms` : '0ms',
+                                }}
                             >
                                 <p className="font-montserrat text-5xl font-bold text-white">
                                     {stat.value}

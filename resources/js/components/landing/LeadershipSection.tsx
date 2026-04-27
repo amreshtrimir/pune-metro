@@ -1,11 +1,17 @@
+import { useInView } from '@/hooks/useInView';
+
 export default function LeadershipSection() {
+    const { ref: ceoRef, inView: ceoInView } = useInView<HTMLDivElement>();
+    const { ref: cfoRef, inView: cfoInView } = useInView<HTMLDivElement>();
+    const { ref: quoteRef, inView: quoteInView } = useInView<HTMLDivElement>();
+
     return (
         <section id="leadership" className="overflow-hidden">
             {/* Outer shell — max 1440px */}
             <div className="mx-auto w-full" style={{ maxWidth: '1440px' }}>
 
                     {/* ── Card 1: CEO ── */}
-                    <div className="relative pb-16 lg:pb-24">
+                    <div ref={ceoRef} className={`relative pb-16 lg:pb-24 transition-all duration-700 ${ceoInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         {/* Per-card gradient background — full 1440px width */}
                         <div
                             className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none"
@@ -73,7 +79,7 @@ export default function LeadershipSection() {
                     </div>
 
                     {/* ── Card 2: CFO ── */}
-                    <div className="relative pb-16 lg:pb-24">
+                    <div ref={cfoRef} className={`relative pb-16 lg:pb-24 transition-all duration-700 ${cfoInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         {/* Per-card gradient background — full 1440px width */}
                         <div
                             className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none"
@@ -143,7 +149,7 @@ export default function LeadershipSection() {
             </div>
 
             {/* Vision / Quote banner */}
-            <div className="px-6 py-12 lg:px-16">
+            <div ref={quoteRef} className={`px-6 py-12 lg:px-16 transition-all duration-700 ${quoteInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div
                     className="mx-auto rounded-2xl px-10 py-10 text-center"
                     style={{

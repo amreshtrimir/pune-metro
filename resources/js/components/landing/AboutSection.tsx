@@ -1,11 +1,15 @@
+import { useInView } from '@/hooks/useInView';
+
 export default function AboutSection() {
+    const { ref, inView } = useInView<HTMLElement>();
+
     return (
-        <section id="about" className="bg-white py-20">
+        <section id="about" ref={ref} className="bg-white py-20">
             <div className="mx-auto max-w-[1440px] px-6 lg:px-16">
                 <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
 
                     {/* ── Left: Images with rotated labels ── */}
-                    <div className="relative px-8 pb-16 pt-8">
+                    <div className={`relative px-8 pb-16 pt-8 transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
 
                         {/* Top label: ADVANCED SAFETY & SECURITY */}
                         <p className="mb-2 font-montserrat text-[10px] font-semibold uppercase tracking-widest text-brand">
@@ -75,7 +79,7 @@ export default function AboutSection() {
                     </div>
 
                     {/* ── Right: Text ── */}
-                    <div className="lg:pl-4">
+                    <div className={`lg:pl-4 transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
                         {/* Badge */}
                         <div className="mb-5 inline-flex items-center rounded-full border border-brand/30 bg-brand/10 px-4 py-1.5">
                             <span className="font-montserrat text-xs font-medium text-brand">
