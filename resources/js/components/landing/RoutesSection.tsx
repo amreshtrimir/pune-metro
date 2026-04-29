@@ -24,7 +24,7 @@ const lines: Line[] = [
     },
     {
         id: 'line1',
-        label: 'Line 1',
+        label: 'Line 3',
         image: '/landing/metro-network-map-line-1.png',
         imageAlt: 'Pune Metro Line 1 — PCMC to Swargate',
         stats: [
