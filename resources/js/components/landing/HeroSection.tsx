@@ -8,19 +8,19 @@ interface Slide {
 
 const slides: Slide[] = [
     {
-        image: '/landing/train-exterior.png',
+        image: '/landing/sliders-slides/slide-elevated-track.png',
         heading: 'Transforming Urban Mobility with Speed, Comfort and Sustainability',
         description:
             'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.',
     },
     {
-        image: '/landing/train-side.jpg',
+        image: '/landing/sliders-slides/slide-train-cityscape.png',
         heading: 'Connecting Hinjewadi to Shivajinagar — 23 Stations, 23.3 km',
         description:
             "Experience seamless connectivity across Pune's major corridors. Puneri Metro Line 3 links the thriving Hinjewadi IT hub to the heart of the city with world-class infrastructure and modern passenger amenities.",
     },
     {
-        image: '/landing/metro-interior.png',
+        image: '/landing/sliders-slides/slide-metro-line3-station.png',
         heading: 'A Greener, Smarter Way to Move Across Pune',
         description:
             'Pune Metro is committed to sustainable urban development — reducing vehicular pollution, easing road congestion and delivering a world-class commuting experience to millions of Punekars every day.',

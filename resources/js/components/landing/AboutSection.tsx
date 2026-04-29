@@ -8,65 +8,15 @@ export default function AboutSection() {
             <div className="mx-auto max-w-[1440px] px-6 lg:px-16">
                 <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
 
-                    {/* ── Left: Images with rotated labels ── */}
-                    <div className={`relative px-8 pb-16 pt-8 transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-
-                        {/* Top label: ADVANCED SAFETY & SECURITY */}
-                        <p className="mb-2 font-montserrat text-[10px] font-semibold uppercase tracking-widest text-brand">
-                            Advanced Safety &amp; Security
-                        </p>
-
-                        {/* Left rotated label: ECO-FRIENDLY TRANSPORTATION */}
-                        <span
-                            className="absolute font-montserrat text-[9px] font-semibold uppercase tracking-widest text-brand"
-                            style={{
-                                writingMode: 'vertical-rl',
-                                transform: 'rotate(180deg)',
-                                left: 0,
-                                top: '50%',
-                                translate: '0 -50%',
-                            }}
-                        >
-                            Eco-Friendly Transportation
-                        </span>
-
-                        {/* Large grayscale image */}
-                        <div className="overflow-hidden rounded-xl shadow-lg">
+                    {/* ── Left: Image ── */}
+                    <div className={`transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                        <div className="rounded-xl shadow-lg">
                             <img
                                 src="/landing/metro-interior.png"
                                 alt="Metro Interior"
-                                className="h-[480px] w-full object-cover grayscale"
+                                className="w-full h-auto"
                             />
                         </div>
-
-                        {/* Right rotated label: FAST & TIME-SAVING TRAVEL */}
-                        <span
-                            className="absolute font-montserrat text-[9px] font-semibold uppercase tracking-widest text-brand"
-                            style={{
-                                writingMode: 'vertical-rl',
-                                right: '14px',
-                                top: '30%',
-                            }}
-                        >
-                            Fast &amp; Time-Saving Travel
-                        </span>
-
-                        {/* Far-right rotated label: SMART TICKETING OPTIONS */}
-                        <span
-                            className="absolute font-montserrat text-[9px] font-semibold uppercase tracking-widest text-brand"
-                            style={{
-                                writingMode: 'vertical-rl',
-                                right: 0,
-                                bottom: '18%',
-                            }}
-                        >
-                            Smart Ticketing Options
-                        </span>
-
-                        {/* Bottom label: COMFORTABLE & AIR-CONDITIONED COACHES */}
-                        <p className="mt-2 font-montserrat text-[10px] font-semibold uppercase tracking-widest text-brand">
-                            Comfortable &amp; Air-Conditioned Coaches
-                        </p>
                     </div>
 
                     {/* ── Right: Text ── */}
