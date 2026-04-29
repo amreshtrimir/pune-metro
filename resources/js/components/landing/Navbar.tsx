@@ -1,12 +1,9 @@
 import { useState } from 'react';
 
 const quickLinks = [
-    { label: 'Last Mile Connectivity', href: '#' },
     { label: 'Lost & Found', href: '#' },
-    { label: 'Fare Calculator', href: '#' },
     { label: 'Raise Concern', href: '#' },
     { label: 'Metro Stations', href: '#' },
-    { label: 'Route Planner', href: '#' },
 ];
 
 const mainNavLinks = [
