@@ -28,20 +28,8 @@ export default function AboutSection() {
                             </span>
                         </div>
 
-                        {/* Outlined year — exact Figma specs */}
-                        <p
-                            className="mb-3 font-montserrat"
-                            style={{
-                                fontSize: '60px',
-                                fontWeight: 800,
-                                lineHeight: '54px',
-                                letterSpacing: '3px',
-                                color: 'transparent',
-                                WebkitTextStroke: '1px #1a1a2e',
-                            }}
-                        >
-                            2026
-                        </p>
+                        {/* Year image */}
+                        <img src="/landing/2026.png" alt="2026" className="mb-3 h-auto w-auto max-w-[161px]" />
 
                         <h2 className="mb-5 font-montserrat text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
                             Moving Pune Forward

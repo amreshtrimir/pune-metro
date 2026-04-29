@@ -91,19 +91,28 @@ export default function KeyFeaturesSection() {
                                 </div>
                                 {/* Card */}
                                 <div
-                                    className="flex w-full flex-col items-center px-4 pb-6 pt-12"
+                                    className="relative flex w-full flex-col items-center px-4 pb-10 pt-12"
                                     style={{
                                         background: '#FADAEB',
                                         minHeight: '179px',
-                                        borderBottomRightRadius: '200px',
-                                        borderBottomLeftRadius: '200px',
-                                        borderTopLeftRadius: '0',
-                                        borderTopRightRadius: '0',
+                                        borderRadius: '0 0 50% 50% / 0 0 40% 40%',
                                     }}
                                 >
                                     <h3 className="text-center font-montserrat text-xs font-semibold leading-snug text-gray-800">
                                         {feature.title}
                                     </h3>
+                                    {/* Shadow — centred just below the card bottom */}
+                                    <div
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: '-11px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            width: '100px',
+                                            height: '11px',
+                                            background: '#9A00522E',
+                                            filter: 'blur(4px)',                                            borderRadius: '50%',                                        }}
+                                    />
                                 </div>
                             </div>
                         ))}

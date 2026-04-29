@@ -2,34 +2,20 @@ import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 
 interface Slide {
     image: string;
-    heading: string;
-    description: string;
 }
 
 const slides: Slide[] = [
-    {
-        image: '/landing/sliders-slides/slide-elevated-track.png',
-        heading: 'Transforming Urban Mobility with Speed, Comfort and Sustainability',
-        description:
-            'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.',
-    },
-    {
-        image: '/landing/sliders-slides/slide-train-cityscape.png',
-        heading: 'Connecting Hinjewadi to Shivajinagar — 23 Stations, 23.3 km',
-        description:
-            "Experience seamless connectivity across Pune's major corridors. Puneri Metro Line 3 links the thriving Hinjewadi IT hub to the heart of the city with world-class infrastructure and modern passenger amenities.",
-    },
-    {
-        image: '/landing/sliders-slides/slide-metro-line3-station.png',
-        heading: 'A Greener, Smarter Way to Move Across Pune',
-        description:
-            'Pune Metro is committed to sustainable urban development — reducing vehicular pollution, easing road congestion and delivering a world-class commuting experience to millions of Punekars every day.',
-    },
+    { image: '/landing/sliders-slides/first-image.webp' },
+    { image: '/landing/sliders-slides/second-image.webp' },
+    { image: '/landing/sliders-slides/third-image.webp' },
 ];
+
+const heading = 'Transforming Urban Mobility with Speed, Comfort and Sustainability';
+const description =
+    'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.';
 
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
-    const [transitioning, setTransitioning] = useState(false);
     const [navHeight, setNavHeight] = useState(0);
 
     useLayoutEffect(() => {
@@ -46,14 +32,10 @@ export default function HeroSection() {
 
     const goTo = useCallback(
         (index: number) => {
-            if (index === current || transitioning) return;
-            setTransitioning(true);
-            setTimeout(() => {
-                setCurrent(index);
-                setTransitioning(false);
-            }, 300);
+            if (index === current) return;
+            setCurrent(index);
         },
-        [current, transitioning],
+        [current],
     );
 
     useEffect(() => {
@@ -62,8 +44,6 @@ export default function HeroSection() {
         }, 5500);
         return () => clearInterval(timer);
     }, []);
-
-    const slide = slides[current];
 
     return (
         <section className="relative w-full overflow-hidden bg-metro-dark" style={{ minHeight: heroHeight }}>
@@ -89,18 +69,18 @@ export default function HeroSection() {
                 className="relative mx-auto flex max-w-[1440px] flex-col justify-end px-6 lg:px-16"
                 style={{ minHeight: heroHeight, paddingBottom: '110px', paddingTop: '80px' }}
             >
-                <div className={`w-4/5 transition-opacity duration-300 ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+                <div className="w-full">
                     <h1
                         className="mb-5 font-montserrat font-bold text-white"
-                        style={{ fontSize: 'clamp(28px, 5vw, 66px)', lineHeight: 'clamp(36px, 6.25vw, 80px)' }}
+                        style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', lineHeight: 'clamp(42px, 5.5vw, 72px)' }}
                     >
-                        {slide.heading}
+                        {heading}
                     </h1>
                     <p
                         className="font-montserrat text-white/80"
                         style={{ fontSize: 'clamp(14px, 1.72vw, 22px)', lineHeight: 'clamp(22px, 2.5vw, 32px)' }}
                     >
-                        {slide.description}
+                        {description}
                     </p>
                 </div>
 
