@@ -17,7 +17,7 @@ Route::inertia('/', 'welcome', [
 ])->name('home');
 
 // Public frontend pages
-Route::get('/about/overview', [PagesController::class, 'about'])->name('about.overview');
+Route::get('/about/overview', [PagesController::class, 'overview'])->name('about.overview');
 Route::get('/about/board', [PagesController::class, 'board'])->name('about.board');
 
 // Sitemap
