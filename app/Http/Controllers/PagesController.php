@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function overview(): Response
     {
-        return Inertia::render('frontend/overview');
+        return Inertia::render('frontend/about');
     }
 
     public function board(): Response
