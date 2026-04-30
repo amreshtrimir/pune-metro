@@ -1,8 +1,40 @@
-import QuoteBanner from '@/components/landing/QuoteBanner';
 import { useInView } from '@/hooks/useInView';
 
+type LeaderData = {
+    name: string;
+    bio: string;
+    image: string;
+    imageBg: string;
+    watermark: string;
+    titleLines?: string[];
+};
 
-export default function LeadershipSection() {
+type Props = {
+    ceo?: LeaderData;
+    cfo?: LeaderData;
+    showCeoTitle?: boolean;
+    showCfoTitle?: boolean;
+};
+
+const defaultCeo: LeaderData = {
+    name: 'Mr. Anil Kumar Saini',
+    bio: "Mr. Anil Kumar Saini brings over 30 years of leadership experience in rail transport, spanning project management, operations, and business development. He has led major assignments across India's rail and metro sectors, demonstrating strong expertise in execution and strategy. An IIT Roorkee graduate, he has also completed executive programs at Harvard Business School and INSEAD.",
+    image: '/landing/leadership-section/ceo-anil-kumar-saini.png',
+    imageBg: '#e8dfc0',
+    watermark: 'CEO',
+    titleLines: ['Chief', 'Executive', 'Officer'],
+};
+
+const defaultCfo: LeaderData = {
+    name: 'Mr. Mitul Jhaveri',
+    bio: 'Mr. Mitul Jhaveri has an overall experience of 22+ years in Corporate and Trade Finance, Business Finance, M&A Advisory, Project Finance and Equity Finance. He joined Siemens in the year 2007 and currently working in the equity finance group of Siemens Financial Services. He has previously worked with ICICI Bank and Indian Oil Corporation in their International Banking and Finance divisions respectively.',
+    image: '/landing/leadership-section/cfo-mitul-jhaveri.png',
+    imageBg: '#dce9f5',
+    watermark: 'CFO',
+    titleLines: ['Chief', 'Financial', 'Officer'],
+};
+
+export default function LeadershipSection({ ceo = defaultCeo, cfo = defaultCfo, showCeoTitle = true, showCfoTitle = true }: Props) {
     const { ref: ceoRef, inView: ceoInView } = useInView<HTMLDivElement>();
     const { ref: cfoRef, inView: cfoInView } = useInView<HTMLDivElement>();
 
@@ -28,11 +60,13 @@ export default function LeadershipSection() {
                             className="flex flex-col justify-center self-stretch px-8 lg:px-12"
                             style={{ gridColumn: '1', gridRow: '1' }}
                         >
-                            <h2 className="font-montserrat text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
-                                <span className="block">Chief</span>
-                                <span className="block">Executive</span>
-                                <span className="block">Officer</span>
-                            </h2>
+                            {showCeoTitle && (
+                                <h2 className="font-montserrat text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+                                    {ceo.titleLines?.map((line) => (
+                                        <span key={line} className="block">{line}</span>
+                                    ))}
+                                </h2>
+                            )}
                         </div>
 
                         {/* [Col 1, Rows 2–3] — Watermark */}
@@ -44,7 +78,7 @@ export default function LeadershipSection() {
                                 className="pointer-events-none select-none font-montserrat font-bold text-black/[0.06]"
                                 style={{ fontSize: 'clamp(120px, 14vw, 160px)', lineHeight: 1 }}
                             >
-                                CEO
+                                {ceo.watermark}
                             </span>
                         </div>
 
@@ -53,10 +87,10 @@ export default function LeadershipSection() {
                             className="flex items-start"
                             style={{ gridColumn: '2', gridRow: '1 / 3' }}
                         >
-                            <div className="inline-block rounded-2xl" style={{ background: '#e8dfc0' }}>
+                            <div className="inline-block rounded-2xl" style={{ background: ceo.imageBg }}>
                                 <img
-                                    src="/landing/leadership-section/ceo-anil-kumar-saini.png"
-                                    alt="Mr. Anil Kumar Saini"
+                                    src={ceo.image}
+                                    alt={ceo.name}
                                     className="block rounded-2xl object-cover object-top"
                                     style={{ height: '371px', width: 'auto' }}
                                 />
@@ -69,10 +103,10 @@ export default function LeadershipSection() {
                             style={{ gridColumn: '2', gridRow: '3', maxWidth: '768px' }}
                         >
                             <p className="mb-1 font-montserrat text-[14px] font-semibold" style={{ color: '#000000' }}>
-                                Mr. Anil Kumar Saini
+                                {ceo.name}
                             </p>
                             <p className="font-montserrat text-[14px] leading-relaxed" style={{ color: '#000000' }}>
-                                Mr. Anil Kumar Saini brings over 30 years of leadership experience in rail transport, spanning project management, operations, and business development. He has led major assignments across India's rail and metro sectors, demonstrating strong expertise in execution and strategy. An IIT Roorkee graduate, he has also completed executive programs at Harvard Business School and INSEAD.
+                                {ceo.bio}
                             </p>
                         </div>
                         </div>
@@ -96,10 +130,10 @@ export default function LeadershipSection() {
                             className="flex items-start"
                             style={{ gridColumn: '1', gridRow: '1 / 3' }}
                         >
-                            <div className="inline-block rounded-2xl" style={{ background: '#dce9f5' }}>
+                            <div className="inline-block rounded-2xl" style={{ background: cfo.imageBg }}>
                                 <img
-                                    src="/landing/leadership-section/cfo-mitul-jhaveri.png"
-                                    alt="Mr. Mitul Jhaveri"
+                                    src={cfo.image}
+                                    alt={cfo.name}
                                     className="block rounded-2xl object-cover object-top"
                                     style={{ height: '371px', width: 'auto' }}
                                 />
@@ -111,11 +145,13 @@ export default function LeadershipSection() {
                             className="flex flex-col justify-center self-stretch pl-6 lg:pl-8"
                             style={{ gridColumn: '2', gridRow: '1' }}
                         >
-                            <h2 className="font-montserrat text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
-                                <span className="block">Chief</span>
-                                <span className="block">Financial</span>
-                                <span className="block">Officer</span>
-                            </h2>
+                            {showCfoTitle && (
+                                <h2 className="font-montserrat text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+                                    {cfo.titleLines?.map((line) => (
+                                        <span key={line} className="block">{line}</span>
+                                    ))}
+                                </h2>
+                            )}
                         </div>
 
                         {/* [Col 2, Row 2] — Watermark */}
@@ -127,7 +163,7 @@ export default function LeadershipSection() {
                                 className="pointer-events-none select-none font-montserrat font-bold text-black/[0.06]"
                                 style={{ fontSize: 'clamp(120px, 14vw, 160px)', lineHeight: 1 }}
                             >
-                                CFO
+                                {cfo.watermark}
                             </span>
                         </div>
 
@@ -137,10 +173,10 @@ export default function LeadershipSection() {
                             style={{ gridColumn: '1 / -1', gridRow: '3', maxWidth: '768px' }}
                         >
                             <p className="mb-1 font-montserrat text-[14px] font-semibold" style={{ color: '#000000' }}>
-                                Mr. Mitul Jhaveri
+                                {cfo.name}
                             </p>
                             <p className="font-montserrat text-[14px] leading-relaxed" style={{ color: '#000000' }}>
-                                Mr. Mitul Jhaveri has an overall experience of 22+ years in Corporate and Trade Finance, Business Finance, M&A Advisory, Project Finance and Equity Finance. He joined Siemens in the year 2007 and currently working in the equity finance group of Siemens Financial Services. He has previously worked with ICICI Bank and Indian Oil Corporation in their International Banking and Finance divisions respectively.
+                                {cfo.bio}
                             </p>
                         </div>
                         </div>
@@ -148,12 +184,6 @@ export default function LeadershipSection() {
                     </div>
 
             </div>
-
-            <QuoteBanner>
-                &ldquo;Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
-                opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
-                travel into a seamless urban experience.&rdquo;
-            </QuoteBanner>
         </section>
     );
 }

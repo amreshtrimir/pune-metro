@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import BoardSection from '@/components/landing/BoardSection';
+import LeadershipSection from '@/components/landing/LeadershipSection';
 
 export default function Board() {
     return (
@@ -14,12 +14,12 @@ export default function Board() {
 
             {/* ── Page Hero Banner ── */}
             <section>
-                <div className="mx-auto max-w-[1440px]">
-                    <div className="max-h-[400px] overflow-hidden">
+                <div className="mx-auto max-w-360">
+                    <div className="max-h-100 overflow-hidden">
                         <img
                             src="/about/about-banner.png"
                             alt="Board of Directors - Puneri Metro"
-                            className="h-full max-h-[400px] w-full object-cover object-center"
+                            className="h-full max-h-100 w-full object-cover object-center"
                         />
                     </div>
                 </div>
@@ -27,15 +27,16 @@ export default function Board() {
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
                     <h1 className="mb-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                         Board of Directors
                     </h1>
                 </div>
             </section>
 
-            {/* ── Board Section ── */}
-            <BoardSection />
+            {/* ── Leadership Section ── */}
+            <LeadershipSection showCeoTitle={false} showCfoTitle={false} />
+
         </>
     );
 }
