@@ -6,6 +6,8 @@ use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\PublicBlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Media\MediaController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Slider\SliderController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
@@ -13,6 +15,13 @@ use Laravel\Fortify\Features;
 Route::inertia('/', 'welcome', [
     'canRegister' => Features::enabled(Features::registration()),
 ])->name('home');
+
+// Public frontend pages
+Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/about/board', [PagesController::class, 'board'])->name('about.board');
+
+// Sitemap
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Public Blog
 Route::prefix('blog')->name('blog.')->group(function (): void {

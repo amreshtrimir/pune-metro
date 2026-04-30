@@ -52,7 +52,7 @@ export default function BoardSection() {
                     <h2 className="mb-3 font-montserrat text-3xl font-bold text-gray-900 lg:text-4xl">
                         Board Of Directors
                     </h2>
-                    <p className="font-montserrat text-sm text-gray-500">
+                    <p className="font-montserrat text-sm text-black">
                         Our team of experts brings years of experience, skill, and dedication to every project.
                     </p>
                 </div>

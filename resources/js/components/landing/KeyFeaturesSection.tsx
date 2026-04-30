@@ -56,7 +56,7 @@ export default function KeyFeaturesSection() {
                     </h2>
 
                     {/* Description */}
-                    <p className="mx-auto mb-0 max-w-[890px] text-center font-montserrat text-sm leading-relaxed text-gray-500">
+                    <p className="mx-auto mb-0 max-w-[890px] text-center font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3 is designed around how the city moves every day, improving access across major work, residential, and
                         institutional zones while prioritising commuter comfort, safety, and long-term sustainability.
                     </p>

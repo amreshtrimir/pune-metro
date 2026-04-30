@@ -1,9 +1,10 @@
+import QuoteBanner from '@/components/landing/QuoteBanner';
 import { useInView } from '@/hooks/useInView';
+
 
 export default function LeadershipSection() {
     const { ref: ceoRef, inView: ceoInView } = useInView<HTMLDivElement>();
     const { ref: cfoRef, inView: cfoInView } = useInView<HTMLDivElement>();
-    const { ref: quoteRef, inView: quoteInView } = useInView<HTMLDivElement>();
 
     return (
         <section id="leadership" className="overflow-hidden">
@@ -148,24 +149,11 @@ export default function LeadershipSection() {
 
             </div>
 
-            {/* Vision / Quote banner */}
-            <div ref={quoteRef} className={`px-6 py-12 lg:px-16 transition-all duration-700 ${quoteInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <div
-                    className="mx-auto rounded-2xl px-10 py-10 text-center"
-                    style={{
-                        background: 'linear-gradient(white, white) padding-box, linear-gradient(to bottom, #f91c91 0%, transparent 100%) border-box',
-                        border: '1px solid transparent',
-                        borderBottom: 'none',
-                        maxWidth: '1440px'
-                    }}
-                >
-                    <p className="font-montserrat text-lg font-normal  leading-loose text-brand lg:text-xl">
-                        "Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
-                        opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
-                        travel into a seamless urban experience."
-                    </p>
-                </div>
-            </div>
+            <QuoteBanner>
+                &ldquo;Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
+                opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
+                travel into a seamless urban experience.&rdquo;
+            </QuoteBanner>
         </section>
     );
 }

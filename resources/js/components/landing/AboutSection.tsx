@@ -35,11 +35,11 @@ export default function AboutSection() {
                             Moving Pune Forward
                         </h2>
 
-                        <p className="mb-4 font-montserrat text-base leading-relaxed text-gray-700">
+                        <p className="mb-4 font-montserrat text-base leading-relaxed text-black">
                             Fast, safe and reliable metro travel connecting the city like never before.
                         </p>
 
-                        <p className="mb-8 font-montserrat text-sm leading-relaxed text-gray-500">
+                        <p className="mb-8 font-montserrat text-sm leading-relaxed text-black">
                             Puneri IT City Metro Rail Limited (PITCMRL), popularly known as Pune Metro Line 3, is a Special Purpose Vehicle (SPV) established through a strategic joint venture between the Tata Group and Siemens. The company is responsible for the design, construction, financing, operation and transfer of the Hinjewadi–Shivajinagar metro corridor. This project is being executed under a 35-year DBFOT (Design–Build–Finance–Operate–Transfer) concession awarded by the Pune Metropolitan Region Development Authority (PMRDA).
                         </p>
 

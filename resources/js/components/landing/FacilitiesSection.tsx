@@ -51,7 +51,7 @@ export default function FacilitiesSection() {
                         <h2 className="mb-4 font-montserrat text-3xl font-bold text-gray-900 lg:text-4xl">
                             Facilities
                         </h2>
-                        <p className="font-montserrat text-sm leading-relaxed text-gray-600">
+                        <p className="font-montserrat text-sm leading-relaxed text-black">
                             Enjoy modern station facilities designed for comfort,
                             convenience and accessibility at every step. From clean
                             spaces to smart services, Puneri Metro ensures a safe and
@@ -84,7 +84,7 @@ export default function FacilitiesSection() {
                                         {facility.items.map((item) => (
                                             <li
                                                 key={item}
-                                                className="flex items-start gap-2 font-montserrat text-xs text-gray-500"
+                                                className="flex items-start gap-2 font-montserrat text-xs text-black"
                                             >
                                                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand" />
                                                 {item}
