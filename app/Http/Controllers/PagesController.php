@@ -7,9 +7,9 @@ use Inertia\Response;
 
 class PagesController extends Controller
 {
-    public function about(): Response
+    public function overview(): Response
     {
-        return Inertia::render('frontend/about');
+        return Inertia::render('frontend/overview');
     }
 
     public function board(): Response

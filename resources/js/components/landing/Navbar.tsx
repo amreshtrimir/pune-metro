@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
-import { about, board } from '@/actions/App/Http/Controllers/PagesController';
+import { board, overview } from '@/actions/App/Http/Controllers/PagesController';
 
 const quickLinks = [
     { label: 'Lost & Found', href: '#' },
@@ -18,12 +18,12 @@ const mainNavLinks: NavLink[] = [
     { label: 'HOME', href: '/' },
     {
         label: 'ABOUT US',
-        href: about.url(),
+        href: overview.url(),
         children: [
-            { label: 'Overview', href: about.url() },
-            { label: 'Vision & Mission', href: about.url() + '#vision-mission' },
+            { label: 'Overview', href: overview.url() },
+            { label: 'Vision & Mission', href: overview.url() + '#vision-mission' },
             { label: 'Leadership / Board', href: board.url() },
-            { label: 'Company Info', href: about.url() + '#company-info' },
+            { label: 'Company Info', href: overview.url() + '#company-info' },
         ],
     },
     { label: 'PROJECT PROFILE', href: '#' },
@@ -50,6 +50,7 @@ function isActive(linkHref: string, currentUrl: string): boolean {
     if (linkHref === '/') {
         return currentUrl === '/';
     }
+
     return currentUrl === linkHref || currentUrl.startsWith(linkHref + '/');
 }
 
