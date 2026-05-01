@@ -16,4 +16,19 @@ class PagesController extends Controller
     {
         return Inertia::render('frontend/board');
     }
+
+    public function projectUpdate(): Response
+    {
+        return Inertia::render('frontend/project-update');
+    }
+
+    public function keyHighlights(): Response
+    {
+        return Inertia::render('frontend/key-highlights');
+    }
+
+    public function routeMap(): Response
+    {
+        return Inertia::render('frontend/route-map');
+    }
 }

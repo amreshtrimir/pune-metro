@@ -129,6 +129,7 @@ export default function About() {
                 opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
                 travel into a seamless urban experience.&rdquo;
             </QuoteBanner>
+
         </>
     );
 }

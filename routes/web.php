@@ -20,6 +20,13 @@ Route::inertia('/', 'welcome', [
 Route::get('/about/overview', [PagesController::class, 'overview'])->name('about.overview');
 Route::get('/about/board', [PagesController::class, 'board'])->name('about.board');
 
+// project-profile routes and pages
+Route::prefix('project-profile')->name('project-profile.')->group(function (): void {
+    Route::get('/update', [PagesController::class, 'projectUpdate'])->name('update');
+    Route::get('/highlights', [PagesController::class, 'keyHighlights'])->name('highlights');
+    Route::get('/route-map', [PagesController::class, 'routeMap'])->name('route-map');
+});
+
 // Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
