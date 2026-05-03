@@ -27,6 +27,28 @@ Route::prefix('project-profile')->name('project-profile.')->group(function (): v
     Route::get('/route-map', [PagesController::class, 'routeMap'])->name('route-map');
 });
 
+// Passenger Info routes and pages
+Route::prefix('passenger-info')->name('passenger-info.')->group(function (): void {
+    Route::get('/time-table', [PagesController::class, 'timeTable'])->name('time-table');
+    Route::get('/fare-table', [PagesController::class, 'fareTable'])->name('fare-table');
+    Route::get('/dos-and-donts', [PagesController::class, 'dosAndDonts'])->name('dos-and-donts');
+    Route::get('/items-not-to-carry', [PagesController::class, 'itemsNotToCarry'])->name('items-not-to-carry');
+    Route::get('/offences-and-penalties', [PagesController::class, 'offencesAndPenalties'])->name('offences-and-penalties');
+    Route::get('/lost-and-found', [PagesController::class, 'lostAndFound'])->name('lost-and-found');
+    Route::get('/last-mile-connectivity', [PagesController::class, 'lastMileConnectivity'])->name('last-mile-connectivity');
+    Route::get('/retail-fnb', [PagesController::class, 'retailFnb'])->name('retail-fnb');
+    Route::get('/station-area-map', [PagesController::class, 'stationAreaMap'])->name('station-area-map');
+    Route::get('/passenger-amenities', [PagesController::class, 'passengerAmenities'])->name('passenger-amenities');
+});
+
+// Environment routes and pages
+Route::prefix('environment')->name('environment.')->group(function (): void {
+    Route::get('/eia-reports', [PagesController::class, 'eiaReports'])->name('eia-reports');
+    Route::get('/carbon-credit', [PagesController::class, 'carbonCredit'])->name('carbon-credit');
+    Route::get('/art-from-scrap', [PagesController::class, 'artFromScrap'])->name('art-from-scrap');
+    Route::get('/green-initiatives', [PagesController::class, 'greenInitiatives'])->name('green-initiatives');
+});
+
 // Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 

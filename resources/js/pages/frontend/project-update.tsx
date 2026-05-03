@@ -36,14 +36,12 @@ export default function ProjectUpdate() {
 
             {/* ── Page Hero Banner ── */}
             <section>
-                <div className="mx-auto max-w-360">
-                    <div className="max-h-100 overflow-hidden">
-                        <img
-                            src="/project-profile/project-profile-banner.png"
-                            alt="Project Update - Puneri Metro"
-                            className="h-full max-h-100 w-full object-cover object-center"
-                        />
-                    </div>
+                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
+                    <img
+                        src="/project-profile/project-profile-banner.png"
+                        alt="Project Update - Puneri Metro"
+                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
+                    />
                 </div>
             </section>
 

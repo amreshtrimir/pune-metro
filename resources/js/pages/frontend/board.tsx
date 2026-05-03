@@ -55,23 +55,24 @@ export default function Board() {
 
             {/* ── Page Hero Banner ── */}
             <section>
-                <div className="mx-auto max-w-360">
-                    <div className="max-h-100 overflow-hidden">
-                        <img
-                            src="/about/about-banner.png"
-                            alt="Board of Directors - Puneri Metro"
-                            className="h-full max-h-100 w-full object-cover object-center"
-                        />
-                    </div>
+                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
+                    <img
+                        src="/about/about-banner.png"
+                        alt="Board of Directors - Puneri Metro"
+                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
+                    />
                 </div>
             </section>
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
                 <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
-                    <h1 className="mb-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                        Board of Directors
-                    </h1>
+                    <div className="flex items-center gap-6">
+                        <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
+                            Board of Directors
+                        </h1>
+                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
+                    </div>
                 </div>
             </section>
 

@@ -1,11 +1,25 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import {
+    artFromScrap,
     board,
-    overview,
-    projectUpdate,
+    carbonCredit,
+    dosAndDonts,
+    eiaReports,
+    fareTable,
+    greenInitiatives,
+    itemsNotToCarry,
     keyHighlights,
+    lastMileConnectivity,
+    lostAndFound,
+    offencesAndPenalties,
+    overview,
+    passengerAmenities,
+    projectUpdate,
+    retailFnb,
     routeMap,
+    stationAreaMap,
+    timeTable,
 } from '@/actions/App/Http/Controllers/PagesController';
 
 const quickLinks = [
@@ -39,9 +53,33 @@ const mainNavLinks: NavLink[] = [
             { label: 'Route Map', href: routeMap.url() },
         ],
     },
-    { label: 'PASSENGER INFO', href: '#' },
+    {
+        label: 'PASSENGER INFO',
+        href: timeTable.url(),
+        children: [
+            { label: 'Time Table', href: timeTable.url() },
+            { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
+            { label: "Do's and Don'ts", href: dosAndDonts.url() },
+            { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
+            { label: 'Offences and Penalties', href: offencesAndPenalties.url() },
+            { label: 'Lost and Found Enquiry', href: lostAndFound.url() },
+            { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
+            { label: 'Retail / F&B', href: retailFnb.url() },
+            { label: 'Station Area Map', href: stationAreaMap.url() },
+            { label: 'Passenger Amenities', href: passengerAmenities.url() },
+        ],
+    },
     { label: 'MEDIA', href: '#' },
-    { label: 'ENVIRONMENT', href: '#' },
+    {
+        label: 'ENVIRONMENT',
+        href: eiaReports.url(),
+        children: [
+            { label: 'EIA Reports', href: eiaReports.url() },
+            { label: 'Carbon Credit', href: carbonCredit.url() },
+            { label: 'Art from Scrap', href: artFromScrap.url() },
+            { label: 'Green Initiatives', href: greenInitiatives.url() },
+        ],
+    },
     { label: 'ROUTE', href: '#' },
     { label: 'BUSINESS DEVELOPMENT', href: '#' },
     { label: 'CAREER', href: '#' },

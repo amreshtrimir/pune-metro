@@ -15,14 +15,12 @@ export default function About() {
 
             {/* ── Page Hero Banner ── */}
             <section>
-                <div className="mx-auto max-w-[1440px]">
-                    <div className="max-h-[400px] overflow-hidden">
-                        <img
-                            src="/about/about-banner.png"
-                            alt="Puneri Metro Train"
-                            className="h-full max-h-[400px] w-full object-cover object-center"
-                        />
-                    </div>
+                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
+                    <img
+                        src="/about/about-banner.png"
+                        alt="Puneri Metro Train"
+                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
+                    />
                 </div>
             </section>
 
