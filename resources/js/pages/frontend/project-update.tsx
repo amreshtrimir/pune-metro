@@ -47,7 +47,7 @@ export default function ProjectUpdate() {
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                             Project Update
@@ -59,7 +59,7 @@ export default function ProjectUpdate() {
 
             {/* ── Content ── */}
             <section className="bg-white pt-6 pb-3">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3 is progressing across key construction and systems milestones, with work advancing across stations, viaducts, and operational readiness. Regular updates will reflect major project developments and important commuter information.
                     </p>
@@ -68,7 +68,7 @@ export default function ProjectUpdate() {
 
             {/* ── Documents ── */}
             <section className="bg-white pb-10">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <ul className="space-y-3">
                         {[
                             "Major Milestones from PMR07 to PMR23 Station in April'26 month",
@@ -99,7 +99,7 @@ export default function ProjectUpdate() {
 
             {/* ── Construction Gallery ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     {/* Subheading */}
                     <h2 className="mb-8 font-montserrat font-semibold text-black" style={{ fontSize: '22px' }}>
                         Current Construction Updates

@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
 
 const stats = [
@@ -24,19 +25,11 @@ export default function RouteMap() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <section>
-                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src="/project-profile/project-profile-banner.png"
-                        alt="Route Map - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                </div>
-            </section>
+            <PageHeroBanner src="/banners/key-page-banners/key-banner.png" alt="Route Map - Puneri Metro" />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                             Route Map
@@ -48,7 +41,7 @@ export default function RouteMap() {
 
             {/* ── Description ── */}
             <section className="bg-white pt-6 pb-0">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3 connects one of the city&apos;s most important daily movement corridors, linking the
                         Hinjewadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
@@ -59,7 +52,7 @@ export default function RouteMap() {
 
             {/* ── Line Filter Tabs ── */}
             <section className="bg-white pt-8 pb-0">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex gap-3">
                         <button
                             onClick={() => setActiveTab('all')}
@@ -89,13 +82,13 @@ export default function RouteMap() {
 
             {/* ── Route Map Image ── */}
             <section className="bg-white py-10">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="overflow-hidden rounded-3xl bg-white">
                         <img
                             src={
                                 activeTab === 'all'
-                                    ? '/landing/metro-network-map-all.png'
-                                    : '/landing/metro-network-map-line-1.png'
+                                    ? '/route-page/allline.jpeg'
+                                    : '/route-page/line3.jpeg'
                             }
                             alt={activeTab === 'all' ? 'Pune Metro All Lines Route Map' : 'Pune Metro Line 3 Route Map'}
                             className="h-auto w-full object-contain"
@@ -106,14 +99,19 @@ export default function RouteMap() {
 
             {/* ── Stats ── */}
             <section className="bg-white py-10">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
                         {stats.map((stat) => (
                             <div
                                 key={stat.label}
-                                className="relative overflow-hidden rounded-3xl px-8 py-12"
+                                className="relative flex items-center overflow-hidden rounded-3xl px-8 py-12 w-[310px] min-h-[220px]"
                                 style={{ background: 'rgba(232,68,154,0.15)' }}
                             >
+                                <img
+                                    src="/assets/card-top-right-log.png"
+                                    alt=""
+                                    className="pointer-events-none absolute top-0 right-0 h-auto"
+                                />
                                 <div className="relative">
                                     <p className="font-montserrat font-medium text-black" style={{ fontSize: '40px', lineHeight: '1.2' }}>
                                         {stat.value}

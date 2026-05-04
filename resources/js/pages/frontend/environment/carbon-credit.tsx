@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
-const heroBannerImage = 'https://www.figma.com/api/mcp/asset/7b643368-aea6-4689-866e-acab367d22ba';
+
 const constructionImage = 'https://www.figma.com/api/mcp/asset/da09091d-d2e9-4f58-ac53-f42c5fcb5821';
 const operationalImage = 'https://www.figma.com/api/mcp/asset/e1b57b64-4888-4bc1-98fe-6f44e38df90b';
 
@@ -39,23 +40,11 @@ export default function CarbonCredit() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <section>
-                <div className="relative max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src={heroBannerImage}
-                        alt="Pune Metro Carbon Credit"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                    <div className="absolute inset-0 bg-black/20" />
-                    <p className="absolute right-10 bottom-10 font-montserrat text-[clamp(48px,7vw,100px)] font-semibold leading-none text-white/25 select-none">
-                        PUNERI METRO
-                    </p>
-                </div>
-            </section>
+            <PageHeroBanner src="/banners/esg-environment-banner/esg-banner.png" alt="Pune Metro Carbon Credit" />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="mb-6 flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                             Measuring Our Carbon Impact
@@ -71,7 +60,7 @@ export default function CarbonCredit() {
 
             {/* ── Construction Phase Savings ── */}
             <section className="bg-white py-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
                         {/* Left: Image */}
                         <div className="overflow-hidden rounded-lg shadow-md">
@@ -140,7 +129,7 @@ export default function CarbonCredit() {
 
             {/* ── Operational Phase ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
                         {/* Left: Content */}
                         <div className="flex flex-col justify-start">
@@ -203,7 +192,7 @@ export default function CarbonCredit() {
 
             {/* ── Total Carbon Impact Summary ── */}
             <section className="bg-gradient-to-b from-[#f3f3f3] to-white py-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">Total Carbon Impact Summary</h2>
                     <p className="mb-10 font-montserrat text-sm leading-relaxed text-black">
                         PITCMRL's integrated sustainability approach has resulted in significant, quantifiable carbon reductions:

@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
 
 export default function About() {
@@ -14,19 +15,11 @@ export default function About() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <section>
-                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src="/about/about-banner.png"
-                        alt="Puneri Metro Train"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                </div>
-            </section>
+            <PageHeroBanner src="/about/about-banner.png" alt="Puneri Metro Train" />
 
             {/* ── Overview Content ── */}
             <section className="bg-white py-20">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <h1 className="mb-10 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                         Overview of Puneri Metro
                     </h1>

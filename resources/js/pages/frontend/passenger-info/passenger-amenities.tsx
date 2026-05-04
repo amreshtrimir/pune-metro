@@ -1,17 +1,15 @@
 import { Head } from '@inertiajs/react';
-import QuoteBanner from '@/components/landing/QuoteBanner';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
-const heroBannerImage = 'https://www.figma.com/api/mcp/asset/3778ad4d-14b0-46c1-be13-11ae2288257b';
-
-const imgEscalator1 = 'https://www.figma.com/api/mcp/asset/07626b87-ed40-4ffe-8bfe-2d06f8617a3a';
-const imgAutomaticGate = 'https://www.figma.com/api/mcp/asset/3778ad4d-14b0-46c1-be13-11ae2288257b';
-const imgElevator2 = 'https://www.figma.com/api/mcp/asset/bcef9c2c-9678-4651-910b-7c3510881471';
-const imgPids1 = 'https://www.figma.com/api/mcp/asset/0cf159d8-a1d3-4b79-89d2-3eb56901b967';
-const imgWhatsApp2026041 = 'https://www.figma.com/api/mcp/asset/8cd7d675-a642-47cf-9d09-11b92c08ffca';
-const imgWhatsApp2026042 = 'https://www.figma.com/api/mcp/asset/ea1a0756-2d4d-418b-a776-491219e1ab37';
-const imgWhatsApp2026043 = 'https://www.figma.com/api/mcp/asset/8cd7d675-a642-47cf-9d09-11b92c08ffca';
-const imgWhatsApp2026044 = 'https://www.figma.com/api/mcp/asset/3b76dd55-42f6-4ae1-bc1f-b14add5e9b76';
-const imgWhatsApp2026045 = 'https://www.figma.com/api/mcp/asset/884e0f8c-1616-4cf4-9b11-7fbdc871839a';
+const imgGallery1 = '/pass-amenities/gallery-1.png';
+const imgGallery2 = '/pass-amenities/gallery-2.png';
+const imgGallery3 = '/pass-amenities/gallery-3.png';
+const imgGallery4 = '/pass-amenities/gallery-4.png';
+const imgGallery5 = '/pass-amenities/gallery-5.png';
+const imgGallery6 = '/pass-amenities/gallery-6.png';
+const imgGallery7 = '/pass-amenities/gallery-7.png';
+const imgGallery8 = '/pass-amenities/gallery-8.png';
+const imgGallery9 = '/pass-amenities/gallery-9.png';
 
 type Section = {
     title: string;
@@ -127,15 +125,15 @@ const commonFacilities = [
 ];
 
 const galleryImages = [
-    { src: imgEscalator1, alt: 'Escalator at Pune Metro station' },
-    { src: imgAutomaticGate, alt: 'Automatic fare collection gates at Pune Metro' },
-    { src: imgElevator2, alt: 'Elevator at Pune Metro station' },
-    { src: imgPids1, alt: 'Passenger Information Display System' },
-    { src: imgWhatsApp2026041, alt: 'Pune Metro facility' },
-    { src: imgWhatsApp2026042, alt: 'Pune Metro facility' },
-    { src: imgWhatsApp2026043, alt: 'Pune Metro facility' },
-    { src: imgWhatsApp2026044, alt: 'Pune Metro facility' },
-    { src: imgWhatsApp2026045, alt: 'Pune Metro facility' },
+    { src: imgGallery1, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery2, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery3, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery4, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery5, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery6, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery7, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery8, alt: 'Pune Metro passenger amenities' },
+    { src: imgGallery9, alt: 'Pune Metro passenger amenities' },
 ];
 
 function Pill({ label }: { label: string }) {
@@ -178,23 +176,11 @@ export default function PassengerAmenities() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <section>
-                <div className="relative max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src={heroBannerImage}
-                        alt="Passenger Amenities - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                    <div className="absolute inset-0 bg-black/30" />
-                    <p className="absolute right-6 bottom-6 font-montserrat text-[clamp(32px,7vw,100px)] font-semibold leading-none text-white/25 select-none md:right-10 md:bottom-10">
-                        PUNERI METRO
-                    </p>
-                </div>
-            </section>
+            <PageHeroBanner src="/banners/amenniteis.png" alt="Passenger Amenities - Puneri Metro" />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
                             Passenger Amenities
@@ -209,7 +195,7 @@ export default function PassengerAmenities() {
 
             {/* ── Amenity Sections ── */}
             <section className="bg-white pb-10">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     {amenitySections.map((section) => (
                         <AmenitySection key={section.title} section={section} />
                     ))}
@@ -218,7 +204,7 @@ export default function PassengerAmenities() {
 
             {/* ── Common Facilities ── */}
             <section className="bg-white pb-10">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <h2 className="mb-6 font-montserrat text-3xl font-semibold text-black">
                         Common Facilities{' '}
                         <span className="text-base font-normal">(For Both Males, Females and other special groups)</span>
@@ -253,7 +239,7 @@ export default function PassengerAmenities() {
 
             {/* ── Photo Gallery ── */}
             <section className="bg-white pb-10">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {galleryImages.map((image) => (
                             <div key={image.src} className="overflow-hidden rounded-[10px]">
@@ -270,7 +256,7 @@ export default function PassengerAmenities() {
 
             {/* ── Gender-Specific Facilities ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10">
                         {/* Males */}
                         <div>

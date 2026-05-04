@@ -31,7 +31,7 @@ const quickLinks = [
 type NavLink = {
     label: string;
     href: string;
-    children?: { label: string; href: string }[];
+    children?: { label: string; href: string; external?: boolean }[];
 };
 
 const mainNavLinks: NavLink[] = [
@@ -57,7 +57,7 @@ const mainNavLinks: NavLink[] = [
         label: 'PASSENGER INFO',
         href: timeTable.url(),
         children: [
-            { label: 'Time Table', href: timeTable.url() },
+            { label: 'Time Table', href: '/documents/TIMETABLE.pdf', external: true },
             { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
             { label: "Do's and Don'ts", href: dosAndDonts.url() },
             { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
@@ -75,9 +75,9 @@ const mainNavLinks: NavLink[] = [
         href: eiaReports.url(),
         children: [
             { label: 'EIA Reports', href: eiaReports.url() },
+            { label: 'Green Initiatives', href: greenInitiatives.url() },
             { label: 'Carbon Credit', href: carbonCredit.url() },
             { label: 'Art from Scrap', href: artFromScrap.url() },
-            { label: 'Green Initiatives', href: greenInitiatives.url() },
         ],
     },
     { label: 'ROUTE', href: '#' },
@@ -148,7 +148,7 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 w-full bg-white shadow-md">
             {/* Rows 1+2: Logo + contact */}
             <div className="border-b border-gray-100">
-                <div className="mx-auto flex max-w-[1440px] items-stretch px-4 min-[1441px]:px-0">
+                <div className="mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] items-stretch px-4 min-[1303px]:px-8">
                     <div className="flex items-center py-5 pr-8">
                         <PuneMetroLogo />
                     </div>
@@ -257,7 +257,7 @@ export default function Navbar() {
 
             {/* Main Nav Bar */}
             <nav ref={navRef} className="hidden bg-brand lg:block">
-                <div className="relative mx-auto flex max-w-[1440px] items-stretch justify-center px-4 min-[1441px]:px-0">
+                <div className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] items-stretch justify-center px-4 min-[1303px]:px-8">
                     {mainNavLinks.map((link) =>
                         link.children ? (
                             <div
@@ -287,18 +287,31 @@ export default function Navbar() {
                                 </button>
                                 {desktopOpen === link.label && (
                                     <div className="absolute top-full left-0 z-50 min-w-[200px] overflow-hidden rounded-b-xl bg-white shadow-lg">
-                                        {link.children.map((child) => (
-                                            <Link
-                                                key={child.label}
-                                                href={child.href}
-                                                onClick={() =>
-                                                    setDesktopOpen(null)
-                                                }
-                                                className="block px-5 py-3 font-montserrat text-[11px] font-medium text-black transition-colors hover:bg-brand/10 hover:text-brand"
-                                            >
-                                                {child.label}
-                                            </Link>
-                                        ))}
+                                        {link.children.map((child) =>
+                                            child.external ? (
+                                                <a
+                                                    key={child.label}
+                                                    href={child.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => setDesktopOpen(null)}
+                                                    className="block px-5 py-3 font-montserrat text-[11px] font-medium text-black transition-colors hover:bg-brand/10 hover:text-brand"
+                                                >
+                                                    {child.label}
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    key={child.label}
+                                                    href={child.href}
+                                                    onClick={() =>
+                                                        setDesktopOpen(null)
+                                                    }
+                                                    className="block px-5 py-3 font-montserrat text-[11px] font-medium text-black transition-colors hover:bg-brand/10 hover:text-brand"
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            )
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -394,18 +407,31 @@ export default function Navbar() {
                                     </button>
                                     {mobileExpanded === link.label && (
                                         <div className="mb-1 ml-3 border-l-2 border-brand/30 pl-3">
-                                            {link.children.map((child) => (
-                                                <Link
-                                                    key={child.label}
-                                                    href={child.href}
-                                                    onClick={() =>
-                                                        setMobileOpen(false)
-                                                    }
-                                                    className="block py-2 font-montserrat text-xs text-black hover:text-brand"
-                                                >
-                                                    {child.label}
-                                                </Link>
-                                            ))}
+                                            {link.children.map((child) =>
+                                                child.external ? (
+                                                    <a
+                                                        key={child.label}
+                                                        href={child.href}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={() => setMobileOpen(false)}
+                                                        className="block py-2 font-montserrat text-xs text-black hover:text-brand"
+                                                    >
+                                                        {child.label}
+                                                    </a>
+                                                ) : (
+                                                    <Link
+                                                        key={child.label}
+                                                        href={child.href}
+                                                        onClick={() =>
+                                                            setMobileOpen(false)
+                                                        }
+                                                        className="block py-2 font-montserrat text-xs text-black hover:text-brand"
+                                                    >
+                                                        {child.label}
+                                                    </Link>
+                                                )
+                                            )}
                                         </div>
                                     )}
                                 </div>

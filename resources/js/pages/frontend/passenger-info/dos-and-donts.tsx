@@ -20,7 +20,7 @@ export default function DosAndDonts() {
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
                             Do&apos;s and Don&apos;ts
@@ -32,7 +32,7 @@ export default function DosAndDonts() {
 
             {/* ── Content ── */}
             <section className="bg-white pb-24">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0" />
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8" />
             </section>
         </>
     );

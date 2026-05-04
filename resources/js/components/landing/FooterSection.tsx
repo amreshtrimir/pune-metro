@@ -41,7 +41,7 @@ export default function FooterSection() {
     return (
         <>
             {/* CTA Banner */}
-            <section className="bg-white px-6 py-12 min-[1441px]:px-0">
+            <section className="bg-white px-6 py-12 min-[1303px]:px-8">
                 <div
                     className="mx-auto max-w-360 overflow-hidden rounded-2xl"
                     style={{
@@ -94,7 +94,7 @@ export default function FooterSection() {
 
             {/* Footer */}
             <footer className="border-t border-gray-200 bg-white py-6">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
 
                     {/* Desktop: two columns | Mobile: single column */}
                     <div className="flex flex-col lg:flex-row lg:items-center lg:gap-0">

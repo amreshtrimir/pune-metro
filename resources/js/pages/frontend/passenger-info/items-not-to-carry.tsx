@@ -1,17 +1,16 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
-const heroBannerImage = 'https://www.figma.com/api/mcp/asset/99379e71-8b6c-45d7-9b09-cdea830cb1dc';
-
-const imgArms = 'https://www.figma.com/api/mcp/asset/efca72f5-19df-49d5-9787-8f7dd793ec0b';
-const imgBlade = 'https://www.figma.com/api/mcp/asset/243f5c69-745f-4570-8487-e059844b7cb7';
-const imgTools = 'https://www.figma.com/api/mcp/asset/b18baed4-e4e4-4515-95af-32e922d046a6';
-const imgExplosives = 'https://www.figma.com/api/mcp/asset/e7d8514a-a168-4fc6-8dec-b2ca19dd5fda';
-const imgFlammable = 'https://www.figma.com/api/mcp/asset/e2e1cd2e-860d-426c-9db3-d93f7a32e33e';
-const imgAlcohol = 'https://www.figma.com/api/mcp/asset/874d4647-781f-487b-a14c-4ac501186e8c';
-const imgChemical = 'https://www.figma.com/api/mcp/asset/48f565e1-4f39-4dd2-8a42-7c251d75059e';
-const imgBioHazard = 'https://www.figma.com/api/mcp/asset/0cc2e27a-617c-4510-b781-19a8b0153164';
-const imgAnimals = 'https://www.figma.com/api/mcp/asset/c88fe565-b77e-4286-b650-4a6df59150eb';
-const imgOther = 'https://www.figma.com/api/mcp/asset/9cffe592-4ff4-4759-b79b-235a60836e3e';
+const imgArms = '/items-not-to-carry/arms.png';
+const imgBlade = '/items-not-to-carry/sharp-objects.png';
+const imgTools = '/items-not-to-carry/tools-and-equipments.png';
+const imgExplosives = '/items-not-to-carry/explosives-and-fireworks.png';
+const imgFlammable = '/items-not-to-carry/flammable.png';
+const imgAlcohol = '/items-not-to-carry/tobacco-alcohal.png';
+const imgChemical = '/items-not-to-carry/chemical.png';
+const imgBioHazard = '/items-not-to-carry/offensive.png';
+const imgAnimals = '/items-not-to-carry/animal.png';
+const imgOther = '/items-not-to-carry/other-items.png';
 
 type Category = {
     number: number;
@@ -145,6 +144,9 @@ function CategoryCard({ category }: { category: Category }) {
             {/* Pink top-left corner accent */}
             <span className="absolute top-0 left-0 block h-5 w-5 border-t-2 border-l-2 border-[#e8449a]" />
 
+            {/* Decorative icon – bottom-right */}
+            <img src={category.icon} alt="" className="absolute right-4 bottom-4 h-32 w-32 object-contain opacity-80 pointer-events-none" />
+
             <div className="flex items-start gap-3">
                 {/* Number */}
                 <span className="shrink-0 font-montserrat font-semibold text-black text-[24px] md:text-[30px]" style={{ lineHeight: '1.2' }}>
@@ -164,11 +166,6 @@ function CategoryCard({ category }: { category: Category }) {
                             </li>
                         ))}
                     </ol>
-
-                    {/* Decorative icon – bottom-right */}
-                    <div className="flex justify-end">
-                        <img src={category.icon} alt={category.title} className="h-32 w-32 object-contain opacity-80" />
-                    </div>
                 </div>
             </div>
         </div>
@@ -191,23 +188,11 @@ export default function ItemsNotToCarry() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <section>
-                <div className="relative max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src={heroBannerImage}
-                        alt="Items Not to Carry - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                    <div className="absolute inset-0 bg-black/50" />
-                    <p className="absolute right-6 bottom-6 font-montserrat text-[clamp(32px,7vw,100px)] font-semibold leading-none text-white/25 select-none md:right-10 md:bottom-10">
-                        PUNERI METRO
-                    </p>
-                </div>
-            </section>
+            <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Items Not to Carry - Puneri Metro" />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
                             Items Not to Carry
@@ -225,7 +210,7 @@ export default function ItemsNotToCarry() {
 
             {/* ── Categories Grid ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                         {categories.map((category) => (
                             <CategoryCard key={category.number} category={category} />

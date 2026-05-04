@@ -1,11 +1,13 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
-const heroBannerImage = 'https://www.figma.com/api/mcp/asset/15b75380-d3db-4e21-920d-aa7b13039f81';
-const imgEnergy = 'https://www.figma.com/api/mcp/asset/4795642a-6f7e-4b66-9819-5645f8edfd5b';
-const imgWater = 'https://www.figma.com/api/mcp/asset/1f30b888-79b6-426f-a250-3996fb82babc';
-const imgResource = 'https://www.figma.com/api/mcp/asset/2a9ee39c-07a4-461e-8846-323a257c5030';
-const imgWaste = 'https://www.figma.com/api/mcp/asset/2ccc6942-9e4d-4da5-a99f-922abc1d16e2';
-const imgPlantation = 'https://www.figma.com/api/mcp/asset/3c1f206c-93a5-480a-b29d-067c0b662ee4';
+
+const imgEnergy1 = '/evvironment/green-initiative/energy-conservation-1.png';
+const imgEnergy2 = '/evvironment/green-initiative/energy-conservation-2.png';
+const imgWater = '/evvironment/green-initiative/water-conservation-1.png';
+const imgResource = '/evvironment/green-initiative/resource-conservation-1.png';
+const imgWaste = '/evvironment/green-initiative/waste-management.png';
+const imgPlantation = '/evvironment/green-initiative/plantation-and-recognition.png';
 
 export default function GreenInitiatives() {
     return (
@@ -23,23 +25,11 @@ export default function GreenInitiatives() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <section>
-                <div className="relative max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src={heroBannerImage}
-                        alt="Green Initiatives - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                    <div className="absolute inset-0 bg-black/30" />
-                    <p className="absolute right-10 bottom-10 font-montserrat text-[clamp(48px,7vw,100px)] font-semibold leading-none text-white/25 select-none">
-                        PUNERI METRO
-                    </p>
-                </div>
-            </section>
+            <PageHeroBanner src="/banners/esg-environment-banner/green-initiative-banner.png" alt="Green Initiatives - Puneri Metro" />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-16 pb-10">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="mb-3 flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                             Green Initiatives
@@ -56,15 +46,24 @@ export default function GreenInitiatives() {
 
             {/* ── Energy Conservation ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-                        {/* Image */}
-                        <div className="overflow-hidden rounded-lg">
-                            <img
-                                src={imgEnergy}
-                                alt="Energy Conservation"
-                                className="h-full max-h-[600px] w-full object-cover"
-                            />
+                        {/* Images */}
+                        <div className="flex h-full flex-col gap-4">
+                            <div className="flex-1 overflow-hidden rounded-lg">
+                                <img
+                                    src={imgEnergy1}
+                                    alt="Energy Conservation"
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+                            <div className="flex-1 overflow-hidden rounded-lg">
+                                <img
+                                    src={imgEnergy2}
+                                    alt="Energy Conservation"
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
                         </div>
 
                         {/* Content */}
@@ -165,7 +164,7 @@ export default function GreenInitiatives() {
 
             {/* ── Water Conservation ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Content */}
                         <div>
@@ -267,7 +266,7 @@ export default function GreenInitiatives() {
 
             {/* ── Resource Conservation ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Image */}
                         <div className="overflow-hidden rounded-lg">
@@ -329,7 +328,7 @@ export default function GreenInitiatives() {
 
             {/* ── Waste Management ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Content */}
                         <div>
@@ -388,7 +387,7 @@ export default function GreenInitiatives() {
 
             {/* ── Plantation & Recognition ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Image */}
                         <div className="overflow-hidden rounded-lg">
@@ -442,7 +441,7 @@ export default function GreenInitiatives() {
 
             {/* ── Community & Awareness ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1440px] px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">
                         Community &amp; Awareness
                     </h2>

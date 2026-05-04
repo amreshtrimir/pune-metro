@@ -56,7 +56,7 @@ export default function RoutesSection() {
                 )
             `,
         }}>
-            <div className="mx-auto max-w-[1440px] px-6 lg:px-16">
+            <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 lg:px-16">
 
                 {/* ── Header ── */}
                 <div ref={headerRef} className={`mb-6 transition-all duration-700 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

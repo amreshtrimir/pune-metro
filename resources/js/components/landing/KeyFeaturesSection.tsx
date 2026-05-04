@@ -39,7 +39,7 @@ export default function KeyFeaturesSection() {
                     paddingBottom: '76px', /* 38px for icon circle half + 38px breathing room */
                 }}
             >
-                <div ref={headingRef} className={`mx-auto flex w-full max-w-[1440px] flex-col items-center gap-4 px-6 transition-all duration-700 lg:px-16 ${headingInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div ref={headingRef} className={`mx-auto flex w-full max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col items-center gap-4 px-6 transition-all duration-700 lg:px-16 ${headingInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     {/* Pill badge */}
                     <div className="inline-flex items-center rounded-full px-5 py-1.5" style={{ background: 'rgba(154, 0, 82, 0.1)' }}>
                         <span className="font-montserrat text-xs font-semibold" style={{ color: '#9A0052' }}>

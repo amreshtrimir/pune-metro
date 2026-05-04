@@ -5,7 +5,7 @@ export default function AboutSection() {
 
     return (
         <section id="about" ref={ref} className="bg-white py-20">
-            <div className="mx-auto max-w-[1440px] px-6 lg:px-16">
+            <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 lg:px-16">
                 <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
 
                     {/* ── Left: Image ── */}

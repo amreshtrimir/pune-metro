@@ -7,7 +7,7 @@ export default function QuoteBanner({ children }: PropsWithChildren) {
     return (
         <div
             ref={ref}
-            className={`px-6 py-12 transition-all duration-700 min-[1441px]:px-0 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`px-6 py-12 transition-all duration-700 min-[1303px]:px-8 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
         >
             <div
                 className="mx-auto rounded-2xl px-10 py-10 text-center"

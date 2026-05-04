@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import LeadershipSection from '@/components/landing/LeadershipSection';
 
 const teamMembers = [
@@ -54,19 +55,11 @@ export default function Board() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <section>
-                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src="/about/about-banner.png"
-                        alt="Board of Directors - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                </div>
-            </section>
+            <PageHeroBanner src="/about/about-banner.png" alt="Board of Directors - Puneri Metro" />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                             Board of Directors
@@ -81,7 +74,7 @@ export default function Board() {
 
             {/* ── Board Member Cards ── */}
             <section className="bg-white py-20">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
                         {teamMembers.map((member, idx) => (
                             <div key={idx} className="flex flex-col">

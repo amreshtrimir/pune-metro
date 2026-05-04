@@ -66,7 +66,7 @@ export default function HeroSection() {
 
             {/* ── Text content — layered on top ── */}
             <div
-                className="relative mx-auto flex max-w-[1440px] flex-col justify-end px-6 lg:px-16"
+                className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col justify-end px-6 lg:px-16"
                 style={{ minHeight: heroHeight, paddingBottom: '110px', paddingTop: '80px' }}
             >
                 <div className="w-full">

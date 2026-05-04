@@ -1,22 +1,27 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
 
 const highlights = [
     {
         title: 'Infrastructure',
         bullets: ['23.3 km elevated corridor', '23 stations'],
+        icon: '/project-profile/key-heighlight-icons/flexible-infrastructure 1.png',
     },
     {
         title: 'Connectivity',
         bullets: ['Hinjewadi to Shivajinagar', 'Covers key IT and business hubs'],
+        icon: '/project-profile/key-heighlight-icons/connectivity 1.png',
     },
     {
         title: 'Technology',
         bullets: ['CBTC signalling', '750V DC electrification'],
+        icon: '/project-profile/key-heighlight-icons/ad-tech 1.png',
     },
     {
         title: 'Project Model',
         bullets: ['DBFOT PPP framework', 'Tata Projects + Siemens execution'],
+        icon: '/project-profile/key-heighlight-icons/3d-model-viewer 1.png',
     },
 ];
 
@@ -84,19 +89,11 @@ export default function KeyHighlights() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <section>
-                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src="/project-profile/project-profile-banner.png"
-                        alt="Key Highlights - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                </div>
-            </section>
+            <PageHeroBanner src="/banners/key-page-banners/key-banner.png" alt="Key Highlights - Puneri Metro" />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex items-center gap-6">
                         <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
                             Key Highlights
@@ -108,7 +105,7 @@ export default function KeyHighlights() {
 
             {/* ── Intro ── */}
             <section className="bg-white py-6">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-base leading-relaxed text-gray-700">
                         Puneri Metro Line 3 brings together large-scale infrastructure, advanced metro systems, and city-wide
                         connectivity across one of Pune&apos;s most important urban corridors.
@@ -118,14 +115,19 @@ export default function KeyHighlights() {
 
             {/* ── Highlight Cards ── */}
             <section className="bg-white py-8">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
-                    <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-                        {highlights.map((item, index) => (
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-10">
+                        {highlights.map((item) => (
                             <div
                                 key={item.title}
-                                className="rounded-3xl p-8"
-                                style={{ background: index === 0 ? 'rgba(232,68,154,0.15)' : 'rgba(243,243,243,1)' }}
+                                className="rounded-3xl p-6 lg:p-8"
+                                style={{ background: '#E8449A26', minHeight: '310px' }}
                             >
+                                <img
+                                    src={item.icon}
+                                    alt={item.title}
+                                    style={{ width: '63px', height: '63px', marginBottom: '16px' }}
+                                />
                                 <h3 className="mb-3 font-montserrat text-2xl font-semibold text-black">{item.title}</h3>
                                 <ul className="list-disc space-y-1 pl-5">
                                     {item.bullets.map((bullet) => (
@@ -142,11 +144,11 @@ export default function KeyHighlights() {
 
             {/* ── Project Highlights ── */}
             <section className="bg-white py-12">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <h2 className="font-montserrat text-3xl font-semibold text-black">Project Highlights</h2>
                     <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
                         {/* Left: numbered highlights */}
-                        <div className="w-full space-y-10">
+                        <div className="w-full space-y-10 lg:order-1">
                             {projectHighlights.map((item, index) => (
                                 <div key={item.title}>
 
@@ -163,7 +165,7 @@ export default function KeyHighlights() {
                         </div>
 
                         {/* Right: image */}
-                        <div className="overflow-hidden rounded-3xl" style={{ background: 'rgba(109,0,58,0.1)', maxWidth: '592px', width: '100%' }}>
+                        <div className="overflow-hidden rounded-3xl lg:order-2 lg:ml-auto" style={{ background: 'rgba(109,0,58,0.1)', maxWidth: '592px', width: '100%' }}>
                             <img
                                 src="/project-profile/key-highlights-side.png"
                                 alt="Puneri Metro Project Highlights"
@@ -176,7 +178,7 @@ export default function KeyHighlights() {
 
             {/* ── List of Stations ── */}
             <section className="bg-white py-12">
-                <div className="mx-auto max-w-360 px-6 min-[1441px]:px-0">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <h2 className="mb-8 font-montserrat text-3xl font-semibold text-black">List of Stations</h2>
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                         {/* Left table */}
