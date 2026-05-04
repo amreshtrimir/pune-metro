@@ -41,6 +41,12 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
     Route::get('/passenger-amenities', [PagesController::class, 'passengerAmenities'])->name('passenger-amenities');
 });
 
+// Legal routes
+Route::prefix('legal')->name('legal.')->group(function (): void {
+    Route::get('/terms-and-conditions', [PagesController::class, 'termsAndConditions'])->name('terms-and-conditions');
+    Route::get('/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacy-policy');
+});
+
 // Environment routes and pages
 Route::prefix('environment')->name('environment.')->group(function (): void {
     Route::get('/eia-reports', [PagesController::class, 'eiaReports'])->name('eia-reports');

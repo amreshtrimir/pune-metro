@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
 const constructionImages = [
     '/project-update/construction-1.png',
@@ -35,15 +36,7 @@ export default function ProjectUpdate() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <section>
-                <div className="max-h-[240px] overflow-hidden md:max-h-[400px]">
-                    <img
-                        src="/project-profile/project-profile-banner.png"
-                        alt="Project Update - Puneri Metro"
-                        className="h-full max-h-[240px] w-full object-cover object-center md:max-h-[400px]"
-                    />
-                </div>
-            </section>
+            <PageHeroBanner src="/project-profile/project-profile-banner.png" alt="Project Update - Puneri Metro" />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-16 pb-0">

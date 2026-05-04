@@ -101,4 +101,14 @@ class PagesController extends Controller
     {
         return Inertia::render('frontend/passenger-info/passenger-amenities');
     }
+
+    public function termsAndConditions(): Response
+    {
+        return Inertia::render('frontend/legal/terms-and-conditions');
+    }
+
+    public function privacyPolicy(): Response
+    {
+        return Inertia::render('frontend/legal/privacy-policy');
+    }
 }

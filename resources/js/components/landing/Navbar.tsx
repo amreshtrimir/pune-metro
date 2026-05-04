@@ -15,15 +15,18 @@ import {
     offencesAndPenalties,
     overview,
     passengerAmenities,
+    privacyPolicy,
     projectUpdate,
     retailFnb,
     routeMap,
     stationAreaMap,
+    termsAndConditions,
     timeTable,
 } from '@/actions/App/Http/Controllers/PagesController';
 
 const quickLinks = [
-    { label: 'Lost & Found', href: '#' },
+    { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
+    { label: 'Lost & Found', href: lostAndFound.url() },
     { label: 'Raise Concern', href: '#' },
     { label: 'Metro Stations', href: '#' },
 ];
@@ -64,9 +67,9 @@ const mainNavLinks: NavLink[] = [
             { label: 'Offences and Penalties', href: '/documents/offence- penalties.pdf', external: true },
             { label: 'Lost and Found Enquiry', href: lostAndFound.url() },
             { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
-            { label: 'Retail / F&B', href: retailFnb.url() },
-            { label: 'Station Area Map', href: stationAreaMap.url() },
             { label: 'Passenger Amenities', href: passengerAmenities.url() },
+            { label: 'Station Area Map', href: stationAreaMap.url() },
+
         ],
     },
     { label: 'MEDIA', href: '#' },
@@ -80,11 +83,14 @@ const mainNavLinks: NavLink[] = [
             { label: 'Art from Scrap', href: artFromScrap.url() },
         ],
     },
-    { label: 'ROUTE', href: '#' },
+    { label: 'ROUTE', href: routeMap.url() },
     { label: 'BUSINESS DEVELOPMENT', href: '#' },
     { label: 'CAREER', href: '#' },
     { label: 'BLOG', href: '/blog' },
-    { label: 'LEGAL', href: '#' },
+    { label: 'LEGAL', href: termsAndConditions.url(), children: [
+        { label: 'Terms and Conditions', href: termsAndConditions.url() },
+        { label: 'Privacy Policy', href: privacyPolicy.url() },
+    ] },
     { label: 'CONTACT US', href: '#' },
 ];
 
