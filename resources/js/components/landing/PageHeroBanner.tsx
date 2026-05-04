@@ -6,7 +6,7 @@ interface PageHeroBannerProps {
 export default function PageHeroBanner({ src, alt }: PageHeroBannerProps) {
     return (
         <section className="bg-white">
-            <div className="mx-auto max-w-[1450px]">
+            <div className="mx-auto max-w-[1470px]">
                 <div className="relative max-h-[240px] overflow-hidden md:max-h-[400px]">
                     <img
                         src={src}
