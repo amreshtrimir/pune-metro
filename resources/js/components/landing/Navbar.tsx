@@ -61,7 +61,7 @@ const mainNavLinks: NavLink[] = [
             { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
             { label: "Do's and Don'ts", href: dosAndDonts.url() },
             { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
-            { label: 'Offences and Penalties', href: offencesAndPenalties.url() },
+            { label: 'Offences and Penalties', href: '/documents/offence- penalties.pdf', external: true },
             { label: 'Lost and Found Enquiry', href: lostAndFound.url() },
             { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
             { label: 'Retail / F&B', href: retailFnb.url() },
