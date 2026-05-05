@@ -55,8 +55,8 @@ export default function CustomerService() {
 
                     {/* Commitments */}
                     <div className="mb-8 flex gap-3">
-                        <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
-                        <ul className="space-y-3">
+                        {/* <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" /> */}
+                        <ul className="space-y-3 ml-2.5">
                             {commitments.map((item) => (
                                 <li key={item} className="flex items-start gap-2">
                                     <span className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#e8449a]" />
@@ -68,7 +68,7 @@ export default function CustomerService() {
 
                     {/* Contact Us */}
                     <div className="flex gap-3 rounded-lg bg-[#fdf0f7] px-6 py-5">
-                        <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
+                        {/* <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" /> */}
                         <div>
                             <h2 className="mb-2 font-montserrat text-base font-semibold text-black">Contact Us</h2>
                             <p className="font-inter text-sm text-gray-700">
