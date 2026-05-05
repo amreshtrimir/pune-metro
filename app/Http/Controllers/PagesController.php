@@ -32,6 +32,11 @@ class PagesController extends Controller
         return Inertia::render('frontend/route-map');
     }
 
+    public function stationList(): Response
+    {
+        return Inertia::render('frontend/route/station-list');
+    }
+
     public function eiaReports(): Response
     {
         return Inertia::render('frontend/environment/eia-reports');
@@ -80,6 +85,11 @@ class PagesController extends Controller
     public function lostAndFound(): Response
     {
         return Inertia::render('frontend/passenger-info/lost-and-found');
+    }
+
+    public function customerService(): Response
+    {
+        return Inertia::render('frontend/passenger-info/customer-service');
     }
 
     public function lastMileConnectivity(): Response

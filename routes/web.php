@@ -27,6 +27,11 @@ Route::prefix('project-profile')->name('project-profile.')->group(function (): v
     Route::get('/route-map', [PagesController::class, 'routeMap'])->name('route-map');
 });
 
+// Route section pages
+Route::prefix('route')->name('route.')->group(function (): void {
+    Route::get('/station-list', [PagesController::class, 'stationList'])->name('station-list');
+});
+
 // Passenger Info routes and pages
 Route::prefix('passenger-info')->name('passenger-info.')->group(function (): void {
     Route::get('/time-table', [PagesController::class, 'timeTable'])->name('time-table');
@@ -35,6 +40,7 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
     Route::get('/items-not-to-carry', [PagesController::class, 'itemsNotToCarry'])->name('items-not-to-carry');
     Route::get('/offences-and-penalties', [PagesController::class, 'offencesAndPenalties'])->name('offences-and-penalties');
     Route::get('/lost-and-found', [PagesController::class, 'lostAndFound'])->name('lost-and-found');
+    Route::get('/customer-service', [PagesController::class, 'customerService'])->name('customer-service');
     Route::get('/last-mile-connectivity', [PagesController::class, 'lastMileConnectivity'])->name('last-mile-connectivity');
     Route::get('/retail-fnb', [PagesController::class, 'retailFnb'])->name('retail-fnb');
     Route::get('/station-area-map', [PagesController::class, 'stationAreaMap'])->name('station-area-map');

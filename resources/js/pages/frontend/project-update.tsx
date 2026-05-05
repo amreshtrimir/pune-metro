@@ -68,7 +68,9 @@ export default function ProjectUpdate() {
                         ].map((title, idx) => (
                             <li key={idx}>
                                 <a
-                                    href="#"
+                                    href="/progress-docs/project-updates.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex items-center gap-4 rounded-lg px-4 py-3 font-montserrat text-sm text-black font-semibold transition-opacity hover:opacity-80"
                                     style={{ background: '#E8449A26' }}
                                 >
