@@ -77,7 +77,7 @@ export default function Board() {
             <LeadershipSection showCeoTitle={false} showCfoTitle={false} />
 
             {/* ── Board Member Cards ── */}
-            <section className="bg-white py-20">
+            <section className="bg-white">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {teamMembers.map((member, idx) => (
@@ -89,7 +89,7 @@ export default function Board() {
                                     <img
                                         src={member.image}
                                         alt={member.name}
-                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                                 </div>

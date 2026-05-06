@@ -44,7 +44,7 @@ export default function LeadershipSection({ ceo = defaultCeo, cfo = defaultCfo, 
             <div className="mx-auto w-full" style={{ maxWidth: '1440px' }}>
 
                     {/* ── Card 1: CEO ── */}
-                    <div ref={ceoRef} className={`relative pb-16 lg:pb-24 transition-all duration-700 ${ceoInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <div ref={ceoRef} className={`relative pb-16 lg:pb-10 transition-all duration-700 ${ceoInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         {/* Per-card gradient background — full 1440px width */}
                         <div
                             className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none"
@@ -114,7 +114,7 @@ export default function LeadershipSection({ ceo = defaultCeo, cfo = defaultCfo, 
                     </div>
 
                     {/* ── Card 2: CFO ── */}
-                    <div ref={cfoRef} className={`relative pb-16 lg:pb-24 transition-all duration-700 ${cfoInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <div ref={cfoRef} className={`relative pb-10 lg:pb-10 transition-all duration-700 ${cfoInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         {/* Per-card gradient background — full 1440px width */}
                         <div
                             className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none"
