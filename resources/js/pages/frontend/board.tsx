@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import { useState } from 'react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import LeadershipSection from '@/components/landing/LeadershipSection';
 
@@ -44,6 +45,9 @@ const teamMembers = [
 ];
 
 export default function Board() {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    const toggle = (idx: number) => setOpenIndex((prev) => (prev === idx ? null : idx));
     return (
         <>
             <Head>
@@ -75,24 +79,54 @@ export default function Board() {
             {/* ── Board Member Cards ── */}
             <section className="bg-white py-20">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {teamMembers.map((member, idx) => (
-                            <div key={idx} className="flex flex-col">
-                                <img
-                                    src={member.image}
-                                    alt={member.name}
-                                    className="w-full max-w-[383px] object-cover"
-                                />
-                                <div className="mt-4">
-                                    <p className="font-montserrat font-semibold text-black" style={{ fontSize: '16px' }}>
-                                        {member.name}
-                                    </p>
-                                    <p className="mt-1 font-montserrat text-gray-500" style={{ fontSize: '14px' }}>
-                                        {member.designation}
-                                    </p>
-                                    <p className="mt-3 font-montserrat leading-relaxed text-gray-700" style={{ fontSize: '14px' }}>
-                                        {member.content}
-                                    </p>
+                            <div
+                                key={idx}
+                                className={`group flex flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1 ${openIndex === idx ? 'border border-gray-100' : 'border border-transparent'}`}
+                            >
+                                <div className="relative h-96 overflow-hidden bg-[#e8e8b4]">
+                                    <img
+                                        src={member.image}
+                                        alt={member.name}
+                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                </div>
+                                <div className="flex flex-1 flex-col p-5">
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div>
+                                            <p className="font-montserrat font-semibold text-black" style={{ fontSize: '16px' }}>
+                                                {member.name}
+                                            </p>
+                                            <p className="mt-0.5 font-montserrat text-brand" style={{ fontSize: '13px' }}>
+                                                {member.designation}
+                                            </p>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => toggle(idx)}
+                                            aria-expanded={openIndex === idx}
+                                            aria-label={openIndex === idx ? 'Hide bio' : 'Show bio'}
+                                            className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                                                openIndex === idx
+                                                    ? 'border-brand bg-brand text-white'
+                                                    : 'border-brand text-brand hover:bg-brand/10'
+                                            }`}
+                                        >
+                                            <span className="text-lg leading-none">{openIndex === idx ? '−' : '+'}</span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                                            openIndex === idx ? 'mt-3 max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                                        }`}
+                                    >
+                                        <div className="mb-2 h-px w-full bg-gray-100" />
+                                        <p className="font-montserrat leading-relaxed text-gray-600" style={{ fontSize: '13px' }}>
+                                            {member.content}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         ))}

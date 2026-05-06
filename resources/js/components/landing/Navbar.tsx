@@ -93,8 +93,8 @@ const mainNavLinks: NavLink[] = [
         ],
     },
     { label: 'BUSINESS DEVELOPMENT', href: '#' },
-    { label: 'CAREER', href: '#' },
-    { label: 'BLOG', href: '/blog' },
+    // { label: 'CAREER', href: '#' },
+    // { label: 'BLOG', href: '/blog' },
     { label: 'LEGAL', href: termsAndConditions.url(), children: [
         { label: 'Terms and Conditions', href: termsAndConditions.url() },
         { label: 'Privacy Policy', href: privacyPolicy.url() },
