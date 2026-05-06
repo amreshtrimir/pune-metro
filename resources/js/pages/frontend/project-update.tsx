@@ -54,7 +54,8 @@ export default function ProjectUpdate() {
             <section className="bg-white pt-6 pb-3">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        Puneri Metro Line 3 is progressing across key construction and systems milestones, with work advancing across stations, viaducts, and operational readiness. Regular updates will reflect major project developments and important commuter information.
+                        Puneri Metro Line 3  is progressing steadily, with significant construction milestones achieved across the 23.3 km elevated corridor. The Pink Line will offer commuters a modern, reliable, and comfortable alternative to road travel, connecting the IT hub of Hinjewadi to Shivajinagar District Court seamlessly. Commuters across key areas including Wakad, Baner, Balewadi, and University Circle will benefit from reduced travel time, lesser dependence on private vehicles, and a safe, efficient daily commute. The Pink Line is set to transform urban mobility for thousands of Pune residents every single day.
+
                     </p>
                 </div>
             </section>

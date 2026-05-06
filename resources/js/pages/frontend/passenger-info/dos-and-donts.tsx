@@ -5,36 +5,36 @@ const dos = [
     {
         title: 'Entry, Exit & Boarding',
         bullets: [
-            'Use designated entry/exit gates and follow station signages.',
-            'Allow passengers to alight first, then board in an orderly queue.',
-            'Stand behind the platform safety line until the train stops.',
-            'Mind the gap while boarding/alighting.',
+            'Use designated entry/exit gates and follow station signages',
+            'Allow passengers to alight first, then board in an orderly queue',
+            'Stand behind the platform safety line until the train stops',
+            'Mind the gap while boarding/alighting',
         ],
     },
     {
         title: 'Tickets & Validation',
         bullets: [
-            'Carry a valid ticket (NCMC card / QR ticket / mobile-based ticket).',
-            'Tap in and tap out at AFC gates.',
-            'Keep your ticket accessible for inspection by metro staff.',
+            'Carry a valid ticket (NCMC card / QR ticket / mobile-based ticket)',
+            'Tap in and tap out at AFC gates',
+            'Keep your ticket accessible for inspection by metro staff',
         ],
     },
     {
         title: 'Inside the Train',
         bullets: [
-            'Hold handrails/straps while standing.',
-            'Offer priority seats to senior citizens, pregnant women, and persons with disabilities.',
-            'Move inside the coach to make space during peak hour travel.',
-            'Keep your strap / shoulder bag in the front.',
+            'Hold handrails/straps while standing',
+            'Offer priority seats to senior citizens, pregnant women, and persons with disabilities',
+            'Move inside the coach to make space during peak hour travel',
+            'Keep your strap / shoulder bag in the front',
         ],
     },
     {
         title: 'Cleanliness & Safety',
         bullets: [
-            'Keep stations and trains clean; use dustbins provided.',
-            'Follow announcements and digital displays — especially during peak hours.',
-            'Report unattended baggage or suspicious activity to metro staff.',
-            'Use emergency intercoms/alarms only in genuine emergencies.',
+            'Keep stations and trains clean; use dustbins provided',
+            'Follow announcements and digital displays — especially during peak hours',
+            'Report unattended baggage or suspicious activity to metro staff',
+            'Use emergency intercoms/alarms only in genuine emergencies',
         ],
     },
 ];
@@ -43,25 +43,25 @@ const donts = [
     {
         title: 'Safety & Security',
         bullets: [
-            'Do not carry prohibited items (flammables, explosives, sharp weapons).',
-            'Do not cross tracks, enter restricted areas, or trespass near technical areas.',
-            'Do not board or deboard after the door-closing alarm.',
+            'Do not carry prohibited items (flammables, explosives, sharp weapons)',
+            'Do not cross tracks, enter restricted areas, or trespass near technical areas',
+            'Do not board or deboard after the door-closing alarm',
         ],
     },
     {
         title: 'Platform & Train Etiquette',
         bullets: [
-            'Do not block train doors or lean against them.',
-            'Do not rush or push during peak office hours.',
-            'Do not sit or stand on platform edges or barriers.',
+            'Do not block train doors or lean against them',
+            'Do not rush or push during peak office hours',
+            'Do not sit or stand on platform edges or barriers',
         ],
     },
     {
         title: 'Conduct & Cleanliness',
         bullets: [
-            'No eating, drinking, smoking, spitting, or chewing tobacco/gutkha inside stations or trains.',
-            'Avoid loud phone calls, music, or videos on speaker.',
-            'No littering, graffiti, or damage to metro property.',
+            'No eating, drinking, smoking, spitting, or chewing tobacco/gutkha inside stations or trains',
+            'Avoid loud phone calls, music, or videos on speaker',
+            'No littering, graffiti, or damage to metro property',
         ],
     },
 ];
@@ -86,8 +86,8 @@ export default function DosAndDonts() {
                         </h1>
                         <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #8e8e8e, transparent)' }} />
                     </div>
-                    <p className="mt-3 mb-10 font-inter text-xl capitalize text-brand">
-                        Built for Faster, Smarter, more Comfortable travel
+                    <p className="mt-3 mb-10 font-inter text-xl text-metro-dark">
+                       Your safety and comfort are our top priority. To make every journey smooth and enjoyable for you and your fellow commuters, please adhere to the following Do's and Don'ts while at our stations and onboard our trains.
                     </p>
                 </div>
             </section>

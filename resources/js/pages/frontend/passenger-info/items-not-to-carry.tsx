@@ -70,11 +70,11 @@ const categories: Category[] = [
     },
     {
         number: 5,
-        title: 'Flammable & Inflammable Substances',
+        title: 'Flammable Substances',
         items: [
             'Petrol, diesel, kerosene',
             'All kinds of spirits',
-            'Aerosols and highly inflammable liquids',
+            'Aerosols and highly flammable liquids',
             'LPG / CNG / gas cylinders',
             'Matchboxes and lighters',
             'Wet batteries',

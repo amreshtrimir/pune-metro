@@ -46,6 +46,21 @@ const projectHighlights = [
         description:
             'Dedicated to environmentally responsible practices, including green construction methods, waste reduction, and large-scale tree transplantation. We maintain rigorous environmental monitoring throughout the project lifecycle to ensure a greener future for Pune.',
     },
+    {
+        title: 'Solar Power Integration',
+        description:
+            'Solar panels installed across stations and depot facilities will generate clean, renewable energy to support metro operations, significantly reducing dependence on conventional power sources and lowering overall operational energy costs.',
+    },
+    {
+        title: 'Carbon Credit & Environmental Responsibility',
+        description:
+            'By shifting thousands of daily commuters from private vehicles to public transport, Puneri Metro Line 3 will contribute to a measurable reduction in carbon emissions across Pune, actively earning carbon credits through its sustainable operations and energy-efficient systems.',
+    },
+    {
+        title: 'Last-Mile Connectivity',
+        description:
+            'Comprehensive last-mile solutions; including PMPML bus integration, dedicated cab and auto-rickshaw pickup zones, pedestrian walkways, and station parking, will ensure a seamless, end-to-end travel experience for every commuter.',
+    },
 ];
 
 export default function KeyHighlights() {

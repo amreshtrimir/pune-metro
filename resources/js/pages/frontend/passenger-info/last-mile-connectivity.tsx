@@ -3,24 +3,29 @@ import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
 const connectivityPoints = [
     {
-        title: 'Integration with PMPML buses',
-        description: 'Existing PMPML bus routes will support smooth connectivity between metro stations and nearby city areas.',
+        title: 'Integration with PMPML Buses',
+        description:
+            'Existing PMPML bus routes will provide smooth connectivity between metro stations and nearby areas of the city. Schedules and routes will be coordinated to minimise waiting time and ensure a seamless transfer experience for daily commuters. Dedicated bus bays at key stations will further streamline the interchange between bus and metro services.',
     },
     {
-        title: 'Integration with private players for additional routes',
-        description: 'Partnerships with private mobility providers will help extend connectivity beyond station zones.',
+        title: 'Integration with Private Players for Additional Routes',
+        description:
+            'Partnerships with private mobility providers will help extend connectivity beyond station zones. These collaborations will offer commuters a wider range of travel options, including app-based cab services and shared mobility solutions. The goal is to bridge gaps in public transport coverage and ensure no commuter is left without a convenient last-mile option.',
     },
     {
-        title: 'Auto-rickshaw and cab pickup zones',
-        description: 'Dedicated pickup and drop-off areas will support convenient onward travel for commuters.',
+        title: 'Auto-Rickshaw and Cab Pickup Zones',
+        description:
+            'Dedicated pickup and drop-off areas will support convenient onward travel for commuters. These designated zones will be clearly marked and strategically located at station exits to reduce congestion and ensure passenger safety. Integration with app-based cab aggregators will also allow passengers to pre-book rides directly from the station.',
     },
     {
-        title: 'Pedestrian walkways and foot over bridges',
-        description: 'Safe pedestrian access will improve movement between stations and surrounding areas.',
+        title: 'Pedestrian Walkways and Foot Over Bridges (FOBs)',
+        description:
+            'Safe pedestrian access will improve movement between stations and surrounding areas. Well-lit, weather-protected walkways and foot over bridges will be designed with accessibility in mind, catering to senior citizens, persons with disabilities, and families with children. These connections will reduce dependence on short vehicular trips and encourage walking as a first and last-mile option.',
     },
     {
-        title: 'Parking facilities at selected stations',
-        description: 'Parking provisions at select stations will support easier first and last-mile access.',
+        title: 'Parking Facilities at Selected Stations',
+        description:
+            'Parking provisions at select stations will support easier first and last-mile access. Dedicated spaces for two-wheelers and four-wheelers will be available, along with secure bicycle parking to encourage eco-friendly commuting. Cashless payment options and digital monitoring systems will ensure a smooth and secure parking experience for all users.',
     },
 ];
 
