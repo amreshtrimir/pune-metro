@@ -82,10 +82,22 @@ export default function About() {
                                     />
                                     <div>
                                         <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Vision</h3>
-                                        <p className="font-montserrat leading-relaxed text-black" style={{ fontSize: "14px" }}>
-                                            To create a future-ready urban transit system that strengthens connectivity, supports city growth,
-                                            and improves everyday mobility across Pune.
-                                        </p>
+                                        <div className="space-y-3 font-montserrat leading-relaxed text-black" style={{ fontSize: "14px" }}>
+                                            <p>
+                                                To create a future-ready urban transit system that strengthens connectivity, supports city growth,
+                                                and improves everyday mobility across Pune.
+                                            </p>
+                                            <p>
+                                                We envision a Pune where seamless, sustainable, and inclusive public transport is not a privilege
+                                                but a way of life through empowering every commuter, energizing every neighbourhood, and driving
+                                                the city's economic and social progress for generations to come.
+                                            </p>
+                                            <p>
+                                                Beyond mobility, we are committed to creating lasting value for the communities we serve by
+                                                fostering livelihood opportunities, supporting environmental protection, and contributing to the
+                                                holistic development of Pune as a world-class city.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +114,20 @@ export default function About() {
                                     />
                                     <div>
                                         <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Mission</h3>
-                                        <p className="font-montserrat leading-relaxed text-black" style={{ fontSize: "14px" }}>
-                                            To deliver safe, reliable, and accessible metro infrastructure through thoughtful design,
-                                            sustainable practices, and a commuter-first approach that responds to the needs of a growing city.
-                                        </p>
+                                        <div className="space-y-3 font-montserrat leading-relaxed text-black" style={{ fontSize: "14px" }}>
+                                            <p>
+                                                To deliver safe, reliable, and accessible metro infrastructure through thoughtful design,
+                                                sustainable practices, and a commuter-first approach that responds to the needs of a growing city.
+                                            </p>
+                                            <p>
+                                                We are committed to operational excellence, technological innovation, and the highest safety
+                                                standards, ensuring every journey is comfortable and dependable.
+                                            </p>
+                                            <p>
+                                                As a responsible corporate citizen, we actively invest in community development, environmental
+                                                sustainability, and stakeholder empowerment to create lasting value for the people of Pune.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

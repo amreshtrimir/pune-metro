@@ -2,17 +2,30 @@ import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 
 interface Slide {
     image: string;
+    heading: string;
+    description: string;
 }
 
 const slides: Slide[] = [
-    { image: '/landing/sliders-slides/first-image.webp' },
-    { image: '/landing/sliders-slides/second-image.webp' },
-    { image: '/landing/sliders-slides/third-image.webp' },
+    {
+        image: '/landing/sliders-slides/first-image.webp',
+        heading: 'Transforming Urban Mobility with Speed, Comfort and Sustainability',
+        description:
+            'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.',
+    },
+    {
+        image: '/landing/sliders-slides/second-image.webp',
+        heading: "Connecting Pune's Vital Commuter Arteries",
+        description:
+            "The project features a 23.3 km elevated corridor designed to alleviate congestion along one of Pune's most critical routes. By linking the Hinjewadi IT hub to the Shivajinagar District Court, the line bridges major tech zones with the city centre. The corridor includes 23 strategically planned stations serving key residential and commercial neighbourhoods.",
+    },
+    {
+        image: '/landing/sliders-slides/third-image.webp',
+        heading: 'A blueprint for sustainable urban mobility',
+        description:
+            "Puneri Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes its ecological footprint while actively enhancing the city's green cover.",
+    },
 ];
-
-const heading = 'Transforming Urban Mobility with Speed, Comfort and Sustainability';
-const description =
-    'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.';
 
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
@@ -20,11 +33,14 @@ export default function HeroSection() {
 
     useLayoutEffect(() => {
         const header = document.querySelector('header');
+
         if (!header) return;
+
         const update = () => setNavHeight(header.offsetHeight);
         update();
         const ro = new ResizeObserver(update);
         ro.observe(header);
+
         return () => ro.disconnect();
     }, []);
 
@@ -33,6 +49,7 @@ export default function HeroSection() {
     const goTo = useCallback(
         (index: number) => {
             if (index === current) return;
+
             setCurrent(index);
         },
         [current],
@@ -42,6 +59,7 @@ export default function HeroSection() {
         const timer = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
         }, 5500);
+
         return () => clearInterval(timer);
     }, []);
 
@@ -74,13 +92,13 @@ export default function HeroSection() {
                         className="mb-5 font-montserrat font-bold text-white"
                         style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', lineHeight: 'clamp(42px, 5.5vw, 72px)' }}
                     >
-                        {heading}
+                        {slides[current].heading}
                     </h1>
                     <p
                         className="font-montserrat text-white/80"
                         style={{ fontSize: 'clamp(14px, 1.72vw, 22px)', lineHeight: 'clamp(22px, 2.5vw, 32px)' }}
                     >
-                        {description}
+                        {slides[current].description}
                     </p>
                 </div>
 
