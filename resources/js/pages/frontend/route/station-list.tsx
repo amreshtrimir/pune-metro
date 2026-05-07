@@ -3,17 +3,17 @@ import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
 const stationsLeft = [
     { code: 'PMR 1', name: 'Maan' },
-    { code: 'PMR 2', name: 'MIDC Circle Phase II' },
-    { code: 'PMR 3', name: 'Bus Depot, Maan' },
-    { code: 'PMR 4', name: 'Hinjewadi Phase II' },
-    { code: 'PMR 5', name: 'Bodakewadi' },
+    { code: 'PMR 2', name: 'Maan - MIDC Circle, Phase II' },
+    { code: 'PMR 3', name: 'Maan Bus Depot' },
+    { code: 'PMR 4', name: 'Hinjawadi Phase-II Circle-II' },
+    { code: 'PMR 5', name: 'Hinjawadi Phase-II Circle-I' },
     { code: 'PMR 6', name: 'Padmabhushan Chowk' },
-    { code: 'PMR 7', name: 'Chhatrapati Shivaji Maharaj Chowk' },
-    { code: 'PMR 8', name: 'Hinjewadi Phase I' },
+    { code: 'PMR 7', name: 'Shree Shiv Chhatrapati Shivaji Maharaj Chowk, Hinjawadi' },
+    { code: 'PMR 8', name: 'Hinjawadi Phase - I' },
     { code: 'PMR 9', name: 'Wakad Chowk' },
-    { code: 'PMR 10', name: 'Shree Shiv Chhatrapati Sports Complex Mahalunge' },
-    { code: 'PMR 11', name: 'MITCON' },
-    { code: 'PMR 12', name: 'RK Laxman Museum Ramnagar' },
+    { code: 'PMR 10', name: 'Shree Shiv Chhatrapati Sports Complex, Mahalunge' },
+    { code: 'PMR 11', name: 'Mitcon Balewadi' },
+    { code: 'PMR 12', name: 'R K Laxman Museum Balewadi' },
 ];
 
 const stationsRight = [
@@ -22,12 +22,12 @@ const stationsRight = [
     { code: 'PMR 15', name: 'Baner Gaon' },
     { code: 'PMR 16', name: 'Baner Pashan Link Road' },
     { code: 'PMR 17', name: 'Aundh' },
-    { code: 'PMR 18', name: 'Sakal Nagar' },
+    { code: 'PMR 18', name: 'Sakalnagar' },
     { code: 'PMR 19', name: 'Savitribai Phule Pune University' },
-    { code: 'PMR 20', name: 'Bhosale Nagar' },
+    { code: 'PMR 20', name: 'Bhosalenagar – RBI' },
     { code: 'PMR 21', name: 'Agriculture College' },
     { code: 'PMR 22', name: 'Shivaji Nagar' },
-    { code: 'PMR 23', name: 'District Court' },
+    { code: 'PMR 23', name: 'District Court, Pune' },
 ];
 
 export default function StationList() {
