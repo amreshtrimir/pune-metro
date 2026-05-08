@@ -1,7 +1,8 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
-import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import LeadershipSection from '@/components/landing/LeadershipSection';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
+
 
 const teamMembers = [
     {
@@ -9,7 +10,7 @@ const teamMembers = [
         name: 'Dr. Praveen Sinha',
         designation: 'Chairman',
         content:
-            "Dr. Praveer Sinha is the CEO & Managing Director of Tata Power, leading its transformation from a traditional utility into a sustainable, technology-driven, customer-focused green energy company. With over 40 years of experience across the power sector, he has championed clean energy innovation, including establishing India’s first international clean energy incubator. He also advises the MIT Energy Initiative and contributes to national power sector reforms. Recognized as Best CEO (Power Sector) by Business Today, Fortune India, and Forbes in 2023, he holds an Electrical Engineering degree, a master’s in business law, a doctorate from IIT Delhi, and completed AMP at IIM Ahmedabad. He is also a visiting Research Associate at MIT, USA.",
+            "Dr. Praveen Sinha is the CEO & Managing Director of Tata Power, leading its transformation from a traditional utility into a sustainable, technology-driven, customer-focused green energy company. With over 40 years of experience across the power sector, he has championed clean energy innovation, including establishing India’s first international clean energy incubator. He also advises the MIT Energy Initiative and contributes to national power sector reforms. Recognized as Best CEO (Power Sector) by Business Today, Fortune India, and Forbes in 2023, he holds an Electrical Engineering degree, a master’s in business law, a doctorate from IIT Delhi, and completed AMP at IIM Ahmedabad. He is also a visiting Research Associate at MIT, USA.",
     },
     {
         image: '/about/leader-image/mangu-singh.png',
@@ -48,6 +49,7 @@ export default function Board() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggle = (idx: number) => setOpenIndex((prev) => (prev === idx ? null : idx));
+
     return (
         <>
             <Head>
