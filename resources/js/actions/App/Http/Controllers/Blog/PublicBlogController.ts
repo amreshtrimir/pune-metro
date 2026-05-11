@@ -184,7 +184,7 @@ show.form = showForm
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
 * @route '/blog/{post}/comments'
 */
-export const storeComment = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const storeComment = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: storeComment.url(args, options),
     method: 'post',
 })
@@ -199,7 +199,7 @@ storeComment.definition = {
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
 * @route '/blog/{post}/comments'
 */
-storeComment.url = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+storeComment.url = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { post: args }
     }
@@ -232,7 +232,7 @@ storeComment.url = (args: { post: number | { id: number } } | [post: number | { 
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
 * @route '/blog/{post}/comments'
 */
-storeComment.post = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+storeComment.post = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: storeComment.url(args, options),
     method: 'post',
 })
@@ -242,7 +242,7 @@ storeComment.post = (args: { post: number | { id: number } } | [post: number | {
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
 * @route '/blog/{post}/comments'
 */
-const storeCommentForm = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const storeCommentForm = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: storeComment.url(args, options),
     method: 'post',
 })
@@ -252,7 +252,7 @@ const storeCommentForm = (args: { post: number | { id: number } } | [post: numbe
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
 * @route '/blog/{post}/comments'
 */
-storeCommentForm.post = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+storeCommentForm.post = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: storeComment.url(args, options),
     method: 'post',
 })

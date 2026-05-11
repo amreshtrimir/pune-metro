@@ -2,8 +2,8 @@ import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 
 
-const constructionImage = 'https://www.figma.com/api/mcp/asset/da09091d-d2e9-4f58-ac53-f42c5fcb5821';
-const operationalImage = 'https://www.figma.com/api/mcp/asset/e1b57b64-4888-4bc1-98fe-6f44e38df90b';
+const constructionImage = '/carbon-credit/item-1.png';
+const operationalImage = '/carbon-credit/item-2.png';
 
 const impactStats = [
     {

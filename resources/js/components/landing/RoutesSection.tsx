@@ -28,10 +28,10 @@ const lines: Line[] = [
         image: '/landing/metro-network-map-line-1.png',
         imageAlt: 'Pune Metro Line 1 — PCMC to Swargate',
         stats: [
-            { value: '17.4', unit: 'km.', label: 'Corridor Length' },
-            { value: '14', unit: '', label: 'Metro Stations' },
+            { value: '23.3', unit: 'km.', label: 'Corridor Length' },
+            { value: '23', unit: '', label: 'Metro Stations' },
             { value: '100%', unit: '', label: 'Elevated Alignment' },
-            { value: '01', unit: '', label: 'Interchange Connections' },
+            { value: '02', unit: '', label: 'Interchange Connections' },
         ],
     },
 ];
