@@ -28,7 +28,7 @@ const quickLinks = [
     { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
     { label: 'Lost & Found', href: lostAndFound.url() },
     { label: 'Raise Concern', href: '#' },
-    { label: 'Metro Stations', href: '#' },
+    { label: 'Metro Stations', href: stationList.url() },
 ];
 
 type NavLink = {
