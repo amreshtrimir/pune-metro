@@ -170,7 +170,7 @@ export default function Navbar() {
                     <div className="hidden flex-1 flex-col justify-between py-4 lg:flex">
                         <div className="flex items-center justify-end gap-3">
                             <a
-                                href="mailto:customercare.pmrp@mahametro.org"
+                                href="mailto:contactpunerimetro@tatarealty.in"
                                 className="flex items-center gap-2 rounded-full border border-brand px-4 py-1.5 font-montserrat text-xs font-medium text-brand transition-colors hover:bg-brand hover:text-white"
                             >
                                 <svg
@@ -186,7 +186,7 @@ export default function Navbar() {
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                     />
                                 </svg>
-                                Mail Us: customercare.pmrp@mahametro.org
+                                Mail Us: contactpunerimetro@tatarealty.in
                             </a>
                             <a
                                 href="tel:18002705501"
