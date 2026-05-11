@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 
 const imgEnergy1 = '/evvironment/green-initiative/energy-conservation-1.png';
@@ -28,14 +29,9 @@ export default function GreenInitiatives() {
             <PageHeroBanner src="/banners/esg-environment-banner/green-initiative-banner.png" alt="Green Initiatives - Puneri Metro" />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-16 pb-10">
+            <section className="bg-white pt-10 pb-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="mb-3 flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                            Green Initiatives
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
-                    </div>
+                    <PageSectionHeading className="mb-3 flex items-center gap-6">Green Initiatives</PageSectionHeading>
                     <p className="mb-3 font-montserrat text-xl font-normal text-brand">Green at Every Step</p>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         From construction sites to station design, Puneri Metro Line 3 embeds sustainability into every phase.

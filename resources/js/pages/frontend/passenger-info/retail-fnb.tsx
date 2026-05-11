@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 export default function RetailFnb() {
     return (
@@ -19,14 +20,9 @@ export default function RetailFnb() {
             </section>
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
-                            Retail / F&amp;B (Food &amp; Beverage)
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
-                    </div>
+                    <PageSectionHeading>Retail / F&amp;B (Food &amp; Beverage)</PageSectionHeading>
                 </div>
             </section>
 

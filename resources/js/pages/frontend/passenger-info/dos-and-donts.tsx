@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const dos = [
     {
@@ -78,15 +79,10 @@ export default function DosAndDonts() {
             <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Do's and Don'ts - Puneri Metro" />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
-                            Do&apos;s and Don&apos;ts
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #8e8e8e, transparent)' }} />
-                    </div>
-                    <p className="mt-3 mb-10 font-inter text-xl text-metro-dark">
+                    <PageSectionHeading lineColor="#8e8e8e">Do&apos;s and Don&apos;ts</PageSectionHeading>
+                    <p className="mt-3 mb-10 font-inter text-sm text-black">
                        Your safety and comfort are our top priority. To make every journey smooth and enjoyable for you and your fellow commuters, please adhere to the following Do's and Don'ts while at our stations and onboard our trains.
                     </p>
                 </div>
@@ -110,7 +106,7 @@ export default function DosAndDonts() {
                                     {item.bullets.map((bullet) => (
                                         <li key={bullet} className="flex items-start gap-2">
                                             <span className="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#e8449a]" />
-                                            <span className="font-inter text-sm text-black">{bullet}</span>
+                                            <span className="font-inter text-xs text-black">{bullet}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -138,7 +134,7 @@ export default function DosAndDonts() {
                                     {item.bullets.map((bullet) => (
                                         <li key={bullet} className="flex items-start gap-2">
                                             <span className="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black/50" />
-                                            <span className="font-inter text-sm text-black">{bullet}</span>
+                                            <span className="font-inter text-xs text-black">{bullet}</span>
                                         </li>
                                     ))}
                                 </ul>

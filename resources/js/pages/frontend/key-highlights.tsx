@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const highlights = [
     {
@@ -78,14 +79,9 @@ export default function KeyHighlights() {
             <PageHeroBanner src="/banners/key-page-banners/key-banner.png" alt="Key Highlights - Puneri Metro" />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                            Key Highlights
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
-                    </div>
+                    <PageSectionHeading>Key Highlights</PageSectionHeading>
                 </div>
             </section>
 
@@ -129,16 +125,16 @@ export default function KeyHighlights() {
             </section>
 
             {/* ── Project Highlights ── */}
-            <section className="bg-white py-12">
+            <section className="bg-white py-6">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <h2 className="font-montserrat text-3xl font-semibold text-black">Project Highlights</h2>
+                    <h2 className="font-montserrat text-2xl font-semibold text-black mb-5">Project Highlights</h2>
                     <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
                         {/* Left: numbered highlights */}
                         <div className="w-full space-y-10 lg:order-1">
                             {projectHighlights.map((item, index) => (
                                 <div key={item.title}>
 
-                                    <h3 className="mb-3 font-montserrat text-2xl font-semibold text-black">
+                                    <h3 className="mb-3 font-montserrat text-xl font-semibold text-black">
                                         {index + 1}. {item.title}
                                     </h3>
                                     <p className="font-montserrat text-sm leading-relaxed text-black">{item.description}</p>

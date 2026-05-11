@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 
 
@@ -55,14 +56,9 @@ export default function ArtFromScrap() {
             <PageHeroBanner src="/banners/art-from-scrap.png" alt="Art from Scrap - Puneri Metro" />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-16 pb-10">
+            <section className="bg-white pt-10 pb-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="mb-5 flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                            Where Waste Becomes Something Beautiful
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
-                    </div>
+                    <PageSectionHeading className="mb-5 flex items-center gap-6">Where Waste Becomes Something Beautiful</PageSectionHeading>
                     <p className="mb-3 font-montserrat text-sm leading-relaxed text-black">
                         At Puneri Metro Line 3, we believe that nothing should be wasted, not material, not soil, not imagination.
                         Our &lsquo;Art from Scrap&rsquo; initiative turns construction by-products into green spaces, community

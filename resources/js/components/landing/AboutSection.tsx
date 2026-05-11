@@ -1,3 +1,4 @@
+import { overview } from '@/actions/App/Http/Controllers/PagesController';
 import { useInView } from '@/hooks/useInView';
 
 export default function AboutSection() {
@@ -44,7 +45,7 @@ export default function AboutSection() {
                         </p>
 
                         <a
-                            href="#"
+                            href={overview.url()}
                             className="inline-block rounded-md bg-brand-dark px-7 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
                         >
                             Know More

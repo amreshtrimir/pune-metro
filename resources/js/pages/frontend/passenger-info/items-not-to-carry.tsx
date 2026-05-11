@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const imgArms = '/items-not-to-carry/arms.png';
 const imgBlade = '/items-not-to-carry/sharp-objects.png';
@@ -149,19 +150,19 @@ function CategoryCard({ category }: { category: Category }) {
 
             <div className="flex items-start gap-3">
                 {/* Number */}
-                <span className="shrink-0 font-montserrat font-semibold text-black text-[24px] md:text-[30px]" style={{ lineHeight: '1.2' }}>
-                    {category.number}.
+                <span className="shrink-0 font-montserrat font-semibold text-black text-[18px] md:text-[18px]" style={{ lineHeight: '1.2' }}>
+                    {category.number}
                 </span>
 
                 {/* Title + list aligned under the title, not the number */}
                 <div className="flex-1">
-                    <h2 className="mb-4 font-montserrat font-semibold text-black text-[24px] md:text-[30px]" style={{ lineHeight: '1.2' }}>
+                    <h2 className="mb-4 font-montserrat font-semibold text-black text-[18px] md:text-[18px]" style={{ lineHeight: '1.2' }}>
                         {category.title}
                     </h2>
 
                     <ol className="mb-4 list-decimal space-y-1 pl-5">
                         {category.items.map((item) => (
-                            <li key={item} className="font-montserrat text-sm leading-[28px] text-black">
+                            <li key={item} className="font-montserrat text-xs leading-[28px] text-black">
                                 {item}
                             </li>
                         ))}
@@ -191,19 +192,11 @@ export default function ItemsNotToCarry() {
             <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Items Not to Carry - Puneri Metro" />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0 mb-5">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
-                            Items Not to Carry
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #8e8e8e, transparent)' }} />
-                    </div>
+                    <PageSectionHeading lineColor="#8e8e8e">Items Not to Carry</PageSectionHeading>
                     <p className="mt-4 font-montserrat text-sm leading-relaxed text-black">
                         Please do not carry any restricted or unsafe items inside the metro premises or trains.
-                    </p>
-                    <p className="mt-2 mb-10 font-inter text-xl capitalize text-brand">
-                        Built for Faster, Smarter, more Comfortable travel
                     </p>
                 </div>
             </section>

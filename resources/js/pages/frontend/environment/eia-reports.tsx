@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const eiaAboutImage = '/evvironment/eia-report/about-eia.png';
 
@@ -55,14 +56,9 @@ export default function EiaReports() {
             <PageHeroBanner src="/banners/esg-environment-banner/esg-banner.png" alt="Pune Metro Environment" />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="mb-6 flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                            Environmental Impact Assessment (EIA) Reports
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
-                    </div>
+                    <PageSectionHeading className="mb-6 flex items-center gap-6">Environmental Impact Assessment (EIA) Reports</PageSectionHeading>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3 is committed to transparent, science-led environmental governance. Our Environmental
                         Impact Assessment (EIA) reports document all significant environmental reviews, mitigation measures and

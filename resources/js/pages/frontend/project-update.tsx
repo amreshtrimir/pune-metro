@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const constructionImages = [
     '/project-update/construction-1.png',
@@ -39,14 +40,9 @@ export default function ProjectUpdate() {
             <PageHeroBanner src="/project-profile/project-profile-banner.png" alt="Project Update - Puneri Metro" />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                            Project Update
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #d1d5db, transparent)' }} />
-                    </div>
+                    <PageSectionHeading>Project Update</PageSectionHeading>
                 </div>
             </section>
 

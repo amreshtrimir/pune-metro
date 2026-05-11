@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 export default function TermsAndConditions() {
     return (
@@ -13,14 +14,9 @@ export default function TermsAndConditions() {
             <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Terms and Conditions - Puneri Metro" />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-16 pb-0">
+            <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="flex items-center gap-6">
-                        <h1 className="mb-0 shrink-0 border-0 font-montserrat text-[28px] font-bold text-black md:text-[40px]">
-                            Terms and Conditions
-                        </h1>
-                        <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, #8e8e8e, transparent)' }} />
-                    </div>
+                    <PageSectionHeading lineColor="#8e8e8e">Terms and Conditions</PageSectionHeading>
                     <p className="mt-3 mb-10 font-inter text-xl capitalize text-brand">
                         Please read these terms carefully before using our services
                     </p>

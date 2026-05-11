@@ -1,10 +1,13 @@
-import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
+import { useState, useEffect, useCallback, useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 interface Slide {
     image: string;
     heading: string;
     description: string;
 }
+
+const SLIDE_INTERVAL = 6000;
 
 const slides: Slide[] = [
     {
@@ -21,7 +24,7 @@ const slides: Slide[] = [
     },
     {
         image: '/landing/sliders-slides/third-image.webp',
-        heading: 'A blueprint for sustainable urban mobility',
+        heading: 'A Blueprint for Sustainable Urban Mobility',
         description:
             "Puneri Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes its ecological footprint while actively enhancing the city's green cover.",
     },
@@ -31,78 +34,204 @@ export default function HeroSection() {
     const [current, setCurrent] = useState(0);
     const [navHeight, setNavHeight] = useState(0);
 
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const paraRef = useRef<HTMLParagraphElement>(null);
+    const tlRef = useRef<gsap.core.Timeline | null>(null);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
+    const prevIndexRef = useRef<number>(-1);
+    const slideTlRef = useRef<gsap.core.Timeline | null>(null);
+
     useLayoutEffect(() => {
         const header = document.querySelector('header');
-
         if (!header) return;
-
         const update = () => setNavHeight(header.offsetHeight);
         update();
         const ro = new ResizeObserver(update);
         ro.observe(header);
-
         return () => ro.disconnect();
     }, []);
 
     const heroHeight = navHeight > 0 ? `calc(100vh - ${navHeight}px)` : '100vh';
 
-    const goTo = useCallback(
-        (index: number) => {
-            if (index === current) return;
-
-            setCurrent(index);
-        },
-        [current],
-    );
+    const startTimer = useCallback(() => {
+        if (timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % slides.length);
+        }, SLIDE_INTERVAL);
+    }, []);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % slides.length);
-        }, 5500);
+        startTimer();
+        return () => {
+            if (timerRef.current) clearInterval(timerRef.current);
+        };
+    }, [startTimer]);
 
-        return () => clearInterval(timer);
-    }, []);
+    const goTo = useCallback(
+        (index: number) => {
+            setCurrent(index);
+            startTimer();
+        },
+        [startTimer],
+    );
+
+    // GSAP slide transition — crossfade + Ken Burns on incoming image
+    useEffect(() => {
+        const prev = prevIndexRef.current;
+        const next = current;
+
+        if (slideTlRef.current) {
+            slideTlRef.current.kill();
+            slideTlRef.current = null;
+        }
+
+        const nextEl = slideRefs.current[next];
+        const nextImg = imgRefs.current[next];
+        const prevEl = prev >= 0 ? slideRefs.current[prev] : null;
+
+        if (!nextEl) return;
+
+        // Place incoming slide on top, reset its image scale
+        gsap.set(nextEl, { opacity: 0, zIndex: 2 });
+        if (nextImg) {
+            gsap.killTweensOf(nextImg);
+            gsap.set(nextImg, { scale: 1.0 });
+        }
+        if (prevEl) gsap.set(prevEl, { zIndex: 1 });
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                if (prevEl) gsap.set(prevEl, { opacity: 0, zIndex: 0 });
+            },
+        });
+
+        // Incoming slide fades in
+        tl.to(nextEl, { opacity: 1, duration: 1.1, ease: 'power2.inOut' }, 0);
+
+        // Outgoing slide fades out (slightly slower so cross-dissolve is visible)
+        if (prevEl) {
+            tl.to(prevEl, { opacity: 0, duration: 1.3, ease: 'power2.inOut' }, 0);
+        }
+
+        // Ken Burns: slow zoom on incoming image
+        if (nextImg) {
+            gsap.to(nextImg, { scale: 1.09, duration: 7, ease: 'power1.inOut' });
+        }
+
+        slideTlRef.current = tl;
+        prevIndexRef.current = next;
+
+        return () => { tl.kill(); };
+    }, [current]);
+
+    // GSAP text animation — runs after each slide change
+    useEffect(() => {
+        const heading = headingRef.current;
+        const para = paraRef.current;
+        if (!heading || !para) return;
+
+        // Kill any in-flight timeline immediately to prevent conflicts
+        if (tlRef.current) {
+            tlRef.current.kill();
+            tlRef.current = null;
+        }
+
+        // Split heading into individual word spans for staggered reveal
+        const words = slides[current].heading.split(' ');
+        heading.innerHTML = words
+            .map(
+                (w) =>
+                    `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;"><span class="hero-wi" style="display:inline-block;">${w}</span></span>`,
+            )
+            .join('\u00A0'); // non-breaking space to preserve word gaps
+
+        para.textContent = slides[current].description;
+
+        const wordInners = heading.querySelectorAll<HTMLSpanElement>('.hero-wi');
+
+        // Pin everything invisible before the image fade completes (~350ms)
+        gsap.set(wordInners, { yPercent: 115, opacity: 0 });
+        gsap.set(para, { y: 32, opacity: 0 });
+
+        const tl = gsap.timeline({ delay: 0.35 });
+
+        // Heading words cascade upward
+        tl.to(wordInners, {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.72,
+            stagger: 0.055,
+            ease: 'power3.out',
+        });
+
+        // Paragraph slides up with overlap
+        tl.to(
+            para,
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.68,
+                ease: 'power2.out',
+            },
+            '-=0.38',
+        );
+
+        tlRef.current = tl;
+
+        return () => {
+            tl.kill();
+        };
+    }, [current]);
 
     return (
         <section className="relative w-full overflow-hidden bg-metro-dark" style={{ minHeight: heroHeight }}>
-
-            {/* ── Full-width background image ── */}
+            {/* ── Background slides — fully GSAP controlled ── */}
             {slides.map((s, i) => (
                 <div
                     key={i}
-                    className={`absolute inset-0 transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+                    ref={(el) => { slideRefs.current[i] = el; }}
+                    className="absolute inset-0"
+                    style={{ opacity: 0, zIndex: 0, willChange: 'opacity' }}
                 >
                     <img
+                        ref={(el) => { imgRefs.current[i] = el; }}
                         src={s.image}
                         alt=""
                         className="h-full w-full object-cover"
+                        style={{ willChange: 'transform', transformOrigin: 'center center' }}
                     />
-                    {/* Dark gradient overlay — left-heavy so text is readable */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
                 </div>
             ))}
 
-            {/* ── Text content — layered on top ── */}
+            {/* ── Text content ── */}
             <div
                 className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col justify-end px-6 lg:px-16"
-                style={{ minHeight: heroHeight, paddingBottom: '110px', paddingTop: '80px' }}
+                style={{ minHeight: heroHeight, paddingBottom: '110px', paddingTop: '80px', zIndex: 20 }}
             >
                 <div className="w-full">
+                    {/* heading innerHTML is controlled by GSAP — no children here */}
                     <h1
+                        ref={headingRef}
                         className="mb-5 font-montserrat font-bold text-white"
-                        style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', lineHeight: 'clamp(42px, 5.5vw, 72px)' }}
-                    >
-                        {slides[current].heading}
-                    </h1>
+                        style={{
+                            fontSize: 'clamp(22px, 3.15vw, 42px)',
+                            lineHeight: 'clamp(30px, 3.85vw, 50px)',
+                        }}
+                    />
                     <p
+                        ref={paraRef}
                         className="font-montserrat text-white/80"
-                        style={{ fontSize: 'clamp(14px, 1.72vw, 22px)', lineHeight: 'clamp(22px, 2.5vw, 32px)' }}
-                    >
-                        {slides[current].description}
-                    </p>
+                        style={{
+                            fontSize: 'clamp(10px, 1.2vw, 15px)',
+                            lineHeight: 'clamp(22px, 2.5vw, 32px)',
+                        }}
+                    />
                 </div>
 
-                {/* Slide dots */}
+                {/* ── Slide dots ── */}
                 <div className="absolute bottom-[90px] left-6 flex items-center gap-2 lg:left-16">
                     {slides.map((_, i) => (
                         <button
@@ -116,7 +245,7 @@ export default function HeroSection() {
                     ))}
                 </div>
 
-                {/* Prev / Next arrows */}
+                {/* ── Prev / Next arrows ── */}
                 <button
                     onClick={() => goTo((current - 1 + slides.length) % slides.length)}
                     className="absolute right-20 bottom-[82px] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white/60 transition hover:border-white/60 hover:text-white lg:right-24"

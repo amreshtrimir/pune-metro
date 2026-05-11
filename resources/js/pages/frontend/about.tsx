@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 export default function About() {
     return (
@@ -18,11 +19,9 @@ export default function About() {
             <PageHeroBanner src="/about/about-banner.png" alt="Puneri Metro Train" />
 
             {/* ── Overview Content ── */}
-            <section className="bg-white py-20">
+            <section className="bg-white py-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <h1 className="mb-10 border-0 font-montserrat font-bold text-black" style={{ fontSize: '40px' }}>
-                        Overview of Puneri Metro
-                    </h1>
+                    <PageSectionHeading className="mb-5 flex items-center gap-6">Overview of Puneri Metro</PageSectionHeading>
                     {/* Intro paragraphs */}
                     <div className="mb-16 space-y-5">
                         <p className="font-montserrat text-base leading-relaxed text-black">
