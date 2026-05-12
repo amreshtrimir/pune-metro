@@ -36,7 +36,7 @@ const directors = [
     {
         name: 'Mr. Anil Kumar Saini',
         role: 'Chief Executive Officer',
-        image: '/landing/leadership-section/ceo-anil-kumar-saini.png',
+        image: '/landing/leadership-section/ceo-anil-kumar-saini-1.png',
     },
     {
         name: 'Mr. Mitul Jhaveri',

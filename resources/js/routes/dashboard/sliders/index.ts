@@ -142,7 +142,7 @@ store.form = storeForm
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-export const edit = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -157,7 +157,7 @@ edit.definition = {
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-edit.url = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { slider: args }
     }
@@ -190,7 +190,7 @@ edit.url = (args: { slider: string | number | { id: string | number } } | [slide
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-edit.get = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -200,7 +200,7 @@ edit.get = (args: { slider: string | number | { id: string | number } } | [slide
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-edit.head = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -210,7 +210,7 @@ edit.head = (args: { slider: string | number | { id: string | number } } | [slid
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-const editForm = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -220,7 +220,7 @@ const editForm = (args: { slider: string | number | { id: string | number } } | 
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-editForm.get = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -230,7 +230,7 @@ editForm.get = (args: { slider: string | number | { id: string | number } } | [s
 * @see app/Http/Controllers/Slider/SliderController.php:37
 * @route '/dashboard/sliders/{slider}/edit'
 */
-editForm.head = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -247,7 +247,7 @@ edit.form = editForm
 * @see app/Http/Controllers/Slider/SliderController.php:44
 * @route '/dashboard/sliders/{slider}'
 */
-export const update = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -262,7 +262,7 @@ update.definition = {
 * @see app/Http/Controllers/Slider/SliderController.php:44
 * @route '/dashboard/sliders/{slider}'
 */
-update.url = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { slider: args }
     }
@@ -295,7 +295,7 @@ update.url = (args: { slider: string | number | { id: string | number } } | [sli
 * @see app/Http/Controllers/Slider/SliderController.php:44
 * @route '/dashboard/sliders/{slider}'
 */
-update.put = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -305,7 +305,7 @@ update.put = (args: { slider: string | number | { id: string | number } } | [sli
 * @see app/Http/Controllers/Slider/SliderController.php:44
 * @route '/dashboard/sliders/{slider}'
 */
-const updateForm = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -320,7 +320,7 @@ const updateForm = (args: { slider: string | number | { id: string | number } } 
 * @see app/Http/Controllers/Slider/SliderController.php:44
 * @route '/dashboard/sliders/{slider}'
 */
-updateForm.put = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -337,7 +337,7 @@ update.form = updateForm
 * @see app/Http/Controllers/Slider/SliderController.php:51
 * @route '/dashboard/sliders/{slider}'
 */
-export const destroy = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -352,7 +352,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Slider/SliderController.php:51
 * @route '/dashboard/sliders/{slider}'
 */
-destroy.url = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { slider: args }
     }
@@ -385,7 +385,7 @@ destroy.url = (args: { slider: string | number | { id: string | number } } | [sl
 * @see app/Http/Controllers/Slider/SliderController.php:51
 * @route '/dashboard/sliders/{slider}'
 */
-destroy.delete = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -395,7 +395,7 @@ destroy.delete = (args: { slider: string | number | { id: string | number } } | 
 * @see app/Http/Controllers/Slider/SliderController.php:51
 * @route '/dashboard/sliders/{slider}'
 */
-const destroyForm = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -410,7 +410,7 @@ const destroyForm = (args: { slider: string | number | { id: string | number } }
 * @see app/Http/Controllers/Slider/SliderController.php:51
 * @route '/dashboard/sliders/{slider}'
 */
-destroyForm.delete = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { slider: number | { id: number } } | [slider: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
