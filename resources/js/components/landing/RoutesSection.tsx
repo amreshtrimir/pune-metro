@@ -27,6 +27,7 @@ const lines: Line[] = [
         id: 'line1',
         label: 'Line 3',
         image: '/landing/route-section/map-line-3.jpg',
+
         imageAlt: 'Pune Metro Line 3 Pink — Maan to District Court',
         stats: [
             { value: '23.3', unit: 'km.', label: 'Corridor Length' },
