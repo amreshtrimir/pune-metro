@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView';
+import { board } from '@/routes/about';
 
 const directors = [
     {
@@ -89,7 +90,7 @@ function DirectorAvatar({
     );
 }
 
-export default function BoardSection({ showHeading = true }: { showHeading?: boolean }) {
+export default function BoardSection({ showHeading = true, showKnowMore = false }: { showHeading?: boolean; showKnowMore?: boolean }) {
     const { ref: headerRef, inView: headerInView } =
         useInView<HTMLDivElement>();
     const { ref: rowRef, inView: rowInView } = useInView<HTMLDivElement>();
@@ -142,6 +143,17 @@ export default function BoardSection({ showHeading = true }: { showHeading?: boo
                     ))}
                 </div>
             </div>
+
+                {showKnowMore && (
+                    <div className="mt-8 text-center">
+                        <a
+                            href={board.url()}
+                            className="inline-block rounded-md bg-brand-dark px-7 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                        >
+                            Know More
+                        </a>
+                    </div>
+                )}
         </section>
     );
 }
