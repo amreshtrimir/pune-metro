@@ -1,9 +1,9 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
-import PageSectionHeading from '@/components/landing/PageSectionHeading';
-
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 import QuoteBanner from '@/components/landing/QuoteBanner';
+import ImageLightbox from '@/components/ui/image-lightbox';
 
 const stats = [
     { value: '23.3', unit: 'km.', label: 'Corridor Length' },
@@ -14,6 +14,9 @@ const stats = [
 
 export default function RouteMap() {
     const [activeTab, setActiveTab] = useState<'all' | 'line3'>('all');
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const activeImage = activeTab === 'all' ? '/landing/route-section/map-all.jpg' : '/landing/route-section/map-line-3.jpg';
+    const activeImageAlt = activeTab === 'all' ? 'Pune Metro All Lines Route Map' : 'Pune Metro Line 3 Route Map';
 
     return (
         <>
@@ -77,16 +80,23 @@ export default function RouteMap() {
             </section>
 
             {/* ── Route Map Image ── */}
+            {lightboxOpen && (
+                <ImageLightbox
+                    src={activeImage}
+                    alt={activeImageAlt}
+                    onClose={() => setLightboxOpen(false)}
+                />
+            )}
             <section className="bg-white py-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="overflow-hidden rounded-3xl bg-white">
+                    <div
+                        className="cursor-zoom-in overflow-hidden rounded-3xl bg-white"
+                        onClick={() => setLightboxOpen(true)}
+                        title="Click to enlarge"
+                    >
                         <img
-                            src={
-                                activeTab === 'all'
-                                    ? '/route-page/allline.jpeg'
-                                    : '/route-page/line3.jpeg'
-                            }
-                            alt={activeTab === 'all' ? 'Pune Metro All Lines Route Map' : 'Pune Metro Line 3 Route Map'}
+                            src={activeImage}
+                            alt={activeImageAlt}
                             className="h-auto w-full object-contain"
                         />
                     </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ImageLightbox from '@/components/ui/image-lightbox';
 import { useInView } from '@/hooks/useInView';
 
 type Line = {
@@ -13,7 +14,7 @@ const lines: Line[] = [
     {
         id: 'all',
         label: 'All line',
-        image: '/landing/metro-network-map-all.png',
+        image: '/landing/route-section/map-all.jpg',
         imageAlt: 'Pune Metro Full Network Map',
         stats: [
             { value: '57.9', unit: 'km.', label: 'Total Network Length' },
@@ -25,8 +26,8 @@ const lines: Line[] = [
     {
         id: 'line1',
         label: 'Line 3',
-        image: '/landing/metro-network-map-line-1.png',
-        imageAlt: 'Pune Metro Line 1 — PCMC to Swargate',
+        image: '/landing/route-section/map-line-3.jpg',
+        imageAlt: 'Pune Metro Line 3 Pink — Maan to District Court',
         stats: [
             { value: '23.3', unit: 'km.', label: 'Corridor Length' },
             { value: '23', unit: '', label: 'Metro Stations' },
@@ -38,11 +39,20 @@ const lines: Line[] = [
 
 export default function RoutesSection() {
     const [activeId, setActiveId] = useState('all');
+    const [lightboxOpen, setLightboxOpen] = useState(false);
     const active = lines.find((l) => l.id === activeId) ?? lines[0];
     const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>();
     const { ref: contentRef, inView: contentInView } = useInView<HTMLDivElement>();
 
     return (
+        <>
+        {lightboxOpen && (
+            <ImageLightbox
+                src={active.image}
+                alt={active.imageAlt}
+                onClose={() => setLightboxOpen(false)}
+            />
+        )}
         <section id="routes" className="pt-16 pb-0" style={{
             minHeight: '866px',
             background: `
@@ -112,13 +122,24 @@ export default function RoutesSection() {
                         style={{ borderRadius: '25px 25px 0 0' }}
                     >
                         <div className="overflow-hidden p-4" style={{ borderRadius: '25px 25px 0 0' }}>
-                            <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
+                            <div
+                                className="relative w-full cursor-zoom-in"
+                                style={{ aspectRatio: '16 / 9' }}
+                                onClick={() => setLightboxOpen(true)}
+                                title="Click to enlarge"
+                            >
                                 <img
                                     key={active.id}
                                     src={active.image}
                                     alt={active.imageAlt}
-                                    className="absolute inset-0 h-full w-full rounded-xl object-contain"
+                                    className="absolute inset-0 h-full w-full rounded-xl object-contain transition-opacity duration-300"
                                 />
+                                {/* Hover hint */}
+                                <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/0 transition-all duration-300 hover:bg-black/10">
+                                    <span className="rounded-full bg-black/50 px-3 py-1.5 font-montserrat text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:opacity-100 [div:hover>&]:opacity-100">
+                                        Click to enlarge
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -152,6 +173,7 @@ export default function RoutesSection() {
 
             </div>
         </section>
+        </>
     );
 }
 

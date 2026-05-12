@@ -202,7 +202,7 @@ export default function HeroSection() {
                         className="h-full w-full object-cover"
                         style={{ willChange: 'transform', transformOrigin: 'center center' }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
                 </div>
             ))}
 
