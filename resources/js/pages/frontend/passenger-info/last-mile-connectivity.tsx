@@ -42,12 +42,9 @@ export default function LastMileConnectivity() {
             <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Last Mile Connectivity - Puneri Metro" />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-10 pb-0 mb-5">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <PageSectionHeading lineColor="#8e8e8e">Last Mile Connectivity</PageSectionHeading>
-                    <p className="mt-3 mb-10 font-inter text-xl capitalize text-brand">
-                        Built for Faster, Smarter, more Comfortable travel
-                    </p>
                 </div>
             </section>
 
