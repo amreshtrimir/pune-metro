@@ -1,56 +1,10 @@
 import { Head } from '@inertiajs/react';
-import { useState } from 'react';
 import LeadershipSection from '@/components/landing/LeadershipSection';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
-
-
-const teamMembers = [
-    {
-        image: '/about/leader-image/praveen-sinha.png',
-        name: 'Dr. Praveer Sinha',
-        designation: 'Chairman',
-        content:
-            "Dr. Praveer Sinha is the CEO & Managing Director of Tata Power, leading its transformation from a traditional utility into a sustainable, technology-driven, customer-focused green energy company. With over 40 years of experience across the power sector, he has championed clean energy innovation, including establishing India’s first international clean energy incubator. He also advises the MIT Energy Initiative and contributes to national power sector reforms. Recognized as Best CEO (Power Sector) by Business Today, Fortune India, and Forbes in 2023, he holds an Electrical Engineering degree, a master’s in business law, a doctorate from IIT Delhi, and completed AMP at IIM Ahmedabad. He is also a visiting Research Associate at MIT, USA.",
-    },
-    {
-        image: '/about/leader-image/mangu-singh.png',
-        name: 'Dr. Mangu Singh',
-        designation: 'Independent Director',
-        content:
-            'Dr. Mangu Singh, a Civil Engineering graduate from the University of Roorkee (1979), joined IRSE and built a distinguished career in Indian Railways. As MD of Delhi Metro Rail Corporation for over a decade, he led major metro projects across India, overseeing complex infrastructure including ~200 km of tunnels and 70 stations. With 33+ years of experience, he also led Delhi Metro’s CDM project with UNFCCC, earning carbon credits. He has received multiple honors, including the Railway Week Award (1996) and distinguished alumni awards from IIT Roorkee and NAIR, and served as President of CoMET in 2019 and member of UITP’s Policy Board.',
-    },
-    {
-        image: '/about/leader-image/leader-4.png',
-        name: 'Mr. Sudip Mullick',
-        designation: 'Independent Director',
-        content: 'Mr. Sudip Mullick is a Partner at Economic Laws Practice, specializing in real estate, construction (contracts & disputes), and hospitality. Previously at Khaitan & Co. for nearly 30 years, he helped establish its Mumbai office and served on its national executive committee. A Calcutta University law graduate, he is widely recognized in Chambers, Legal 500, Benchmark Litigation, and named an Elite Practitioner by Asia Law (2024–25). He also serves as an independent director on several boards and completed a leadership program at Harvard University in 2017.',
-    },
-    {
-        image: '/about/leader-image/leader-1.png',
-        name: 'Mr. Basil Watters',
-        designation: 'Director',
-        content: 'A Project Finance expert with 20 years of experience at a major international London-based law firm, an international development bank in United Kingdom and India, and with the financial arm of one of the Europe’s largest and successful global engineering companies. He was lived worked in the United Kingdom, India and Germany, and worked as an external counsel, internal counsel and also as Chief Operations Officer for South Asia, and latterly as debt and equity provider, demonstrating large skills set in a variety of roles.',
-    },
-    {
-        image: '/about/leader-image/leader-2.png',
-        name: 'Ms. Sukriti Sood',
-        designation: 'Director',
-        content: 'Ms. Sukriti Sood has over 18 years of experience across financial services. She has been with Siemens Financial Services (SFS) since 2013 and has worked across both debt and equity businesses. Currently she leads the India business for equity investments for SFS. She has done her Civil Engineering from Delhi College of Engineering, her MBA from SP Jain Institute of Management & Research, Mumbai and her Masters in Finance from London Business School, UK.',
-    },
-    {
-        image: '/about/leader-image/leader-3.png',
-        name: 'Mr. Deepak Singla',
-        designation: 'Nominee Director',
-        content: 'Deepak Singla, a commerce graduate from Kurukshetra University, is a Chartered Accountant and CFA who previously worked at Nestlé India. He cleared the IAS exam in 2012 and has ~10 years of experience in urban and rural administration, serving in roles such as SDO (Umred, Yavatmal), CEO Zila Parishad Yavatmal, Commissioner–Water Conservation (Aurangabad), Collector–Gadchiroli, and MD Tribal Development Corporation (Nashik). Since November 2022, he has been Additional Commissioner at Pune Metropolitan Region Development Corporation.',
-    },
-];
+import BoardSection from '@/components/landing/BoardSection';
 
 export default function Board() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-    const toggle = (idx: number) => setOpenIndex((prev) => (prev === idx ? null : idx));
-
     return (
         <>
             <Head>
@@ -71,66 +25,8 @@ export default function Board() {
                 </div>
             </section>
 
-            {/* ── Leadership Section ── */}
-            <LeadershipSection showCeoTitle={false} showCfoTitle={false} />
-
-            {/* ── Board Member Cards ── */}
-            <section className="bg-white">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        {teamMembers.map((member, idx) => (
-                            <div
-                                key={idx}
-                                className={`group flex flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1 ${openIndex === idx ? 'border border-gray-100' : 'border border-transparent'}`}
-                            >
-                                <div className="relative h-96 overflow-hidden bg-[#e8e8b4]">
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                                </div>
-                                <div className="flex flex-1 flex-col p-5">
-                                    <div className="flex items-center justify-between gap-3">
-                                        <div>
-                                            <p className="font-montserrat font-semibold text-black" style={{ fontSize: '16px' }}>
-                                                {member.name}
-                                            </p>
-                                            <p className="mt-0.5 font-montserrat text-brand" style={{ fontSize: '13px' }}>
-                                                {member.designation}
-                                            </p>
-                                        </div>
-                                        <button
-                                            type="button"
-                                            onClick={() => toggle(idx)}
-                                            aria-expanded={openIndex === idx}
-                                            aria-label={openIndex === idx ? 'Hide bio' : 'Show bio'}
-                                            className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
-                                                openIndex === idx
-                                                    ? 'border-brand bg-brand text-white'
-                                                    : 'border-brand text-brand hover:bg-brand/10'
-                                            }`}
-                                        >
-                                            <span className="text-lg leading-none">{openIndex === idx ? '−' : '+'}</span>
-                                        </button>
-                                    </div>
-                                    <div
-                                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                                            openIndex === idx ? 'mt-3 max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                                        }`}
-                                    >
-                                        <div className="mb-2 h-px w-full bg-gray-100" />
-                                        <p className="font-montserrat leading-relaxed text-gray-600" style={{ fontSize: '13px' }}>
-                                            {member.content}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* ── Board Members ── */}
+            <BoardSection showHeading={false} />
         </>
     );
 }

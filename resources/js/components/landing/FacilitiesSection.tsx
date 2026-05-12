@@ -38,7 +38,7 @@ export default function FacilitiesSection() {
     const { ref: cardsRef, inView: cardsInView } = useInView<HTMLDivElement>();
 
     return (
-        <section id="facilities" className="bg-white py-20">
+        <section id="facilities" className="bg-white py-10">
             <div className="mx-auto max-w-360 px-6 lg:px-16">
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
                     {/* Left: sticky header */}
