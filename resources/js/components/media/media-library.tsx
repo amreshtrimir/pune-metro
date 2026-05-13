@@ -12,7 +12,8 @@ import { Search, Upload, LayoutGrid, Loader2 } from 'lucide-react';
 import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 
 const MODULES = [
-    { value: '', label: 'General' },
+    { value: '', label: 'All' },
+    { value: 'general', label: 'General' },
     { value: 'blog', label: 'Blog' },
     { value: 'pages', label: 'Pages' },
     { value: 'banners', label: 'Banners' },
@@ -32,8 +33,8 @@ type MediaLibraryProps = {
 
 export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) {
     const [showUploader, setShowUploader] = useState(false);
-    const [uploading, setUploading] = useState(false);
     const [search, setSearch] = useState(filters.search ?? '');
+    const [moduleFilter, setModuleFilter] = useState(filters.module ?? '');
     const [editingMedia, setEditingMedia] = useState<Media | null>(null);
     const [editFileName, setEditFileName] = useState('');
     const [editModule, setEditModule] = useState('');
@@ -43,57 +44,17 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        router.get(MediaController.index.url(), { search: search || undefined }, { preserveState: true, replace: true });
+        router.get(MediaController.index.url(), { search: search || undefined, module: moduleFilter || undefined }, { preserveState: true, replace: true });
     };
 
-    const handleUpload = useCallback(async (
-        file: File,
-        dimensionIds: number[],
-        customDimensions: Array<{ width: number; height: number }>,
-        onProgress: (pct: number) => void,
-        module: string,
-    ) => {
-        setUploading(true);
-        try {
-            const formData = new FormData();
-            formData.append('file', file);
-            if (module) formData.append('module', module);
-            dimensionIds.forEach((id) => formData.append('dimension_ids[]', String(id)));
-            customDimensions.forEach((d, i) => {
-                formData.append(`custom_dimensions[${i}][width]`, String(d.width));
-                formData.append(`custom_dimensions[${i}][height]`, String(d.height));
-            });
+    const handleModuleFilter = (mod: string) => {
+        setModuleFilter(mod);
+        router.get(MediaController.index.url(), { search: search || undefined, module: mod || undefined }, { preserveState: true, replace: true });
+    };
 
-            const xsrfToken = decodeURIComponent(
-                document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '',
-            );
-
-            await new Promise<void>((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', MediaController.store.url());
-                xhr.setRequestHeader('X-XSRF-TOKEN', xsrfToken);
-                xhr.setRequestHeader('Accept', 'application/json');
-                xhr.upload.onprogress = (e) => {
-                    if (e.lengthComputable) {
-                        onProgress(Math.round((e.loaded / e.total) * 100));
-                    }
-                };
-                xhr.onload = () => {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        resolve();
-                    } else {
-                        reject(new Error(`Upload failed: ${xhr.status}`));
-                    }
-                };
-                xhr.onerror = () => reject(new Error('Network error'));
-                xhr.send(formData);
-            });
-
-            setShowUploader(false);
-            router.reload({ only: ['media'] });
-        } finally {
-            setUploading(false);
-        }
+    const handleUploadComplete = useCallback(() => {
+        setShowUploader(false);
+        router.reload({ only: ['media'] });
     }, []);
 
     const handleDelete = useCallback((id: number) => {
@@ -163,6 +124,19 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
                 </Button>
             </div>
 
+            <div className="flex flex-wrap gap-2">
+                {MODULES.map((m) => (
+                    <Badge
+                        key={m.value}
+                        variant={moduleFilter === m.value ? 'default' : 'outline'}
+                        className="cursor-pointer"
+                        onClick={() => handleModuleFilter(m.value)}
+                    >
+                        {m.label}
+                    </Badge>
+                ))}
+            </div>
+
             {media.data.length === 0 ? (
                 <div className="flex flex-col items-center justify-center rounded-xl border py-20 text-center">
                     <LayoutGrid className="mb-3 size-12 text-muted-foreground" />
@@ -197,7 +171,7 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
                     <DialogHeader>
                         <DialogTitle>Upload Media</DialogTitle>
                     </DialogHeader>
-                    <MediaUploader dimensions={dimensions} onUpload={handleUpload} uploading={uploading} />
+                    <MediaUploader dimensions={dimensions} onComplete={handleUploadComplete} />
                 </DialogContent>
             </Dialog>
 

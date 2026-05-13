@@ -4,7 +4,8 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { MediaDimension } from '@/types';
-import { Upload, X, Plus, Image, CheckCircle2, Loader2 } from 'lucide-react';
+import { Upload, X, Plus, Image, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 
 const MODULES = [
     { value: '', label: 'General (no module)' },
@@ -14,63 +15,63 @@ const MODULES = [
     { value: 'gallery', label: 'Gallery' },
 ];
 
-type PreviewFile = {
+type FileStatus = 'pending' | 'uploading' | 'done' | 'error';
+
+type QueuedFile = {
+    id: string;
     file: File;
     preview: string;
+    status: FileStatus;
+    progress: number;
+    error?: string;
 };
 
 type MediaUploaderProps = {
     dimensions: MediaDimension[];
-    onUpload: (
-        file: File,
-        dimensionIds: number[],
-        customDimensions: Array<{ width: number; height: number }>,
-        onProgress: (pct: number) => void,
-        module: string,
-    ) => Promise<void>;
+    onComplete: () => void;
 };
 
-const PREDEFINED_DIMENSIONS = [
-    { label: 'Thumbnail (200×200)', width: 200, height: 200 },
-    { label: 'Small (400×400)', width: 400, height: 400 },
-    { label: 'Medium (800×600)', width: 800, height: 600 },
-    { label: 'Large (1200×800)', width: 1200, height: 800 },
-    { label: 'Banner (1920×400)', width: 1920, height: 400 },
-];
-
-export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
-    const [preview, setPreview] = useState<PreviewFile | null>(null);
+export function MediaUploader({ dimensions, onComplete }: MediaUploaderProps) {
+    const [queue, setQueue] = useState<QueuedFile[]>([]);
     const [dragging, setDragging] = useState(false);
     const [selectedDimensionIds, setSelectedDimensionIds] = useState<number[]>([]);
     const [customDimensions, setCustomDimensions] = useState<Array<{ width: string; height: string }>>([]);
     const [module, setModule] = useState('');
-    const [progress, setProgress] = useState<number | null>(null);
-    const [done, setDone] = useState(false);
-    const uploading = progress !== null && !done;;
+    const [running, setRunning] = useState(false);
 
-    const handleFile = useCallback((file: File) => {
-        const url = URL.createObjectURL(file);
-        setPreview({ file, preview: url });
+    const addFiles = useCallback((files: FileList | File[]) => {
+        const imageFiles = Array.from(files).filter((f) => f.type.startsWith('image/'));
+        const newItems: QueuedFile[] = imageFiles.map((f) => ({
+            id: `${f.name}-${f.size}-${Date.now()}-${Math.random()}`,
+            file: f,
+            preview: URL.createObjectURL(f),
+            status: 'pending',
+            progress: 0,
+        }));
+        setQueue((prev) => [...prev, ...newItems]);
     }, []);
 
     const handleDrop = useCallback((e: React.DragEvent) => {
         e.preventDefault();
         setDragging(false);
-        const file = e.dataTransfer.files[0];
-        if (file?.type.startsWith('image/')) {
-            handleFile(file);
-        }
-    }, [handleFile]);
+        addFiles(e.dataTransfer.files);
+    }, [addFiles]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) handleFile(file);
+        if (e.target.files) addFiles(e.target.files);
+        e.target.value = '';
+    };
+
+    const removeFromQueue = (id: string) => {
+        setQueue((prev) => {
+            const item = prev.find((i) => i.id === id);
+            if (item) URL.revokeObjectURL(item.preview);
+            return prev.filter((i) => i.id !== id);
+        });
     };
 
     const toggleDimension = (id: number) => {
-        setSelectedDimensionIds((prev) =>
-            prev.includes(id) ? prev.filter((d) => d !== id) : [...prev, id],
-        );
+        setSelectedDimensionIds((prev) => (prev.includes(id) ? prev.filter((d) => d !== id) : [...prev, id]));
     };
 
     const addCustomDimension = () => {
@@ -82,108 +83,158 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
     };
 
     const updateCustomDimension = (index: number, field: 'width' | 'height', value: string) => {
-        setCustomDimensions((prev) =>
-            prev.map((d, i) => (i === index ? { ...d, [field]: value } : d)),
-        );
+        setCustomDimensions((prev) => prev.map((d, i) => (i === index ? { ...d, [field]: value } : d)));
+    };
+
+    const getXsrfToken = () =>
+        decodeURIComponent(document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '');
+
+    const uploadFile = (item: QueuedFile, validCustom: Array<{ width: number; height: number }>): Promise<void> => {
+        return new Promise((resolve, reject) => {
+            const formData = new FormData();
+            formData.append('file', item.file);
+            if (module) formData.append('module', module);
+            selectedDimensionIds.forEach((id) => formData.append('dimension_ids[]', String(id)));
+            validCustom.forEach((d, i) => {
+                formData.append(`custom_dimensions[${i}][width]`, String(d.width));
+                formData.append(`custom_dimensions[${i}][height]`, String(d.height));
+            });
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', MediaController.store.url());
+            xhr.setRequestHeader('X-XSRF-TOKEN', getXsrfToken());
+            xhr.setRequestHeader('Accept', 'application/json');
+
+            xhr.upload.onprogress = (e) => {
+                if (e.lengthComputable) {
+                    const pct = Math.round((e.loaded / e.total) * 100);
+                    setQueue((prev) => prev.map((q) => (q.id === item.id ? { ...q, progress: pct } : q)));
+                }
+            };
+
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    setQueue((prev) => prev.map((q) => (q.id === item.id ? { ...q, status: 'done', progress: 100 } : q)));
+                    resolve();
+                } else {
+                    setQueue((prev) =>
+                        prev.map((q) => (q.id === item.id ? { ...q, status: 'error', error: `HTTP ${xhr.status}` } : q)),
+                    );
+                    reject(new Error(`HTTP ${xhr.status}`));
+                }
+            };
+
+            xhr.onerror = () => {
+                setQueue((prev) =>
+                    prev.map((q) => (q.id === item.id ? { ...q, status: 'error', error: 'Network error' } : q)),
+                );
+                reject(new Error('Network error'));
+            };
+
+            setQueue((prev) => prev.map((q) => (q.id === item.id ? { ...q, status: 'uploading' } : q)));
+            xhr.send(formData);
+        });
     };
 
     const handleSubmit = async () => {
-        if (!preview || uploading) return;
+        const pending = queue.filter((q) => q.status === 'pending' || q.status === 'error');
+        if (!pending.length || running) return;
 
         const validCustom = customDimensions
             .filter((d) => d.width && d.height)
             .map((d) => ({ width: parseInt(d.width), height: parseInt(d.height) }));
 
-        setProgress(0);
-        setDone(false);
-        try {
-            await onUpload(preview.file, selectedDimensionIds, validCustom, setProgress, module);
-            setDone(true);
-            setTimeout(() => {
-                setPreview(null);
-                setSelectedDimensionIds([]);
-                setCustomDimensions([]);
-                setProgress(null);
-                setDone(false);
-                setModule('');
-            }, 1200);
-        } catch {
-            setProgress(null);
+        setRunning(true);
+        let anySuccess = false;
+        for (const item of pending) {
+            try {
+                await uploadFile(item, validCustom);
+                anySuccess = true;
+            } catch {
+                // continue with next file
+            }
+        }
+        setRunning(false);
+
+        if (anySuccess) {
+            setTimeout(() => onComplete(), 800);
         }
     };
 
+    const pendingCount = queue.filter((q) => q.status === 'pending' || q.status === 'error').length;
+    const doneCount = queue.filter((q) => q.status === 'done').length;
+
     return (
         <div className="space-y-4">
-            {!preview ? (
-                <div
-                    className={cn(
-                        'flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-10 transition-colors',
-                        dragging ? 'border-primary bg-primary/5' : 'border-muted-foreground/30 hover:border-primary/50',
-                    )}
-                    onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
-                    onDragLeave={() => setDragging(false)}
-                    onDrop={handleDrop}
-                    onClick={() => document.getElementById('media-file-input')?.click()}
-                >
-                    <Image className="mb-3 size-10 text-muted-foreground" />
-                    <p className="text-sm font-medium text-foreground">Drop image here or click to select</p>
-                    <p className="mt-1 text-xs text-muted-foreground">JPEG, PNG, GIF, WEBP – max 10MB</p>
-                    <input
-                        id="media-file-input"
-                        type="file"
-                        accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
-                        className="hidden"
-                        onChange={handleInputChange}
-                    />
-                </div>
-            ) : (
-                <div className="space-y-4">
-                    <div className="relative overflow-hidden rounded-xl border">
-                        <img
-                            src={preview.preview}
-                            alt="Preview"
-                            className={cn('max-h-64 w-full object-contain transition-opacity', uploading && 'opacity-60')}
-                        />
+            <div
+                className={cn(
+                    'flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 transition-colors',
+                    dragging ? 'border-primary bg-primary/5' : 'border-muted-foreground/30 hover:border-primary/50',
+                )}
+                onDragOver={(e) => {
+                    e.preventDefault();
+                    setDragging(true);
+                }}
+                onDragLeave={() => setDragging(false)}
+                onDrop={handleDrop}
+                onClick={() => document.getElementById('media-file-input')?.click()}
+            >
+                <Image className="mb-2 size-8 text-muted-foreground" />
+                <p className="text-sm font-medium">Drop images here or click to select</p>
+                <p className="mt-1 text-xs text-muted-foreground">JPEG, PNG, GIF, WEBP – multiple files supported</p>
+                <input
+                    id="media-file-input"
+                    type="file"
+                    accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                    multiple
+                    className="hidden"
+                    onChange={handleInputChange}
+                />
+            </div>
 
-                        {/* Progress overlay */}
-                        {progress !== null && (
-                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/60 backdrop-blur-sm">
-                                {done ? (
-                                    <>
-                                        <CheckCircle2 className="size-10 text-green-500" />
-                                        <p className="text-sm font-medium text-green-600">Uploaded!</p>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Loader2 className="size-8 animate-spin text-primary" />
-                                        <p className="text-sm font-medium">
-                                            {progress < 100 ? `Uploading… ${progress}%` : 'Processing…'}
-                                        </p>
-                                        <div className="h-1.5 w-3/4 overflow-hidden rounded-full bg-muted">
-                                            <div
-                                                className="h-full rounded-full bg-primary transition-all duration-200"
-                                                style={{ width: `${progress}%` }}
-                                            />
-                                        </div>
-                                    </>
+            {queue.length > 0 && (
+                <div className="max-h-48 space-y-2 overflow-y-auto pr-1">
+                    {queue.map((item) => (
+                        <div key={item.id} className="flex items-center gap-3 rounded-lg border bg-muted/30 px-3 py-2">
+                            <img src={item.preview} alt={item.file.name} className="size-10 shrink-0 rounded object-cover" />
+                            <div className="min-w-0 flex-1">
+                                <p className="truncate text-xs font-medium">{item.file.name}</p>
+                                {item.status === 'uploading' && (
+                                    <div className="mt-1 h-1 overflow-hidden rounded-full bg-muted">
+                                        <div
+                                            className="h-full rounded-full bg-primary transition-all duration-200"
+                                            style={{ width: `${item.progress}%` }}
+                                        />
+                                    </div>
+                                )}
+                                {item.status === 'error' && <p className="text-[10px] text-destructive">{item.error}</p>}
+                            </div>
+                            <div className="shrink-0">
+                                {item.status === 'uploading' && <Loader2 className="size-4 animate-spin text-primary" />}
+                                {item.status === 'done' && <CheckCircle2 className="size-4 text-green-500" />}
+                                {item.status === 'error' && <AlertCircle className="size-4 text-destructive" />}
+                                {item.status === 'pending' && !running && (
+                                    <button
+                                        type="button"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            removeFromQueue(item.id);
+                                        }}
+                                        className="rounded p-0.5 text-muted-foreground hover:text-foreground"
+                                    >
+                                        <X className="size-3.5" />
+                                    </button>
                                 )}
                             </div>
-                        )}
+                        </div>
+                    ))}
+                </div>
+            )}
 
-                        <Button
-                            type="button"
-                            size="icon"
-                            variant="destructive"
-                            className="absolute right-2 top-2 size-7"
-                            onClick={() => setPreview(null)}
-                            disabled={uploading}
-                        >
-                            <X className="size-3" />
-                        </Button>
-                    </div>
-
+            {queue.some((q) => q.status === 'pending') && (
+                <>
                     <div>
-                        <p className="mb-2 text-sm font-medium">Select dimensions</p>
+                        <p className="mb-2 text-sm font-medium">Dimensions (optional)</p>
 
                         {dimensions.length > 0 && (
                             <div className="mb-3">
@@ -204,7 +255,7 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
                         )}
 
                         <div>
-                            <p className="mb-1.5 text-xs text-muted-foreground">Custom dimensions</p>
+                            <p className="mb-1.5 text-xs text-muted-foreground">Custom</p>
                             {customDimensions.map((d, i) => (
                                 <div key={i} className="mb-2 flex items-center gap-2">
                                     <Input
@@ -226,12 +277,12 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
                                         min={1}
                                         max={5000}
                                     />
-                                    <Button type="button" size="icon" variant="ghost" className="size-8" onClick={() => removeCustomDimension(i)} disabled={uploading}>
+                                    <Button type="button" size="icon" variant="ghost" className="size-8" onClick={() => removeCustomDimension(i)}>
                                         <X className="size-3" />
                                     </Button>
                                 </div>
                             ))}
-                            <Button type="button" size="sm" variant="outline" className="h-7 text-xs" onClick={addCustomDimension} disabled={uploading}>
+                            <Button type="button" size="sm" variant="outline" className="h-7 text-xs" onClick={addCustomDimension}>
                                 <Plus className="mr-1 size-3" /> Add custom
                             </Button>
                         </div>
@@ -252,15 +303,25 @@ export function MediaUploader({ dimensions, onUpload }: MediaUploaderProps) {
                             ))}
                         </div>
                     </div>
+                </>
+            )}
 
-                    <Button type="button" onClick={handleSubmit} disabled={uploading} className="w-full">
-                        {uploading ? (
-                            <><Loader2 className="mr-2 size-4 animate-spin" /> {progress !== null && progress < 100 ? `Uploading ${progress}%` : 'Processing…'}</>
-                        ) : (
-                            <><Upload className="mr-2 size-4" /> Upload</>
-                        )}
-                    </Button>
-                </div>
+            {queue.length > 0 && (
+                <Button type="button" onClick={handleSubmit} disabled={running || pendingCount === 0} className="w-full">
+                    {running ? (
+                        <>
+                            <Loader2 className="mr-2 size-4 animate-spin" /> Uploading…
+                        </>
+                    ) : doneCount > 0 && pendingCount === 0 ? (
+                        <>
+                            <CheckCircle2 className="mr-2 size-4" /> All uploaded!
+                        </>
+                    ) : (
+                        <>
+                            <Upload className="mr-2 size-4" /> Upload {pendingCount} {pendingCount === 1 ? 'file' : 'files'}
+                        </>
+                    )}
+                </Button>
             )}
         </div>
     );
