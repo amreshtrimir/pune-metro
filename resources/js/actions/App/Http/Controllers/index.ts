@@ -4,6 +4,7 @@ import Blog from './Blog'
 import DashboardController from './DashboardController'
 import Media from './Media'
 import Slider from './Slider'
+import Gallery from './Gallery'
 import Settings from './Settings'
 
 const Controllers = {
@@ -13,6 +14,7 @@ const Controllers = {
     DashboardController: Object.assign(DashboardController, DashboardController),
     Media: Object.assign(Media, Media),
     Slider: Object.assign(Slider, Slider),
+    Gallery: Object.assign(Gallery, Gallery),
     Settings: Object.assign(Settings, Settings),
 }
 

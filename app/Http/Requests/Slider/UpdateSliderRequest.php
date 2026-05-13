@@ -14,6 +14,13 @@ class UpdateSliderRequest extends FormRequest
         return $this->user()?->isAdmin() ?? false;
     }
 
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'is_active' => $this->boolean('is_active'),
+        ]);
+    }
+
     public function rules(): array
     {
         return [

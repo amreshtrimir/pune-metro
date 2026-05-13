@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { MediaCard } from '@/components/media/media-card';
 import { cn } from '@/lib/utils';
 import type { Media, MediaVariant, PaginatedData, SelectedMedia } from '@/types';
 import { Search, ChevronLeft, ChevronRight, CheckCircle2, Images, X } from 'lucide-react';
@@ -18,19 +17,23 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
+    const [module, setModule] = useState<string | null>(null);
+    const [modules, setModules] = useState<string[]>([]);
     const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
     const [selectedVariant, setSelectedVariant] = useState<MediaVariant | null>(null);
 
-    const fetchMedia = async (searchVal: string, pageVal: number) => {
+    const fetchMedia = async (searchVal: string, pageVal: number, moduleVal: string | null) => {
         setLoading(true);
         try {
             const params = new URLSearchParams({ page: String(pageVal) });
             if (searchVal) params.set('search', searchVal);
+            if (moduleVal) params.set('module', moduleVal);
             const res = await fetch(`/dashboard/media?${params}`, {
                 headers: { Accept: 'application/json' },
             });
-            const data = await res.json() as { media: typeof media };
+            const data = await res.json() as { media: typeof media; modules?: string[] };
             setMedia(data.media ?? data);
+            if (data.modules) setModules(data.modules);
         } catch {
             // silent
         } finally {
@@ -44,7 +47,8 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
             setSelectedVariant(null);
             setSearch('');
             setPage(1);
-            fetchMedia('', 1);
+            setModule(null);
+            fetchMedia('', 1, null);
         }
     }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -55,7 +59,15 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         setPage(1);
-        fetchMedia(search, 1);
+        fetchMedia(search, 1, module);
+    };
+
+    const handleModuleChange = (mod: string | null) => {
+        setModule(mod);
+        setPage(1);
+        setSelectedMedia(null);
+        setSelectedVariant(null);
+        fetchMedia(search, 1, mod);
     };
 
     const handleSelect = (m: Media) => {
@@ -64,14 +76,17 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
     };
 
     const handleConfirm = () => {
-        if (!selectedMedia || !selectedVariant) return;
+        if (!selectedMedia) return;
+        // If variants exist, one must be selected; otherwise fall back to the original file
+        if (selectedMedia.variants.length > 0 && !selectedVariant) return;
+        const filePath = selectedVariant?.file_path ?? selectedMedia.file_path;
         onSelect({
             media_id: selectedMedia.id,
             variant: {
-                width: selectedVariant.width,
-                height: selectedVariant.height,
-                file_path: selectedVariant.file_path,
-                url: `/storage/${selectedVariant.file_path}`,
+                width: selectedVariant?.width ?? 0,
+                height: selectedVariant?.height ?? 0,
+                file_path: filePath,
+                url: `/storage/${filePath}`,
             },
         });
         onClose();
@@ -81,7 +96,7 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
 
     return (
         <Dialog open={open} onOpenChange={handleClose}>
-            <DialogContent className="flex h-[80vh] max-h-[700px] max-w-5xl flex-col gap-0 overflow-hidden p-0">
+            <DialogContent className="flex h-[85vh] max-h-205 max-w-6xl flex-col gap-0 overflow-hidden p-0">
                 {/* Header */}
                 <DialogHeader className="flex-none border-b px-5 py-4">
                     <DialogTitle className="flex items-center gap-2 text-base">
@@ -94,8 +109,8 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                 <div className="flex min-h-0 flex-1">
                     {/* Grid panel */}
                     <div className="flex flex-1 flex-col min-w-0">
-                        {/* Search bar */}
-                        <div className="flex-none border-b px-4 py-3">
+                        {/* Search + module filter bar */}
+                        <div className="flex-none border-b px-4 py-3 space-y-2.5">
                             <form onSubmit={handleSearch} className="flex gap-2">
                                 <div className="relative flex-1">
                                     <Search className="absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
@@ -110,13 +125,45 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                                     Search
                                 </Button>
                             </form>
+
+                            {modules.length > 0 && (
+                                <div className="flex flex-wrap gap-1.5">
+                                    <button
+                                        type="button"
+                                        onClick={() => handleModuleChange(null)}
+                                        className={cn(
+                                            'rounded-full border px-3 py-0.5 text-xs font-medium transition-colors',
+                                            module === null
+                                                ? 'border-primary bg-primary text-primary-foreground'
+                                                : 'border-border bg-background text-muted-foreground hover:border-primary/50 hover:text-foreground',
+                                        )}
+                                    >
+                                        All
+                                    </button>
+                                    {modules.map((mod) => (
+                                        <button
+                                            key={mod}
+                                            type="button"
+                                            onClick={() => handleModuleChange(mod)}
+                                            className={cn(
+                                                'rounded-full border px-3 py-0.5 text-xs font-medium capitalize transition-colors',
+                                                module === mod
+                                                    ? 'border-primary bg-primary text-primary-foreground'
+                                                    : 'border-border bg-background text-muted-foreground hover:border-primary/50 hover:text-foreground',
+                                            )}
+                                        >
+                                            {mod}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Grid */}
                         <div className="flex-1 overflow-y-auto p-4">
                             {loading ? (
-                                <div className="grid grid-cols-4 gap-3 sm:grid-cols-5">
-                                    {Array.from({ length: 15 }).map((_, i) => (
+                                <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
+                                    {Array.from({ length: 12 }).map((_, i) => (
                                         <div key={i} className="aspect-square animate-pulse rounded-xl bg-muted" />
                                     ))}
                                 </div>
@@ -124,14 +171,14 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                                 <div className="flex h-full flex-col items-center justify-center gap-3 text-muted-foreground">
                                     <Images className="size-12 opacity-30" />
                                     <p className="text-sm">No media found</p>
-                                    {search && (
-                                        <Button type="button" variant="ghost" size="sm" onClick={() => { setSearch(''); fetchMedia('', 1); }}>
-                                            Clear search
+                                    {(search || module) && (
+                                        <Button type="button" variant="ghost" size="sm" onClick={() => { setSearch(''); handleModuleChange(null); }}>
+                                            Clear filters
                                         </Button>
                                     )}
                                 </div>
                             ) : (
-                                <div className="grid grid-cols-4 gap-3 sm:grid-cols-5">
+                                <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
                                     {media?.data.map((m) => (
                                         <div
                                             key={m.id}
@@ -154,7 +201,7 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                                                     <CheckCircle2 className="size-7 text-primary drop-shadow" />
                                                 </div>
                                             )}
-                                            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-1.5 opacity-0 transition-opacity group-hover:opacity-100">
+                                            <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/60 to-transparent p-1.5 opacity-0 transition-opacity group-hover:opacity-100">
                                                 <p className="truncate text-[10px] text-white">{m.file_name}</p>
                                             </div>
                                         </div>
@@ -174,7 +221,7 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                                         type="button" size="icon" variant="outline"
                                         className="size-7"
                                         disabled={page === 1}
-                                        onClick={() => { const p = page - 1; setPage(p); fetchMedia(search, p); }}
+                                        onClick={() => { const p = page - 1; setPage(p); fetchMedia(search, p, module); }}
                                     >
                                         <ChevronLeft className="size-3.5" />
                                     </Button>
@@ -182,7 +229,7 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                                         type="button" size="icon" variant="outline"
                                         className="size-7"
                                         disabled={page === media.last_page}
-                                        onClick={() => { const p = page + 1; setPage(p); fetchMedia(search, p); }}
+                                        onClick={() => { const p = page + 1; setPage(p); fetchMedia(search, p, module); }}
                                     >
                                         <ChevronRight className="size-3.5" />
                                     </Button>

@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[Fillable(['file_name', 'file_path', 'file_type', 'file_size', 'uploaded_by', 'module'])]
 class Media extends Model
 {
+    protected $appends = ['url'];
+
     public function uploader(): BelongsTo
     {
         return $this->belongsTo(User::class, 'uploaded_by');
@@ -22,6 +24,6 @@ class Media extends Model
 
     public function getUrlAttribute(): string
     {
-        return asset('storage/' . $this->file_path);
+        return '/storage/'.$this->file_path;
     }
 }

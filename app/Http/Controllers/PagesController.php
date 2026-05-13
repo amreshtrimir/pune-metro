@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Gallery\GalleryAlbumService;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class PagesController extends Controller
 {
+    public function __construct(private readonly GalleryAlbumService $galleryAlbumService) {}
+
     public function overview(): Response
     {
         return Inertia::render('frontend/about');
@@ -29,7 +32,9 @@ class PagesController extends Controller
 
     public function photoGallery(): Response
     {
-        return Inertia::render('frontend/project-profile/photo-gallery');
+        return Inertia::render('frontend/project-profile/photo-gallery', [
+            'albums' => $this->galleryAlbumService->getAlbumsForFrontend(),
+        ]);
     }
 
     public function routeMap(): Response

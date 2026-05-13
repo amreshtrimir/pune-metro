@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 export const overview = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ overview.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 overview.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ overview.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 overview.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ overview.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 overview.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ overview.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 const overviewForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const overviewForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 overviewForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ overviewForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:10
+* @see app/Http/Controllers/PagesController.php:13
 * @route '/about/overview'
 */
 overviewForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ overview.form = overviewForm
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 export const board = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ board.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 board.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ board.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 board.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ board.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 board.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ board.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 const boardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const boardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 boardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ boardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:15
+* @see app/Http/Controllers/PagesController.php:18
 * @route '/about/board'
 */
 boardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

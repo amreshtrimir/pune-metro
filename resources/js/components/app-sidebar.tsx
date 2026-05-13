@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid, Image, FileText, MessageSquare, Tag, SlidersHorizontal } from 'lucide-react';
+import { BookOpen, FolderGit2, LayoutGrid, Image, FileText, MessageSquare, Tag, SlidersHorizontal, Images } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -19,6 +19,7 @@ import * as PostController from '@/actions/App/Http/Controllers/Blog/PostControl
 import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
 import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
 import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
+import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -54,6 +55,11 @@ const cmsNavItems: NavItem[] = [
         title: 'Sliders',
         href: SliderController.index.url(),
         icon: SlidersHorizontal,
+    },
+    {
+        title: 'Gallery Albums',
+        href: GalleryAlbumController.index.url(),
+        icon: Images,
     },
 ];
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Media;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Media\StoreMediaRequest;
 use App\Http\Requests\Media\UpdateMediaRequest;
+use App\Models\Media;
 use App\Models\MediaDimension;
 use App\Services\Media\MediaService;
 use Illuminate\Http\JsonResponse;
@@ -24,7 +25,9 @@ class MediaController extends Controller
         $dimensions = $this->mediaService->listDimensions();
 
         if ($request->wantsJson()) {
-            return response()->json(['media' => $media, 'dimensions' => $dimensions]);
+            $modules = Media::distinct()->whereNotNull('module')->orderBy('module')->pluck('module');
+
+            return response()->json(['media' => $media, 'dimensions' => $dimensions, 'modules' => $modules]);
         }
 
         return Inertia::render('dashboard/media/index', [

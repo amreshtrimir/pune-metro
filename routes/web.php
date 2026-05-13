@@ -5,6 +5,7 @@ use App\Http\Controllers\Blog\CommentController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\PublicBlogController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Gallery\GalleryAlbumController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SitemapController;
@@ -115,6 +116,17 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/sliders/{slider}/slides/{slide}', [SliderController::class, 'updateSlide'])->name('sliders.slides.update');
         Route::delete('/sliders/{slider}/slides/{slide}', [SliderController::class, 'destroySlide'])->name('sliders.slides.destroy');
         Route::post('/sliders/{slider}/slides/reorder', [SliderController::class, 'reorderSlides'])->name('sliders.slides.reorder');
+
+        // Gallery Albums
+        Route::get('/gallery-albums', [GalleryAlbumController::class, 'index'])->name('gallery-albums.index');
+        Route::post('/gallery-albums', [GalleryAlbumController::class, 'store'])->name('gallery-albums.store');
+        Route::get('/gallery-albums/{galleryAlbum}/edit', [GalleryAlbumController::class, 'edit'])->name('gallery-albums.edit');
+        Route::put('/gallery-albums/{galleryAlbum}', [GalleryAlbumController::class, 'update'])->name('gallery-albums.update');
+        Route::delete('/gallery-albums/{galleryAlbum}', [GalleryAlbumController::class, 'destroy'])->name('gallery-albums.destroy');
+        Route::post('/gallery-albums/{galleryAlbum}/images', [GalleryAlbumController::class, 'storeImage'])->name('gallery-albums.images.store');
+        Route::put('/gallery-albums/{galleryAlbum}/images/{image}', [GalleryAlbumController::class, 'updateImage'])->name('gallery-albums.images.update');
+        Route::delete('/gallery-albums/{galleryAlbum}/images/{image}', [GalleryAlbumController::class, 'destroyImage'])->name('gallery-albums.images.destroy');
+        Route::post('/gallery-albums/{galleryAlbum}/images/reorder', [GalleryAlbumController::class, 'reorderImages'])->name('gallery-albums.images.reorder');
     });
 });
 

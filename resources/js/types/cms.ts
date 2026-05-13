@@ -150,3 +150,27 @@ export type Slider = {
     created_at: string;
     updated_at: string;
 };
+
+export type GalleryAlbumImage = {
+    id: number;
+    gallery_album_id: number;
+    media_id: number;
+    thumb_media_id: number | null;
+    sort_order: number;
+    media?: Media | null;
+    thumb_media?: Media | null;
+    created_at: string;
+    updated_at: string;
+};
+
+export type GalleryAlbum = {
+    id: number;
+    title: string;
+    description: string | null;
+    sort_order: number;
+    is_active: boolean;
+    images?: GalleryAlbumImage[];
+    images_count?: number;
+    created_at: string;
+    updated_at: string;
+};

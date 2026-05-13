@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Slider;
+namespace App\Http\Requests\Gallery;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSliderRequest extends FormRequest
+class StoreGalleryAlbumRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return $this->user()?->isAdmin() ?? false;
@@ -24,8 +21,9 @@ class StoreSliderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255', 'unique:sliders,slug'],
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['boolean'],
         ];
     }

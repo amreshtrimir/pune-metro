@@ -290,6 +290,7 @@ export default function SliderEdit({ slider }: Props) {
             {/* Add / Edit Slide Dialog */}
             <Dialog open={slideDialog !== null} onOpenChange={(open) => !open && closeDialog()}>
                 <DialogContent className="max-w-lg">
+                >
                     <DialogHeader>
                         <DialogTitle>{slideDialog?.mode === 'add' ? 'Add Slide' : 'Edit Slide'}</DialogTitle>
                     </DialogHeader>
@@ -436,20 +437,20 @@ export default function SliderEdit({ slider }: Props) {
                             </Button>
                         </div>
                     </div>
+
+                    {/* Media pickers nested inside this dialog so Radix treats them as child layers */}
+                    <MediaPicker
+                        open={pickerFor === 'desktop'}
+                        onClose={() => setPickerFor(null)}
+                        onSelect={(s) => handlePickerSelect('desktop', s)}
+                    />
+                    <MediaPicker
+                        open={pickerFor === 'mobile'}
+                        onClose={() => setPickerFor(null)}
+                        onSelect={(s) => handlePickerSelect('mobile', s)}
+                    />
                 </DialogContent>
             </Dialog>
-
-            {/* Media pickers */}
-            <MediaPicker
-                open={pickerFor === 'desktop'}
-                onClose={() => setPickerFor(null)}
-                onSelect={(s) => handlePickerSelect('desktop', s)}
-            />
-            <MediaPicker
-                open={pickerFor === 'mobile'}
-                onClose={() => setPickerFor(null)}
-                onSelect={(s) => handlePickerSelect('mobile', s)}
-            />
         </>
     );
 }

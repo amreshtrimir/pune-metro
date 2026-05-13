@@ -2,51 +2,22 @@ import { Head } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
+import type { GalleryAlbum } from '@/types/cms';
+
+type GalleryImage = {
+    thumb: string;
+    full: string;
+};
 
 type GalleryItem = {
     title: string;
     description: string;
-    images: string[];
+    images: GalleryImage[];
 };
 
-const galleryItems: GalleryItem[] = [
-    {
-        title: 'PITCMRL Partners with TerraBlu for Carbon Credit Monetisation',
-        description:
-            'Pune IT City Metro Rail Limited (PITCMRL) has entered into an agreement with TerraBlu Climate Technologies Pvt Ltd for carbon credit registration and monetisation consultancy.',
-        images: ['/photo-gallery/accordian-1/image-1.png'],
-    },
-    {
-        title: 'CEO Leads Median Tree Plantation Drive with Quadrant Embassy',
-        description:
-            'Mr. Anil Kumar Saini, CEO, PITCMRL, spearheaded a Median Tree Plantation Drive in association with Quadrant Embassy reinforcing the vision of a city that\u2019s not just well-connected, but environmentally conscious.',
-        images: [
-            '/photo-gallery/accordian-2/photo-1.png',
-            '/photo-gallery/accordian-2/photo-2.png',
-            '/photo-gallery/accordian-2/photo-3.png',
-            '/photo-gallery/accordian-2/photo-4.png',
-            '/photo-gallery/accordian-2/photo-5.png',
-            '/photo-gallery/accordian-2/photo-6.png',
-            '/photo-gallery/accordian-2/photo-7.png',
-            '/photo-gallery/accordian-2/photo-8.png',
-        ],
-    },
-    {
-        title: 'PITCMRL Team Donates Blood \u0026 Plants Saplings at OCC Building',
-        description:
-            'Our team at PITCMRL, OCC Building came together to donate blood and plant saplings because one act gives someone a second chance at life, and the other gives the city a breath of fresh air.',
-        images: [
-            '/photo-gallery/accordian-3/photo-1.png',
-            '/photo-gallery/accordian-3/photo-2.png',
-            '/photo-gallery/accordian-3/photo-3.png',
-            '/photo-gallery/accordian-3/photo-4.png',
-            '/photo-gallery/accordian-3/photo-5.png',
-            '/photo-gallery/accordian-3/photo-6.png',
-            '/photo-gallery/accordian-3/photo-7.png',
-            '/photo-gallery/accordian-3/photo-8.png',
-        ],
-    },
-];
+type Props = {
+    albums: GalleryAlbum[];
+};
 
 function ChevronDownIcon({ className }: { className?: string }) {    return (
         <svg
@@ -157,7 +128,17 @@ function Lightbox({ state, onClose, onPrev, onNext }: {
     );
 }
 
-export default function PhotoGallery() {
+export default function PhotoGallery({ albums }: Props) {
+    const galleryItems: GalleryItem[] = albums.map((album) => ({
+        title: album.title,
+        description: album.description ?? '',
+        images: (album.images ?? [])
+            .map((img) => ({
+                thumb: img.thumb_media?.url ?? img.media?.url ?? '',
+                full: img.media?.url ?? '',
+            }))
+            .filter((img) => img.full !== ''),
+    }));
     const [openIndex, setOpenIndex] = useState<number>(0);
     const [lightbox, setLightbox] = useState<LightboxState | null>(null);
 
@@ -243,15 +224,15 @@ export default function PhotoGallery() {
                                                 {item.description}
                                             </p>
                                             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                                                {item.images.map((src, imgIndex) => (
+                                                {item.images.map((image, imgIndex) => (
                                                     <button
                                                         key={imgIndex}
                                                         type="button"
-                                                        onClick={() => openLightbox(item.images, imgIndex, item.title)}
+                                                        onClick={() => openLightbox(item.images.map((i) => i.full), imgIndex, item.title)}
                                                         className="aspect-square overflow-hidden border border-[#cacaca] transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8449a]"
                                                     >
                                                         <img
-                                                            src={src}
+                                                            src={image.thumb}
                                                             alt={`${item.title} photo ${imgIndex + 1}`}
                                                             className="size-full object-cover"
                                                         />
