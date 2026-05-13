@@ -55,7 +55,6 @@ const mainNavLinks: NavLink[] = [
             { label: 'Project Update', href: projectUpdate.url() },
             { label: 'Key Highlights', href: keyHighlights.url() },
             { label: 'Route Map', href: routeMap.url() },
-            { label: 'Photo Gallery', href: photoGallery.url() },
         ],
     },
     {
@@ -75,7 +74,13 @@ const mainNavLinks: NavLink[] = [
 
         ],
     },
-    { label: 'MEDIA', href: '#' },
+    {
+        label: 'MEDIA',
+        href: photoGallery.url(),
+        children: [
+            { label: 'Photo Gallery', href: photoGallery.url() },
+        ],
+    },
     {
         label: 'ENVIRONMENT',
         href: eiaReports.url(),
