@@ -18,14 +18,14 @@ class DatabaseSeeder extends Seeder
 
         $admin = User::factory()->create([
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@pune-metro.com',
         ]);
 
         $admin->roles()->attach(Role::where('name', 'admin')->first());
 
         $user = User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@pune-metro.com',
         ]);
 
         $user->roles()->attach(Role::where('name', 'user')->first());

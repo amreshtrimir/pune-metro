@@ -207,7 +207,7 @@ export default function PhotoGallery({ albums }: Props) {
                                     <button
                                         type="button"
                                         onClick={() => toggle(index)}
-                                        className="flex w-full items-center justify-between bg-[rgba(232,68,154,0.15)] px-8 py-6 text-left"
+                                        className={`flex w-full items-center justify-between bg-[rgba(232,68,154,0.15)] px-8 text-left ${isOpen ? 'pt-6' : 'py-6'}`}
                                     >
                                         <span className="font-montserrat text-sm font-semibold text-black sm:text-base lg:text-lg">
                                             {item.title}
