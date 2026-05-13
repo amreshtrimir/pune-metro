@@ -281,40 +281,6 @@ export default function PassengerAmenities() {
                     </div>
                 </div>
             </section>
-
-            {/* ── CTA Banner ── */}
-            <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="relative overflow-hidden rounded-[25px]">
-                        <img
-                            src={imgCtaTrain}
-                            alt="Pune Metro train"
-                            className="h-75 w-full object-cover blur-[2px]"
-                        />
-                        <div className="absolute inset-0 bg-black/10" />
-                        <div className="absolute bottom-0 left-0 right-0 h-3/5 bg-linear-to-t from-black/80 to-transparent" />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 px-8 text-center">
-                            <p className="max-w-3xl font-montserrat text-sm font-medium text-white">
-                                {`Whether you're planning your daily commute, exploring the city, or seeking a faster and smarter way to travel, Puneri Metro is here to transform your journey with comfort, efficiency, and modern connectivity.`}
-                            </p>
-                            <div className="flex flex-wrap justify-center gap-4">
-                                <a
-                                    href="mailto:customercare.pmrp@mahametro.org"
-                                    className="flex items-center gap-2 rounded-full border border-white bg-white px-6 py-2.5 font-montserrat text-sm font-medium text-[#e8449a] transition-opacity hover:opacity-90"
-                                >
-                                    Mail Us: customercare.pmrp@mahametro.org
-                                </a>
-                                <a
-                                    href="tel:18002705501"
-                                    className="flex items-center gap-2 rounded-full border border-white bg-white px-6 py-2.5 font-montserrat text-sm font-medium text-[#e8449a] transition-opacity hover:opacity-90"
-                                >
-                                    Call Us: 18002705501
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </>
     );
 }
