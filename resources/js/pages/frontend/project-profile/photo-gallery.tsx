@@ -220,7 +220,7 @@ export default function PhotoGallery({ albums }: Props) {
                                     {/* Accordion Content */}
                                     {isOpen && (
                                         <div className="bg-[rgba(232,68,154,0.15)] px-8 pb-8">
-                                            <p className="mb-6 font-montserrat text-xs leading-relaxed text-black sm:text-sm">
+                                            <p className="mb-6 max-w-[1015px] font-montserrat text-xs leading-relaxed text-black sm:text-sm">
                                                 {item.description}
                                             </p>
                                             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
