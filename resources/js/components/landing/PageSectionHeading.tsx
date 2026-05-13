@@ -11,7 +11,7 @@ export default function PageSectionHeading({
 }: PageSectionHeadingProps) {
     return (
         <div className={className}>
-            <h1 className="mb-0 shrink-0 border-0 font-montserrat font-bold text-black" style={{ fontSize: '30px' }}>
+            <h1 className="mb-0 shrink-0 border-0 font-montserrat text-xl font-bold text-black sm:text-2xl lg:text-3xl">
                 {children}
             </h1>
             <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${lineColor}, transparent)` }} />

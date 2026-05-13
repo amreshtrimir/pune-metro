@@ -25,6 +25,7 @@ Route::prefix('project-profile')->name('project-profile.')->group(function (): v
     Route::get('/update', [PagesController::class, 'projectUpdate'])->name('update');
     Route::get('/highlights', [PagesController::class, 'keyHighlights'])->name('highlights');
     Route::get('/route-map', [PagesController::class, 'routeMap'])->name('route-map');
+    Route::get('/photo-gallery', [PagesController::class, 'photoGallery'])->name('photo-gallery');
 });
 
 // Route section pages

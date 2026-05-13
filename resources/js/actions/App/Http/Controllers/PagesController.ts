@@ -325,7 +325,7 @@ keyHighlights.form = keyHighlightsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 export const routeMap = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -340,7 +340,7 @@ routeMap.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMap.url = (options?: RouteQueryOptions) => {
@@ -349,7 +349,7 @@ routeMap.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -359,7 +359,7 @@ routeMap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -369,7 +369,7 @@ routeMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 const routeMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -379,7 +379,7 @@ const routeMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -389,7 +389,7 @@ routeMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -405,8 +405,89 @@ routeMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 routeMap.form = routeMapForm
 
 /**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+export const photoGallery = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: photoGallery.url(options),
+    method: 'get',
+})
+
+photoGallery.definition = {
+    methods: ["get","head"],
+    url: '/project-profile/photo-gallery',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGallery.url = (options?: RouteQueryOptions) => {
+    return photoGallery.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGallery.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: photoGallery.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: photoGallery.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+const photoGalleryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: photoGallery.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGalleryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: photoGallery.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGalleryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: photoGallery.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+photoGallery.form = photoGalleryForm
+
+/**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 export const stationList = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -421,7 +502,7 @@ stationList.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 stationList.url = (options?: RouteQueryOptions) => {
@@ -430,7 +511,7 @@ stationList.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 stationList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -440,7 +521,7 @@ stationList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 stationList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -450,7 +531,7 @@ stationList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 const stationListForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -460,7 +541,7 @@ const stationListForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 stationListForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -470,7 +551,7 @@ stationListForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:35
+* @see app/Http/Controllers/PagesController.php:40
 * @route '/route/station-list'
 */
 stationListForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -487,7 +568,7 @@ stationList.form = stationListForm
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 export const timeTable = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -502,7 +583,7 @@ timeTable.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 timeTable.url = (options?: RouteQueryOptions) => {
@@ -511,7 +592,7 @@ timeTable.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 timeTable.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -521,7 +602,7 @@ timeTable.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 timeTable.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -531,7 +612,7 @@ timeTable.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 const timeTableForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -541,7 +622,7 @@ const timeTableForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 timeTableForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -551,7 +632,7 @@ timeTableForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:60
+* @see app/Http/Controllers/PagesController.php:65
 * @route '/passenger-info/time-table'
 */
 timeTableForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -568,7 +649,7 @@ timeTable.form = timeTableForm
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 export const fareTable = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -583,7 +664,7 @@ fareTable.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 fareTable.url = (options?: RouteQueryOptions) => {
@@ -592,7 +673,7 @@ fareTable.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 fareTable.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -602,7 +683,7 @@ fareTable.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 fareTable.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -612,7 +693,7 @@ fareTable.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 const fareTableForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -622,7 +703,7 @@ const fareTableForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 fareTableForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -632,7 +713,7 @@ fareTableForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/passenger-info/fare-table'
 */
 fareTableForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -649,7 +730,7 @@ fareTable.form = fareTableForm
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 export const dosAndDonts = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -664,7 +745,7 @@ dosAndDonts.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 dosAndDonts.url = (options?: RouteQueryOptions) => {
@@ -673,7 +754,7 @@ dosAndDonts.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 dosAndDonts.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -683,7 +764,7 @@ dosAndDonts.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 dosAndDonts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -693,7 +774,7 @@ dosAndDonts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 const dosAndDontsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -703,7 +784,7 @@ const dosAndDontsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 dosAndDontsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -713,7 +794,7 @@ dosAndDontsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/passenger-info/dos-and-donts'
 */
 dosAndDontsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -730,7 +811,7 @@ dosAndDonts.form = dosAndDontsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 export const itemsNotToCarry = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -745,7 +826,7 @@ itemsNotToCarry.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 itemsNotToCarry.url = (options?: RouteQueryOptions) => {
@@ -754,7 +835,7 @@ itemsNotToCarry.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 itemsNotToCarry.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -764,7 +845,7 @@ itemsNotToCarry.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 itemsNotToCarry.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -774,7 +855,7 @@ itemsNotToCarry.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =>
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 const itemsNotToCarryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -784,7 +865,7 @@ const itemsNotToCarryForm = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 itemsNotToCarryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -794,7 +875,7 @@ itemsNotToCarryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:75
+* @see app/Http/Controllers/PagesController.php:80
 * @route '/passenger-info/items-not-to-carry'
 */
 itemsNotToCarryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -811,7 +892,7 @@ itemsNotToCarry.form = itemsNotToCarryForm
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 export const offencesAndPenalties = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -826,7 +907,7 @@ offencesAndPenalties.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 offencesAndPenalties.url = (options?: RouteQueryOptions) => {
@@ -835,7 +916,7 @@ offencesAndPenalties.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 offencesAndPenalties.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -845,7 +926,7 @@ offencesAndPenalties.get = (options?: RouteQueryOptions): RouteDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -855,7 +936,7 @@ offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -865,7 +946,7 @@ const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinit
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -875,7 +956,7 @@ offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:80
+* @see app/Http/Controllers/PagesController.php:85
 * @route '/passenger-info/offences-and-penalties'
 */
 offencesAndPenaltiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -892,7 +973,7 @@ offencesAndPenalties.form = offencesAndPenaltiesForm
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 export const lostAndFound = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -907,7 +988,7 @@ lostAndFound.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 lostAndFound.url = (options?: RouteQueryOptions) => {
@@ -916,7 +997,7 @@ lostAndFound.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 lostAndFound.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -926,7 +1007,7 @@ lostAndFound.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 lostAndFound.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -936,7 +1017,7 @@ lostAndFound.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 const lostAndFoundForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -946,7 +1027,7 @@ const lostAndFoundForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 lostAndFoundForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -956,7 +1037,7 @@ lostAndFoundForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:85
+* @see app/Http/Controllers/PagesController.php:90
 * @route '/passenger-info/lost-and-found'
 */
 lostAndFoundForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -973,7 +1054,7 @@ lostAndFound.form = lostAndFoundForm
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 export const customerService = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -988,7 +1069,7 @@ customerService.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 customerService.url = (options?: RouteQueryOptions) => {
@@ -997,7 +1078,7 @@ customerService.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 customerService.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1007,7 +1088,7 @@ customerService.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 customerService.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1017,7 +1098,7 @@ customerService.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =>
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 const customerServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1027,7 +1108,7 @@ const customerServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 customerServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1037,7 +1118,7 @@ customerServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:90
+* @see app/Http/Controllers/PagesController.php:95
 * @route '/passenger-info/customer-service'
 */
 customerServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1054,7 +1135,7 @@ customerService.form = customerServiceForm
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 export const lastMileConnectivity = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1069,7 +1150,7 @@ lastMileConnectivity.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 lastMileConnectivity.url = (options?: RouteQueryOptions) => {
@@ -1078,7 +1159,7 @@ lastMileConnectivity.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 lastMileConnectivity.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1088,7 +1169,7 @@ lastMileConnectivity.get = (options?: RouteQueryOptions): RouteDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 lastMileConnectivity.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1098,7 +1179,7 @@ lastMileConnectivity.head = (options?: RouteQueryOptions): RouteDefinition<'head
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 const lastMileConnectivityForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1108,7 +1189,7 @@ const lastMileConnectivityForm = (options?: RouteQueryOptions): RouteFormDefinit
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 lastMileConnectivityForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1118,7 +1199,7 @@ lastMileConnectivityForm.get = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:95
+* @see app/Http/Controllers/PagesController.php:100
 * @route '/passenger-info/last-mile-connectivity'
 */
 lastMileConnectivityForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1135,7 +1216,7 @@ lastMileConnectivity.form = lastMileConnectivityForm
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 export const retailFnb = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1150,7 +1231,7 @@ retailFnb.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 retailFnb.url = (options?: RouteQueryOptions) => {
@@ -1159,7 +1240,7 @@ retailFnb.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 retailFnb.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1169,7 +1250,7 @@ retailFnb.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 retailFnb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1179,7 +1260,7 @@ retailFnb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 const retailFnbForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1189,7 +1270,7 @@ const retailFnbForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 retailFnbForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1199,7 +1280,7 @@ retailFnbForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:100
+* @see app/Http/Controllers/PagesController.php:105
 * @route '/passenger-info/retail-fnb'
 */
 retailFnbForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1216,7 +1297,7 @@ retailFnb.form = retailFnbForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 export const stationAreaMap = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1231,7 +1312,7 @@ stationAreaMap.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 stationAreaMap.url = (options?: RouteQueryOptions) => {
@@ -1240,7 +1321,7 @@ stationAreaMap.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 stationAreaMap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1250,7 +1331,7 @@ stationAreaMap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 stationAreaMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1260,7 +1341,7 @@ stationAreaMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 const stationAreaMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1270,7 +1351,7 @@ const stationAreaMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'g
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 stationAreaMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1280,7 +1361,7 @@ stationAreaMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:105
+* @see app/Http/Controllers/PagesController.php:110
 * @route '/passenger-info/station-area-map'
 */
 stationAreaMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1297,7 +1378,7 @@ stationAreaMap.form = stationAreaMapForm
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 export const passengerAmenities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1312,7 +1393,7 @@ passengerAmenities.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 passengerAmenities.url = (options?: RouteQueryOptions) => {
@@ -1321,7 +1402,7 @@ passengerAmenities.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 passengerAmenities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1331,7 +1412,7 @@ passengerAmenities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 passengerAmenities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1341,7 +1422,7 @@ passengerAmenities.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 const passengerAmenitiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1351,7 +1432,7 @@ const passengerAmenitiesForm = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 passengerAmenitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1361,7 +1442,7 @@ passengerAmenitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:110
+* @see app/Http/Controllers/PagesController.php:115
 * @route '/passenger-info/passenger-amenities'
 */
 passengerAmenitiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1378,7 +1459,7 @@ passengerAmenities.form = passengerAmenitiesForm
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 export const termsAndConditions = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1393,7 +1474,7 @@ termsAndConditions.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditions.url = (options?: RouteQueryOptions) => {
@@ -1402,7 +1483,7 @@ termsAndConditions.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditions.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1412,7 +1493,7 @@ termsAndConditions.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditions.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1422,7 +1503,7 @@ termsAndConditions.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 const termsAndConditionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1432,7 +1513,7 @@ const termsAndConditionsForm = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1442,7 +1523,7 @@ termsAndConditionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:115
+* @see app/Http/Controllers/PagesController.php:120
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditionsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1459,7 +1540,7 @@ termsAndConditions.form = termsAndConditionsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 export const privacyPolicy = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1474,7 +1555,7 @@ privacyPolicy.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 privacyPolicy.url = (options?: RouteQueryOptions) => {
@@ -1483,7 +1564,7 @@ privacyPolicy.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1493,7 +1574,7 @@ privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1503,7 +1584,7 @@ privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1513,7 +1594,7 @@ const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1523,7 +1604,7 @@ privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:120
+* @see app/Http/Controllers/PagesController.php:125
 * @route '/legal/privacy-policy'
 */
 privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1540,7 +1621,7 @@ privacyPolicy.form = privacyPolicyForm
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 export const eiaReports = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1555,7 +1636,7 @@ eiaReports.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 eiaReports.url = (options?: RouteQueryOptions) => {
@@ -1564,7 +1645,7 @@ eiaReports.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 eiaReports.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1574,7 +1655,7 @@ eiaReports.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 eiaReports.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1584,7 +1665,7 @@ eiaReports.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 const eiaReportsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1594,7 +1675,7 @@ const eiaReportsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 eiaReportsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1604,7 +1685,7 @@ eiaReportsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:40
+* @see app/Http/Controllers/PagesController.php:45
 * @route '/environment/eia-reports'
 */
 eiaReportsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1621,7 +1702,7 @@ eiaReports.form = eiaReportsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 export const carbonCredit = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1636,7 +1717,7 @@ carbonCredit.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 carbonCredit.url = (options?: RouteQueryOptions) => {
@@ -1645,7 +1726,7 @@ carbonCredit.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 carbonCredit.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1655,7 +1736,7 @@ carbonCredit.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 carbonCredit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1665,7 +1746,7 @@ carbonCredit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 const carbonCreditForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1675,7 +1756,7 @@ const carbonCreditForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 carbonCreditForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1685,7 +1766,7 @@ carbonCreditForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:45
+* @see app/Http/Controllers/PagesController.php:50
 * @route '/environment/carbon-credit'
 */
 carbonCreditForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1702,7 +1783,7 @@ carbonCredit.form = carbonCreditForm
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 export const artFromScrap = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1717,7 +1798,7 @@ artFromScrap.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 artFromScrap.url = (options?: RouteQueryOptions) => {
@@ -1726,7 +1807,7 @@ artFromScrap.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 artFromScrap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1736,7 +1817,7 @@ artFromScrap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 artFromScrap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1746,7 +1827,7 @@ artFromScrap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 const artFromScrapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1756,7 +1837,7 @@ const artFromScrapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 artFromScrapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1766,7 +1847,7 @@ artFromScrapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:50
+* @see app/Http/Controllers/PagesController.php:55
 * @route '/environment/art-from-scrap'
 */
 artFromScrapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1783,7 +1864,7 @@ artFromScrap.form = artFromScrapForm
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 export const greenInitiatives = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1798,7 +1879,7 @@ greenInitiatives.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 greenInitiatives.url = (options?: RouteQueryOptions) => {
@@ -1807,7 +1888,7 @@ greenInitiatives.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 greenInitiatives.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1817,7 +1898,7 @@ greenInitiatives.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 greenInitiatives.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1827,7 +1908,7 @@ greenInitiatives.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 const greenInitiativesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1837,7 +1918,7 @@ const greenInitiativesForm = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 greenInitiativesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1847,7 +1928,7 @@ greenInitiativesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'g
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:55
+* @see app/Http/Controllers/PagesController.php:60
 * @route '/environment/green-initiatives'
 */
 greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1862,6 +1943,6 @@ greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 greenInitiatives.form = greenInitiativesForm
 
-const PagesController = { overview, board, projectUpdate, keyHighlights, routeMap, stationList, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, termsAndConditions, privacyPolicy, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
+const PagesController = { overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, termsAndConditions, privacyPolicy, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
 
 export default PagesController

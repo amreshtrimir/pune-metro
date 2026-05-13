@@ -15,6 +15,7 @@ import {
     lostAndFound,
     overview,
     passengerAmenities,
+    photoGallery,
     privacyPolicy,
     projectUpdate,
     routeMap,
@@ -54,6 +55,7 @@ const mainNavLinks: NavLink[] = [
             { label: 'Project Update', href: projectUpdate.url() },
             { label: 'Key Highlights', href: keyHighlights.url() },
             { label: 'Route Map', href: routeMap.url() },
+            { label: 'Photo Gallery', href: photoGallery.url() },
         ],
     },
     {

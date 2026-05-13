@@ -27,6 +27,11 @@ class PagesController extends Controller
         return Inertia::render('frontend/key-highlights');
     }
 
+    public function photoGallery(): Response
+    {
+        return Inertia::render('frontend/project-profile/photo-gallery');
+    }
+
     public function routeMap(): Response
     {
         return Inertia::render('frontend/route-map');

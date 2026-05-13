@@ -2,35 +2,44 @@ import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
-const imgGallery1 = '/pass-amenities/gallery-1.png';
-const imgGallery2 = '/pass-amenities/gallery-2.png';
-const imgGallery3 = '/pass-amenities/gallery-3.png';
-const imgGallery4 = '/pass-amenities/gallery-4.png';
-const imgGallery5 = '/pass-amenities/gallery-5.png';
-const imgGallery6 = '/pass-amenities/gallery-6.png';
-const imgGallery7 = '/pass-amenities/gallery-7.png';
-const imgGallery8 = '/pass-amenities/gallery-8.png';
-const imgGallery9 = '/pass-amenities/gallery-9.png';
-
-type Section = {
+type AmenitySection = {
     title: string;
-    pills: string[];
+    image: string;
+    items: string[];
 };
 
-const amenitySections: Section[] = [
+type CommonFacility = {
+    group: string;
+    items: string[];
+};
+
+// Section images (downloaded from Figma design)
+const imgEnvFriendly = '/pass-amenities/section-env-friendly.png';
+const imgEscalator = '/pass-amenities/section-escalator.png';
+const imgElevator = '/pass-amenities/section-elevator.png';
+const imgLastMile = '/pass-amenities/section-last-mile.png';
+const imgTicketing = '/pass-amenities/section-ticketing.png';
+const imgSafety = '/pass-amenities/section-safety.png';
+const imgRestroom = '/pass-amenities/section-restroom.png';
+const imgPlatform = '/pass-amenities/section-platform.png';
+const imgCtaTrain = '/pass-amenities/section-cta-train.png';
+
+// Amenity sections ordered left-to-right, top-to-bottom in the 3-column grid
+const amenitySections: AmenitySection[] = [
     {
-        title: 'Ticketing & Entry Facilities',
-        pills: [
-            'Ticket counters at stations',
-            'Contactless Ticket Vending Machines (CTVMs)',
-            'National Common Mobility Card (One Pune Card)',
-            'Automatic Fare Collection (AFC) gates',
-            'QR-based tickets via Pune Metro App and WhatsApp',
+        title: 'Environment-Friendly Features',
+        image: imgEnvFriendly,
+        items: [
+            'Solar panels on station rooftops',
+            'Energy-efficient lighting systems',
+            'Zero-discharge wastewater management',
+            'Green building and eco-friendly practices',
         ],
     },
     {
         title: 'Passenger Movement & Accessibility',
-        pills: [
+        image: imgEscalator,
+        items: [
             'Escalators at entry/exit and platforms',
             'Lifts/elevators for senior citizens, pregnant women and persons with disabilities',
             'Wide staircases with handrails',
@@ -38,7 +47,8 @@ const amenitySections: Section[] = [
     },
     {
         title: 'Facilities for Persons with Disabilities',
-        pills: [
+        image: imgElevator,
+        items: [
             'Wheelchair-accessible elevators',
             'Tactile pathways for visually impaired passengers',
             'Accessible toilets',
@@ -46,36 +56,9 @@ const amenitySections: Section[] = [
         ],
     },
     {
-        title: 'Restroom & Basic Amenities',
-        pills: [
-            'Separate restrooms for men and women',
-            'Disabled-friendly toilets',
-            'Drinking water facilities',
-            'Dustbins and waste segregation systems',
-        ],
-    },
-    {
-        title: 'Safety & Security Facilities',
-        pills: [
-            'CCTV surveillance across stations and platforms',
-            '24x7 security personnel including female staff',
-            'Separate frisking zones for men and women',
-            'Emergency help points and public announcement systems',
-            'Fire detection and firefighting systems',
-        ],
-    },
-    {
-        title: 'Platform & Train Facilities',
-        pills: [
-            'Passenger Information Display Systems (PIDS)',
-            'Audio announcements in Marathi, Hindi and English',
-            'Route maps and directional signage',
-            'Designated waiting areas',
-        ],
-    },
-    {
         title: 'Last-Mile Connectivity',
-        pills: [
+        image: imgLastMile,
+        items: [
             'Integration with PMPML buses',
             'Integration with private players for additional routes',
             'Auto-rickshaw and cab pickup zones',
@@ -84,78 +67,128 @@ const amenitySections: Section[] = [
         ],
     },
     {
-        title: 'Environment-Friendly Features',
-        pills: [
-            'Solar panels on station rooftops',
-            'Energy-efficient lighting systems',
-            'Zero-discharge wastewater management',
-            'Green building and eco-friendly practices',
+        title: 'Ticketing & Entry Facilities',
+        image: imgTicketing,
+        items: [
+            'Ticket counters at stations',
+            'Contactless Ticket Vending Machines (CTVMs)',
+            'QR-based tickets via Pune Metro App and WhatsApp',
+            'National Common Mobility Card (One Pune Card)',
+            'Automatic Fare Collection (AFC) gates',
+        ],
+    },
+    {
+        title: 'Safety & Security Facilities',
+        image: imgSafety,
+        items: [
+            'CCTV surveillance across stations and platforms',
+            '24x7 security personnel including female staff',
+            'Separate frisking zones for men and women',
+            'Emergency help points and public announcement systems',
+            'Fire detection and firefighting systems',
+        ],
+    },
+    {
+        title: 'Restroom & Basic Amenities',
+        image: imgRestroom,
+        items: [
+            'Separate restrooms for men and women',
+            'Disabled-friendly toilets',
+            'Drinking water facilities',
+            'Dustbins and waste segregation systems',
+        ],
+    },
+    {
+        title: 'Platform & Train Facilities',
+        image: imgPlatform,
+        items: [
+            'Passenger Information Display Systems (PIDS)',
+            'Audio announcements in Marathi, Hindi and English',
+            'Route maps and directional signage',
+            'Designated waiting areas',
         ],
     },
 ];
 
-const commonFacilities = [
+const commonFacilities: CommonFacility[] = [
     {
-        group: 'Ticketing',
-        pills: ['Ticket counters / Contactless Ticket vending machines'],
-    },
-    {
-        group: 'Entry & Exit',
-        pills: ['Automatic Fare Collection (AFC) gates'],
+        group: 'Mobility & Accessibility',
+        items: ['Escalators', 'Lifts', 'Ramps for wheelchair users'],
     },
     {
         group: 'Waiting & Circulation Areas',
-        pills: ['Platforms with seating', 'Passenger information display boards'],
+        items: ['Platforms with seating', 'Passenger information display boards'],
     },
     {
         group: 'Security',
-        pills: ['CCTV surveillance', 'Security personnel', 'Emergency help points'],
+        items: ['CCTV Surveillance', 'Security Personnel', 'Emergency help points'],
     },
     {
-        group: 'Mobility & Accessibility',
-        pills: ['Escalators', 'Lifts', 'Ramps for wheelchair users'],
+        group: 'Entry & Exit',
+        items: ['Automatic Fare Collection (AFC) gates'],
+    },
+    {
+        group: 'Ticketing',
+        items: ['Ticket counters / Contactless Ticket vending machines'],
     },
     {
         group: 'Amenities',
-        pills: ['Drinking water', 'Dustbins'],
+        items: ['Drinking water', 'Dustbins'],
     },
     {
         group: 'Safety & Emergency',
-        pills: ['Fire-fighting equipment', 'Emergency evacuation'],
+        items: ['Fire-fighting equipment', 'Emergency evacuation'],
     },
 ];
 
-const galleryImages = [
-    { src: imgGallery1, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery2, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery3, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery4, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery5, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery6, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery7, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery8, alt: 'Pune Metro passenger amenities' },
-    { src: imgGallery9, alt: 'Pune Metro passenger amenities' },
-];
-
-function Pill({ label }: { label: string }) {
+function SectionCard({ section }: { section: AmenitySection }) {
     return (
-        <span className="inline-flex items-center rounded-full border border-[#d8d8d8] bg-[#f5f5f5] px-4 py-2 font-montserrat text-sm capitalize text-black">
-            {label}
-        </span>
+        <div>
+            <div className="mb-4 overflow-hidden rounded-[10px]">
+                <img
+                    src={section.image}
+                    alt={section.title}
+                    className="h-65 w-full object-cover"
+                />
+            </div>
+            <div className="flex gap-3">
+                <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
+                <div>
+                    <h2 className="mb-3 font-montserrat text-base font-semibold text-black">{section.title}</h2>
+                    <ol className="list-decimal space-y-1 pl-5 font-montserrat text-sm capitalize text-black">
+                        {section.items.map((item) => (
+                            <li key={item}>{item}</li>
+                        ))}
+                    </ol>
+                </div>
+            </div>
+        </div>
     );
 }
 
-function AmenitySection({ section }: { section: Section }) {
+function CommonFacilityCard({ facility }: { facility: CommonFacility }) {
     return (
-        <div className="mb-8 flex gap-3">
-            <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
-            <div>
-                <h2 className="mb-3 font-montserrat text-base font-semibold text-black">{section.title}</h2>
-                <div className="flex flex-wrap gap-3">
-                    {section.pills.map((pill) => (
-                        <Pill key={pill} label={pill} />
+        <div className="bg-[#fceef6] px-5 py-4">
+            <p className="mb-2 font-montserrat text-base font-semibold text-black">{facility.group}</p>
+            <ol className="list-decimal space-y-1 pl-5 font-montserrat text-sm capitalize text-black">
+                {facility.items.map((item) => (
+                    <li key={item}>{item}</li>
+                ))}
+            </ol>
+        </div>
+    );
+}
+
+function GenderSection({ title, items }: { title: string; items: string[] }) {
+    return (
+        <div>
+            <h2 className="mb-4 font-montserrat text-xl font-semibold text-black sm:text-2xl lg:text-3xl">{title}</h2>
+            <div className="bg-[#f0f0f0] px-6 py-4">
+                <ol className="grid grid-cols-1 gap-x-8 gap-y-1 list-decimal pl-5 font-montserrat text-sm capitalize text-black sm:grid-cols-2">
+                    {items.map((item) => (
+                        <li key={item}>{item}</li>
                     ))}
-                </div>
+                </ol>
             </div>
         </div>
     );
@@ -180,148 +213,104 @@ export default function PassengerAmenities() {
             <PageHeroBanner src="/banners/amenniteis.png" alt="Passenger Amenities - Puneri Metro" />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-10 pb-0 mb-5">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <PageSectionHeading lineColor="#8e8e8e">Passenger Amenities</PageSectionHeading>
-                    <p className="mt-3 mb-10 font-inter text-xl capitalize text-brand">
-                        Built for Faster, Smarter, more Comfortable travel
-                    </p>
+
                 </div>
             </section>
 
-            {/* ── Amenity Sections ── */}
-            <section className="bg-white pb-10">
+            {/* ── Amenity Sections (3-column grid with images) ── */}
+            <section className="bg-white pb-12">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    {amenitySections.map((section) => (
-                        <AmenitySection key={section.title} section={section} />
-                    ))}
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                        {amenitySections.map((section) => (
+                            <SectionCard key={section.title} section={section} />
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* ── Common Facilities ── */}
-            <section className="bg-white pb-10">
+            <section className="bg-white pb-12">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <h2 className="mb-6 font-montserrat text-3xl font-semibold text-black">
+                    <h2 className="mb-6 font-montserrat text-xl font-semibold text-black sm:text-2xl lg:text-3xl">
                         Common Facilities{' '}
-                        <span className="text-base font-normal">(For Both Males, Females and other special groups)</span>
+                        <span className="text-sm font-normal">(For Both Males, Females and other special groups)</span>
                     </h2>
-                    <div className="flex flex-col gap-8">
-                        {[
-                            commonFacilities.slice(0, 2),
-                            commonFacilities.slice(2, 4),
-                            commonFacilities.slice(4, 7),
-                        ].map((row, rowIdx) => (
-                            <div key={rowIdx} className="flex gap-8">
-                                {row.map((item) => (
-                                    <div key={item.group} className="flex-1">
-                                        <div className="flex gap-3">
-                                            <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
-                                            <div>
-                                                <p className="mb-3 font-montserrat text-base font-semibold text-black">{item.group}</p>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {item.pills.map((pill) => (
-                                                        <Pill key={pill} label={pill} />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ── Photo Gallery ── */}
-            <section className="bg-white pb-10">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {galleryImages.map((image) => (
-                            <div key={image.src} className="overflow-hidden rounded-[10px]">
-                                <img
-                                    src={image.src}
-                                    alt={image.alt}
-                                    className="h-[280px] w-full object-cover transition-transform duration-300 hover:scale-105"
-                                />
-                            </div>
+                        {commonFacilities.map((facility) => (
+                            <CommonFacilityCard key={facility.group} facility={facility} />
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* ── Gender-Specific Facilities ── */}
-            <section className="bg-white pb-16">
+            {/* ── Gender-Specific & Special Facilities ── */}
+            <section className="bg-white pb-12">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10">
-                        {/* Males */}
-                        <div>
-                            <h2 className="mb-4 font-montserrat text-3xl font-semibold text-black">
-                                Facilities Specifically for Males
-                            </h2>
-                            <ul className="space-y-3">
-                                {[
-                                    "Men's restrooms with toilets and urinals",
-                                    'Separate security frisking by male security personnel',
-                                ].map((item) => (
-                                    <li key={item} className="flex items-start gap-3">
-                                        <span className="mt-1 block h-6 w-[3px] flex-shrink-0 rounded-full bg-[#e8449a]" />
-                                        <span className="font-montserrat text-sm font-semibold text-black">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <GenderSection
+                            title="Facilities Specifically for Males"
+                            items={[
+                                "Men's restrooms with toilets and urinals",
+                                'Separate security frisking by male security personnel',
+                            ]}
+                        />
+                        <GenderSection
+                            title="Facilities Specifically for Females"
+                            items={[
+                                "Women's restrooms with privacy",
+                                'Dedicated security frisking area with female security staff',
+                                'Clearly marked women-only coach boarding areas',
+                                'Panic buttons and safety helplines in many stations',
+                            ]}
+                        />
+                        <GenderSection
+                            title="Facilities for Persons with Disabilities"
+                            items={[
+                                'Accessible toilets for persons with disabilities',
+                                'Priority seating in metro trains',
+                                'Tactile pathways for visually impaired passengers',
+                            ]}
+                        />
+                        <GenderSection
+                            title="Other Facilities"
+                            items={['Assistance for senior citizens, pregnant women, and wheelchair users']}
+                        />
+                    </div>
+                </div>
+            </section>
 
-                        {/* Females */}
-                        <div>
-                            <h2 className="mb-4 font-montserrat text-3xl font-semibold text-black">
-                                Facilities Specifically for Females
-                            </h2>
-                            <ul className="space-y-3">
-                                {[
-                                    "Women's restrooms with privacy",
-                                    'Dedicated security frisking area with female security staff',
-                                    'Clearly marked women-only coach boarding areas',
-                                    'Panic buttons and safety helplines in many stations',
-                                ].map((item) => (
-                                    <li key={item} className="flex items-start gap-3">
-                                        <span className="mt-1 block h-6 w-[3px] flex-shrink-0 rounded-full bg-[#e8449a]" />
-                                        <span className="font-montserrat text-sm font-semibold text-black">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Persons with Disabilities */}
-                        <div>
-                            <h2 className="mb-4 font-montserrat text-3xl font-semibold text-black">
-                                Facilities for Persons with Disabilities
-                            </h2>
-                            <ul className="space-y-3">
-                                {[
-                                    'Accessible toilets for persons with disabilities',
-                                    'Priority seating in metro trains',
-                                    'Tactile pathways for visually impaired passengers',
-                                ].map((item) => (
-                                    <li key={item} className="flex items-start gap-3">
-                                        <span className="mt-1 block h-6 w-[3px] flex-shrink-0 rounded-full bg-[#e8449a]" />
-                                        <span className="font-montserrat text-sm font-semibold text-black">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Other Facilities */}
-                        <div>
-                            <h2 className="mb-4 font-montserrat text-3xl font-semibold text-black">Other Facilities</h2>
-                            <ul className="space-y-3">
-                                {['Assistance for senior citizens, pregnant women, and wheelchair users'].map((item) => (
-                                    <li key={item} className="flex items-start gap-3">
-                                        <span className="mt-1 block h-6 w-[3px] flex-shrink-0 rounded-full bg-[#e8449a]" />
-                                        <span className="font-montserrat text-sm font-semibold text-black">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+            {/* ── CTA Banner ── */}
+            <section className="bg-white pb-16">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
+                    <div className="relative overflow-hidden rounded-[25px]">
+                        <img
+                            src={imgCtaTrain}
+                            alt="Pune Metro train"
+                            className="h-75 w-full object-cover blur-[2px]"
+                        />
+                        <div className="absolute inset-0 bg-black/10" />
+                        <div className="absolute bottom-0 left-0 right-0 h-3/5 bg-linear-to-t from-black/80 to-transparent" />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 px-8 text-center">
+                            <p className="max-w-3xl font-montserrat text-sm font-medium text-white">
+                                {`Whether you're planning your daily commute, exploring the city, or seeking a faster and smarter way to travel, Puneri Metro is here to transform your journey with comfort, efficiency, and modern connectivity.`}
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <a
+                                    href="mailto:customercare.pmrp@mahametro.org"
+                                    className="flex items-center gap-2 rounded-full border border-white bg-white px-6 py-2.5 font-montserrat text-sm font-medium text-[#e8449a] transition-opacity hover:opacity-90"
+                                >
+                                    Mail Us: customercare.pmrp@mahametro.org
+                                </a>
+                                <a
+                                    href="tel:18002705501"
+                                    className="flex items-center gap-2 rounded-full border border-white bg-white px-6 py-2.5 font-montserrat text-sm font-medium text-[#e8449a] transition-opacity hover:opacity-90"
+                                >
+                                    Call Us: 18002705501
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

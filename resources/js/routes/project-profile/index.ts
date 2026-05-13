@@ -163,7 +163,7 @@ highlights.form = highlightsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 export const routeMap = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ routeMap.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMap.url = (options?: RouteQueryOptions) => {
@@ -187,7 +187,7 @@ routeMap.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -197,7 +197,7 @@ routeMap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -207,7 +207,7 @@ routeMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 const routeMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -217,7 +217,7 @@ const routeMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -227,7 +227,7 @@ routeMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:30
+* @see app/Http/Controllers/PagesController.php:35
 * @route '/project-profile/route-map'
 */
 routeMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -242,10 +242,92 @@ routeMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 routeMap.form = routeMapForm
 
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+export const photoGallery = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: photoGallery.url(options),
+    method: 'get',
+})
+
+photoGallery.definition = {
+    methods: ["get","head"],
+    url: '/project-profile/photo-gallery',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGallery.url = (options?: RouteQueryOptions) => {
+    return photoGallery.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGallery.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: photoGallery.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: photoGallery.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+const photoGalleryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: photoGallery.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGalleryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: photoGallery.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::photoGallery
+* @see app/Http/Controllers/PagesController.php:30
+* @route '/project-profile/photo-gallery'
+*/
+photoGalleryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: photoGallery.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+photoGallery.form = photoGalleryForm
+
 const projectProfile = {
     update: Object.assign(update, update),
     highlights: Object.assign(highlights, highlights),
     routeMap: Object.assign(routeMap, routeMap),
+    photoGallery: Object.assign(photoGallery, photoGallery),
 }
 
 export default projectProfile
