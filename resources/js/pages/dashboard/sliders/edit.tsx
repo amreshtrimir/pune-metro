@@ -290,7 +290,7 @@ export default function SliderEdit({ slider }: Props) {
             {/* Add / Edit Slide Dialog */}
             <Dialog open={slideDialog !== null} onOpenChange={(open) => !open && closeDialog()}>
                 <DialogContent className="max-w-lg">
-                >
+
                     <DialogHeader>
                         <DialogTitle>{slideDialog?.mode === 'add' ? 'Add Slide' : 'Edit Slide'}</DialogTitle>
                     </DialogHeader>
