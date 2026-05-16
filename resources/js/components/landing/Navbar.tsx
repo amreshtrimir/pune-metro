@@ -87,7 +87,7 @@ const mainNavLinks: NavLink[] = [
         children: [
             { label: 'EIA Reports', href: eiaReports.url() },
             { label: 'Green Initiatives', href: greenInitiatives.url() },
-            { label: 'Carbon Credit', href: carbonCredit.url() },
+            // { label: 'Carbon Credit', href: carbonCredit.url() },
             { label: 'Art from Scrap', href: artFromScrap.url() },
         ],
     },
