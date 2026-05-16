@@ -22,7 +22,9 @@ class PagesController extends Controller
 
     public function projectUpdate(): Response
     {
-        return Inertia::render('frontend/project-update');
+        return Inertia::render('frontend/project-update', [
+            'images' => $this->galleryAlbumService->getProjectUpdateImages(),
+        ]);
     }
 
     public function keyHighlights(): Response

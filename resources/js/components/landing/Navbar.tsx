@@ -61,7 +61,7 @@ const mainNavLinks: NavLink[] = [
         label: 'PASSENGER INFO',
         href: timeTable.url(),
         children: [
-            { label: 'Time Table', href: '/documents/TIMETABLE.pdf', external: true },
+            { label: 'Time Table', href: timeTable.url() },
             { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
             { label: "Do's and Don'ts", href: dosAndDonts.url() },
             { label: 'Items Not to Carry', href: itemsNotToCarry.url() },

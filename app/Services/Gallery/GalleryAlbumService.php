@@ -9,6 +9,23 @@ use Illuminate\Database\Eloquent\Collection;
 class GalleryAlbumService
 {
     /**
+     * @return Collection<int, GalleryAlbumImage>
+     */
+    public function getProjectUpdateImages(): Collection
+    {
+        $album = GalleryAlbum::where('slug', 'project-update')
+            ->where('is_active', true)
+            ->with([
+                'images' => fn ($q) => $q->orderBy('sort_order'),
+                'images.media',
+                'images.thumbMedia',
+            ])
+            ->first();
+
+        return $album?->images ?? GalleryAlbumImage::newModelInstance()->newCollection();
+    }
+
+    /**
      * @return Collection<int, GalleryAlbum>
      */
     public function listAlbums(): Collection
@@ -30,6 +47,7 @@ class GalleryAlbumService
     public function getAlbumsForFrontend(): Collection
     {
         return GalleryAlbum::where('is_active', true)
+            ->where('slug', '!=', 'project-update')
             ->orderBy('sort_order')
             ->with([
                 'images' => function ($query) {
@@ -76,6 +94,22 @@ class GalleryAlbumService
         $data['sort_order'] = $album->images()->max('sort_order') + 1;
 
         return $album->images()->create($data);
+    }
+
+    /**
+     * @param  array<int, array{media_id: int, thumb_media_id?: int|null}>  $images
+     */
+    public function bulkAddImages(GalleryAlbum $album, array $images): void
+    {
+        $nextOrder = (int) $album->images()->max('sort_order') + 1;
+
+        foreach ($images as $image) {
+            $album->images()->create([
+                'media_id' => $image['media_id'],
+                'thumb_media_id' => $image['thumb_media_id'] ?? null,
+                'sort_order' => $nextOrder++,
+            ]);
+        }
     }
 
     /**

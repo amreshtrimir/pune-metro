@@ -11,19 +11,19 @@ const SLIDE_INTERVAL = 6000;
 
 const slides: Slide[] = [
     {
-        image: '/landing/sliders-slides/first-image.webp',
+        image: '/landing/sliders-slides/hero-section-slides/slide-1-desktop.png',
         heading: 'Transforming Urban Mobility with Speed, Comfort and Sustainability',
         description:
             'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.',
     },
     {
-        image: '/landing/sliders-slides/second-image.webp',
+        image: '/landing/sliders-slides/hero-section-slides/slide-2-desktop.png',
         heading: "Connecting Pune's Vital Commuter Arteries",
         description:
             "The project features a 23.3 km elevated corridor designed to alleviate congestion along one of Pune's most critical routes. By linking the Hinjewadi IT hub to the Shivajinagar District Court, the line bridges major tech zones with the city centre. The corridor includes 23 strategically planned stations serving key residential and commercial neighbourhoods.",
     },
     {
-        image: '/landing/sliders-slides/third-image.webp',
+        image: '/landing/sliders-slides/hero-section-slides/slide-3-desktop.png',
         heading: 'A Blueprint for Sustainable Urban Mobility',
         description:
             "Puneri Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes its ecological footprint while actively enhancing the city's green cover.",

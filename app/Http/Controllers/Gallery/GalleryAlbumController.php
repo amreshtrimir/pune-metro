@@ -61,6 +61,19 @@ class GalleryAlbumController extends Controller
         return redirect()->route('dashboard.gallery-albums.edit', $galleryAlbum)->with('success', 'Image added.');
     }
 
+    public function bulkStoreImages(Request $request, GalleryAlbum $galleryAlbum): RedirectResponse
+    {
+        $request->validate([
+            'images' => ['required', 'array', 'min:1'],
+            'images.*.media_id' => ['required', 'integer', 'exists:media,id'],
+            'images.*.thumb_media_id' => ['nullable', 'integer', 'exists:media,id'],
+        ]);
+
+        $this->galleryAlbumService->bulkAddImages($galleryAlbum, $request->input('images'));
+
+        return redirect()->route('dashboard.gallery-albums.edit', $galleryAlbum)->with('success', count($request->input('images')).' images added.');
+    }
+
     public function updateImage(UpdateGalleryAlbumImageRequest $request, GalleryAlbum $galleryAlbum, GalleryAlbumImage $image): RedirectResponse
     {
         $this->galleryAlbumService->updateImage($image, $request->validated());

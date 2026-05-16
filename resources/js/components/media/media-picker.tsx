@@ -6,13 +6,24 @@ import { cn } from '@/lib/utils';
 import type { Media, MediaVariant, PaginatedData, SelectedMedia } from '@/types';
 import { Search, ChevronLeft, ChevronRight, CheckCircle2, Images, X } from 'lucide-react';
 
-type MediaPickerProps = {
-    open: boolean;
-    onClose: () => void;
+type SingleSelectProps = {
+    multiSelect?: false;
     onSelect: (selected: SelectedMedia) => void;
+    onMultiSelect?: never;
 };
 
-export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
+type MultiSelectProps = {
+    multiSelect: true;
+    onSelect?: never;
+    onMultiSelect: (selected: SelectedMedia[]) => void;
+};
+
+type MediaPickerProps = (SingleSelectProps | MultiSelectProps) & {
+    open: boolean;
+    onClose: () => void;
+};
+
+export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelect }: MediaPickerProps) {
     const [media, setMedia] = useState<PaginatedData<Media> | null>(null);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
@@ -21,6 +32,8 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
     const [modules, setModules] = useState<string[]>([]);
     const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
     const [selectedVariant, setSelectedVariant] = useState<MediaVariant | null>(null);
+    const [multiSelectedIds, setMultiSelectedIds] = useState<Set<number>>(new Set());
+    const [multiSelectedItems, setMultiSelectedItems] = useState<Map<number, Media>>(new Map());
 
     const fetchMedia = async (searchVal: string, pageVal: number, moduleVal: string | null) => {
         setLoading(true);
@@ -45,6 +58,8 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
         if (open) {
             setSelectedMedia(null);
             setSelectedVariant(null);
+            setMultiSelectedIds(new Set());
+            setMultiSelectedItems(new Map());
             setSearch('');
             setPage(1);
             setModule(null);
@@ -71,8 +86,48 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
     };
 
     const handleSelect = (m: Media) => {
+        if (multiSelect) {
+            setMultiSelectedIds((prev) => {
+                const next = new Set(prev);
+                if (next.has(m.id)) {
+                    next.delete(m.id);
+                } else {
+                    next.add(m.id);
+                }
+                return next;
+            });
+            setMultiSelectedItems((prev) => {
+                const next = new Map(prev);
+                if (next.has(m.id)) {
+                    next.delete(m.id);
+                } else {
+                    next.set(m.id, m);
+                }
+                return next;
+            });
+            return;
+        }
         setSelectedMedia(m);
         setSelectedVariant(m.variants[0] ?? null);
+    };
+
+    const handleMultiConfirm = () => {
+        if (multiSelectedItems.size === 0) return;
+        const selected: SelectedMedia[] = Array.from(multiSelectedItems.values()).map((m) => {
+            const variant = m.variants[0] ?? null;
+            const filePath = variant?.file_path ?? m.file_path;
+            return {
+                media_id: m.id,
+                variant: {
+                    width: variant?.width ?? 0,
+                    height: variant?.height ?? 0,
+                    file_path: filePath,
+                    url: `/storage/${filePath}`,
+                },
+            };
+        });
+        onMultiSelect!(selected);
+        onClose();
     };
 
     const handleConfirm = () => {
@@ -179,33 +234,37 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                                 </div>
                             ) : (
                                 <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
-                                    {media?.data.map((m) => (
-                                        <div
-                                            key={m.id}
-                                            onClick={() => handleSelect(m)}
-                                            className={cn(
-                                                'group relative aspect-square cursor-pointer overflow-hidden rounded-xl border-2 bg-muted transition-all',
-                                                selectedMedia?.id === m.id
-                                                    ? 'border-primary ring-2 ring-primary/30'
-                                                    : 'border-transparent hover:border-primary/40',
-                                            )}
-                                        >
-                                            <img
-                                                src={`/storage/${(m.variants[0] ?? m).file_path}`}
-                                                alt={m.file_name}
-                                                className="h-full w-full object-cover"
-                                                loading="lazy"
-                                            />
-                                            {selectedMedia?.id === m.id && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-primary/20">
-                                                    <CheckCircle2 className="size-7 text-primary drop-shadow" />
+                                    {media?.data.map((m) => {
+                                        const isMultiSelected = multiSelect && multiSelectedIds.has(m.id);
+                                        const isSingleSelected = !multiSelect && selectedMedia?.id === m.id;
+                                        return (
+                                            <div
+                                                key={m.id}
+                                                onClick={() => handleSelect(m)}
+                                                className={cn(
+                                                    'group relative aspect-square cursor-pointer overflow-hidden rounded-xl border-2 bg-muted transition-all',
+                                                    (isSingleSelected || isMultiSelected)
+                                                        ? 'border-primary ring-2 ring-primary/30'
+                                                        : 'border-transparent hover:border-primary/40',
+                                                )}
+                                            >
+                                                <img
+                                                    src={`/storage/${(m.variants[0] ?? m).file_path}`}
+                                                    alt={m.file_name}
+                                                    className="h-full w-full object-cover"
+                                                    loading="lazy"
+                                                />
+                                                {(isSingleSelected || isMultiSelected) && (
+                                                    <div className="absolute inset-0 flex items-center justify-center bg-primary/20">
+                                                        <CheckCircle2 className="size-7 text-primary drop-shadow" />
+                                                    </div>
+                                                )}
+                                                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/60 to-transparent p-1.5 opacity-0 transition-opacity group-hover:opacity-100">
+                                                    <p className="truncate text-[10px] text-white">{m.file_name}</p>
                                                 </div>
-                                            )}
-                                            <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/60 to-transparent p-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-                                                <p className="truncate text-[10px] text-white">{m.file_name}</p>
                                             </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             )}
                         </div>
@@ -238,7 +297,8 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                         )}
                     </div>
 
-                    {/* Detail side-panel */}
+                    {/* Detail side-panel (single-select only) */}
+                    {!multiSelect && (
                     <div className={cn(
                         'flex-none w-56 border-l bg-muted/30 flex flex-col transition-all duration-200',
                         selectedMedia ? 'translate-x-0 opacity-100' : 'hidden',
@@ -313,7 +373,28 @@ export function MediaPicker({ open, onClose, onSelect }: MediaPickerProps) {
                             </Button>
                         </div>
                     </div>
+                    )}
                 </div>
+
+                {/* Multi-select confirm bar */}
+                {multiSelect && (
+                    <div className="flex-none border-t px-4 py-3 flex items-center justify-between bg-background">
+                        <p className="text-sm text-muted-foreground">
+                            {multiSelectedIds.size === 0
+                                ? 'Click images to select them'
+                                : `${multiSelectedIds.size} image${multiSelectedIds.size === 1 ? '' : 's'} selected`}
+                        </p>
+                        <Button
+                            type="button"
+                            size="sm"
+                            disabled={multiSelectedIds.size === 0}
+                            onClick={handleMultiConfirm}
+                        >
+                            <CheckCircle2 className="mr-1.5 size-3.5" />
+                            Add {multiSelectedIds.size > 0 ? multiSelectedIds.size : ''} Image{multiSelectedIds.size === 1 ? '' : 's'}
+                        </Button>
+                    </div>
+                )}
             </DialogContent>
         </Dialog>
     );

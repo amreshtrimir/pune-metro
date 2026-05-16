@@ -166,6 +166,7 @@ export type GalleryAlbumImage = {
 export type GalleryAlbum = {
     id: number;
     title: string;
+    slug: string | null;
     description: string | null;
     sort_order: number;
     is_active: boolean;

@@ -80,8 +80,88 @@ storeForm.post = (args: { galleryAlbum: number | { id: number } } | [galleryAlbu
 store.form = storeForm
 
 /**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
+* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStore
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
+*/
+export const bulkStore = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: bulkStore.url(args, options),
+    method: 'post',
+})
+
+bulkStore.definition = {
+    methods: ["post"],
+    url: '/dashboard/gallery-albums/{galleryAlbum}/images/bulk',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStore
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
+*/
+bulkStore.url = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { galleryAlbum: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { galleryAlbum: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            galleryAlbum: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        galleryAlbum: typeof args.galleryAlbum === 'object'
+        ? args.galleryAlbum.id
+        : args.galleryAlbum,
+    }
+
+    return bulkStore.definition.url
+            .replace('{galleryAlbum}', parsedArgs.galleryAlbum.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStore
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
+*/
+bulkStore.post = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: bulkStore.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStore
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
+*/
+const bulkStoreForm = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkStore.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStore
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
+*/
+bulkStoreForm.post = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkStore.url(args, options),
+    method: 'post',
+})
+
+bulkStore.form = bulkStoreForm
+
+/**
+* @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 export const update = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -96,7 +176,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 update.url = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -126,7 +206,7 @@ update.url = (args: { galleryAlbum: number | { id: number }, image: number | { i
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 update.put = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -136,7 +216,7 @@ update.put = (args: { galleryAlbum: number | { id: number }, image: number | { i
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 const updateForm = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -151,7 +231,7 @@ const updateForm = (args: { galleryAlbum: number | { id: number }, image: number
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 updateForm.put = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -168,7 +248,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:71
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 export const destroy = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -183,7 +263,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:71
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 destroy.url = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -213,7 +293,7 @@ destroy.url = (args: { galleryAlbum: number | { id: number }, image: number | { 
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:71
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 destroy.delete = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -223,7 +303,7 @@ destroy.delete = (args: { galleryAlbum: number | { id: number }, image: number |
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:71
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 const destroyForm = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -238,7 +318,7 @@ const destroyForm = (args: { galleryAlbum: number | { id: number }, image: numbe
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:71
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
 */
 destroyForm.delete = (args: { galleryAlbum: number | { id: number }, image: number | { id: number } } | [galleryAlbum: number | { id: number }, image: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -255,7 +335,7 @@ destroy.form = destroyForm
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorder
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:78
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
 */
 export const reorder = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -270,7 +350,7 @@ reorder.definition = {
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorder
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:78
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
 */
 reorder.url = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -303,7 +383,7 @@ reorder.url = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: 
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorder
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:78
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
 */
 reorder.post = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -313,7 +393,7 @@ reorder.post = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum:
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorder
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:78
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
 */
 const reorderForm = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -323,7 +403,7 @@ const reorderForm = (args: { galleryAlbum: number | { id: number } } | [galleryA
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorder
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:78
+* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
 */
 reorderForm.post = (args: { galleryAlbum: number | { id: number } } | [galleryAlbum: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -335,6 +415,7 @@ reorder.form = reorderForm
 
 const images = {
     store: Object.assign(store, store),
+    bulkStore: Object.assign(bulkStore, bulkStore),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
     reorder: Object.assign(reorder, reorder),

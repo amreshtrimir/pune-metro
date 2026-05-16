@@ -13,6 +13,7 @@ const MODULES = [
     { value: 'pages', label: 'Pages' },
     { value: 'banners', label: 'Banners' },
     { value: 'gallery', label: 'Gallery' },
+    { value: 'project-update', label: 'Project Update' },
 ];
 
 type FileStatus = 'pending' | 'uploading' | 'done' | 'error';

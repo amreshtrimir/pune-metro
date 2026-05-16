@@ -22,6 +22,7 @@ class StoreGalleryAlbumRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'slug' => ['nullable', 'string', 'max:255', 'alpha_dash', 'unique:gallery_albums,slug'],
             'description' => ['nullable', 'string'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['boolean'],

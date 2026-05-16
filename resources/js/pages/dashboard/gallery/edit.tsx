@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { MediaPicker } from '@/components/media/media-picker';
-import type { GalleryAlbum, GalleryAlbumImage, Media } from '@/types/cms';
+import type { GalleryAlbum, GalleryAlbumImage, Media, SelectedMedia } from '@/types/cms';
 import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
 import { ArrowUp, ArrowDown, Plus, Pencil, Trash2, ImageIcon, ChevronLeft } from 'lucide-react';
 
@@ -35,6 +35,7 @@ export default function GalleryEdit({ album }: Props) {
     const [imageDialog, setImageDialog] = useState<{ mode: 'add' | 'edit'; image: GalleryAlbumImage | null } | null>(null);
     const [imageForm, setImageForm] = useState<ImageFormState>(emptyImageForm());
     const [saving, setSaving] = useState(false);
+    const [bulkPickerOpen, setBulkPickerOpen] = useState(false);
 
     const openAddImage = () => {
         setImageForm(emptyImageForm());
@@ -115,6 +116,14 @@ export default function GalleryEdit({ album }: Props) {
         router.post(GalleryAlbumController.reorderImages.url(album.id), { ordered_ids: orderedIds }, { preserveScroll: true });
     };
 
+    const handleBulkSelect = (selected: SelectedMedia[]) => {
+        router.post(
+            GalleryAlbumController.bulkStoreImages.url(album.id),
+            { images: selected.map((s) => ({ media_id: s.media_id })) },
+            { onSuccess: () => setBulkPickerOpen(false) },
+        );
+    };
+
     const sortedImages = [...album.images].sort((a, b) => a.sort_order - b.sort_order);
 
     return (
@@ -146,6 +155,19 @@ export default function GalleryEdit({ album }: Props) {
                                         className={errors.title ? 'border-destructive' : ''}
                                     />
                                     {errors.title && <p className="text-xs text-destructive">{errors.title}</p>}
+                                </div>
+
+                                <div className="space-y-1">
+                                    <label className="text-xs font-medium text-muted-foreground">
+                                        Slug <span className="font-normal text-muted-foreground/60">(optional — use <code>project-update</code> to link to the Project Update page)</span>
+                                    </label>
+                                    <Input
+                                        name="slug"
+                                        defaultValue={album.slug ?? ''}
+                                        placeholder="e.g. project-update"
+                                        className={errors.slug ? 'border-destructive' : ''}
+                                    />
+                                    {errors.slug && <p className="text-xs text-destructive">{errors.slug}</p>}
                                 </div>
 
                                 <div className="space-y-1">
@@ -195,9 +217,14 @@ export default function GalleryEdit({ album }: Props) {
                 <div className="space-y-3">
                     <div className="flex items-center justify-between">
                         <h2 className="text-sm font-semibold">Images ({sortedImages.length})</h2>
-                        <Button size="sm" onClick={openAddImage}>
-                            <Plus className="size-4 mr-1" /> Add Image
-                        </Button>
+                        <div className="flex gap-2">
+                            <Button size="sm" variant="outline" onClick={() => setBulkPickerOpen(true)}>
+                                <Plus className="size-4 mr-1" /> Add Multiple
+                            </Button>
+                            <Button size="sm" onClick={openAddImage}>
+                                <Plus className="size-4 mr-1" /> Add Image
+                            </Button>
+                        </div>
                     </div>
 
                     {sortedImages.length === 0 ? (
@@ -373,6 +400,13 @@ export default function GalleryEdit({ album }: Props) {
                     />
                 </DialogContent>
             </Dialog>
+            {/* Bulk image picker */}
+            <MediaPicker
+                multiSelect
+                open={bulkPickerOpen}
+                onClose={() => setBulkPickerOpen(false)}
+                onMultiSelect={handleBulkSelect}
+            />
         </>
     );
 }

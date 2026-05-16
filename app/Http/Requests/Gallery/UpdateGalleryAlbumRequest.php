@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Gallery;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateGalleryAlbumRequest extends FormRequest
 {
@@ -22,6 +23,7 @@ class UpdateGalleryAlbumRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'slug' => ['nullable', 'string', 'max:255', 'alpha_dash', Rule::unique('gallery_albums', 'slug')->ignore($this->route('galleryAlbum'))],
             'description' => ['nullable', 'string'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['boolean'],

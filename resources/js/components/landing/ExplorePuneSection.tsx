@@ -1,4 +1,6 @@
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+
+const AUTOPLAY_INTERVAL = 3000;
 
 const places = [
     {
@@ -23,109 +25,162 @@ const places = [
     },
     {
         name: 'Shaniwar Wada - Fortification',
-        image: '/landing/place-section/dagdusheth-ganpati-temple.png',
+        image: '/landing/place-section/shaniwar-wada.png',
         fallbackBg: 'linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%)',
     },
     {
         name: 'Rajiv Gandhi Zoological Park',
-        image: '/landing/place-section/aga-khan-palace.png',
+        image: '/landing/place-section/rajiv-gandhi-zoological-park.png',
         fallbackBg: 'linear-gradient(135deg, #14532d 0%, #16a34a 100%)',
     },
     {
         name: 'Osho Ashram - Spiritual Retreat',
-        image: '/landing/place-section/sinhagad-fort.png',
+        image: '/landing/place-section/aga-khan-palace.png',
         fallbackBg: 'linear-gradient(135deg, #451a03 0%, #92400e 100%)',
     },
     {
         name: 'Pune Okayama Friendship Garden',
-        image: '/landing/place-section/parvati-hill-temple.png',
+        image: '/landing/place-section/pune-okayama-garden.png',
         fallbackBg: 'linear-gradient(135deg, #052e16 0%, #166534 100%)',
     },
     {
         name: 'Kasba Ganpati Temple - Heritage Site',
-        image: '/landing/place-section/dagdusheth-ganpati-temple.png',
+        image: '/landing/place-section/kasba-ganpati-temple.png',
         fallbackBg: 'linear-gradient(135deg, #4a1942 0%, #86198f 100%)',
     },
     {
         name: 'National War Museum - Pune',
-        image: '/landing/place-section/aga-khan-palace.png',
+        image: '/landing/place-section/national-war-museum.png',
         fallbackBg: 'linear-gradient(135deg, #1c1917 0%, #57534e 100%)',
     },
     {
         name: 'Lohagad Fort - Trekking Destination',
-        image: '/landing/place-section/sinhagad-fort.png',
+        image: '/landing/place-section/lohagad-fort.png',
         fallbackBg: 'linear-gradient(135deg, #0f172a 0%, #334155 100%)',
     },
     {
         name: 'Chaturshringi Temple - Sacred Site',
-        image: '/landing/place-section/parvati-hill-temple.png',
+        image: '/landing/place-section/chaturshringi-temple.png',
         fallbackBg: 'linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%)',
     },
     {
         name: 'Saras Baug Garden - Ganesh Temple',
-        image: '/landing/place-section/dagdusheth-ganpati-temple.png',
+        image: '/landing/place-section/saras-baug-garden.png',
         fallbackBg: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%)',
     },
     {
         name: 'Empress Botanical Garden',
-        image: '/landing/place-section/aga-khan-palace.png',
+        image: '/landing/place-section/empress-botanical-garden.png',
         fallbackBg: 'linear-gradient(135deg, #134e4a 0%, #0d9488 100%)',
     },
     {
         name: 'Vishrambaug Wada - Peshwa Palace',
-        image: '/landing/place-section/sinhagad-fort.png',
+        image: '/landing/place-section/vishrambaug-wada.png',
         fallbackBg: 'linear-gradient(135deg, #431407 0%, #c2410c 100%)',
     },
     {
         name: 'Bund Garden - River Park',
-        image: '/landing/place-section/parvati-hill-temple.png',
+        image: '/landing/place-section/bund-garden.png',
         fallbackBg: 'linear-gradient(135deg, #042f2e 0%, #0f766e 100%)',
     },
     {
         name: 'Pune Railway Station - Heritage',
-        image: '/landing/place-section/dagdusheth-ganpati-temple.png',
+        image: '/landing/place-section/pune-railway-station.png',
         fallbackBg: 'linear-gradient(135deg, #1e3a5f 0%, #0369a1 100%)',
     },
     {
         name: 'Taljai Hill - Nature Reserve',
-        image: '/landing/place-section/aga-khan-palace.png',
+        image: '/landing/place-section/taljai-hill.png',
         fallbackBg: 'linear-gradient(135deg, #14532d 0%, #4ade80 100%)',
     },
     {
         name: 'Phursungi Village - Rural Charm',
-        image: '/landing/place-section/sinhagad-fort.png',
+        image: '/landing/place-section/phursungi-village.png',
         fallbackBg: 'linear-gradient(135deg, #422006 0%, #d97706 100%)',
     },
     {
         name: 'Khadakwasla Dam - Scenic Reservoir',
-        image: '/landing/place-section/parvati-hill-temple.png',
+        image: '/landing/place-section/khadakwasla-dam.png',
         fallbackBg: 'linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 100%)',
     },
 ];
 
 export default function ExplorePuneSection() {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const isPausedRef = useRef(false);
 
-    const updateScrollState = () => {
-        if (scrollRef.current) {
-            setCanScrollLeft(scrollRef.current.scrollLeft > 0);
+    const getCardWidth = useCallback(() => {
+        if (!scrollRef.current) {
+            return 0;
         }
-    };
+
+        const w = window.innerWidth;
+        const offsetWidth = scrollRef.current.offsetWidth;
+
+        if (w < 640) {
+            // 1.5 visible cards: card is 62% wide, gap-3 = 12 px
+            return Math.round(offsetWidth * 0.75) + 12;
+        }
+
+        const visibleCards = w < 1024 ? 2 : 4;
+        const GAP = w < 1024 ? 16 : 0;
+
+        return (offsetWidth - GAP * (visibleCards - 1)) / visibleCards + GAP;
+    }, []);
+
+    // When scrollLeft reaches the midpoint (start of the cloned second half),
+    // instantly snap back by half — both halves are identical so no visual jump.
+    const checkAndReset = useCallback(() => {
+        if (!scrollRef.current) {
+            return;
+        }
+
+        const { scrollLeft, scrollWidth } = scrollRef.current;
+
+        if (scrollLeft >= scrollWidth / 2) {
+            scrollRef.current.scrollLeft = scrollLeft - scrollWidth / 2;
+        }
+    }, []);
+
+    const startAutoplay = useCallback(() => {
+        if (autoplayTimerRef.current) {
+            clearInterval(autoplayTimerRef.current);
+        }
+
+        autoplayTimerRef.current = setInterval(() => {
+            if (isPausedRef.current || !scrollRef.current) {
+                return;
+            }
+
+            scrollRef.current.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+            // Wait for the smooth-scroll animation to finish, then silently reset if needed
+            setTimeout(checkAndReset, 600);
+        }, AUTOPLAY_INTERVAL);
+    }, [getCardWidth, checkAndReset]);
+
+    useEffect(() => {
+        startAutoplay();
+
+        return () => {
+            if (autoplayTimerRef.current) {
+                clearInterval(autoplayTimerRef.current);
+            }
+        };
+    }, [startAutoplay]);
 
     const scroll = (dir: 'left' | 'right') => {
-        if (!scrollRef.current) return;
-        // Match visible cards: 1 on mobile, 2 on md, 4 on lg
-        const w = window.innerWidth;
-        const visibleCards = w < 768 ? 1 : w < 1024 ? 2 : 4;
-        const GAP = w >= 1024 ? 0 : 16;
-        const cardWidth = (scrollRef.current.offsetWidth - GAP * (visibleCards - 1)) / visibleCards;
-        scrollRef.current.scrollBy({ left: dir === 'right' ? cardWidth + GAP : -(cardWidth + GAP), behavior: 'smooth' });
-        setTimeout(updateScrollState, 400);
+        if (!scrollRef.current) {
+            return;
+        }
+
+        scrollRef.current.scrollBy({ left: dir === 'right' ? getCardWidth() : -getCardWidth(), behavior: 'smooth' });
+        setTimeout(checkAndReset, 600);
+        startAutoplay();
     };
 
     return (
-        <section id="explore" className="relative overflow-visible">
+        <section id="explore" className="relative overflow-x-clip lg:overflow-x-visible">
             {/* ── Rows 1 & 2 background wrapper ── */}
             <div
                 className="relative"
@@ -140,7 +195,7 @@ export default function ExplorePuneSection() {
                 <div className="absolute inset-0" style={{ background: 'rgba(10, 8, 24, 0.82)' }} />
 
                 {/* ── Row 1: pill + heading | description + nav buttons ── */}
-                <div className="relative z-10 mx-auto max-w-360 px-6 lg:px-16 lg:pt-28">
+                <div className="relative z-10 mx-auto max-w-360 px-6 pt-10 md:pt-16 lg:px-16 lg:pt-28">
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                         {/* Left: pill + heading */}
                         <div className="flex flex-col gap-3">
@@ -185,8 +240,8 @@ export default function ExplorePuneSection() {
                 </div>
 
                 {/* ── Row 2: scroll hint ── */}
-                <div className="relative z-10 mt-6 flex mx-auto max-w-360 px-6 lg:px-16 flex-col justify-end  lg:mt-10" style={{ minHeight: '200px', paddingBottom: '48px' }} data-row2>
-                    <div className="flex flex-col gap-2">
+                <div className="relative z-10 mx-auto flex max-w-360 flex-col justify-end px-6 pb-8 pt-6 md:pb-16 lg:mt-10 lg:min-h-50 lg:px-16 lg:pb-12">
+                    <div className="hidden flex-col gap-2 lg:flex">
                         <span className="font-montserrat text-xs font-semibold tracking-widest text-white/40 uppercase">
                             Scroll Right
                         </span>
@@ -198,29 +253,33 @@ export default function ExplorePuneSection() {
             </div>
 
             {/* ── Row 3: slides (no bg image) ── */}
-            <div className="mx-auto w-full" style={{ maxWidth: '1312px', marginTop: '-160px' }}>
-                <div className="ml-auto px-6 pr-0" style={{ maxWidth: '1100px', paddingBottom: '48px' }}>
+            <div className="mx-auto -mt-10 w-full md:-mt-14 lg:-mt-40" style={{ maxWidth: '1312px' }}>
+                <div className="w-full pb-10 lg:ml-auto lg:pb-12" style={{ maxWidth: '1100px' }}>
                 <div
                     ref={scrollRef}
-                    onScroll={updateScrollState}
-                    className="flex gap-4 overflow-x-auto lg:gap-0"
+                    onMouseEnter={() => {
+                        isPausedRef.current = true;
+                    }}
+                    onMouseLeave={() => {
+                        isPausedRef.current = false;
+                    }}
+                    className="flex overflow-x-auto touch-pan-x snap-x snap-mandatory scroll-pl-4 pl-4 gap-3 sm:scroll-pl-6 sm:pl-6 sm:gap-4 lg:scroll-pl-0 lg:pl-0 lg:gap-0"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
-                    {places.map((place) => (
+                    {[...places, ...places].map((place, index) => (
                         <div
-                            key={place.name}
-                            style={{
-                                height: '400px',
-                                background: place.fallbackBg,
-                            }}
-                            className="group relative w-full shrink-0 cursor-pointer overflow-hidden sm:w-[calc(50%-8px)] lg:w-[25%]"
+                            key={`${place.name}-${index}`}
+                            style={{ background: place.fallbackBg }}
+                            className="group relative h-70 w-[75%] shrink-0 snap-start cursor-pointer overflow-hidden sm:h-100 sm:w-[calc(50%-12px)] lg:w-[25%]"
                         >
                             {/* Photo */}
                             <img
                                 src={place.image}
                                 alt={place.name}
                                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                }}
                             />
 
                             {/* Bottom gradient overlay */}

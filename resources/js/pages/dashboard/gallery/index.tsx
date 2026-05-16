@@ -36,20 +36,32 @@ export default function GalleryIndex({ albums }: Props) {
                 {/* Create album form */}
                 <div className="rounded-xl border p-4 space-y-3">
                     <h2 className="text-sm font-semibold">Create new album</h2>
-                    <Form {...GalleryAlbumController.store.form()} resetOnSuccess className="flex flex-col gap-3 sm:flex-row">
+                    <Form {...GalleryAlbumController.store.form()} resetOnSuccess className="flex flex-col gap-3">
                         {({ errors, processing }) => (
                             <>
-                                <div className="flex-1 space-y-1">
-                                    <Input
-                                        name="title"
-                                        placeholder="Album title (e.g. Construction Progress)"
-                                        className={errors.title ? 'border-destructive' : ''}
-                                    />
-                                    {errors.title && <p className="text-xs text-destructive">{errors.title}</p>}
+                                <div className="grid gap-3 sm:grid-cols-2">
+                                    <div className="space-y-1">
+                                        <Input
+                                            name="title"
+                                            placeholder="Album title (e.g. Construction Progress)"
+                                            className={errors.title ? 'border-destructive' : ''}
+                                        />
+                                        {errors.title && <p className="text-xs text-destructive">{errors.title}</p>}
+                                    </div>
+                                    <div className="space-y-1">
+                                        <Input
+                                            name="slug"
+                                            placeholder="Slug — optional (e.g. project-update)"
+                                            className={errors.slug ? 'border-destructive' : ''}
+                                        />
+                                        {errors.slug && <p className="text-xs text-destructive">{errors.slug}</p>}
+                                    </div>
                                 </div>
-                                <Button type="submit" disabled={processing} className="shrink-0">
-                                    {processing ? 'Creating...' : 'Create Album'}
-                                </Button>
+                                <div className="flex justify-end">
+                                    <Button type="submit" disabled={processing} className="shrink-0">
+                                        {processing ? 'Creating...' : 'Create Album'}
+                                    </Button>
+                                </div>
                             </>
                         )}
                     </Form>
@@ -67,6 +79,7 @@ export default function GalleryIndex({ albums }: Props) {
                             <thead>
                                 <tr className="border-b bg-muted/40">
                                     <th className="px-4 py-3 text-left font-medium">Title</th>
+                                    <th className="px-4 py-3 text-left font-medium hidden lg:table-cell">Slug</th>
                                     <th className="px-4 py-3 text-left font-medium hidden md:table-cell">Description</th>
                                     <th className="px-4 py-3 text-left font-medium">Images</th>
                                     <th className="px-4 py-3 text-left font-medium">Order</th>
@@ -78,6 +91,13 @@ export default function GalleryIndex({ albums }: Props) {
                                 {albums.map((album) => (
                                     <tr key={album.id} className="hover:bg-muted/20">
                                         <td className="px-4 py-3 font-medium">{album.title}</td>
+                                        <td className="px-4 py-3 hidden lg:table-cell">
+                                            {album.slug ? (
+                                                <code className="rounded bg-muted px-1.5 py-0.5 text-xs">{album.slug}</code>
+                                            ) : (
+                                                <span className="italic text-xs text-muted-foreground/50">—</span>
+                                            )}
+                                        </td>
                                         <td className="px-4 py-3 text-muted-foreground hidden md:table-cell max-w-xs truncate">
                                             {album.description ?? <span className="italic opacity-50">No description</span>}
                                         </td>

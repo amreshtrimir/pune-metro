@@ -124,6 +124,7 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/gallery-albums/{galleryAlbum}', [GalleryAlbumController::class, 'update'])->name('gallery-albums.update');
         Route::delete('/gallery-albums/{galleryAlbum}', [GalleryAlbumController::class, 'destroy'])->name('gallery-albums.destroy');
         Route::post('/gallery-albums/{galleryAlbum}/images', [GalleryAlbumController::class, 'storeImage'])->name('gallery-albums.images.store');
+        Route::post('/gallery-albums/{galleryAlbum}/images/bulk', [GalleryAlbumController::class, 'bulkStoreImages'])->name('gallery-albums.images.bulk-store');
         Route::put('/gallery-albums/{galleryAlbum}/images/{image}', [GalleryAlbumController::class, 'updateImage'])->name('gallery-albums.images.update');
         Route::delete('/gallery-albums/{galleryAlbum}/images/{image}', [GalleryAlbumController::class, 'destroyImage'])->name('gallery-albums.images.destroy');
         Route::post('/gallery-albums/{galleryAlbum}/images/reorder', [GalleryAlbumController::class, 'reorderImages'])->name('gallery-albums.images.reorder');

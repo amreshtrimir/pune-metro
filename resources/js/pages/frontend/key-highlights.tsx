@@ -52,11 +52,11 @@ const projectHighlights = [
         description:
             'Solar panels installed across stations and depot facilities will generate clean, renewable energy to support metro operations, significantly reducing dependence on conventional power sources and lowering overall operational energy costs.',
     },
-    {
-        title: 'Carbon Credit & Environmental Responsibility',
-        description:
-            'By shifting thousands of daily commuters from private vehicles to public transport, Puneri Metro Line 3 will contribute to a measurable reduction in carbon emissions across Pune, actively earning carbon credits through its sustainable operations and energy-efficient systems.',
-    },
+    // {
+    //     title: 'Carbon Credit & Environmental Responsibility',
+    //     description:
+    //         'By shifting thousands of daily commuters from private vehicles to public transport, Puneri Metro Line 3 will contribute to a measurable reduction in carbon emissions across Pune, actively earning carbon credits through its sustainable operations and energy-efficient systems.',
+    // },
     {
         title: 'Last-Mile Connectivity',
         description:
@@ -149,7 +149,7 @@ export default function KeyHighlights() {
                         {/* Right: image */}
                         <div className="overflow-hidden rounded-3xl lg:order-2 lg:ml-auto" style={{ background: 'rgba(109,0,58,0.1)', maxWidth: '592px', width: '100%' }}>
                             <img
-                                src="/project-profile/key-highlights-side.png"
+                                src="/project-profile/key-high-point.png"
                                 alt="Puneri Metro Project Highlights"
                                 className="h-full w-full object-cover"
                             />

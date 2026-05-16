@@ -1,5 +1,11 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid, Image, FileText, MessageSquare, Tag, SlidersHorizontal, Images } from 'lucide-react';
+import { BookOpen, FolderGit2, Globe, LayoutGrid, Image, FileText, MessageSquare, Tag, SlidersHorizontal, Images } from 'lucide-react';
+import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
+import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
+import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
+import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
+import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
+import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -14,12 +20,6 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
-import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
-import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
-import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
-import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
-import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
-import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -64,6 +64,11 @@ const cmsNavItems: NavItem[] = [
 ];
 
 const footerNavItems: NavItem[] = [
+    {
+        title: 'View Website',
+        href: '/',
+        icon: Globe,
+    },
     {
         title: 'Repository',
         href: 'https://github.com/laravel/react-starter-kit',

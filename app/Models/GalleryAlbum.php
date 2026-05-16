@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['title', 'description', 'sort_order', 'is_active'])]
+#[Fillable(['title', 'slug', 'description', 'sort_order', 'is_active'])]
 class GalleryAlbum extends Model
 {
     protected function casts(): array

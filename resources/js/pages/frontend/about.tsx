@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
-import QuoteBanner from '@/components/landing/QuoteBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
+import QuoteBanner from '@/components/landing/QuoteBanner';
 
 export default function About() {
     return (
@@ -20,11 +20,11 @@ export default function About() {
 
             {/* ── Overview Content ── */}
             <section className="bg-white py-10">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
+                <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <PageSectionHeading className="mb-5 flex items-center gap-6">Overview of Puneri Metro</PageSectionHeading>
                     {/* Intro paragraphs */}
                     <div className="mb-16 space-y-5">
-                        <p className="font-montserrat text-base leading-relaxed text-black">
+                        <p className="font-montserrat text-sm leading-relaxed text-black">
                             Pune IT City Metro Rail Limited (PITCMRL), popularly known as Pune Metro Line 3, is a Special Purpose
                             Vehicle (SPV) established through a strategic joint venture between the Tata Group and Siemens. This
                             partnership brings together global expertise in engineering and technology to deliver a transformative
@@ -33,7 +33,7 @@ export default function About() {
                             milestone in Indian infrastructure as the nation's first metro system developed under this specific
                             Public-Private Partnership (PPP) model.
                         </p>
-                        <p className="font-montserrat text-base leading-relaxed text-black">
+                        <p className="font-montserrat text-sm leading-relaxed text-black">
                             The project features a 23.3 km elevated corridor specifically designed to alleviate congestion along one of
                             Pune's most critical commuter arteries. By connecting the high-tech hub of Hinjewadi to the Shivajinagar
                             District Court, the line bridges the gap between major IT zones and the city centre. The corridor includes
@@ -41,7 +41,7 @@ export default function About() {
                             Balewadi, Baner, and University Circle, ensuring that the metro is accessible to the city's diverse and
                             growing workforce.
                         </p>
-                        <p className="font-montserrat text-base leading-relaxed text-black">
+                        <p className="font-montserrat text-sm leading-relaxed text-black">
                             Technological innovation is at the core of the Line 3 infrastructure. The system utilises an advanced CBTC
                             (Communication Based Train Control) signalling system to ensure maximum safety and operational frequency.
                             To maintain a clean urban skyline, the project employs a 750V DC third-rail electrification system,
@@ -49,7 +49,7 @@ export default function About() {
                             designed for comfort and efficiency, with all operations supported by a state-of-the-art maintenance depot
                             located at Maan, Hinjewadi.
                         </p>
-                        <p className="font-montserrat text-base leading-relaxed text-black">
+                        <p className="font-montserrat text-sm leading-relaxed text-black">
                             Puneri Metro Line 3 provides a comfortable and reliable, high-capacity alternative to road travel. The
                             project is engineered to support the daily movement of thousands of commuters, ensuring sustainable
                             economic growth and setting a new benchmark for urban mobility in India.
@@ -81,7 +81,7 @@ export default function About() {
                                     />
                                     <div>
                                         <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Vision</h3>
-                                        <div className="space-y-3 font-montserrat leading-relaxed text-black" style={{ fontSize: "14px" }}>
+                                        <div className="space-y-3 font-montserrat text-sm leading-relaxed text-black">
                                             <p>
                                                 To create a future-ready urban transit system that strengthens connectivity, supports city growth,
                                                 and improves everyday mobility across Pune.
@@ -113,7 +113,7 @@ export default function About() {
                                     />
                                     <div>
                                         <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Mission</h3>
-                                        <div className="space-y-3 font-montserrat leading-relaxed text-black" style={{ fontSize: "14px" }}>
+                                        <div className="space-y-3 font-montserrat text-sm leading-relaxed text-black">
                                             <p>
                                                 To deliver safe, reliable, and accessible metro infrastructure through thoughtful design,
                                                 sustainable practices, and a commuter-first approach that responds to the needs of a growing city.

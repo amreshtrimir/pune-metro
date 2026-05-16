@@ -50,26 +50,26 @@ export default function FooterSection() {
                             'linear-gradient(white, white) padding-box, linear-gradient(to bottom, #f91c91 0%, transparent 60%) border-box',
                     }}
                 >
-                    <div className="relative h-[300px] w-full">
+                    <div className="relative min-h-75 w-full">
                         <img
                             src="/landing/train-exterior.png"
                             alt="Puneri Metro"
-                            className="h-full w-full object-cover"
+                            className="absolute inset-0 h-full w-full object-cover"
                         />
                         <div className="absolute inset-0 bg-metro-dark/70" />
 
-                        {/* CTA content */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                            <p className="mb-8 max-w-3xl font-montserrat text-sm font-normal leading-relaxed text-white/80 lg:text-base">
+                        {/* CTA content — relative so it stretches the container on small screens */}
+                        <div className="relative z-10 flex flex-col items-center justify-center px-6 py-10 text-center sm:py-12">
+                            <p className="mb-5 max-w-3xl font-montserrat text-sm font-normal leading-relaxed text-white/80 sm:mb-8 lg:text-base">
                                 Whether you're planning your daily commute, exploring the city, or seeking a faster and smarter way to
                                 travel, Puneri Metro is here to transform your journey with comfort, efficiency, and modern connectivity.
                             </p>
 
                             {/* Contact buttons */}
-                            <div className="flex flex-wrap justify-center gap-4">
+                            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                                 <a
                                     href="mailto:contactpunerimetro@tatarealty.in"
-                                    className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-montserrat text-sm font-semibold text-[#9a0052] transition-opacity hover:opacity-90"
+                                    className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 font-montserrat text-xs font-semibold text-brand-dark transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
                                 >
                                     <svg className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -78,7 +78,7 @@ export default function FooterSection() {
                                 </a>
                                 <a
                                     href="tel:18002705501"
-                                    className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-montserrat text-sm font-semibold text-[#9a0052] transition-opacity hover:opacity-90"
+                                    className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 font-montserrat text-xs font-semibold text-brand-dark transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
                                 >
                                     <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94" />
@@ -94,24 +94,24 @@ export default function FooterSection() {
 
             {/* Footer */}
             <footer className="border-t border-gray-200 bg-white py-6">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
+                <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
 
                     {/* Desktop: two columns | Mobile: single column */}
                     <div className="flex flex-col lg:flex-row lg:items-center lg:gap-0">
 
                         {/* Left column: logo + nav links inline, then divider + copyright */}
                         <div className="flex min-w-0 flex-1 flex-col">
-                            {/* Logo + nav links in one row — always horizontal */}
-                            <div className="flex items-end gap-x-4">
+                            {/* Logo + nav links: stacked on mobile, side-by-side on desktop */}
+                            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:gap-x-4">
                                 {/* Logo */}
                                 <img
                                     src="/assets/pune-metro-log.png"
                                     alt="Pune Metro"
-                                    className="h-auto w-[128px] shrink-0"
+                                    className="h-auto w-32 shrink-0"
                                 />
 
-                                {/* Vertical divider between logo and links */}
-                                <div className="h-8 w-px shrink-0 bg-gray-200" />
+                                {/* Divider: horizontal on mobile, vertical on desktop */}
+                                <div className="h-px w-full shrink-0 bg-gray-200 lg:h-8 lg:w-px" />
 
                                 {/* Nav links */}
                                 <div className="flex flex-wrap items-center">
@@ -132,7 +132,7 @@ export default function FooterSection() {
                             </div>
 
                             {/* Pink divider */}
-                            <div className="my-4 ml-auto h-px w-[95%] bg-brand/30" />
+                            <div className="my-4 h-px w-full bg-brand/30 lg:ml-auto lg:w-[95%]" />
 
                             {/* Social icons — visible only on mobile, below divider */}
                             <div className="mb-4 flex items-center gap-2 lg:hidden">
