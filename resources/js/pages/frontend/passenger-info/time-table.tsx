@@ -67,7 +67,7 @@ export default function TimeTable() {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Time Table - Puneri Metro"
+                alt="Puneri Metro Train"
             />
 
             {/* ── Page Title ── */}
