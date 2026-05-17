@@ -217,7 +217,7 @@ export default function BoardSection({ showHeading = true, showKnowMore = false 
                 {/* Directors grid */}
                 <div
                     ref={rowRef}
-                    className="grid grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 lg:grid-cols-5"
+                    className="grid grid-cols-1 gap-x-2 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
                 >
                     {directors.map((d, i) => (
                         <div
