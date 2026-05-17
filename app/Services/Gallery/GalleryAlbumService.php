@@ -47,7 +47,9 @@ class GalleryAlbumService
     public function getAlbumsForFrontend(): Collection
     {
         return GalleryAlbum::where('is_active', true)
-            ->where('slug', '!=', 'project-update')
+            ->where(function ($query): void {
+                $query->whereNull('slug')->orWhere('slug', '!=', 'project-update');
+            })
             ->orderBy('sort_order')
             ->with([
                 'images' => function ($query) {
