@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const summaryItems = [
@@ -62,14 +63,12 @@ export default function TimeTable() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <section>
-                <div className="relative flex h-[240px] items-end justify-end overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 md:h-[400px]">
-                    <div className="absolute inset-0 bg-black/40" />
-                    <p className="relative mb-6 mr-6 select-none font-montserrat text-[clamp(32px,7vw,100px)] font-semibold leading-none text-white/25 md:mb-10 md:mr-10">
-                        PUNERI METRO
-                    </p>
-                </div>
-            </section>
+            <PageHeroBanner
+                src="/banners/about-banner/about-banner-md.png"
+                srcMd="/banners/about-banner/about-banner-md.png"
+                srcLg="/banners/about-banner/about-banner-lg.png"
+                alt="Time Table - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">
