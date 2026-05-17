@@ -14,8 +14,8 @@ export default function PageHeroBanner({ src, alt, srcMd, srcLg }: PageHeroBanne
                 <div className="relative max-h-[240px] overflow-hidden md:max-h-[400px] min-[1460px]:max-h-none">
                     {hasResponsive ? (
                         <picture>
-                            {srcLg && <source media="(min-width: 1460px)" srcSet={srcLg} />}
-                            {srcMd && <source media="(max-width: 1459px)" srcSet={srcMd} />}
+                            {srcLg && <source media="(min-width: 1471px)" srcSet={srcLg} />}
+                            {srcMd && <source media="(max-width: 1470px)" srcSet={srcMd} />}
                             <img
                                 src={srcMd ?? srcLg ?? src}
                                 alt={alt}
