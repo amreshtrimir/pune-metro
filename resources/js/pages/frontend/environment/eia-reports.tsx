@@ -53,7 +53,12 @@ export default function EiaReports() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/banners/esg-environment-banner/esg-banner.png" alt="Pune Metro Environment" />
+            <PageHeroBanner
+                src="/banners/environment/environment-banner-md.png"
+                srcMd="/banners/environment/environment-banner-md.png"
+                srcLg="/banners/environment/environment-banner-lg.png"
+                alt="Pune Metro Environment"
+            />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-10 pb-0">

@@ -16,7 +16,12 @@ export default function About() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/about/about-banner.png" alt="Puneri Metro Train" />
+            <PageHeroBanner
+                src="/banners/about-banner/about-banner-md.png"
+                srcMd="/banners/about-banner/about-banner-md.png"
+                srcLg="/banners/about-banner/about-banner-lg.png"
+                alt="Puneri Metro Train"
+            />
 
             {/* ── Overview Content ── */}
             <section className="bg-white py-10">

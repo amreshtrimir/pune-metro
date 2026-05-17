@@ -189,7 +189,12 @@ export default function ItemsNotToCarry() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Items Not to Carry - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
+                alt="Items Not to Carry - Puneri Metro"
+            />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-10 pb-0 mb-5">

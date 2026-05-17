@@ -76,7 +76,12 @@ export default function KeyHighlights() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/banners/key-page-banners/key-banner.png" alt="Key Highlights - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/about-banner/about-banner-md.png"
+                srcMd="/banners/about-banner/about-banner-md.png"
+                srcLg="/banners/about-banner/about-banner-lg.png"
+                alt="Key Highlights - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

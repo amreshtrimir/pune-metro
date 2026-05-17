@@ -25,7 +25,12 @@ export default function CustomerService() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Customer Service - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/about-banner/about-banner-md.png"
+                srcMd="/banners/about-banner/about-banner-md.png"
+                srcLg="/banners/about-banner/about-banner-lg.png"
+                alt="Customer Service - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0 mb-5">

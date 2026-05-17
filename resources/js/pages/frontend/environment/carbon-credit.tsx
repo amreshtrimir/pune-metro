@@ -41,7 +41,12 @@ export default function CarbonCredit() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/banners/esg-environment-banner/esg-banner.png" alt="Pune Metro Carbon Credit" />
+            <PageHeroBanner
+                src="/banners/environment/environment-banner-md.png"
+                srcMd="/banners/environment/environment-banner-md.png"
+                srcLg="/banners/environment/environment-banner-lg.png"
+                alt="Pune Metro Carbon Credit"
+            />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-10 pb-0">

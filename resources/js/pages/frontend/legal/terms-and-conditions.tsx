@@ -11,7 +11,12 @@ export default function TermsAndConditions() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Terms and Conditions - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/legal/legal-banner-md.png"
+                srcMd="/banners/legal/legal-banner-md.png"
+                srcLg="/banners/legal/legal-banner-lg.png"
+                alt="Terms and Conditions - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

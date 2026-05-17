@@ -166,7 +166,12 @@ export default function ProjectUpdate({ images }: Props) {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/project-profile/project-profile-banner.png" alt="Project Update - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/project-update/project-update-banner-md.png"
+                srcMd="/banners/project-update/project-update-banner-md.png"
+                srcLg="/banners/project-update/project-update-banner-lg.png"
+                alt="Project Update - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

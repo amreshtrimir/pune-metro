@@ -29,7 +29,12 @@ export default function RouteMap() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/banners/key-page-banners/key-banner.png" alt="Route Map - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/route/route-banner-md.png"
+                srcMd="/banners/route/route-banner-md.png"
+                srcLg="/banners/route/route-banner-lg.png"
+                alt="Route Map - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

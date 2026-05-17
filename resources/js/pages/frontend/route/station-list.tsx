@@ -40,7 +40,12 @@ export default function StationList() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/project-profile/project-profile-banner.png" alt="Station List - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/route/route-banner-md.png"
+                srcMd="/banners/route/route-banner-md.png"
+                srcLg="/banners/route/route-banner-lg.png"
+                alt="Station List - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

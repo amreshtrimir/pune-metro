@@ -183,7 +183,12 @@ export default function PhotoGallery({ albums }: Props) {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/photo-gallery/banner-photo-gallery.png" alt="Photo Gallery - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/gallery/gallery-banner-md.png"
+                srcMd="/banners/gallery/gallery-banner-md.png"
+                srcLg="/banners/gallery/gallery-banner-lg.png"
+                alt="Photo Gallery - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

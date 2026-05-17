@@ -210,7 +210,12 @@ export default function PassengerAmenities() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <PageHeroBanner src="/banners/amenniteis.png" alt="Passenger Amenities - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/passenger-aminities/passenger-amenities-banner-md.png"
+                srcMd="/banners/passenger-aminities/passenger-amenities-banner-md.png"
+                srcLg="/banners/passenger-aminities/passenger-amenities-banner-lg.png"
+                alt="Passenger Amenities - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0 mb-5">

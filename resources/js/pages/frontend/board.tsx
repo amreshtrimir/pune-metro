@@ -16,7 +16,12 @@ export default function Board() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/about/about-banner.png" alt="Board of Directors - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/about-banner/about-banner-md.png"
+                srcMd="/banners/about-banner/about-banner-md.png"
+                srcLg="/banners/about-banner/about-banner-lg.png"
+                alt="Board of Directors - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">

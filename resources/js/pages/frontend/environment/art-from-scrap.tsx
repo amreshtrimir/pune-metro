@@ -53,7 +53,12 @@ export default function ArtFromScrap() {
             </Head>
 
             {/* ── Page Hero Banner ── */}
-            <PageHeroBanner src="/banners/art-from-scrap.png" alt="Art from Scrap - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/environment/environment-banner-md.png"
+                srcMd="/banners/environment/environment-banner-md.png"
+                srcLg="/banners/environment/environment-banner-lg.png"
+                alt="Art from Scrap - Puneri Metro"
+            />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-10 pb-10">

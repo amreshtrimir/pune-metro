@@ -26,7 +26,12 @@ export default function GreenInitiatives() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <PageHeroBanner src="/banners/esg-environment-banner/green-initiative-banner.png" alt="Green Initiatives - Puneri Metro" />
+            <PageHeroBanner
+                src="/banners/environment/environment-banner-md.png"
+                srcMd="/banners/environment/environment-banner-md.png"
+                srcLg="/banners/environment/environment-banner-lg.png"
+                alt="Green Initiatives - Puneri Metro"
+            />
 
             {/* ── Page Title + Intro ── */}
             <section className="bg-white pt-10 pb-10">
