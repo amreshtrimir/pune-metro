@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 export const stationRetail = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ stationRetail.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 stationRetail.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ stationRetail.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 stationRetail.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ stationRetail.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 stationRetail.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ stationRetail.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 const stationRetailForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const stationRetailForm = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 stationRetailForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ stationRetailForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:137
+* @see app/Http/Controllers/PagesController.php:176
 * @route '/business-development/station-retail'
 */
 stationRetailForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

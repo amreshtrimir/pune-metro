@@ -32,6 +32,7 @@ Route::prefix('project-profile')->name('project-profile.')->group(function (): v
 // Route section pages
 Route::prefix('route')->name('route.')->group(function (): void {
     Route::get('/station-list', [PagesController::class, 'stationList'])->name('station-list');
+    Route::get('/station/{slug}', [PagesController::class, 'stationDetail'])->name('station-detail');
 });
 
 // Passenger Info routes and pages
