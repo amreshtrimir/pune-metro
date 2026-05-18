@@ -206,7 +206,7 @@ export default function PhotoGallery({ albums }: Props) {
                             return (
                                 <div
                                     key={index}
-                                    className="overflow-hidden rounded-[5px]"
+                                    className={`overflow-hidden rounded-[5px] ${isOpen ? 'bg-[rgba(232,68,154,0.15)]' : ''}`}
                                 >
                                     {/* Accordion Header */}
                                     <button
