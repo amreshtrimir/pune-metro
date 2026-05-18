@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 export const eiaReports = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ eiaReports.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 eiaReports.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ eiaReports.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 eiaReports.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ eiaReports.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 eiaReports.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ eiaReports.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 const eiaReportsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const eiaReportsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 eiaReportsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ eiaReportsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
+* @see app/Http/Controllers/PagesController.php:560
 * @route '/environment/eia-reports'
 */
 eiaReportsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ eiaReports.form = eiaReportsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 export const carbonCredit = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ carbonCredit.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 carbonCredit.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ carbonCredit.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 carbonCredit.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ carbonCredit.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 carbonCredit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ carbonCredit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 const carbonCreditForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const carbonCreditForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 carbonCreditForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ carbonCreditForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
+* @see app/Http/Controllers/PagesController.php:565
 * @route '/environment/carbon-credit'
 */
 carbonCreditForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +163,7 @@ carbonCredit.form = carbonCreditForm
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 export const artFromScrap = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ artFromScrap.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 artFromScrap.url = (options?: RouteQueryOptions) => {
@@ -187,7 +187,7 @@ artFromScrap.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 artFromScrap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -197,7 +197,7 @@ artFromScrap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 artFromScrap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -207,7 +207,7 @@ artFromScrap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 const artFromScrapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -217,7 +217,7 @@ const artFromScrapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 artFromScrapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -227,7 +227,7 @@ artFromScrapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
+* @see app/Http/Controllers/PagesController.php:570
 * @route '/environment/art-from-scrap'
 */
 artFromScrapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -244,7 +244,7 @@ artFromScrap.form = artFromScrapForm
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 export const greenInitiatives = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -259,7 +259,7 @@ greenInitiatives.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 greenInitiatives.url = (options?: RouteQueryOptions) => {
@@ -268,7 +268,7 @@ greenInitiatives.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 greenInitiatives.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -278,7 +278,7 @@ greenInitiatives.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 greenInitiatives.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -288,7 +288,7 @@ greenInitiatives.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 const greenInitiativesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -298,7 +298,7 @@ const greenInitiativesForm = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 greenInitiativesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -308,7 +308,7 @@ greenInitiativesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'g
 
 /**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
+* @see app/Http/Controllers/PagesController.php:575
 * @route '/environment/green-initiatives'
 */
 greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
