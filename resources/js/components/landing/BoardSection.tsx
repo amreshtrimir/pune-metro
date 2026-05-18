@@ -82,21 +82,27 @@ function DirectorAvatar({
     return (
         <div className="flex w-full flex-col items-center gap-3 text-center">
             {/* Photo */}
-            <div className="group relative h-62.5 w-full cursor-pointer overflow-hidden rounded-2xl" style={{ backgroundColor: bg }} onClick={onClick}>
+            <div
+                className={`group relative h-62.5 w-full overflow-hidden rounded-2xl${onClick ? ' cursor-pointer' : ''}`}
+                style={{ backgroundColor: bg }}
+                onClick={onClick}
+            >
                 <img
                     src={image}
                     alt={name}
                     className="h-full w-full object-cover object-top"
                 />
-                {/* Hover overlay */}
-                <div
-                    className="absolute bottom-0 left-0 h-34.5 w-full translate-y-2 rounded-b-2xl opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-                    style={{ background: 'linear-gradient(180deg, rgba(154, 0, 82, 0) 0%, rgba(154, 0, 82, 0.5) 100%)' }}
-                >
-                    <div className="flex h-full items-end justify-center pb-3">
-                        <span className="font-montserrat text-sm font-bold text-white">Know More</span>
+                {/* Hover overlay — only shown when card is interactive */}
+                {onClick && (
+                    <div
+                        className="absolute bottom-0 left-0 h-34.5 w-full translate-y-2 rounded-b-2xl opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                        style={{ background: 'linear-gradient(180deg, rgba(154, 0, 82, 0) 0%, rgba(154, 0, 82, 0.5) 100%)' }}
+                    >
+                        <div className="flex h-full items-end justify-center pb-3">
+                            <span className="font-montserrat text-sm font-bold text-white">Know More</span>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
             <div>
                 <p
@@ -177,7 +183,7 @@ function DirectorModal({ director, onClose }: { director: Director; onClose: () 
     );
 }
 
-export default function BoardSection({ showHeading = true, showKnowMore = false }: { showHeading?: boolean; showKnowMore?: boolean }) {
+export default function BoardSection({ showHeading = true, showKnowMore = false, interactive = true }: { showHeading?: boolean; showKnowMore?: boolean; interactive?: boolean }) {
     const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>();
     const { ref: rowRef, inView: rowInView } = useInView<HTMLDivElement>();
     const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
@@ -234,7 +240,7 @@ export default function BoardSection({ showHeading = true, showKnowMore = false 
                                 role={d.role}
                                 image={d.image}
                                 bg={d.bg}
-                                onClick={() => setSelectedDirector(d)}
+                                onClick={interactive ? () => setSelectedDirector(d) : undefined}
                             />
                         </div>
                     ))}
