@@ -49,6 +49,11 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
     Route::get('/passenger-amenities', [PagesController::class, 'passengerAmenities'])->name('passenger-amenities');
 });
 
+// Business Development routes
+Route::prefix('business-development')->name('business-development.')->group(function (): void {
+    Route::get('/station-retail', [PagesController::class, 'stationRetail'])->name('station-retail');
+});
+
 // Legal routes
 Route::prefix('legal')->name('legal.')->group(function (): void {
     Route::get('/terms-and-conditions', [PagesController::class, 'termsAndConditions'])->name('terms-and-conditions');

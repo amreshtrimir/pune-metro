@@ -11,7 +11,7 @@ const SLIDE_INTERVAL = 6000;
 
 const slides: Slide[] = [
     {
-        image: '/landing/sliders-slides/hero-section-slides/slide-1-desktop.png',
+        image: '/landing/sliders-slides/first-image.webp',
         heading: 'Transforming Urban Mobility with Speed, Comfort and Sustainability',
         description:
             'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.',

@@ -2,32 +2,11 @@ import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
-const connectivityPoints = [
-    {
-        title: 'Integration with PMPML Buses',
-        description:
-            'Existing PMPML bus routes will provide smooth connectivity between metro stations and nearby areas of the city. Schedules and routes will be coordinated to minimise waiting time and ensure a seamless transfer experience for daily commuters. Dedicated bus bays at key stations will further streamline the interchange between bus and metro services.',
-    },
-    {
-        title: 'Integration with Private Players for Additional Routes',
-        description:
-            'Partnerships with private mobility providers will help extend connectivity beyond station zones. These collaborations will offer commuters a wider range of travel options, including app-based cab services and shared mobility solutions. The goal is to bridge gaps in public transport coverage and ensure no commuter is left without a convenient last-mile option.',
-    },
-    {
-        title: 'Auto-Rickshaw and Cab Pickup Zones',
-        description:
-            'Dedicated pickup and drop-off areas will support convenient onward travel for commuters. These designated zones will be clearly marked and strategically located at station exits to reduce congestion and ensure passenger safety. Integration with app-based cab aggregators will also allow passengers to pre-book rides directly from the station.',
-    },
-    {
-        title: 'Pedestrian Walkways and Foot Over Bridges (FOBs)',
-        description:
-            'Safe pedestrian access will improve movement between stations and surrounding areas. Well-lit, weather-protected walkways and foot over bridges will be designed with accessibility in mind, catering to senior citizens, persons with disabilities, and families with children. These connections will reduce dependence on short vehicular trips and encourage walking as a first and last-mile option.',
-    },
-    {
-        title: 'Parking Facilities at Selected Stations',
-        description:
-            'Parking provisions at select stations will support easier first and last-mile access. Dedicated spaces for two-wheelers and four-wheelers will be available, along with secure bicycle parking to encourage eco-friendly commuting. Cashless payment options and digital monitoring systems will ensure a smooth and secure parking experience for all users.',
-    },
+const lmcItems = [
+    'Feeder bus services (PMPML & MSRTC)',
+    'Corporate mobility solutions (Svida)',
+    'Auto rickshaws and local transport',
+    'Planned pick-up and drop-off zones',
 ];
 
 export default function LastMileConnectivity() {
@@ -39,32 +18,60 @@ export default function LastMileConnectivity() {
             </Head>
 
             {/* ── Hero Banner ── */}
-             <PageHeroBanner
-                                        src="/banners/items-not-carry/items-not-carry-banner-md.png"
-                                        srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
-                                        srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
-                                        alt="Last Mile Connectivity - Puneri Metro"
-                                    />
+            <PageHeroBanner
+                src="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
+                alt="Last Mile Connectivity - Puneri Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0 mb-5">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <PageSectionHeading lineColor="#8e8e8e">Last Mile Connectivity</PageSectionHeading>
+                    <PageSectionHeading className="mb-6 flex items-center gap-6">Last Mile Connectivity (LMC) – Pune Metro Line 3</PageSectionHeading>
                 </div>
             </section>
 
-            {/* ── Connectivity Points ── */}
+            {/* ── Content ── */}
             <section className="bg-white pb-16">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    {connectivityPoints.map((point) => (
-                        <div key={point.title} className="mb-8 flex gap-3">
-                            <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
-                            <div>
-                                <h2 className="mb-1 font-montserrat text-base font-semibold text-black">{point.title}</h2>
-                                <p className="font-inter text-sm text-gray-600">{point.description}</p>
-                            </div>
-                        </div>
-                    ))}
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8 space-y-4">
+                    <p className="font-montserrat text-sm leading-relaxed text-black">
+                        Pune Metro Line 3 (Hinjewadi – Shivajinagar Corridor) is supported by a well-planned Last Mile
+                        Connectivity (LMC) network to ensure smooth and convenient travel between metro stations and
+                        final destinations. The aim is to provide seamless access across key IT hubs, residential areas,
+                        commercial zones, and important transit points along the corridor.
+                    </p>
+
+                    <p className="font-montserrat text-sm leading-relaxed text-black">
+                        PMPML buses will act as the primary feeder service, operating on routes aligned with metro
+                        stations to offer reliable and affordable connectivity across areas such as Hinjewadi Phase I,
+                        II, III, Balewadi, Baner, University Circle, and Shivajinagar. To further improve regional
+                        access, MSRTC buses will connect passengers from nearby towns to major metro stations.
+                    </p>
+
+                    <p className="font-montserrat text-sm leading-relaxed text-black">
+                        For the Hinjewadi IT corridor, Svida has been appointed as a dedicated LMC operator, providing
+                        organised and technology-enabled transport solutions for corporate commuters, ensuring easy
+                        connectivity between metro stations and office campuses.
+                    </p>
+
+                    <p className="font-montserrat text-sm leading-relaxed text-black">
+                        The LMC framework is designed as a multi-modal system, including:
+                    </p>
+
+                    <ul className="space-y-2 pl-1">
+                        {lmcItems.map((item) => (
+                            <li key={item} className="flex items-center gap-3">
+                                <span className="h-2 w-2 shrink-0 rounded-full bg-[#e8449a]" />
+                                <span className="font-montserrat text-sm text-black">{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <p className="font-montserrat text-sm leading-relaxed text-black">
+                        Together, these initiatives aim to deliver a smooth, connected, and end-to-end travel experience
+                        for all commuters along Pune Metro Line 3.
+                    </p>
                 </div>
             </section>
         </>

@@ -133,4 +133,9 @@ class PagesController extends Controller
     {
         return Inertia::render('frontend/legal/privacy-policy');
     }
+
+    public function stationRetail(): Response
+    {
+        return Inertia::render('frontend/business-development/station-retail');
+    }
 }
