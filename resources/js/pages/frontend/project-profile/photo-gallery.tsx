@@ -206,13 +206,13 @@ export default function PhotoGallery({ albums }: Props) {
                             return (
                                 <div
                                     key={index}
-                                    className={`overflow-hidden rounded-[5px] ${isOpen ? 'bg-[rgba(232,68,154,0.15)]' : ''}`}
+                                    className="overflow-hidden rounded-[5px] bg-[rgba(232,68,154,0.15)]"
                                 >
                                     {/* Accordion Header */}
                                     <button
                                         type="button"
                                         onClick={() => toggle(index)}
-                                        className={`flex w-full items-center justify-between bg-[rgba(232,68,154,0.15)] px-8 text-left ${isOpen ? 'pt-6' : 'py-6'}`}
+                                        className={`flex w-full items-center justify-between px-8 text-left ${isOpen ? 'pt-6' : 'py-6'}`}
                                     >
                                         <span className="font-montserrat text-sm font-semibold text-black sm:text-base lg:text-lg">
                                             {item.title}
@@ -224,7 +224,7 @@ export default function PhotoGallery({ albums }: Props) {
 
                                     {/* Accordion Content */}
                                     {isOpen && (
-                                        <div className="bg-[rgba(232,68,154,0.15)] px-8 pb-8">
+                                        <div className="px-8 pb-8">
                                             <p className="mb-6 max-w-[1015px] font-montserrat text-xs leading-relaxed text-black sm:text-sm">
                                                 {item.description}
                                             </p>
