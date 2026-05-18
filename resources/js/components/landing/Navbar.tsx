@@ -96,8 +96,8 @@ const mainNavLinks: NavLink[] = [
         label: 'ROUTE',
         href: stationList.url(),
         children: [
-            { label: 'Station List', href: stationList.url() },
-            { label: 'Route Map – with nearby catchments / places', href: routeMap.url() },
+            { label: 'Station List – with nearby catchments / places', href: stationList.url() },
+            { label: 'Route Map ', href: routeMap.url() },
         ],
     },
     {
