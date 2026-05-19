@@ -23,6 +23,19 @@ export type Media = {
     updated_at: string;
 };
 
+export type BoardMember = {
+    id: number;
+    name: string;
+    role: string;
+    bio: string | null;
+    media_id: number | null;
+    media?: Media | null;
+    sort_order: number;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+};
+
 export type MediaDimension = {
     id: number;
     name: string;

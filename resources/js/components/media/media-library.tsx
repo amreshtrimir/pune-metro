@@ -19,6 +19,7 @@ const MODULES = [
     { value: 'banners', label: 'Banners' },
     { value: 'gallery', label: 'Gallery' },
     { value: 'project-update', label: 'Project Update' },
+    { value: 'board', label: 'Board' },
 ];
 
 type MediaUsage = {

@@ -4,6 +4,7 @@ use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Blog\CommentController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\PublicBlogController;
+use App\Http\Controllers\Board\BoardMemberController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Gallery\GalleryAlbumController;
 use App\Http\Controllers\Media\MediaController;
@@ -11,11 +12,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Slider\SliderController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
 
-Route::inertia('/', 'welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-])->name('home');
+Route::get('/', [PagesController::class, 'home'])->name('home');
 
 // Public frontend pages
 Route::get('/about/overview', [PagesController::class, 'overview'])->name('about.overview');
@@ -134,6 +132,13 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/gallery-albums/{galleryAlbum}/images/{image}', [GalleryAlbumController::class, 'updateImage'])->name('gallery-albums.images.update');
         Route::delete('/gallery-albums/{galleryAlbum}/images/{image}', [GalleryAlbumController::class, 'destroyImage'])->name('gallery-albums.images.destroy');
         Route::post('/gallery-albums/{galleryAlbum}/images/reorder', [GalleryAlbumController::class, 'reorderImages'])->name('gallery-albums.images.reorder');
+
+        // Board Members
+        Route::get('/board-members', [BoardMemberController::class, 'index'])->name('board-members.index');
+        Route::post('/board-members', [BoardMemberController::class, 'store'])->name('board-members.store');
+        Route::put('/board-members/{boardMember}', [BoardMemberController::class, 'update'])->name('board-members.update');
+        Route::delete('/board-members/{boardMember}', [BoardMemberController::class, 'destroy'])->name('board-members.destroy');
+        Route::post('/board-members/reorder', [BoardMemberController::class, 'reorder'])->name('board-members.reorder');
     });
 });
 

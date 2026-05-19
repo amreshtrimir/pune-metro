@@ -3,8 +3,13 @@ import LeadershipSection from '@/components/landing/LeadershipSection';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import BoardSection from '@/components/landing/BoardSection';
+import type { BoardMember } from '@/types/cms';
 
-export default function Board() {
+type Props = {
+    members: BoardMember[];
+};
+
+export default function Board({ members }: Props) {
     return (
         <>
             <Head>
@@ -31,7 +36,7 @@ export default function Board() {
             </section>
 
             {/* ── Board Members ── */}
-            <BoardSection showHeading={false} />
+            <BoardSection showHeading={false} members={members} />
         </>
     );
 }

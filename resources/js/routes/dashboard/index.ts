@@ -4,6 +4,7 @@ import categories from './categories'
 import comments from './comments'
 import sliders from './sliders'
 import galleryAlbums from './gallery-albums'
+import boardMembers from './board-members'
 
 const dashboard = {
     media: Object.assign(media, media),
@@ -12,6 +13,7 @@ const dashboard = {
     comments: Object.assign(comments, comments),
     sliders: Object.assign(sliders, sliders),
     galleryAlbums: Object.assign(galleryAlbums, galleryAlbums),
+    boardMembers: Object.assign(boardMembers, boardMembers),
 }
 
 export default dashboard

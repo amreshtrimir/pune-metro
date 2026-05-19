@@ -21,15 +21,16 @@ type MultiSelectProps = {
 type MediaPickerProps = (SingleSelectProps | MultiSelectProps) & {
     open: boolean;
     onClose: () => void;
+    defaultModule?: string;
 };
 
-export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelect }: MediaPickerProps) {
+export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelect, defaultModule }: MediaPickerProps) {
     const [media, setMedia] = useState<PaginatedData<Media> | null>(null);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
-    const [module, setModule] = useState<string | null>(null);
-    const [modules, setModules] = useState<string[]>([]);
+    const [module, setModule] = useState<string | null>(defaultModule ?? null);
+    const [modules, setModules] = useState<string[]>(defaultModule ? [defaultModule] : []);
     const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
     const [selectedVariant, setSelectedVariant] = useState<MediaVariant | null>(null);
     const [multiSelectedIds, setMultiSelectedIds] = useState<Set<number>>(new Set());
@@ -46,7 +47,12 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
             });
             const data = await res.json() as { media: typeof media; modules?: string[] };
             setMedia(data.media ?? data);
-            if (data.modules) setModules(data.modules);
+            if (data.modules) {
+                setModules((prev) => {
+                    const merged = [...new Set([...prev, ...data.modules!])];
+                    return merged.sort();
+                });
+            }
         } catch {
             // silent
         } finally {
@@ -62,8 +68,10 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
             setMultiSelectedItems(new Map());
             setSearch('');
             setPage(1);
-            setModule(null);
-            fetchMedia('', 1, null);
+            const initialModule = defaultModule ?? null;
+            setModule(initialModule);
+            if (defaultModule) setModules((prev) => (prev.includes(defaultModule) ? prev : [defaultModule, ...prev]));
+            fetchMedia('', 1, initialModule);
         }
     }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 

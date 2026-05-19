@@ -9,9 +9,14 @@ import LeadershipSection from '@/components/landing/LeadershipSection';
 import MarqueeBanner from '@/components/landing/MarqueeBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
 import RoutesSection from '@/components/landing/RoutesSection';
+import type { BoardMember } from '@/types/cms';
 
+type Props = {
+    canRegister: boolean;
+    members: BoardMember[];
+};
 
-export default function Welcome() {
+export default function Welcome({ members }: Props) {
     return (
         <>
             <Head title="Puneri Metro - Transforming Urban Mobility" />
@@ -24,7 +29,7 @@ export default function Welcome() {
             <FacilitiesSection />
             {/* <LeadershipSection /> */}
 
-            <BoardSection interactive={false} showKnowMore={true} />
+            <BoardSection interactive={false} showKnowMore={true} members={members} />
             <QuoteBanner>
                 &ldquo;Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
                 opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday

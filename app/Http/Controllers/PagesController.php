@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Board\BoardMemberService;
 use App\Services\Gallery\GalleryAlbumService;
 use Inertia\Inertia;
 use Inertia\Response;
+use Laravel\Fortify\Features;
 
 class PagesController extends Controller
 {
-    public function __construct(private readonly GalleryAlbumService $galleryAlbumService) {}
+    public function __construct(
+        private readonly GalleryAlbumService $galleryAlbumService,
+        private readonly BoardMemberService $boardMemberService,
+    ) {}
+
+    public function home(): Response
+    {
+        return Inertia::render('welcome', [
+            'canRegister' => Features::enabled(Features::registration()),
+            'members' => $this->boardMemberService->getActiveMembersForFrontend(),
+        ]);
+    }
 
     public function overview(): Response
     {
@@ -17,7 +30,9 @@ class PagesController extends Controller
 
     public function board(): Response
     {
-        return Inertia::render('frontend/board');
+        return Inertia::render('frontend/board', [
+            'members' => $this->boardMemberService->getActiveMembersForFrontend(),
+        ]);
     }
 
     public function projectUpdate(): Response

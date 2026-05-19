@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useInView } from '@/hooks/useInView';
 import { board } from '@/routes/about';
+import type { BoardMember } from '@/types/cms';
 
 type Director = {
     name: string;
@@ -10,7 +11,16 @@ type Director = {
     bio?: string;
 };
 
-const directors: Director[] = [
+function memberToDirector(member: BoardMember): Director {
+    return {
+        name: member.name,
+        role: member.role,
+        image: member.media?.url ?? '',
+        bio: member.bio ?? undefined,
+    };
+}
+
+const staticDirectors: Director[] = [
     {
         name: 'Dr. Praveer Sinha',
         role: 'Chairman',
@@ -183,10 +193,12 @@ function DirectorModal({ director, onClose }: { director: Director; onClose: () 
     );
 }
 
-export default function BoardSection({ showHeading = true, showKnowMore = false, interactive = true }: { showHeading?: boolean; showKnowMore?: boolean; interactive?: boolean }) {
+export default function BoardSection({ showHeading = true, showKnowMore = false, interactive = true, members }: { showHeading?: boolean; showKnowMore?: boolean; interactive?: boolean; members?: BoardMember[] }) {
     const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>();
     const { ref: rowRef, inView: rowInView } = useInView<HTMLDivElement>();
     const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
+
+    const directors = members && members.length > 0 ? members.map(memberToDirector) : staticDirectors;
 
     useEffect(() => {
         document.body.style.overflow = selectedDirector ? 'hidden' : '';
