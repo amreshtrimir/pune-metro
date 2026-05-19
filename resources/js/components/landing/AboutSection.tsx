@@ -11,7 +11,7 @@ export default function AboutSection() {
 
                     {/* ── Left: Image ── */}
                     <div className={`transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                        <div className="rounded-xl shadow-lg">
+                        <div className="">
                             <img
                                 src="/landing/metro-interior.png"
                                 alt="Metro Interior"
