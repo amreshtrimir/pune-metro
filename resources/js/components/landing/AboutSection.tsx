@@ -13,7 +13,7 @@ export default function AboutSection() {
                     <div className={`transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                         <div className="">
                             <img
-                                src="/landing/metro-interior.png"
+                                src="/landing/metro-interior-old.png"
                                 alt="Metro Interior"
                                 className="w-full h-auto"
                             />
