@@ -141,7 +141,7 @@ store.form = storeForm
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-export const update = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -156,7 +156,7 @@ update.definition = {
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-update.url = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { boardMember: args }
     }
@@ -189,7 +189,7 @@ update.url = (args: { boardMember: number | { id: number } } | [boardMember: num
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-update.put = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -199,7 +199,7 @@ update.put = (args: { boardMember: number | { id: number } } | [boardMember: num
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-const updateForm = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -214,7 +214,7 @@ const updateForm = (args: { boardMember: number | { id: number } } | [boardMembe
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-updateForm.put = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -231,7 +231,7 @@ update.form = updateForm
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-export const destroy = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -246,7 +246,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-destroy.url = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { boardMember: args }
     }
@@ -279,7 +279,7 @@ destroy.url = (args: { boardMember: number | { id: number } } | [boardMember: nu
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-destroy.delete = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -289,7 +289,7 @@ destroy.delete = (args: { boardMember: number | { id: number } } | [boardMember:
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-const destroyForm = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -304,7 +304,7 @@ const destroyForm = (args: { boardMember: number | { id: number } } | [boardMemb
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-destroyForm.delete = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
