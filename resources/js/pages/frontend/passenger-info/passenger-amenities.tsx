@@ -21,7 +21,7 @@ const imgLastMile = '/pass-amenities/section-last-mile.png';
 const imgTicketing = '/pass-amenities/section-ticketing.png';
 const imgSafety = '/pass-amenities/section-safety.png';
 const imgRestroom = '/pass-amenities/section-restroom.png';
-const imgPlatform = '/pass-amenities/section-platform.png';
+const imgPlatform = '/pass-amenities/pids.png';
 
 // Amenity sections ordered left-to-right, top-to-bottom in the 3-column grid
 const amenitySections: AmenitySection[] = [
