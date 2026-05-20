@@ -1,13 +1,28 @@
+import { Link } from '@inertiajs/react';
+import {
+    fareTable,
+    keyHighlights,
+    overview,
+    photoGallery,
+    privacyPolicy,
+    projectUpdate,
+    routeMap,
+    stationList,
+    termsAndConditions,
+    timeTable,
+} from '@/actions/App/Http/Controllers/PagesController';
+
 const footerLinks = [
-    'About',
-    'Route Map',
-    'Environment & Sustainability',
-    'Health & Safety',
-    'Traffic Management',
-    'Vigil Mechanism Policy',
-    'Company Info',
-    'Social Responsibility',
-    'Privacy Policy',
+    { label: 'About Us', href: overview.url() },
+    { label: 'Project Update', href: projectUpdate.url() },
+    { label: 'Key Highlights', href: keyHighlights.url() },
+    { label: 'Route Map', href: routeMap.url() },
+    { label: 'Time Table', href: timeTable.url() },
+    { label: 'Fare Table', href: fareTable.url() },
+    { label: 'Station List', href: stationList.url() },
+    { label: 'Photo Gallery', href: photoGallery.url() },
+    { label: 'Terms & Conditions', href: termsAndConditions.url() },
+    { label: 'Privacy Policy', href: privacyPolicy.url() },
 ];
 
 function SocialIcons() {
@@ -104,11 +119,13 @@ export default function FooterSection() {
                             {/* Logo + nav links: stacked on mobile, side-by-side on desktop */}
                             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:gap-x-4">
                                 {/* Logo */}
-                                <img
-                                    src="/assets/pune-metro-log.png"
-                                    alt="Pune Metro"
-                                    className="h-auto w-32 shrink-0"
-                                />
+                                <Link href="/">
+                                    <img
+                                        src="/assets/pune-metro-log.png"
+                                        alt="Pune Metro"
+                                        className="h-auto w-32 shrink-0"
+                                    />
+                                </Link>
 
                                 {/* Divider: horizontal on mobile, vertical on desktop */}
                                 <div className="h-px w-full shrink-0 bg-gray-200 lg:h-8 lg:w-px" />
@@ -116,13 +133,13 @@ export default function FooterSection() {
                                 {/* Nav links */}
                                 <div className="flex flex-wrap items-center">
                                     {footerLinks.map((link, i) => (
-                                        <span key={link} className="flex items-center">
-                                            <a
-                                                href="#"
+                                        <span key={link.href} className="flex items-center">
+                                            <Link
+                                                href={link.href}
                                                 className="whitespace-nowrap font-montserrat text-[11px] text-gray-600 transition-colors hover:text-brand"
                                             >
-                                                {link}
-                                            </a>
+                                                {link.label}
+                                            </Link>
                                             {i < footerLinks.length - 1 && (
                                                 <span className="mx-1 text-gray-300">|</span>
                                             )}

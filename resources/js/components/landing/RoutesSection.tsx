@@ -7,34 +7,20 @@ type Line = {
     label: string;
     image: string;
     imageAlt: string;
-    stats: { value: string; unit: string; label: string }[];
 };
 
 const lines: Line[] = [
     {
         id: 'all',
         label: 'All line',
-        image: '/landing/route-section/map-all.jpg',
+        image: '/landing/route-section/map-all-updated.png',
         imageAlt: 'Pune Metro Full Network Map',
-        stats: [
-            { value: '57.9', unit: 'km.', label: 'Total Network Length' },
-            { value: '47', unit: '', label: 'Total Stations' },
-            { value: '3', unit: '', label: 'Metro Lines' },
-            { value: '04', unit: '', label: 'Interchange Connections' },
-        ],
     },
     {
         id: 'line1',
         label: 'Line 3',
         image: '/landing/route-section/map-line-3.jpg',
-
         imageAlt: 'Pune Metro Line 3 Pink — Maan to District Court',
-        stats: [
-            { value: '23.3', unit: 'km.', label: 'Corridor Length' },
-            { value: '23', unit: '', label: 'Metro Stations' },
-            { value: '100%', unit: '', label: 'Elevated Alignment' },
-            { value: '02', unit: '', label: 'Interchange Connections' },
-        ],
     },
 ];
 
@@ -114,10 +100,8 @@ export default function RoutesSection() {
                     </div>
                 </div>
 
-                {/* ── Map + Stats ── */}
-                <div ref={contentRef} className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_260px]">
-
-                    {/* Route map image — rounded top, flush bottom */}
+                {/* ── Map ── */}
+                <div ref={contentRef} className={`transition-all duration-700 ${contentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div
                         className="bg-white shadow-xl"
                         style={{ borderRadius: '25px 25px 0 0' }}
@@ -135,40 +119,13 @@ export default function RoutesSection() {
                                     alt={active.imageAlt}
                                     className="absolute inset-0 h-full w-full rounded-xl object-contain transition-opacity duration-300"
                                 />
-                                {/* Hover hint */}
                                 <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/0 transition-all duration-300 hover:bg-black/10">
-                                    <span className="rounded-full bg-black/50 px-3 py-1.5 font-montserrat text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:opacity-100 [div:hover>&]:opacity-100">
+                                    <span className="rounded-full bg-black/50 px-3 py-1.5 font-montserrat text-xs text-white opacity-0 transition-opacity duration-300 [div:hover>&]:opacity-100">
                                         Click to enlarge
                                     </span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    {/* Stats column */}
-                    <div className="flex flex-col gap-4">
-                        {active.stats.map((stat, i) => (
-                            <div
-                                key={stat.label}
-                                className={`rounded-xl px-6 py-5 transition-all duration-500 ${contentInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
-                                style={{
-                                    background: 'linear-gradient(149.32deg, rgba(109, 0, 58, 0) 55.02%, #6D003A 102.53%)',
-                                    transitionDelay: contentInView ? `${i * 100}ms` : '0ms',
-                                }}
-                            >
-                                <p className="font-montserrat text-5xl font-bold text-white">
-                                    {stat.value}
-                                    {stat.unit && (
-                                        <span className="ml-1 font-montserrat text-xl font-normal text-white/70">
-                                            {stat.unit}
-                                        </span>
-                                    )}
-                                </p>
-                                <p className="mt-1 font-montserrat text-sm text-white/70">
-                                    {stat.label}
-                                </p>
-                            </div>
-                        ))}
                     </div>
                 </div>
 
