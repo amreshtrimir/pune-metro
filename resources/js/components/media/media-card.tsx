@@ -1,9 +1,9 @@
+import { Trash2, Eye, Pencil } from 'lucide-react';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { Media } from '@/types';
-import { Trash2, Eye, Pencil } from 'lucide-react';
 
 type MediaCardProps = {
     media: Media;
@@ -15,16 +15,34 @@ type MediaCardProps = {
 };
 
 function formatBytes(bytes: number): string {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1048576) return `${(bytes / 1024).toFixed(1)} KB`;
+    if (bytes < 1024) {
+return `${bytes} B`;
+}
+
+    if (bytes < 1048576) {
+return `${(bytes / 1024).toFixed(1)} KB`;
+}
+
     return `${(bytes / 1048576).toFixed(1)} MB`;
 }
 
 function getTypeLabel(fileType: string): string {
-    if (fileType.includes('jpeg') || fileType.includes('jpg')) return 'JPEG';
-    if (fileType.includes('png')) return 'PNG';
-    if (fileType.includes('gif')) return 'GIF';
-    if (fileType.includes('webp')) return 'WEBP';
+    if (fileType.includes('jpeg') || fileType.includes('jpg')) {
+return 'JPEG';
+}
+
+    if (fileType.includes('png')) {
+return 'PNG';
+}
+
+    if (fileType.includes('gif')) {
+return 'GIF';
+}
+
+    if (fileType.includes('webp')) {
+return 'WEBP';
+}
+
     return fileType.split('/')[1]?.toUpperCase() ?? 'FILE';
 }
 
@@ -63,7 +81,9 @@ export function MediaCard({ media, onDelete, onEdit, onSelect, selectable = fals
                             size="sm"
                             variant="secondary"
                             className="h-7 text-xs"
-                            onClick={(e) => { e.stopPropagation(); setShowVariants(!showVariants); }}
+                            onClick={(e) => {
+ e.stopPropagation(); setShowVariants(!showVariants); 
+}}
                         >
                             <Eye className="mr-1 size-3" /> {media.variants.length} variants
                         </Button>
@@ -72,7 +92,9 @@ export function MediaCard({ media, onDelete, onEdit, onSelect, selectable = fals
                                 size="sm"
                                 variant="secondary"
                                 className="h-7 text-xs"
-                                onClick={(e) => { e.stopPropagation(); onEdit(media); }}
+                                onClick={(e) => {
+ e.stopPropagation(); onEdit(media); 
+}}
                             >
                                 <Pencil className="size-3" />
                             </Button>
@@ -82,7 +104,9 @@ export function MediaCard({ media, onDelete, onEdit, onSelect, selectable = fals
                                 size="sm"
                                 variant="destructive"
                                 className="h-7 text-xs"
-                                onClick={(e) => { e.stopPropagation(); onDelete(media.id); }}
+                                onClick={(e) => {
+ e.stopPropagation(); onDelete(media.id); 
+}}
                             >
                                 <Trash2 className="size-3" />
                             </Button>

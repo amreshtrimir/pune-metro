@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import { Form } from '@inertiajs/react';
+import { ImagePlus, X } from 'lucide-react';
+import { useState } from 'react';
+import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
+import { SectionBuilder } from '@/components/blog/section-builder';
+import { MediaPicker } from '@/components/media/media-picker';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { MultiSelect } from '@/components/ui/multi-select';
-import { MediaPicker } from '@/components/media/media-picker';
-import { SectionBuilder } from '@/components/blog/section-builder';
 import type { Category, Post, PostSection, Tag } from '@/types';
-import { ImagePlus, X } from 'lucide-react';
-import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
 
 type PostFormProps = {
     post?: Post;
@@ -52,6 +52,7 @@ export function PostForm({ post, categories, allTags, action, method = 'post' }:
         if (response.ok) {
             const created = (await response.json()) as Category;
             setLocalCategories((prev) => [...prev, created]);
+
             return String(created.id);
         }
 
@@ -206,7 +207,9 @@ export function PostForm({ post, categories, allTags, action, method = 'post' }:
                                     />
                                     <button
                                         type="button"
-                                        onClick={() => { setFeaturedImageId(null); setFeaturedImagePath(null); }}
+                                        onClick={() => {
+ setFeaturedImageId(null); setFeaturedImagePath(null); 
+}}
                                         className="absolute top-1 right-1 rounded bg-black/50 p-0.5 text-white hover:bg-black/70"
                                     >
                                         <X className="size-3" />
@@ -258,7 +261,9 @@ export function PostForm({ post, categories, allTags, action, method = 'post' }:
                                     />
                                     <button
                                         type="button"
-                                        onClick={() => { setCardImageId(null); setCardImagePath(null); }}
+                                        onClick={() => {
+ setCardImageId(null); setCardImagePath(null); 
+}}
                                         className="absolute top-1 right-1 rounded bg-black/50 p-0.5 text-white hover:bg-black/70"
                                     >
                                         <X className="size-3" />

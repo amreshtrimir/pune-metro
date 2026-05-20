@@ -26,6 +26,7 @@ type Station = {
 type Props = { station: Station };
 
 const NAV_ITEMS = [
+    { id: 'map', label: 'Map' },
     { id: 'entrances', label: 'Entrances' },
     { id: 'platforms', label: 'Platforms' },
     { id: 'lifts', label: 'Lifts & Escalators' },
@@ -154,28 +155,44 @@ export default function StationDetail({ station }: Props) {
                 </div>
 
                 {/* Tab nav */}
-                {hasData && (
-                    <div className="border-b border-gray-100 bg-white shadow-sm">
-                        <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                            <nav className="flex gap-0 overflow-x-auto scrollbar-hide">
-                                {NAV_ITEMS.map((item) => (
-                                    <a
-                                        key={item.id}
-                                        href={`#${item.id}`}
-                                        className="shrink-0 border-b-2 border-transparent px-4 py-3 font-montserrat text-xs font-semibold text-gray-500 transition hover:border-[#e8449a] hover:text-[#e8449a]"
-                                    >
-                                        {item.label}
-                                    </a>
-                                ))}
-                            </nav>
-                        </div>
+                <div className="border-b border-gray-100 bg-white shadow-sm">
+                    <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
+                        <nav className="flex gap-0 overflow-x-auto scrollbar-hide">
+                            {(hasData ? NAV_ITEMS : NAV_ITEMS.filter((i) => i.id === 'map')).map((item) => (
+                                <a
+                                    key={item.id}
+                                    href={`#${item.id}`}
+                                    className="shrink-0 border-b-2 border-transparent px-4 py-3 font-montserrat text-xs font-semibold text-gray-500 transition hover:border-[#e8449a] hover:text-[#e8449a]"
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                        </nav>
                     </div>
-                )}
+                </div>
             </div>
 
             {/* ── Content ── */}
             <div className="bg-gray-50 py-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
+                    <div className="flex flex-col gap-6">
+                    {/* ── Map ── */}
+                    <section id="map" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                        <SectionHeading>Station Location</SectionHeading>
+                        <div className="overflow-hidden rounded-xl border border-gray-200">
+                            <iframe
+                                src="https://maps.google.com/maps?q=18.5777367,73.6961295&hl=en&z=16&output=embed"
+                                title={`${station.name} - Station Location`}
+                                width="100%"
+                                height="400"
+                                style={{ border: 0, display: 'block' }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            />
+                        </div>
+                    </section>
+
                     {!hasData ? (
                         <div className="rounded-2xl border border-gray-100 bg-white px-8 py-14 text-center shadow-sm">
                             <svg className="mx-auto mb-4 size-12 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -363,6 +380,7 @@ export default function StationDetail({ station }: Props) {
 
                         </div>
                     )}
+                    </div>
                 </div>
             </div>
         </>

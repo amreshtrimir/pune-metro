@@ -162,6 +162,7 @@ export default function TimeTable() {
                         {stations.map((station, idx) => {
                             const isFirst = idx === 0;
                             const isLast = idx === stations.length - 1;
+
                             return (
                                 <li key={station} className="flex items-center gap-3">
                                     <span className="h-2 w-2 shrink-0 rounded-full bg-[#e8449a]" />

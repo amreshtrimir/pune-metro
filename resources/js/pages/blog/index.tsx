@@ -1,8 +1,8 @@
 import { Head, Link, router } from '@inertiajs/react';
+import * as BlogController from '@/actions/App/Http/Controllers/Blog/PublicBlogController';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { PaginatedData, Post } from '@/types';
-import * as BlogController from '@/actions/App/Http/Controllers/Blog/PublicBlogController';
 
 type Props = {
     posts: PaginatedData<Post>;

@@ -1,15 +1,15 @@
-import { useCallback, useState } from 'react';
 import { router } from '@inertiajs/react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Label } from '@/components/ui/label';
+import { Search, Upload, LayoutGrid, Loader2 } from 'lucide-react';
+import { useCallback, useState } from 'react';
+import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 import { MediaCard } from '@/components/media/media-card';
 import { MediaUploader } from '@/components/media/media-uploader';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import type { Media, MediaDimension, PaginatedData } from '@/types';
-import { Search, Upload, LayoutGrid, Loader2 } from 'lucide-react';
-import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 
 const MODULES = [
     { value: '', label: 'All' },
@@ -60,7 +60,10 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
     }, []);
 
     const handleDelete = useCallback((id: number) => {
-        if (!confirm('Delete this media file?')) return;
+        if (!confirm('Delete this media file?')) {
+return;
+}
+
         router.delete(MediaController.destroy.url({ id }), { preserveScroll: true });
     }, []);
 
@@ -70,10 +73,12 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
         setEditModule(m.module ?? '');
         setUsages(null);
         setLoadingUsages(true);
+
         try {
             const res = await fetch(MediaController.usages.url({ id: m.id }), {
                 headers: { 'Accept': 'application/json' },
             });
+
             if (res.ok) {
                 setUsages(await res.json());
             }
@@ -83,8 +88,12 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
     }, []);
 
     const handleSaveEdit = async () => {
-        if (!editingMedia) return;
+        if (!editingMedia) {
+return;
+}
+
         setSaving(true);
+
         try {
             const xsrfToken = decodeURIComponent(
                 document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '',
@@ -98,7 +107,11 @@ export function MediaLibrary({ media, dimensions, filters }: MediaLibraryProps) 
                 },
                 body: JSON.stringify({ file_name: editFileName, module: editModule || null }),
             });
-            if (!res.ok) throw new Error('Save failed');
+
+            if (!res.ok) {
+throw new Error('Save failed');
+}
+
             setEditingMedia(null);
             router.reload({ only: ['media'] });
         } finally {

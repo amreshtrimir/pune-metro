@@ -1,11 +1,11 @@
 import { Head, Link, router } from '@inertiajs/react';
+import { Plus, Search, Pencil, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import type { Category, PaginatedData, Post } from '@/types';
-import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
-import { Plus, Search, Pencil, Trash2 } from 'lucide-react';
-import { useState } from 'react';
 
 type Props = {
     posts: PaginatedData<Post>;
@@ -28,7 +28,10 @@ export default function PostsIndex({ posts, filters }: Props) {
     };
 
     const handleDelete = (id: number) => {
-        if (!confirm('Delete this post?')) return;
+        if (!confirm('Delete this post?')) {
+return;
+}
+
         router.delete(PostController.destroy.url({ post: id }), { preserveScroll: true });
     };
 

@@ -12,9 +12,9 @@ export default function TermsAndConditions() {
 
             {/* ── Hero Banner ── */}
             <PageHeroBanner
-                src="/banners/legal/legal-banner-md.png"
-                srcMd="/banners/legal/legal-banner-md.png"
-                srcLg="/banners/legal/legal-banner-lg.png"
+                src="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
                 alt="Terms and Conditions - Puneri Metro"
             />
 

@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { Head, Form, Link, router } from '@inertiajs/react';
+import { Images, Pencil, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import type { GalleryAlbum } from '@/types/cms';
-import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
-import { Images, Pencil, Trash2 } from 'lucide-react';
 
 type Props = {
     albums: (GalleryAlbum & { images_count: number })[];
@@ -15,7 +15,10 @@ export default function GalleryIndex({ albums }: Props) {
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
     const handleDelete = (album: GalleryAlbum) => {
-        if (!confirm(`Delete album "${album.title}"? All images in this album will be removed.`)) return;
+        if (!confirm(`Delete album "${album.title}"? All images in this album will be removed.`)) {
+return;
+}
+
         setDeletingId(album.id);
         router.delete(GalleryAlbumController.destroy.url(album.id), {
             preserveScroll: true,

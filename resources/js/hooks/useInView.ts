@@ -6,7 +6,10 @@ export function useInView<T extends Element>(options?: IntersectionObserverInit)
 
     useEffect(() => {
         const el = ref.current;
-        if (!el) return;
+
+        if (!el) {
+return;
+}
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -19,6 +22,7 @@ export function useInView<T extends Element>(options?: IntersectionObserverInit)
         );
 
         observer.observe(el);
+
         return () => observer.disconnect();
     }, []);
 

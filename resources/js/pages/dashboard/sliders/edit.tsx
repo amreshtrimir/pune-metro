@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import { Head, Form, router } from '@inertiajs/react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { MediaPicker } from '@/components/media/media-picker';
-import type { Slider, SliderSlide, Media } from '@/types/cms';
-import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
 import { ArrowUp, ArrowDown, Plus, Pencil, Trash2, Monitor, Smartphone, ChevronLeft } from 'lucide-react';
+import { useState } from 'react';
+import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
+import { MediaPicker } from '@/components/media/media-picker';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import type { Slider, SliderSlide, Media } from '@/types/cms';
 
 type Props = {
     slider: Slider & { slides: (SliderSlide & { desktop_media?: Media | null; mobile_media?: Media | null })[] };
@@ -99,7 +99,10 @@ export default function SliderEdit({ slider }: Props) {
     };
 
     const handleDeleteSlide = (slide: SliderSlide) => {
-        if (!confirm('Delete this slide?')) return;
+        if (!confirm('Delete this slide?')) {
+return;
+}
+
         router.delete(SliderController.destroySlide.url({ slider: slider.id, slide: slide.id }), {
             preserveScroll: true,
         });
@@ -108,8 +111,14 @@ export default function SliderEdit({ slider }: Props) {
     const handleMoveSlide = (slide: SliderSlide, direction: 'up' | 'down') => {
         const slides = [...slider.slides].sort((a, b) => a.position - b.position);
         const idx = slides.findIndex((s) => s.id === slide.id);
-        if (direction === 'up' && idx === 0) return;
-        if (direction === 'down' && idx === slides.length - 1) return;
+
+        if (direction === 'up' && idx === 0) {
+return;
+}
+
+        if (direction === 'down' && idx === slides.length - 1) {
+return;
+}
 
         const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
         const orderedIds = slides.map((s) => s.id);

@@ -1,9 +1,9 @@
 import { Head, router } from '@inertiajs/react';
+import { CheckCircle, XCircle, Trash2 } from 'lucide-react';
+import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { Comment, PaginatedData } from '@/types';
-import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
-import { CheckCircle, XCircle, Trash2 } from 'lucide-react';
 
 type Props = {
     comments: PaginatedData<Comment>;
@@ -22,7 +22,10 @@ export default function CommentsIndex({ comments, filters }: Props) {
     };
 
     const handleDelete = (id: number) => {
-        if (!confirm('Delete this comment?')) return;
+        if (!confirm('Delete this comment?')) {
+return;
+}
+
         router.delete(CommentController.destroy.url({ comment: id }), { preserveScroll: true });
     };
 

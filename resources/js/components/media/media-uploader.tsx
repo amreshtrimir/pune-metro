@@ -1,11 +1,11 @@
+import { Upload, X, Plus, Image, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { useState, useCallback } from 'react';
+import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { MediaDimension } from '@/types';
-import { Upload, X, Plus, Image, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
-import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 
 const MODULES = [
     { value: '', label: 'General (no module)' },
@@ -60,14 +60,21 @@ export function MediaUploader({ dimensions, onComplete }: MediaUploaderProps) {
     }, [addFiles]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) addFiles(e.target.files);
+        if (e.target.files) {
+addFiles(e.target.files);
+}
+
         e.target.value = '';
     };
 
     const removeFromQueue = (id: string) => {
         setQueue((prev) => {
             const item = prev.find((i) => i.id === id);
-            if (item) URL.revokeObjectURL(item.preview);
+
+            if (item) {
+URL.revokeObjectURL(item.preview);
+}
+
             return prev.filter((i) => i.id !== id);
         });
     };
@@ -95,7 +102,11 @@ export function MediaUploader({ dimensions, onComplete }: MediaUploaderProps) {
         return new Promise((resolve, reject) => {
             const formData = new FormData();
             formData.append('file', item.file);
-            if (module) formData.append('module', module);
+
+            if (module) {
+formData.append('module', module);
+}
+
             selectedDimensionIds.forEach((id) => formData.append('dimension_ids[]', String(id)));
             validCustom.forEach((d, i) => {
                 formData.append(`custom_dimensions[${i}][width]`, String(d.width));
@@ -140,7 +151,10 @@ export function MediaUploader({ dimensions, onComplete }: MediaUploaderProps) {
 
     const handleSubmit = async () => {
         const pending = queue.filter((q) => q.status === 'pending' || q.status === 'error');
-        if (!pending.length || running) return;
+
+        if (!pending.length || running) {
+return;
+}
 
         const validCustom = customDimensions
             .filter((d) => d.width && d.height)
@@ -148,6 +162,7 @@ export function MediaUploader({ dimensions, onComplete }: MediaUploaderProps) {
 
         setRunning(true);
         let anySuccess = false;
+
         for (const item of pending) {
             try {
                 await uploadFile(item, validCustom);
@@ -156,6 +171,7 @@ export function MediaUploader({ dimensions, onComplete }: MediaUploaderProps) {
                 // continue with next file
             }
         }
+
         setRunning(false);
 
         if (anySuccess) {

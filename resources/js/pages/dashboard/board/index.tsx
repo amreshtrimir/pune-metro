@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import { Head, Form, router } from '@inertiajs/react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { MediaPicker } from '@/components/media/media-picker';
-import type { BoardMember, Media, SelectedMedia } from '@/types/cms';
-import * as BoardMemberController from '@/actions/App/Http/Controllers/Board/BoardMemberController';
 import { ArrowUp, ArrowDown, Pencil, Trash2, UserSquare2, X } from 'lucide-react';
+import { useState } from 'react';
+import * as BoardMemberController from '@/actions/App/Http/Controllers/Board/BoardMemberController';
+import { MediaPicker } from '@/components/media/media-picker';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import type { BoardMember, SelectedMedia } from '@/types/cms';
 
 type Props = {
     members: BoardMember[];
@@ -71,7 +71,10 @@ export default function BoardMembersIndex({ members }: Props) {
     };
 
     const handleSaveEdit = () => {
-        if (!editDialog) return;
+        if (!editDialog) {
+return;
+}
+
         setSaving(true);
         router.put(
             BoardMemberController.update.url(editDialog.member.id),
@@ -91,7 +94,10 @@ export default function BoardMembersIndex({ members }: Props) {
     };
 
     const handleDelete = (member: BoardMember) => {
-        if (!confirm(`Delete "${member.name}"?`)) return;
+        if (!confirm(`Delete "${member.name}"?`)) {
+return;
+}
+
         setDeletingId(member.id);
         router.delete(BoardMemberController.destroy.url(member.id), {
             preserveScroll: true,
@@ -102,8 +108,14 @@ export default function BoardMembersIndex({ members }: Props) {
     const handleMove = (member: BoardMember, direction: 'up' | 'down') => {
         const sorted = [...members].sort((a, b) => a.sort_order - b.sort_order);
         const idx = sorted.findIndex((m) => m.id === member.id);
-        if (direction === 'up' && idx === 0) return;
-        if (direction === 'down' && idx === sorted.length - 1) return;
+
+        if (direction === 'up' && idx === 0) {
+return;
+}
+
+        if (direction === 'down' && idx === sorted.length - 1) {
+return;
+}
 
         const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
         const orderedIds = sorted.map((m) => m.id);

@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from 'react';
 import { Head } from '@inertiajs/react';
+import type { PropsWithChildren } from 'react';
 import FooterSection from '@/components/landing/FooterSection';
 import Navbar from '@/components/landing/Navbar';
 

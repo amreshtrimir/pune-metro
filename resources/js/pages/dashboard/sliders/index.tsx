@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { Head, Form, Link, router } from '@inertiajs/react';
+import { Pencil, Trash2, SlidersHorizontal } from 'lucide-react';
+import { useState } from 'react';
+import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import type { Slider } from '@/types/cms';
-import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
-import { Pencil, Trash2, SlidersHorizontal } from 'lucide-react';
 
 type Props = {
     sliders: (Slider & { slides_count: number })[];
@@ -15,7 +15,10 @@ export default function SlidersIndex({ sliders }: Props) {
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
     const handleDelete = (slider: Slider) => {
-        if (!confirm(`Delete slider "${slider.name}"? All slides will be removed.`)) return;
+        if (!confirm(`Delete slider "${slider.name}"? All slides will be removed.`)) {
+return;
+}
+
         setDeletingId(slider.id);
         router.delete(SliderController.destroy.url(slider.id), {
             preserveScroll: true,

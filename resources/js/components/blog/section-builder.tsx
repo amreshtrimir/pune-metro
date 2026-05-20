@@ -1,10 +1,10 @@
+import { Plus, Trash2, GripVertical, Type, Image, AlignLeft, Images, Quote } from 'lucide-react';
 import { useState } from 'react';
+import { MediaPicker } from '@/components/media/media-picker';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { MediaPicker } from '@/components/media/media-picker';
 import type { PostSection, SectionType, SelectedMedia, TextContent, ImageContent, ImageTextContent, GalleryContent, QuoteContent } from '@/types';
-import { Plus, Trash2, GripVertical, Type, Image, AlignLeft, Images, Quote } from 'lucide-react';
 
 type SectionBuilderProps = {
     sections: PostSection[];
@@ -55,6 +55,7 @@ function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragS
         } else if (section.type === 'image_text') {
             updateContent({ media_id: selected.media_id } as Partial<ImageTextContent>);
         }
+
         setPickerOpen(false);
     };
 
@@ -68,6 +69,7 @@ function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragS
         switch (section.type) {
             case 'text': {
                 const c = section.content as TextContent;
+
                 return (
                     <textarea
                         className="min-h-32 w-full rounded-md border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y"
@@ -79,6 +81,7 @@ function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragS
             }
             case 'image': {
                 const c = section.content as ImageContent;
+
                 return (
                     <div className="flex items-start gap-4">
                         {c.media_id > 0 && c.variant.file_path ? (
@@ -113,6 +116,7 @@ function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragS
             }
             case 'image_text': {
                 const c = section.content as ImageTextContent;
+
                 return (
                     <div className="space-y-3">
                         <div className="flex items-start gap-3">
@@ -143,6 +147,7 @@ function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragS
             }
             case 'gallery': {
                 const c = section.content as GalleryContent;
+
                 return (
                     <div className="space-y-3">
                         <div className="grid grid-cols-4 gap-2">
@@ -175,6 +180,7 @@ function SectionEditor({ section, onChange, onDelete, index, isDragging, onDragS
             }
             case 'quote': {
                 const c = section.content as QuoteContent;
+
                 return (
                     <div className="space-y-2">
                         <textarea
@@ -255,8 +261,10 @@ export function SectionBuilder({ sections, onChange }: SectionBuilderProps) {
     const handleDrop = (targetIndex: number) => {
         if (dragIndex === null || dragIndex === targetIndex) {
             setDragIndex(null);
+
             return;
         }
+
         const updated = [...sections];
         const [moved] = updated.splice(dragIndex, 1);
         updated.splice(targetIndex, 0, moved);

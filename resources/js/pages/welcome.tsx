@@ -5,7 +5,7 @@ import ExplorePuneSection from '@/components/landing/ExplorePuneSection';
 import FacilitiesSection from '@/components/landing/FacilitiesSection';
 import HeroSection from '@/components/landing/HeroSection';
 import KeyFeaturesSection from '@/components/landing/KeyFeaturesSection';
-import LeadershipSection from '@/components/landing/LeadershipSection';
+
 import MarqueeBanner from '@/components/landing/MarqueeBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
 import RoutesSection from '@/components/landing/RoutesSection';

@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { Head, Form, router } from '@inertiajs/react';
+import { Pencil, Trash2, Check, X } from 'lucide-react';
+import { useState } from 'react';
+import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import type { Category } from '@/types';
-import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
-import { Pencil, Trash2, Check, X } from 'lucide-react';
 
 type CategoryWithCount = Category & { posts_count: number };
 

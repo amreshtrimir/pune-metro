@@ -15,7 +15,10 @@ function TextSection({ content }: { content: TextContent }) {
 }
 
 function ImageSection({ content }: { content: ImageContent }) {
-    if (!content.variant?.file_path) return null;
+    if (!content.variant?.file_path) {
+return null;
+}
+
     return (
         <figure className="my-6">
             <img
@@ -53,7 +56,10 @@ function ImageTextSection({ content }: { content: ImageTextContent }) {
 }
 
 function GallerySection({ content }: { content: GalleryContent }) {
-    if (!content.items?.length) return null;
+    if (!content.items?.length) {
+return null;
+}
+
     return (
         <div className="my-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {content.items.map((item, i) => (

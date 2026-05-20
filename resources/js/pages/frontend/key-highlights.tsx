@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
-import QuoteBanner from '@/components/landing/QuoteBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
+import QuoteBanner from '@/components/landing/QuoteBanner';
 
 const highlights = [
     {
@@ -126,6 +126,25 @@ export default function KeyHighlights() {
                             </div>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* ── Chronology of Major Milestones ── */}
+            <section className="bg-white py-10">
+                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
+                    <h2 className="font-montserrat text-2xl font-semibold text-black mb-5">Chronology of Major Milestones</h2>
+                    {/* Mobile image */}
+                    <img
+                        src="/key-highlight/chronology/chronology-mobile.png"
+                        alt="Chronology of Major Milestones - Mobile"
+                        className="mt-6 w-full block md:hidden"
+                    />
+                    {/* Desktop image */}
+                    <img
+                        src="/key-highlight/chronology/chronology-desktop.png"
+                        alt="Chronology of Major Milestones"
+                        className="mt-6 w-full hidden md:block"
+                    />
                 </div>
             </section>
 

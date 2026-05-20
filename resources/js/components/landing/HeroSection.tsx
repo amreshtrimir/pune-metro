@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useState, useEffect, useCallback, useLayoutEffect, useRef } from 'react';
 
 interface Slide {
     image: string;
@@ -45,18 +45,26 @@ export default function HeroSection() {
 
     useLayoutEffect(() => {
         const header = document.querySelector('header');
-        if (!header) return;
+
+        if (!header) {
+return;
+}
+
         const update = () => setNavHeight(header.offsetHeight);
         update();
         const ro = new ResizeObserver(update);
         ro.observe(header);
+
         return () => ro.disconnect();
     }, []);
 
     const heroHeight = navHeight > 0 ? `calc(100vh - ${navHeight}px)` : '100vh';
 
     const startTimer = useCallback(() => {
-        if (timerRef.current) clearInterval(timerRef.current);
+        if (timerRef.current) {
+clearInterval(timerRef.current);
+}
+
         timerRef.current = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
         }, SLIDE_INTERVAL);
@@ -64,8 +72,11 @@ export default function HeroSection() {
 
     useEffect(() => {
         startTimer();
+
         return () => {
-            if (timerRef.current) clearInterval(timerRef.current);
+            if (timerRef.current) {
+clearInterval(timerRef.current);
+}
         };
     }, [startTimer]);
 
@@ -91,19 +102,27 @@ export default function HeroSection() {
         const nextImg = imgRefs.current[next];
         const prevEl = prev >= 0 ? slideRefs.current[prev] : null;
 
-        if (!nextEl) return;
+        if (!nextEl) {
+return;
+}
 
         // Place incoming slide on top, reset its image scale
         gsap.set(nextEl, { opacity: 0, zIndex: 2 });
+
         if (nextImg) {
             gsap.killTweensOf(nextImg);
             gsap.set(nextImg, { scale: 1.0 });
         }
-        if (prevEl) gsap.set(prevEl, { zIndex: 1 });
+
+        if (prevEl) {
+gsap.set(prevEl, { zIndex: 1 });
+}
 
         const tl = gsap.timeline({
             onComplete: () => {
-                if (prevEl) gsap.set(prevEl, { opacity: 0, zIndex: 0 });
+                if (prevEl) {
+gsap.set(prevEl, { opacity: 0, zIndex: 0 });
+}
             },
         });
 
@@ -123,14 +142,19 @@ export default function HeroSection() {
         slideTlRef.current = tl;
         prevIndexRef.current = next;
 
-        return () => { tl.kill(); };
+        return () => {
+ tl.kill(); 
+};
     }, [current]);
 
     // GSAP text animation — runs after each slide change
     useEffect(() => {
         const heading = headingRef.current;
         const para = paraRef.current;
-        if (!heading || !para) return;
+
+        if (!heading || !para) {
+return;
+}
 
         // Kill any in-flight timeline immediately to prevent conflicts
         if (tlRef.current) {
@@ -191,12 +215,16 @@ export default function HeroSection() {
             {slides.map((s, i) => (
                 <div
                     key={i}
-                    ref={(el) => { slideRefs.current[i] = el; }}
+                    ref={(el) => {
+ slideRefs.current[i] = el; 
+}}
                     className="absolute inset-0"
                     style={{ opacity: 0, zIndex: 0, willChange: 'opacity' }}
                 >
                     <img
-                        ref={(el) => { imgRefs.current[i] = el; }}
+                        ref={(el) => {
+ imgRefs.current[i] = el; 
+}}
                         src={s.image}
                         alt=""
                         className="h-full w-full object-cover"

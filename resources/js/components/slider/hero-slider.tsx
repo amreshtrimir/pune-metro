@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import type { Slider, SliderSlide, Media, MediaVariant } from '@/types/cms';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import type { Slider, SliderSlide, Media, MediaVariant } from '@/types/cms';
 
 type SlideWithMedia = SliderSlide & {
     desktop_media?: (Media & { variants: MediaVariant[] }) | null;
@@ -16,8 +16,12 @@ type HeroSliderProps = {
 };
 
 function getBestImagePath(media: (Media & { variants: MediaVariant[] }) | null | undefined): string | null {
-    if (!media) return null;
+    if (!media) {
+return null;
+}
+
     const largest = [...(media.variants ?? [])].sort((a, b) => b.width - a.width)[0];
+
     return largest ? `/storage/${largest.file_path}` : `/storage/${media.file_path}`;
 }
 
@@ -29,7 +33,10 @@ export function HeroSlider({ slider, interval = 5000, className }: HeroSliderPro
 
     const goTo = useCallback(
         (index: number) => {
-            if (isTransitioning || index === current) return;
+            if (isTransitioning || index === current) {
+return;
+}
+
             setIsTransitioning(true);
             setCurrent(index);
             setTimeout(() => setIsTransitioning(false), 500);
@@ -46,14 +53,22 @@ export function HeroSlider({ slider, interval = 5000, className }: HeroSliderPro
     }, [current, activeSlides.length, goTo]);
 
     useEffect(() => {
-        if (interval <= 0 || activeSlides.length <= 1) return;
+        if (interval <= 0 || activeSlides.length <= 1) {
+return;
+}
+
         timerRef.current = setTimeout(next, interval);
+
         return () => {
-            if (timerRef.current) clearTimeout(timerRef.current);
+            if (timerRef.current) {
+clearTimeout(timerRef.current);
+}
         };
     }, [current, interval, activeSlides.length, next]);
 
-    if (activeSlides.length === 0) return null;
+    if (activeSlides.length === 0) {
+return null;
+}
 
     const slide = activeSlides[current];
     const desktopSrc = getBestImagePath(slide.desktop_media);

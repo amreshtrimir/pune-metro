@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import { Head, Form, router } from '@inertiajs/react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { MediaPicker } from '@/components/media/media-picker';
-import type { GalleryAlbum, GalleryAlbumImage, Media, SelectedMedia } from '@/types/cms';
-import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
 import { ArrowUp, ArrowDown, Plus, Pencil, Trash2, ImageIcon, ChevronLeft } from 'lucide-react';
+import { useState } from 'react';
+import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
+import { MediaPicker } from '@/components/media/media-picker';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import type { GalleryAlbum, GalleryAlbumImage, Media, SelectedMedia } from '@/types/cms';
 
 type Props = {
     album: GalleryAlbum & {
@@ -71,11 +71,15 @@ export default function GalleryEdit({ album }: Props) {
                 thumb_media_path: selected.variant.file_path,
             }));
         }
+
         setPickerFor(null);
     };
 
     const handleSaveImage = () => {
-        if (!imageForm.media_id) return;
+        if (!imageForm.media_id) {
+return;
+}
+
         setSaving(true);
 
         const payload = {
@@ -97,7 +101,10 @@ export default function GalleryEdit({ album }: Props) {
     };
 
     const handleDeleteImage = (image: GalleryAlbumImage) => {
-        if (!confirm('Remove this image from the album?')) return;
+        if (!confirm('Remove this image from the album?')) {
+return;
+}
+
         router.delete(GalleryAlbumController.destroyImage.url({ galleryAlbum: album.id, image: image.id }), {
             preserveScroll: true,
         });
@@ -106,8 +113,14 @@ export default function GalleryEdit({ album }: Props) {
     const handleMoveImage = (image: GalleryAlbumImage, direction: 'up' | 'down') => {
         const sorted = [...album.images].sort((a, b) => a.sort_order - b.sort_order);
         const idx = sorted.findIndex((i) => i.id === image.id);
-        if (direction === 'up' && idx === 0) return;
-        if (direction === 'down' && idx === sorted.length - 1) return;
+
+        if (direction === 'up' && idx === 0) {
+return;
+}
+
+        if (direction === 'down' && idx === sorted.length - 1) {
+return;
+}
 
         const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
         const orderedIds = sorted.map((i) => i.id);
@@ -235,6 +248,7 @@ export default function GalleryEdit({ album }: Props) {
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                             {sortedImages.map((image, idx) => {
                                 const thumbPath = image.thumb_media?.file_path ?? image.media?.file_path ?? null;
+
                                 return (
                                     <div key={image.id} className="rounded-xl border overflow-hidden bg-muted group relative">
                                         {/* Thumbnail */}

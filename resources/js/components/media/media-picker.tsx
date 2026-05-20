@@ -1,10 +1,10 @@
+import { Search, ChevronLeft, ChevronRight, CheckCircle2, Images, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import type { Media, MediaVariant, PaginatedData, SelectedMedia } from '@/types';
-import { Search, ChevronLeft, ChevronRight, CheckCircle2, Images, X } from 'lucide-react';
 
 type SingleSelectProps = {
     multiSelect?: false;
@@ -38,18 +38,28 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
 
     const fetchMedia = async (searchVal: string, pageVal: number, moduleVal: string | null) => {
         setLoading(true);
+
         try {
             const params = new URLSearchParams({ page: String(pageVal) });
-            if (searchVal) params.set('search', searchVal);
-            if (moduleVal) params.set('module', moduleVal);
+
+            if (searchVal) {
+params.set('search', searchVal);
+}
+
+            if (moduleVal) {
+params.set('module', moduleVal);
+}
+
             const res = await fetch(`/dashboard/media?${params}`, {
                 headers: { Accept: 'application/json' },
             });
             const data = await res.json() as { media: typeof media; modules?: string[] };
             setMedia(data.media ?? data);
+
             if (data.modules) {
                 setModules((prev) => {
                     const merged = [...new Set([...prev, ...data.modules!])];
+
                     return merged.sort();
                 });
             }
@@ -70,13 +80,19 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
             setPage(1);
             const initialModule = defaultModule ?? null;
             setModule(initialModule);
-            if (defaultModule) setModules((prev) => (prev.includes(defaultModule) ? prev : [defaultModule, ...prev]));
+
+            if (defaultModule) {
+setModules((prev) => (prev.includes(defaultModule) ? prev : [defaultModule, ...prev]));
+}
+
             fetchMedia('', 1, initialModule);
         }
     }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleClose = (isOpen: boolean) => {
-        if (!isOpen) onClose();
+        if (!isOpen) {
+onClose();
+}
     };
 
     const handleSearch = (e: React.FormEvent) => {
@@ -97,33 +113,43 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
         if (multiSelect) {
             setMultiSelectedIds((prev) => {
                 const next = new Set(prev);
+
                 if (next.has(m.id)) {
                     next.delete(m.id);
                 } else {
                     next.add(m.id);
                 }
+
                 return next;
             });
             setMultiSelectedItems((prev) => {
                 const next = new Map(prev);
+
                 if (next.has(m.id)) {
                     next.delete(m.id);
                 } else {
                     next.set(m.id, m);
                 }
+
                 return next;
             });
+
             return;
         }
+
         setSelectedMedia(m);
         setSelectedVariant(m.variants[0] ?? null);
     };
 
     const handleMultiConfirm = () => {
-        if (multiSelectedItems.size === 0) return;
+        if (multiSelectedItems.size === 0) {
+return;
+}
+
         const selected: SelectedMedia[] = Array.from(multiSelectedItems.values()).map((m) => {
             const variant = m.variants[0] ?? null;
             const filePath = variant?.file_path ?? m.file_path;
+
             return {
                 media_id: m.id,
                 variant: {
@@ -139,9 +165,15 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
     };
 
     const handleConfirm = () => {
-        if (!selectedMedia) return;
+        if (!selectedMedia) {
+return;
+}
+
         // If variants exist, one must be selected; otherwise fall back to the original file
-        if (selectedMedia.variants.length > 0 && !selectedVariant) return;
+        if (selectedMedia.variants.length > 0 && !selectedVariant) {
+return;
+}
+
         const filePath = selectedVariant?.file_path ?? selectedMedia.file_path;
         onSelect({
             media_id: selectedMedia.id,
@@ -235,7 +267,9 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
                                     <Images className="size-12 opacity-30" />
                                     <p className="text-sm">No media found</p>
                                     {(search || module) && (
-                                        <Button type="button" variant="ghost" size="sm" onClick={() => { setSearch(''); handleModuleChange(null); }}>
+                                        <Button type="button" variant="ghost" size="sm" onClick={() => {
+ setSearch(''); handleModuleChange(null); 
+}}>
                                             Clear filters
                                         </Button>
                                     )}
@@ -245,6 +279,7 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
                                     {media?.data.map((m) => {
                                         const isMultiSelected = multiSelect && multiSelectedIds.has(m.id);
                                         const isSingleSelected = !multiSelect && selectedMedia?.id === m.id;
+
                                         return (
                                             <div
                                                 key={m.id}
@@ -288,7 +323,9 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
                                         type="button" size="icon" variant="outline"
                                         className="size-7"
                                         disabled={page === 1}
-                                        onClick={() => { const p = page - 1; setPage(p); fetchMedia(search, p, module); }}
+                                        onClick={() => {
+ const p = page - 1; setPage(p); fetchMedia(search, p, module); 
+}}
                                     >
                                         <ChevronLeft className="size-3.5" />
                                     </Button>
@@ -296,7 +333,9 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
                                         type="button" size="icon" variant="outline"
                                         className="size-7"
                                         disabled={page === media.last_page}
-                                        onClick={() => { const p = page + 1; setPage(p); fetchMedia(search, p, module); }}
+                                        onClick={() => {
+ const p = page + 1; setPage(p); fetchMedia(search, p, module); 
+}}
                                     >
                                         <ChevronRight className="size-3.5" />
                                     </Button>
@@ -315,7 +354,9 @@ export function MediaPicker({ open, onClose, onSelect, onMultiSelect, multiSelec
                             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Selected</p>
                             <button
                                 type="button"
-                                onClick={() => { setSelectedMedia(null); setSelectedVariant(null); }}
+                                onClick={() => {
+ setSelectedMedia(null); setSelectedVariant(null); 
+}}
                                 className="rounded p-0.5 text-muted-foreground hover:text-foreground"
                             >
                                 <X className="size-3.5" />

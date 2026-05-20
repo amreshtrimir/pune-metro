@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react';
+import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
 import { PostForm } from '@/components/blog/post-form';
 import type { Category, Tag } from '@/types';
-import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
 
 type Props = {
     categories: Category[];

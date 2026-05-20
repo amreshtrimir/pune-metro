@@ -1,11 +1,11 @@
 import { Head, Link, Form } from '@inertiajs/react';
+import { ArrowLeft } from 'lucide-react';
+import * as BlogController from '@/actions/App/Http/Controllers/Blog/PublicBlogController';
+import { SectionRenderer } from '@/components/blog/section-renderer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { SectionRenderer } from '@/components/blog/section-renderer';
 import type { Comment, Post } from '@/types';
-import * as BlogController from '@/actions/App/Http/Controllers/Blog/PublicBlogController';
-import { ArrowLeft } from 'lucide-react';
 
 type Props = {
     post: Post;

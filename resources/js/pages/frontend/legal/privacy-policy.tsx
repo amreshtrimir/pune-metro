@@ -12,9 +12,9 @@ export default function PrivacyPolicy() {
 
             {/* ── Hero Banner ── */}
             <PageHeroBanner
-                src="/banners/legal/legal-banner-md.png"
-                srcMd="/banners/legal/legal-banner-md.png"
-                srcLg="/banners/legal/legal-banner-lg.png"
+                src="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
+                srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
                 alt="Privacy Policy - Puneri Metro"
             />
 
@@ -168,10 +168,10 @@ export default function PrivacyPolicy() {
                             <div className="mt-2 space-y-1">
                                 <p className="font-medium text-black">Pune IT City Metro Rail Limited (PITCMRL)</p>
                                 <a
-                                    href="mailto:customercare.pmrp@mahametro.org"
+                                    href="mailto:contactpunerimetro@tatarealty.in"
                                     className="block text-brand hover:underline"
                                 >
-                                    customercare.pmrp@mahametro.org
+                                    contactpunerimetro@tatarealty.in
                                 </a>
                                 <a href="tel:18002705501" className="block text-brand hover:underline">
                                     1800 270 5501

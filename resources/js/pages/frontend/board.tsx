@@ -1,8 +1,8 @@
 import { Head } from '@inertiajs/react';
-import LeadershipSection from '@/components/landing/LeadershipSection';
-import PageSectionHeading from '@/components/landing/PageSectionHeading';
-import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import BoardSection from '@/components/landing/BoardSection';
+
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
+import PageSectionHeading from '@/components/landing/PageSectionHeading';
 import type { BoardMember } from '@/types/cms';
 
 type Props = {
