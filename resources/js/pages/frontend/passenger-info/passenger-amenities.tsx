@@ -21,7 +21,7 @@ const imgLastMile = '/pass-amenities/section-last-mile.png';
 const imgTicketing = '/pass-amenities/section-ticketing.png';
 const imgSafety = '/pass-amenities/section-safety.png';
 const imgRestroom = '/pass-amenities/section-restroom.png';
-const imgPlatform = '/pass-amenities/pids.png';
+const imgPlatform = '/pass-amenities/pids-new.png';
 
 // Amenity sections ordered left-to-right, top-to-bottom in the 3-column grid
 const amenitySections: AmenitySection[] = [
@@ -210,9 +210,9 @@ export default function PassengerAmenities() {
 
             {/* ── Hero Banner ── */}
             <PageHeroBanner
-                src="/banners/passenger-aminities/passenger-amenities-banner-md-new.png"
-                srcMd="/banners/passenger-aminities/passenger-amenities-banner-md-new.png"
-                srcLg="/banners/passenger-aminities/passenger-amenities-banner-lg-new.png"
+                src="/banners/passenger-aminities/amenniteis.png"
+                srcMd="/banners/passenger-aminities/amenniteis.png"
+                srcLg="/banners/passenger-aminities/amenniteis.png"
                 alt="Passenger Amenities - Puneri Metro"
             />
 
