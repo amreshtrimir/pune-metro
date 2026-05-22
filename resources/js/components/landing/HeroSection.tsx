@@ -12,21 +12,21 @@ const SLIDE_INTERVAL = 6000;
 const slides: Slide[] = [
     {
         image: '/landing/sliders-slides/first-image.webp',
-        heading: 'Transforming Urban Mobility with Speed, Comfort and Sustainability',
+        heading: 'Transforming Urban Mobility with Speed, Safety and Comfort',
         description:
-            'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city. By linking major corridors, it reduces congestion and travel time while supporting the long-term goals of sustainable urban development.',
+            'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city.',
     },
     {
         image: '/landing/sliders-slides/hero-section-slides/slide-2-desktop.png',
         heading: "Connecting Pune's Vital Commuter Arteries",
         description:
-            "The project features a 23.3 km elevated corridor designed to alleviate congestion along one of Pune's most critical routes. By linking the Hinjewadi IT hub to the Shivajinagar District Court, the line bridges major tech zones with the city centre. The corridor includes 23 strategically planned stations serving key residential and commercial neighbourhoods.",
+            "The project features a 23.3 km elevated corridor designed to alleviate congestion along one of Pune's most critical routes. By linking the Hinjewadi IT hub to the Shivajinagar District Court, the line bridges major tech zones with the city centre.",
     },
     {
         image: '/landing/sliders-slides/hero-section-slides/slide-3-desktop.png',
-        heading: 'A Blueprint for Sustainable Urban Mobility',
+        heading: 'A blueprint for sustainable urban mobility',
         description:
-            "Puneri Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes its ecological footprint while actively enhancing the city's green cover.",
+            'Puneri Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes the carbon footprint of the city.',
     },
 ];
 
@@ -143,7 +143,7 @@ gsap.set(prevEl, { opacity: 0, zIndex: 0 });
         prevIndexRef.current = next;
 
         return () => {
- tl.kill(); 
+ tl.kill();
 };
     }, [current]);
 
@@ -216,14 +216,14 @@ return;
                 <div
                     key={i}
                     ref={(el) => {
- slideRefs.current[i] = el; 
+ slideRefs.current[i] = el;
 }}
                     className="absolute inset-0"
                     style={{ opacity: 0, zIndex: 0, willChange: 'opacity' }}
                 >
                     <img
                         ref={(el) => {
- imgRefs.current[i] = el; 
+ imgRefs.current[i] = el;
 }}
                         src={s.image}
                         alt=""
@@ -245,8 +245,8 @@ return;
                         ref={headingRef}
                         className="mb-5 font-montserrat font-bold text-white"
                         style={{
-                            fontSize: 'clamp(22px, 3.15vw, 42px)',
-                            lineHeight: 'clamp(30px, 3.85vw, 50px)',
+                            fontSize: 'clamp(20px, 2.7vw, 36px)',
+                            lineHeight: 'clamp(28px, 3.3vw, 44px)',
                         }}
                     />
                     <p

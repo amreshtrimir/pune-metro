@@ -29,7 +29,7 @@ export default function Welcome({ members }: Props) {
             <FacilitiesSection />
             {/* <LeadershipSection /> */}
 
-            <BoardSection interactive={false} showKnowMore={true} members={members} />
+            {/* <BoardSection interactive={false} showKnowMore={true} members={members} /> */}
             <QuoteBanner>
                 &ldquo;Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
                 opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
