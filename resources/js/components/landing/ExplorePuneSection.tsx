@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const AUTOPLAY_INTERVAL = 3000;
 
@@ -105,10 +105,323 @@ const places = [
     },
 ];
 
+interface PlaceDetail {
+    category: string;
+    nearestStation: string;
+    distanceFromStation: string;
+    distanceNote?: string;
+    about: string;
+    highlights: string;
+    googleMapsLink: string;
+}
+
+const placeDetails: Record<string, PlaceDetail> = {
+    'Shreemant Dagdusheth Halwai Ganpati Temple': {
+        category: 'Temple & Spirituality',
+        nearestStation: 'PMR 23 — Shivajinagar District Court',
+        distanceFromStation: '10 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: "One of Pune's most revered temples, Dagdusheth Halwai Ganpati is a symbol of devotion and cultural heritage. Famous for its grand Ganesh idol adorned with gold and precious stones, it draws millions of devotees every year.",
+        highlights: 'Gold-adorned Ganesh idol | Heritage temple | Ganesh Utsav celebrations | Cultural landmark',
+        googleMapsLink: 'https://maps.google.com/?q=Dagdusheth+Halwai+Ganpati+Pune',
+    },
+    'Aga Khan Palace - Historical Monument': {
+        category: 'Heritage & History',
+        nearestStation: 'PMR 20 — Baner',
+        distanceFromStation: '15 min auto-rickshaw',
+        distanceNote: 'Easily accessible by local transport',
+        about: 'Built in 1892, Aga Khan Palace is a landmark of Indian history and a monument of love and compassion. It served as a prison for Mahatma Gandhi and Kasturba Gandhi during the freedom movement and is now a museum.',
+        highlights: 'Gandhiji memorial | Italian arches | Manicured gardens | Historical museum',
+        googleMapsLink: 'https://maps.google.com/?q=Aga+Khan+Palace+Pune',
+    },
+    'Sinhagad Fort - Historic Hill Fort': {
+        category: 'Historic Fort & Trekking',
+        nearestStation: 'PMR 01 — Hinjewadi Phase 3',
+        distanceFromStation: '45 min cab ride',
+        distanceNote: 'Accessible by cab/private vehicle',
+        about: "Sinhagad Fort, meaning 'Lion's Fort', is a historic fortification located about 30 km south-west of Pune. Famous for the Battle of Sinhagad (1670), the fort offers panoramic views of the Sahyadri mountain range.",
+        highlights: 'Panoramic Sahyadri views | Historic battle site | Trekking trails | Monsoon tourism',
+        googleMapsLink: 'https://maps.google.com/?q=Sinhagad+Fort+Pune',
+    },
+    'Parvati Hill - Temple Hill': {
+        category: 'Temple & Heritage',
+        nearestStation: 'PMR 22 — Deccan Gymkhana',
+        distanceFromStation: '20 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: 'Parvati Hill is one of the oldest heritage structures in Pune, perched atop a hill 2,100 ft above sea level. The hilltop houses several ancient temples dedicated to Parvati, Vishnu, Kartikeya, and Devdeveshwar.',
+        highlights: 'Panoramic city views | Ancient temples | Heritage hilltop | 108 stone steps',
+        googleMapsLink: 'https://maps.google.com/?q=Parvati+Hill+Pune',
+    },
+    'Shaniwar Wada - Fortification': {
+        category: 'Heritage & History',
+        nearestStation: 'PMR 23 — Shivajinagar District Court',
+        distanceFromStation: '10 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: 'Shaniwar Wada is a historical fortification in Pune that was the seat of the Peshwa rulers of the Maratha Empire until 1818. Known for its grand architecture and haunting legends, it is a popular heritage destination.',
+        highlights: 'Peshwa-era architecture | Sound & Light show | Historic gardens | City landmark',
+        googleMapsLink: 'https://maps.google.com/?q=Shaniwar+Wada+Pune',
+    },
+    'Rajiv Gandhi Zoological Park': {
+        category: 'Wildlife & Nature',
+        nearestStation: 'PMR 22 — Deccan Gymkhana',
+        distanceFromStation: '20 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: 'Rajiv Gandhi Zoological Park in Katraj, Pune, is one of the most visited wildlife parks in Maharashtra. It houses leopards, bears, exotic birds, and a snake park spread across a large natural habitat.',
+        highlights: 'Snake park | Katraj Lake | Diverse wildlife | Family attraction',
+        googleMapsLink: 'https://maps.google.com/?q=Rajiv+Gandhi+Zoological+Park+Pune',
+    },
+    'Osho Ashram - Spiritual Retreat': {
+        category: 'Spirituality & Wellness',
+        nearestStation: 'PMR 20 — Baner',
+        distanceFromStation: '20 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: 'Osho International Meditation Resort is a unique meditative retreat in Koregaon Park, Pune. Spanning 40 acres, it offers a blend of meditation, relaxation, and personal growth programs attracting visitors from around the world.',
+        highlights: 'Meditation resort | Pyramid auditorium | World-class facilities | International visitors',
+        googleMapsLink: 'https://maps.google.com/?q=Osho+Ashram+Pune',
+    },
+    'Pune Okayama Friendship Garden': {
+        category: 'Gardens & Nature',
+        nearestStation: 'PMR 22 — Deccan Gymkhana',
+        distanceFromStation: '15 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: 'The Pune Okayama Friendship Garden, also known as Pu La Deshpande Garden, is a beautifully designed Japanese-inspired garden. Built to commemorate the friendship between Pune and Okayama, Japan.',
+        highlights: 'Japanese-style garden | Friendship bridge | Seasonal flowers | Peaceful ambience',
+        googleMapsLink: 'https://maps.google.com/?q=Pune+Okayama+Friendship+Garden',
+    },
+    'Kasba Ganpati Temple - Heritage Site': {
+        category: 'Temple & Heritage',
+        nearestStation: 'PMR 23 — Shivajinagar District Court',
+        distanceFromStation: '10 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: "Kasba Ganpati is the presiding deity of Pune, believed to be installed by Jijabai, mother of Chhatrapati Shivaji Maharaj. It is considered the first manacha Ganpati (most respected Ganpati) of Pune.",
+        highlights: "City's presiding deity | Historical significance | Ganesh festival | Cultural landmark",
+        googleMapsLink: 'https://maps.google.com/?q=Kasba+Ganpati+Temple+Pune',
+    },
+    'National War Museum - Pune': {
+        category: 'Museums & Defence',
+        nearestStation: 'PMR 23 — Shivajinagar District Court',
+        distanceFromStation: '5 min walk',
+        distanceNote: 'Directly accessible from station exit',
+        about: "The National War Museum in Pune is a tribute to India's armed forces, displaying war memorabilia, tanks, aircraft, and weapons from various conflicts. A must-visit for history and defence enthusiasts.",
+        highlights: 'War memorabilia | Tanks & aircraft | Defence history | Patriotic landmark',
+        googleMapsLink: 'https://maps.google.com/?q=National+War+Museum+Pune',
+    },
+    'Lohagad Fort - Trekking Destination': {
+        category: 'Historic Fort & Trekking',
+        nearestStation: 'PMR 01 — Hinjewadi Phase 3',
+        distanceFromStation: '60 min cab ride',
+        distanceNote: 'Accessible by cab/private vehicle',
+        about: 'Lohagad Fort is a historic hill fort near Malavli at an altitude of 3,389 feet. Famous for its scenic beauty and Maratha heritage, it was held by Shivaji Maharaj and later by Nana Fadnavis.',
+        highlights: 'Hill trekking | Panoramic views | Historic Maratha fort | Monsoon greenery',
+        googleMapsLink: 'https://maps.google.com/?q=Lohagad+Fort+Pune',
+    },
+    'Chaturshringi Temple - Sacred Site': {
+        category: 'Temple & Spirituality',
+        nearestStation: 'PMR 19 — Savitribai Phule Pune University',
+        distanceFromStation: '10 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: 'Chaturshringi Temple is a sacred Hindu temple dedicated to Goddess Chaturshringi on Vetal Hill in Pune. The temple has 108 steps leading to the main shrine and offers panoramic views of the city.',
+        highlights: '108 steps | Goddess Chaturshringi | Navratri festival | Hilltop panoramic views',
+        googleMapsLink: 'https://maps.google.com/?q=Chaturshringi+Temple+Pune',
+    },
+    'Saras Baug Garden - Ganesh Temple': {
+        category: 'Gardens & Temples',
+        nearestStation: 'PMR 22 — Deccan Gymkhana',
+        distanceFromStation: '20 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: 'Saras Baug is a beautiful garden in Pune, known for its Prasanna Ganapati temple, a serene lake, and lush greenery. A popular recreational spot for families and devotees alike.',
+        highlights: 'Prasanna Ganapati temple | Scenic lake | Lush gardens | Family picnic spot',
+        googleMapsLink: 'https://maps.google.com/?q=Saras+Baug+Pune',
+    },
+    'Empress Botanical Garden': {
+        category: 'Gardens & Nature',
+        nearestStation: 'PMR 22 — Deccan Gymkhana',
+        distanceFromStation: '10 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: 'The Empress Botanical Garden is a 39-acre botanical garden in Pune established in 1881. Home to a rich variety of trees, plants, and exotic species, it is a green oasis in the heart of the city.',
+        highlights: 'Exotic plant collection | 39-acre green space | Heritage botanical garden | Family park',
+        googleMapsLink: 'https://maps.google.com/?q=Empress+Botanical+Garden+Pune',
+    },
+    'Vishrambaug Wada - Peshwa Palace': {
+        category: 'Heritage & History',
+        nearestStation: 'PMR 23 — Shivajinagar District Court',
+        distanceFromStation: '10 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: 'Vishrambaug Wada is a historic Peshwa palace in Pune, known for its exquisite wooden carvings and Peshwa-era architecture. Built in 1807 by Peshwa Baji Rao II, it is now a heritage site under the Archaeological Survey of India.',
+        highlights: 'Peshwa-era architecture | Wooden carvings | Heritage palace | Cultural significance',
+        googleMapsLink: 'https://maps.google.com/?q=Vishrambaug+Wada+Pune',
+    },
+    'Bund Garden - River Park': {
+        category: 'Parks & Recreation',
+        nearestStation: 'PMR 21 — Aundh',
+        distanceFromStation: '25 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: 'Bund Garden is a charming riverside park in Pune along the Mula-Mutha River. A popular recreational destination featuring lush lawns, boating facilities, and a pleasant riverside ambience.',
+        highlights: 'Riverside park | Boating facilities | Lush lawns | Picnic destination',
+        googleMapsLink: 'https://maps.google.com/?q=Bund+Garden+Pune',
+    },
+    'Pune Railway Station - Heritage': {
+        category: 'Heritage & Transport',
+        nearestStation: 'PMR 23 — Shivajinagar District Court',
+        distanceFromStation: '15 min walk',
+        distanceNote: 'Short walk from station exit',
+        about: 'Pune Railway Station, formally known as Pune Junction, is a historic railway station and one of the busiest in Maharashtra. Its classic colonial architecture and strategic location make it a landmark of Pune.',
+        highlights: 'Colonial architecture | Busy transit hub | Heritage building | City gateway',
+        googleMapsLink: 'https://maps.google.com/?q=Pune+Railway+Station',
+    },
+    'Taljai Hill - Nature Reserve': {
+        category: 'Nature Reserve & Trekking',
+        nearestStation: 'PMR 22 — Deccan Gymkhana',
+        distanceFromStation: '30 min auto-rickshaw',
+        distanceNote: 'Accessible by local transport',
+        about: "Taljai Hill is a nature reserve and forest area in Pune, offering scenic trekking trails and a peaceful environment away from the city's bustle. Home to diverse flora and fauna, it is a nature lover's paradise.",
+        highlights: 'Nature trails | Panoramic city views | Biodiversity | Morning walks',
+        googleMapsLink: 'https://maps.google.com/?q=Taljai+Hill+Pune',
+    },
+    'Phursungi Village - Rural Charm': {
+        category: 'Rural & Cultural',
+        nearestStation: 'PMR 01 — Hinjewadi Phase 3',
+        distanceFromStation: '45 min cab ride',
+        distanceNote: 'Accessible by cab/private vehicle',
+        about: 'Phursungi Village offers a glimpse into the rural heritage of Pune, with traditional architecture, local festivals, and agrarian culture. It represents the cultural roots of the region amidst the growing urban landscape.',
+        highlights: 'Rural heritage | Traditional culture | Local festivals | Agrarian landscape',
+        googleMapsLink: 'https://maps.google.com/?q=Phursungi+Pune',
+    },
+    'Khadakwasla Dam - Scenic Reservoir': {
+        category: 'Lakes & Reservoirs',
+        nearestStation: 'PMR 01 — Hinjewadi Phase 3',
+        distanceFromStation: '50 min cab ride',
+        distanceNote: 'Accessible by cab/private vehicle',
+        about: 'Khadakwasla Dam is a scenic reservoir located near Pune, known for its picturesque surroundings and stunning views of the Sahyadri hills. It is one of the main water sources for Pune and a popular picnic destination.',
+        highlights: 'Scenic reservoir | Sahyadri backdrop | Picnic destination | Water sports',
+        googleMapsLink: 'https://maps.google.com/?q=Khadakwasla+Dam+Pune',
+    },
+};
+
+function PlaceModal({
+    place,
+    onClose,
+}: {
+    place: { name: string; image: string; fallbackBg: string };
+    onClose: () => void;
+}) {
+    const detail = placeDetails[place.name];
+
+    const rows: { label: string; type: 'text' | 'distance' | 'link'; value: string; note?: string }[] = detail
+        ? [
+              { label: 'Nearest Metro Station', type: 'text', value: detail.nearestStation },
+              { label: 'Distance from Station', type: 'distance', value: detail.distanceFromStation, note: detail.distanceNote },
+              { label: 'About', type: 'text', value: detail.about },
+              { label: 'Highlights', type: 'text', value: detail.highlights },
+              { label: 'Google Maps Link', type: 'link', value: detail.googleMapsLink },
+          ]
+        : [];
+
+    return (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-6"
+            onClick={onClose}
+        >
+            <div
+                className="relative w-full max-w-250 max-h-[90vh] overflow-y-auto rounded-[25px] bg-white shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Close button */}
+                <button
+                    onClick={onClose}
+                    className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 transition hover:bg-gray-50 hover:text-gray-600"
+                    aria-label="Close"
+                >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <div className="p-8 pr-14 md:p-10 md:pr-16">
+                    {detail ? (
+                        <>
+                            {/* Category pill */}
+                            <div className="mb-4 inline-flex items-center rounded-full bg-[#fadaeb] px-4 py-1">
+                                <span className="font-montserrat text-sm font-medium text-brand">{detail.category}</span>
+                            </div>
+
+                            {/* Title */}
+                            <h2 className="mb-6 font-montserrat text-2xl font-semibold text-black md:text-[26px]">
+                                {place.name}
+                            </h2>
+
+                            {/* Details table */}
+                            <div className="overflow-hidden rounded-xl border border-gray-100">
+                                {rows.map(({ label, type, value, note }, i) => (
+                                    <div
+                                        key={label}
+                                        className={`flex ${i % 2 === 0 ? 'bg-white' : 'bg-[#f3f3f3]'}`}
+                                    >
+                                        <div className="w-47.5 shrink-0 border-r border-gray-100 px-6 py-4 font-montserrat text-sm font-medium text-black">
+                                            {label}
+                                        </div>
+                                        <div className="flex-1 px-6 py-4 font-montserrat text-sm text-black">
+                                            {type === 'link' ? (
+                                                <a
+                                                    href={value}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="font-medium text-brand underline underline-offset-2 hover:text-brand/80"
+                                                >
+                                                    View on Google Maps
+                                                </a>
+                                            ) : type === 'distance' ? (
+                                                <>
+                                                    <span className="font-semibold">{value}</span>
+                                                    {note && <span className="font-normal text-gray-500"> ({note})</span>}
+                                                </>
+                                            ) : (
+                                                <span className="font-medium">{value}</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <div className="py-10 text-center">
+                            <h2 className="mb-2 font-montserrat text-xl font-semibold text-black">{place.name}</h2>
+                            <p className="font-montserrat text-sm text-gray-500">Details coming soon.</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function ExplorePuneSection() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const isPausedRef = useRef(false);
+    const [selectedPlace, setSelectedPlace] = useState<{ name: string; image: string; fallbackBg: string } | null>(null);
+
+    // Lock body scroll and pause slider when modal is open
+    useEffect(() => {
+        if (selectedPlace) {
+            document.body.style.overflow = 'hidden';
+            isPausedRef.current = true;
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [selectedPlace]);
+
+    // Close modal on Escape key
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setSelectedPlace(null);
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
     const getCardWidth = useCallback(() => {
         if (!scrollRef.current) {
@@ -271,6 +584,7 @@ export default function ExplorePuneSection() {
                             key={`${place.name}-${index}`}
                             style={{ background: place.fallbackBg }}
                             className="group relative h-70 w-[75%] shrink-0 snap-start cursor-pointer overflow-hidden sm:h-100 sm:w-[calc(50%-12px)] lg:w-[25%]"
+                            onClick={() => setSelectedPlace(place)}
                         >
                             {/* Photo */}
                             <img
@@ -302,6 +616,10 @@ export default function ExplorePuneSection() {
                 </div>
             </div>
             </div>
+            {/* ── Place Detail Modal ── */}
+            {selectedPlace && (
+                <PlaceModal place={selectedPlace} onClose={() => setSelectedPlace(null)} />
+            )}
         </section>
     );
 }
