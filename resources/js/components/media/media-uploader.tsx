@@ -15,6 +15,7 @@ const MODULES = [
     { value: 'gallery', label: 'Gallery' },
     { value: 'project-update', label: 'Project Update' },
     { value: 'board', label: 'Board' },
+    { value: 'explore-pune', label: 'Explore Pune' },
 ];
 
 type FileStatus = 'pending' | 'uploading' | 'done' | 'error';

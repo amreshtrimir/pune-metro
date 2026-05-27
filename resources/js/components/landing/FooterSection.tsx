@@ -98,7 +98,7 @@ export default function FooterSection() {
                                     </svg>
                                     Mail Us: contactpunerimetro@tatarealty.in
                                 </a>
-                                <a
+                                {/* <a
                                     href="tel:18002705501"
                                     className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 font-montserrat text-xs font-semibold text-brand-dark transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
                                 >
@@ -107,7 +107,7 @@ export default function FooterSection() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.9 19.79 19.79 0 01.01 1.27 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
                                     </svg>
                                     Call Us: 18002705501
-                                </a>
+                                </a> */}
                             </div>
                         </div>
                     </div>

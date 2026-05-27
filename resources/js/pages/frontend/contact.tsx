@@ -111,7 +111,7 @@ export default function Contact() {
                         {/* Building / Depot Image */}
                         <div className="overflow-hidden rounded-2xl shadow-lg">
                             <img
-                                src="/contact/contact.jpeg"
+                                src="/contact-page/contact.jpeg"
                                 alt="Pune Metro Line 3 – OCC Building, Hinjawadi"
                                 className="h-full min-h-80 w-full object-cover"
                             />

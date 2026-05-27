@@ -1,7 +1,8 @@
 import { Head, Form, router } from '@inertiajs/react';
-import { ArrowUp, ArrowDown, Pencil, Trash2, MapPin, X } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowUp, ArrowDown, Loader2, Pencil, Trash2, MapPin, Upload, X } from 'lucide-react';
+import { useRef, useState } from 'react';
 import * as ExplorePunePlaceController from '@/actions/App/Http/Controllers/ExplorePune/ExplorePunePlaceController';
+import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 import { MediaPicker } from '@/components/media/media-picker';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -47,12 +48,17 @@ const emptyForm = (sort_order = 0): PlaceFormState => ({
 
 type EditDialog = { mode: 'edit'; place: ExplorePunePlace } | null;
 
+const getXsrfToken = () =>
+    decodeURIComponent(document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1] ?? '');
+
 export default function ExplorePunePlacesIndex({ places }: Props) {
     const [pickerOpen, setPickerOpen] = useState(false);
     const [editDialog, setEditDialog] = useState<EditDialog>(null);
     const [editForm, setEditForm] = useState<PlaceFormState>(emptyForm());
     const [saving, setSaving] = useState(false);
+    const [uploading, setUploading] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
+    const uploadInputRef = useRef<HTMLInputElement>(null);
 
     const openEdit = (place: ExplorePunePlace) => {
         setEditForm({
@@ -77,6 +83,41 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
         setEditDialog(null);
         setEditForm(emptyForm());
         setSaving(false);
+        setUploading(false);
+    };
+
+    const handleUploadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        e.target.value = '';
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('module', 'explore-pune');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', MediaController.store.url());
+        xhr.setRequestHeader('X-XSRF-TOKEN', getXsrfToken());
+        xhr.setRequestHeader('Accept', 'application/json');
+
+        setUploading(true);
+
+        xhr.onload = () => {
+            setUploading(false);
+            if (xhr.status >= 200 && xhr.status < 300) {
+                const media = JSON.parse(xhr.responseText) as { id: number; file_path: string; variants?: Array<{ file_path: string }> };
+                const filePath = media.variants?.[0]?.file_path ?? media.file_path;
+                setEditForm((p) => ({
+                    ...p,
+                    media_id: media.id,
+                    media_url: `/storage/${filePath}`,
+                }));
+            }
+        };
+
+        xhr.onerror = () => setUploading(false);
+
+        xhr.send(formData);
     };
 
     const handlePickerSelect = (selected: SelectedMedia) => {
@@ -326,9 +367,31 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
                                             <MapPin className="size-6 text-muted-foreground/40" />
                                         </div>
                                     )}
-                                    <Button type="button" variant="outline" size="sm" onClick={() => setPickerOpen(true)}>
-                                        {editForm.media_url ? 'Change Image' : 'Select Image'}
-                                    </Button>
+                                    <div className="flex flex-col gap-2">
+                                        <Button type="button" variant="outline" size="sm" onClick={() => setPickerOpen(true)} disabled={uploading}>
+                                            {editForm.media_url ? 'Change Image' : 'Select Image'}
+                                        </Button>
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => uploadInputRef.current?.click()}
+                                            disabled={uploading}
+                                        >
+                                            {uploading ? (
+                                                <><Loader2 className="mr-1.5 size-3.5 animate-spin" /> Uploading...</>
+                                            ) : (
+                                                <><Upload className="mr-1.5 size-3.5" /> Upload New</>
+                                            )}
+                                        </Button>
+                                    </div>
+                                    <input
+                                        ref={uploadInputRef}
+                                        type="file"
+                                        accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                                        className="hidden"
+                                        onChange={handleUploadFile}
+                                    />
                                 </div>
                             </div>
 
