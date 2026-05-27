@@ -15,6 +15,7 @@ use App\Http\Controllers\Slider\SliderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 
 // Public frontend pages
 Route::get('/about/overview', [PagesController::class, 'overview'])->name('about.overview');

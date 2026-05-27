@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
     artFromScrap,
     board,
+    contact,
     customerService,
     dosAndDonts,
     eiaReports,
@@ -28,7 +29,6 @@ import {
 const quickLinks = [
     { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
     { label: 'Lost & Found', href: lostAndFound.url() },
-    { label: 'Raise Concern', href: '#' },
     { label: 'Metro Stations', href: stationList.url() },
 ];
 
@@ -112,7 +112,7 @@ const mainNavLinks: NavLink[] = [
         { label: 'Terms and Conditions', href: termsAndConditions.url() },
         { label: 'Privacy Policy', href: privacyPolicy.url() },
     ] },
-    { label: 'CONTACT US', href: '#' },
+    { label: 'CONTACT US', href: contact.url() },
 ];
 
 function PuneMetroLogo() {
@@ -201,31 +201,7 @@ export default function Navbar() {
                                 </svg>
                                 Mail Us: contactpunerimetro@tatarealty.in
                             </a>
-                            <a
-                                href="tel:18002705501"
-                                className="flex items-center gap-2 rounded-full border border-brand px-4 py-1.5 font-montserrat text-xs font-medium text-brand transition-colors hover:bg-brand hover:text-white"
-                            >
-                                <svg
-                                    className="h-4 w-4 shrink-0"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={1.8}
-                                        d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94"
-                                    />
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={1.8}
-                                        d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.9 19.79 19.79 0 01.01 1.27 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"
-                                    />
-                                </svg>
-                                Call Us: 18002705501
-                            </a>
+                            {/* Phone hidden */}
                         </div>
 
                         <div className="flex items-center justify-end gap-0">
@@ -382,31 +358,7 @@ export default function Navbar() {
                             </svg>
                             contactpunerimetro@tatarealty.in
                         </a>
-                        <a
-                            href="tel:18002705501"
-                            className="flex items-center gap-2 py-1.5 font-montserrat text-xs text-brand"
-                        >
-                            <svg
-                                className="h-4 w-4"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={1.8}
-                                    d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94"
-                                />
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={1.8}
-                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.9 19.79 19.79 0 01.01 1.27 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"
-                                />
-                            </svg>
-                            18002705501
-                        </a>
+                        {/* Phone hidden */}
                     </div>
 
                     <div className="divide-y divide-gray-50 px-4 py-2">

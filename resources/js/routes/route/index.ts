@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 export const stationList = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ stationList.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 stationList.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ stationList.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 stationList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ stationList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 stationList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ stationList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 const stationListForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const stationListForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 stationListForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ stationListForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:65
+* @see app/Http/Controllers/PagesController.php:70
 * @route '/route/station-list'
 */
 stationListForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ stationList.form = stationListForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 export const stationDetail = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ stationDetail.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 stationDetail.url = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -124,7 +124,7 @@ stationDetail.url = (args: { slug: string | number } | [slug: string | number ] 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 stationDetail.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -134,7 +134,7 @@ stationDetail.get = (args: { slug: string | number } | [slug: string | number ] 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 stationDetail.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -144,7 +144,7 @@ stationDetail.head = (args: { slug: string | number } | [slug: string | number ]
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 const stationDetailForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -154,7 +154,7 @@ const stationDetailForm = (args: { slug: string | number } | [slug: string | num
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 stationDetailForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -164,7 +164,7 @@ stationDetailForm.get = (args: { slug: string | number } | [slug: string | numbe
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:70
+* @see app/Http/Controllers/PagesController.php:75
 * @route '/route/station/{slug}'
 */
 stationDetailForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

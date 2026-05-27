@@ -299,6 +299,87 @@ homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 home.form = homeForm
 
 /**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+export const contact = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: contact.url(options),
+    method: 'get',
+})
+
+contact.definition = {
+    methods: ["get","head"],
+    url: '/contact',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+contact.url = (options?: RouteQueryOptions) => {
+    return contact.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+contact.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: contact.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+contact.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: contact.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+const contactForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: contact.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+contactForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: contact.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::contact
+* @see app/Http/Controllers/PagesController.php:34
+* @route '/contact'
+*/
+contactForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: contact.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+contact.form = contactForm
+
+/**
 * @see \App\Http\Controllers\SitemapController::sitemap
 * @see app/Http/Controllers/SitemapController.php:10
 * @route '/sitemap.xml'

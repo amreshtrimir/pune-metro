@@ -31,6 +31,11 @@ class PagesController extends Controller
         return Inertia::render('frontend/about');
     }
 
+    public function contact(): Response
+    {
+        return Inertia::render('frontend/contact');
+    }
+
     public function board(): Response
     {
         return Inertia::render('frontend/board', [

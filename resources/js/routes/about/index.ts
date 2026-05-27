@@ -82,7 +82,7 @@ overview.form = overviewForm
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 export const board = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ board.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 board.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ board.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 board.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ board.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 board.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ board.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 const boardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const boardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 boardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ boardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:39
 * @route '/about/board'
 */
 boardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
