@@ -36,6 +36,25 @@ export type BoardMember = {
     updated_at: string;
 };
 
+export type ExplorePunePlace = {
+    id: number;
+    name: string;
+    category: string;
+    nearest_station: string;
+    distance_from_station: string;
+    distance_note: string | null;
+    about: string;
+    highlights: string;
+    google_maps_link: string | null;
+    media_id: number | null;
+    media?: Media | null;
+    fallback_bg: string | null;
+    sort_order: number;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+};
+
 export type MediaDimension = {
     id: number;
     name: string;

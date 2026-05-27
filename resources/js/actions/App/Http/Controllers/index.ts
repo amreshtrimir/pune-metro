@@ -6,6 +6,7 @@ import Media from './Media'
 import Slider from './Slider'
 import Gallery from './Gallery'
 import Board from './Board'
+import ExplorePune from './ExplorePune'
 import Settings from './Settings'
 
 const Controllers = {
@@ -17,6 +18,7 @@ const Controllers = {
     Slider: Object.assign(Slider, Slider),
     Gallery: Object.assign(Gallery, Gallery),
     Board: Object.assign(Board, Board),
+    ExplorePune: Object.assign(ExplorePune, ExplorePune),
     Settings: Object.assign(Settings, Settings),
 }
 

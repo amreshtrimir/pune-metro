@@ -6,6 +6,7 @@ use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\PublicBlogController;
 use App\Http\Controllers\Board\BoardMemberController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExplorePune\ExplorePunePlaceController;
 use App\Http\Controllers\Gallery\GalleryAlbumController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\PagesController;
@@ -139,6 +140,13 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/board-members/{boardMember}', [BoardMemberController::class, 'update'])->name('board-members.update');
         Route::delete('/board-members/{boardMember}', [BoardMemberController::class, 'destroy'])->name('board-members.destroy');
         Route::post('/board-members/reorder', [BoardMemberController::class, 'reorder'])->name('board-members.reorder');
+
+        // Explore Pune Places
+        Route::get('/explore-pune', [ExplorePunePlaceController::class, 'index'])->name('explore-pune.index');
+        Route::post('/explore-pune', [ExplorePunePlaceController::class, 'store'])->name('explore-pune.store');
+        Route::put('/explore-pune/{explorePunePlace}', [ExplorePunePlaceController::class, 'update'])->name('explore-pune.update');
+        Route::delete('/explore-pune/{explorePunePlace}', [ExplorePunePlaceController::class, 'destroy'])->name('explore-pune.destroy');
+        Route::post('/explore-pune/reorder', [ExplorePunePlaceController::class, 'reorder'])->name('explore-pune.reorder');
     });
 });
 

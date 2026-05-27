@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Board\BoardMemberService;
+use App\Services\ExplorePune\ExplorePunePlaceService;
 use App\Services\Gallery\GalleryAlbumService;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,6 +14,7 @@ class PagesController extends Controller
     public function __construct(
         private readonly GalleryAlbumService $galleryAlbumService,
         private readonly BoardMemberService $boardMemberService,
+        private readonly ExplorePunePlaceService $explorePunePlaceService,
     ) {}
 
     public function home(): Response
@@ -20,6 +22,7 @@ class PagesController extends Controller
         return Inertia::render('welcome', [
             'canRegister' => Features::enabled(Features::registration()),
             'members' => $this->boardMemberService->getActiveMembersForFrontend(),
+            'explorePlaces' => $this->explorePunePlaceService->getActivePlacesForFrontend(),
         ]);
     }
 

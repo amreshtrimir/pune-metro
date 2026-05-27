@@ -1,9 +1,10 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, Globe, LayoutGrid, Image, FileText, MessageSquare, Tag, SlidersHorizontal, Images, UserSquare2 } from 'lucide-react';
+import { BookOpen, FolderGit2, Globe, LayoutGrid, Image, FileText, MessageSquare, Tag, SlidersHorizontal, Images, UserSquare2, MapPin } from 'lucide-react';
 import * as CategoryController from '@/actions/App/Http/Controllers/Blog/CategoryController';
 import * as CommentController from '@/actions/App/Http/Controllers/Blog/CommentController';
 import * as PostController from '@/actions/App/Http/Controllers/Blog/PostController';
 import * as BoardMemberController from '@/actions/App/Http/Controllers/Board/BoardMemberController';
+import * as ExplorePunePlaceController from '@/actions/App/Http/Controllers/ExplorePune/ExplorePunePlaceController';
 import * as GalleryAlbumController from '@/actions/App/Http/Controllers/Gallery/GalleryAlbumController';
 import * as MediaController from '@/actions/App/Http/Controllers/Media/MediaController';
 import * as SliderController from '@/actions/App/Http/Controllers/Slider/SliderController';
@@ -66,6 +67,11 @@ const cmsNavItems: NavItem[] = [
         title: 'Board Members',
         href: BoardMemberController.index.url(),
         icon: UserSquare2,
+    },
+    {
+        title: 'Explore Pune',
+        href: ExplorePunePlaceController.index.url(),
+        icon: MapPin,
     },
 ];
 

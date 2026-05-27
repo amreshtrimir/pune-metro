@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { ExplorePunePlace } from '@/types/cms';
 
 const AUTOPLAY_INTERVAL = 3000;
 
@@ -302,20 +303,16 @@ function PlaceModal({
     place,
     onClose,
 }: {
-    place: { name: string; image: string; fallbackBg: string };
+    place: ExplorePunePlace;
     onClose: () => void;
 }) {
-    const detail = placeDetails[place.name];
-
-    const rows: { label: string; type: 'text' | 'distance' | 'link'; value: string; note?: string }[] = detail
-        ? [
-              { label: 'Nearest Metro Station', type: 'text', value: detail.nearestStation },
-              { label: 'Distance from Station', type: 'distance', value: detail.distanceFromStation, note: detail.distanceNote },
-              { label: 'About', type: 'text', value: detail.about },
-              { label: 'Highlights', type: 'text', value: detail.highlights },
-              { label: 'Google Maps Link', type: 'link', value: detail.googleMapsLink },
-          ]
-        : [];
+    const rows: { label: string; type: 'text' | 'distance' | 'link'; value: string; note?: string }[] = [
+        { label: 'Nearest Metro Station', type: 'text', value: place.nearest_station },
+        { label: 'Distance from Station', type: 'distance', value: place.distance_from_station, note: place.distance_note ?? undefined },
+        { label: 'About', type: 'text', value: place.about },
+        { label: 'Highlights', type: 'text', value: place.highlights },
+        ...(place.google_maps_link ? [{ label: 'Google Maps Link', type: 'link' as const, value: place.google_maps_link }] : []),
+    ];
 
     return (
         <div
@@ -338,68 +335,61 @@ function PlaceModal({
                 </button>
 
                 <div className="p-8 pr-14 md:p-10 md:pr-16">
-                    {detail ? (
-                        <>
-                            {/* Category pill */}
-                            <div className="mb-4 inline-flex items-center rounded-full bg-[#fadaeb] px-4 py-1">
-                                <span className="font-montserrat text-sm font-medium text-brand">{detail.category}</span>
-                            </div>
-
-                            {/* Title */}
-                            <h2 className="mb-6 font-montserrat text-2xl font-semibold text-black md:text-[26px]">
-                                {place.name}
-                            </h2>
-
-                            {/* Details table */}
-                            <div className="overflow-hidden rounded-xl border border-gray-100">
-                                {rows.map(({ label, type, value, note }, i) => (
-                                    <div
-                                        key={label}
-                                        className={`flex ${i % 2 === 0 ? 'bg-white' : 'bg-[#f3f3f3]'}`}
-                                    >
-                                        <div className="w-47.5 shrink-0 border-r border-gray-100 px-6 py-4 font-montserrat text-sm font-medium text-black">
-                                            {label}
-                                        </div>
-                                        <div className="flex-1 px-6 py-4 font-montserrat text-sm text-black">
-                                            {type === 'link' ? (
-                                                <a
-                                                    href={value}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="font-medium text-brand underline underline-offset-2 hover:text-brand/80"
-                                                >
-                                                    View on Google Maps
-                                                </a>
-                                            ) : type === 'distance' ? (
-                                                <>
-                                                    <span className="font-semibold">{value}</span>
-                                                    {note && <span className="font-normal text-gray-500"> ({note})</span>}
-                                                </>
-                                            ) : (
-                                                <span className="font-medium">{value}</span>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </>
-                    ) : (
-                        <div className="py-10 text-center">
-                            <h2 className="mb-2 font-montserrat text-xl font-semibold text-black">{place.name}</h2>
-                            <p className="font-montserrat text-sm text-gray-500">Details coming soon.</p>
+                    <>
+                        {/* Category pill */}
+                        <div className="mb-4 inline-flex items-center rounded-full bg-[#fadaeb] px-4 py-1">
+                            <span className="font-montserrat text-sm font-medium text-brand">{place.category}</span>
                         </div>
-                    )}
+
+                        {/* Title */}
+                        <h2 className="mb-6 font-montserrat text-2xl font-semibold text-black md:text-[26px]">
+                            {place.name}
+                        </h2>
+
+                        {/* Details table */}
+                        <div className="overflow-hidden rounded-xl border border-gray-100">
+                            {rows.map(({ label, type, value, note }, i) => (
+                                <div
+                                    key={label}
+                                    className={`flex ${i % 2 === 0 ? 'bg-white' : 'bg-[#f3f3f3]'}`}
+                                >
+                                    <div className="w-47.5 shrink-0 border-r border-gray-100 px-6 py-4 font-montserrat text-sm font-medium text-black">
+                                        {label}
+                                    </div>
+                                    <div className="flex-1 px-6 py-4 font-montserrat text-sm text-black">
+                                        {type === 'link' ? (
+                                            <a
+                                                href={value}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="font-medium text-brand underline underline-offset-2 hover:text-brand/80"
+                                            >
+                                                View on Google Maps
+                                            </a>
+                                        ) : type === 'distance' ? (
+                                            <>
+                                                <span className="font-semibold">{value}</span>
+                                                {note && <span className="font-normal text-gray-500"> ({note})</span>}
+                                            </>
+                                        ) : (
+                                            <span className="font-medium">{value}</span>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </>
                 </div>
             </div>
         </div>
     );
 }
 
-export default function ExplorePuneSection() {
+export default function ExplorePuneSection({ places }: { places: ExplorePunePlace[] }) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const isPausedRef = useRef(false);
-    const [selectedPlace, setSelectedPlace] = useState<{ name: string; image: string; fallbackBg: string } | null>(null);
+    const [selectedPlace, setSelectedPlace] = useState<ExplorePunePlace | null>(null);
 
     // Lock body scroll and pause slider when modal is open
     useEffect(() => {
@@ -581,14 +571,14 @@ export default function ExplorePuneSection() {
                 >
                     {[...places, ...places].map((place, index) => (
                         <div
-                            key={`${place.name}-${index}`}
-                            style={{ background: place.fallbackBg }}
+                            key={`${place.id}-${index}`}
+                            style={{ background: place.fallback_bg ?? undefined }}
                             className="group relative h-70 w-[75%] shrink-0 snap-start cursor-pointer overflow-hidden sm:h-100 sm:w-[calc(50%-12px)] lg:w-[25%]"
                             onClick={() => setSelectedPlace(place)}
                         >
                             {/* Photo */}
                             <img
-                                src={place.image}
+                                src={place.media?.url ?? ''}
                                 alt={place.name}
                                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 onError={(e) => {
