@@ -13,6 +13,7 @@ createInertiaApp({
     layout: (name) => {
         switch (true) {
             case name === 'welcome':
+            case name === 'ErrorPage':
                 return FrontendLayout;
             case name.startsWith('blog/'):
                 return null;
