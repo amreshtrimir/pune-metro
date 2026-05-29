@@ -219,7 +219,7 @@ register.form = registerForm
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 export const home = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -234,7 +234,7 @@ home.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 home.url = (options?: RouteQueryOptions) => {
@@ -243,7 +243,7 @@ home.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 home.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -253,7 +253,7 @@ home.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -263,7 +263,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -273,7 +273,7 @@ const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -283,7 +283,7 @@ homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:20
+* @see app/Http/Controllers/PagesController.php:22
 * @route '/'
 */
 homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -300,7 +300,7 @@ home.form = homeForm
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 export const contact = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -315,7 +315,7 @@ contact.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 contact.url = (options?: RouteQueryOptions) => {
@@ -324,7 +324,7 @@ contact.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 contact.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -334,7 +334,7 @@ contact.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 contact.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -344,7 +344,7 @@ contact.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 const contactForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -354,7 +354,7 @@ const contactForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 contactForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -364,7 +364,7 @@ contactForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:34
+* @see app/Http/Controllers/PagesController.php:37
 * @route '/contact'
 */
 contactForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

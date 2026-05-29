@@ -174,14 +174,14 @@ export default function ProjectUpdate({ images }: Props) {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <PageSectionHeading>Project Update</PageSectionHeading>
                 </div>
             </section>
 
             {/* ── Content ── */}
-            <section className="bg-white pt-6 pb-3">
+            <section className="bg-white pt-4 pb-4">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3  is progressing steadily, with significant construction milestones achieved across the 23.3 km elevated corridor. The Pink Line will offer commuters a modern, reliable, and comfortable alternative to road travel, connecting the IT hub of Hinjewadi to Shivajinagar District Court seamlessly. Commuters across key areas including Wakad, Baner, Balewadi, and University Circle will benefit from reduced travel time, lesser dependence on private vehicles, and a safe, efficient daily commute. The Pink Line is set to transform urban mobility for thousands of Pune residents every single day.
@@ -191,7 +191,7 @@ export default function ProjectUpdate({ images }: Props) {
             </section>
 
             {/* ── Documents ── */}
-            <section className="bg-white pb-10">
+            <section className="bg-white pb-6 md:pb-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <ul className="space-y-3">
                         {[
@@ -223,10 +223,10 @@ export default function ProjectUpdate({ images }: Props) {
 
             {/* ── Construction Gallery ── */}
             {images.length > 0 && (
-                <section className="bg-white pb-16">
+                <section className="bg-white pt-6 pb-8">
                     <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                         {/* Subheading */}
-                        <h2 className="mb-8 font-montserrat font-semibold text-black" style={{ fontSize: '22px' }}>
+                        <h2 className="mb-8 font-montserrat text-base font-semibold text-black sm:text-lg lg:text-[22px]">
                             Current Construction Updates
                         </h2>
 

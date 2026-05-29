@@ -21,7 +21,7 @@ export default function LostAndFound() {
             </section>
 
             {/* ── Content ── */}
-            <section className="bg-white pb-24">
+            <section className="bg-white pb-8 md:pb-24">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     {/* Intro */}
                     <div className="mb-8 flex gap-3">

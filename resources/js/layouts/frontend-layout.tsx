@@ -12,6 +12,8 @@ export default function FrontendLayout({ children }: PropsWithChildren) {
             </Head>
             <div className="min-h-screen overflow-x-hidden bg-white font-montserrat">
                 <Navbar />
+                {/* Offset for fixed header on mobile (h-11 logo + py-2.5 * 2 = ~64px) */}
+                <div className="block h-16 lg:hidden" />
                 <main>{children}</main>
                 <FooterSection />
             </div>

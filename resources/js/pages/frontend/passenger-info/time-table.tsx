@@ -180,7 +180,7 @@ export default function TimeTable() {
             </section>
 
             {/* ── Download PDF ── */}
-            <section className="bg-white pt-10 pb-24">
+            <section className="bg-white pt-8 pb-10 md:pt-10 md:pb-24">
                 <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <a
                         href="/documents/TIMETABLE.pdf"

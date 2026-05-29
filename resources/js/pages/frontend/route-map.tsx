@@ -37,14 +37,14 @@ export default function RouteMap() {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <PageSectionHeading lineColor="#8e8e8e">Route Map</PageSectionHeading>
                 </div>
             </section>
 
             {/* ── Description ── */}
-            <section className="bg-white pt-6 pb-0">
+            <section className="bg-white pt-4 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3 connects one of the city&apos;s most important daily movement corridors, linking the
@@ -55,7 +55,7 @@ export default function RouteMap() {
             </section>
 
             {/* ── Line Filter Tabs ── */}
-            <section className="bg-white pt-8 pb-0">
+            <section className="bg-white pt-4 pb-0 md:pt-8">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex gap-3">
                         <button
@@ -92,7 +92,7 @@ export default function RouteMap() {
                     onClose={() => setLightboxOpen(false)}
                 />
             )}
-            <section className="bg-white py-10">
+            <section className="bg-white py-6 md:py-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div
                         className="cursor-zoom-in overflow-hidden rounded-3xl bg-white"
@@ -109,22 +109,22 @@ export default function RouteMap() {
             </section>
 
             {/* ── Stats ── */}
-            <section className="bg-white py-10">
+            <section className="bg-white py-6 md:py-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
                         {stats.map((stat) => (
                             <div
                                 key={stat.label}
-                                className="relative flex items-center overflow-hidden rounded-3xl px-8 py-12 w-[310px] min-h-[220px]"
+                                className="relative flex items-center overflow-hidden rounded-2xl px-4 py-8 w-full md:rounded-3xl md:px-8 md:py-12 lg:w-[310px] lg:min-h-[220px]"
                                 style={{ background: 'rgba(232,68,154,0.15)' }}
                             >
                                 <img
                                     src="/assets/card-top-right-log.png"
                                     alt=""
-                                    className="pointer-events-none absolute top-0 right-0 h-auto"
+                                    className="pointer-events-none absolute top-0 right-0 h-auto w-20 md:w-auto"
                                 />
                                 <div className="relative">
-                                    <p className="font-montserrat font-medium text-black" style={{ fontSize: '40px', lineHeight: '1.2' }}>
+                                    <p className="font-montserrat font-medium text-black text-3xl md:text-[40px]" style={{ lineHeight: '1.2' }}>
                                         {stat.value}
                                         {stat.unit && (
                                             <span className="ml-1 font-montserrat text-sm font-normal">{stat.unit}</span>

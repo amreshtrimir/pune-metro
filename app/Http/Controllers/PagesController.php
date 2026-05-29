@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Board\BoardMemberService;
 use App\Services\ExplorePune\ExplorePunePlaceService;
 use App\Services\Gallery\GalleryAlbumService;
+use App\Services\Marquee\MarqueeItemService;
 use Inertia\Inertia;
 use Inertia\Response;
 use Laravel\Fortify\Features;
@@ -15,6 +16,7 @@ class PagesController extends Controller
         private readonly GalleryAlbumService $galleryAlbumService,
         private readonly BoardMemberService $boardMemberService,
         private readonly ExplorePunePlaceService $explorePunePlaceService,
+        private readonly MarqueeItemService $marqueeItemService,
     ) {}
 
     public function home(): Response
@@ -23,6 +25,7 @@ class PagesController extends Controller
             'canRegister' => Features::enabled(Features::registration()),
             'members' => $this->boardMemberService->getActiveMembersForFrontend(),
             'explorePlaces' => $this->explorePunePlaceService->getActivePlacesForFrontend(),
+            'marqueeItems' => $this->marqueeItemService->getActiveItemsForFrontend(),
         ]);
     }
 

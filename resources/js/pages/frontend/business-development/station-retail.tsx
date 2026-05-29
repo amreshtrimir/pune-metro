@@ -2,6 +2,7 @@ import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
+
 export default function StationRetail() {
     return (
         <>
@@ -22,9 +23,9 @@ export default function StationRetail() {
             />
 
             {/* ── Content Section ── */}
-            <section className="bg-white py-10">
+            <section className="bg-white py-8 md:py-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-8 flex items-center gap-6">Station Retail – Pune Metro Line 3</PageSectionHeading>
+                    <PageSectionHeading wrap className="mb-6 md:mb-8 flex items-center gap-6">Station Retail – Pune Metro Line 3</PageSectionHeading>
 
                     <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
                         {/* Left — Image */}

@@ -121,7 +121,7 @@ function PuneMetroLogo() {
             <img
                 src="/assets/pune-metro-log.png"
                 alt="Pune Metro"
-                className="h-18 w-auto"
+                className="h-11 w-auto lg:h-18"
             />
         </a>
     );
@@ -155,10 +155,37 @@ function Chevron({ open }: { open: boolean }) {
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [mobileClosing, setMobileClosing] = useState(false);
     const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
     const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
     const navRef = useRef<HTMLDivElement>(null);
+    const menuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { url } = usePage();
+
+    function openMenu() {
+        if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+        setMobileClosing(false);
+        setMobileOpen(true);
+    }
+
+    function closeMenu() {
+        setMobileClosing(true);
+        menuTimeoutRef.current = setTimeout(() => {
+            setMobileOpen(false);
+            setMobileClosing(false);
+        }, 200);
+    }
+
+    function toggleMenu() {
+        if (mobileOpen && !mobileClosing) closeMenu();
+        else openMenu();
+    }
+
+    useEffect(() => {
+        return () => {
+            if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+        };
+    }, []);
 
     useEffect(() => {
         function handleClick(e: MouseEvent) {
@@ -172,11 +199,11 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-white shadow-md">
+        <header className="fixed top-0 z-50 w-full bg-white shadow-md lg:sticky">
             {/* Rows 1+2: Logo + contact */}
             <div className="border-b border-gray-100">
                 <div className="mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] items-stretch px-4 min-[1303px]:px-8">
-                    <div className="flex items-center py-5 pr-8">
+                    <div className="flex items-center py-2.5 pr-8 lg:py-5">
                         <PuneMetroLogo />
                     </div>
 
@@ -228,11 +255,12 @@ export default function Navbar() {
 
                     <div className="ml-auto flex items-center lg:hidden">
                         <button
-                            onClick={() => setMobileOpen(!mobileOpen)}
+                            onClick={toggleMenu}
                             aria-label="Toggle menu"
+                            className={`rounded-lg p-2 transition-colors duration-200 ${mobileOpen ? 'bg-brand/10 text-brand' : 'text-gray-700 hover:bg-gray-100'}`}
                         >
                             <svg
-                                className="h-6 w-6 text-gray-700"
+                                className="h-6 w-6 transition-transform duration-200"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -337,7 +365,7 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {mobileOpen && (
-                <div className="max-h-[80vh] overflow-y-auto border-t border-gray-100 bg-white shadow-lg lg:hidden">
+                <div className={`${mobileClosing ? 'animate-out slide-out-to-top-2 fade-out' : 'animate-in slide-in-from-top-2 fade-in'} duration-200 max-h-[80vh] overflow-y-auto border-t border-gray-100 bg-white shadow-lg lg:hidden`}>
                     <div className="border-b border-gray-100 px-4 py-3">
                         <a
                             href="mailto:contactpunerimetro@tatarealty.in"
@@ -393,7 +421,7 @@ export default function Navbar() {
                                                         href={child.href}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        onClick={() => setMobileOpen(false)}
+                                                        onClick={() => closeMenu()}
                                                         className="block py-2 font-montserrat text-xs text-black hover:text-brand"
                                                     >
                                                         {child.label}
@@ -403,7 +431,7 @@ export default function Navbar() {
                                                         key={child.label}
                                                         href={child.href}
                                                         onClick={() =>
-                                                            setMobileOpen(false)
+                                                            closeMenu()
                                                         }
                                                         className="block py-2 font-montserrat text-xs text-black hover:text-brand"
                                                     >
@@ -418,7 +446,7 @@ export default function Navbar() {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    onClick={() => setMobileOpen(false)}
+                                    onClick={() => closeMenu()}
                                     className={`block py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${
                                         isActive(link.href, url)
                                             ? 'text-brand'

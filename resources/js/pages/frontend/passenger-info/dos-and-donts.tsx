@@ -150,7 +150,7 @@ export default function DosAndDonts() {
             </section>
 
             {/* ── Note ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="flex gap-3 rounded-lg bg-[#fdf0f7] px-6 py-5">
                         <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />

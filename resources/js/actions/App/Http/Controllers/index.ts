@@ -7,6 +7,7 @@ import Slider from './Slider'
 import Gallery from './Gallery'
 import Board from './Board'
 import ExplorePune from './ExplorePune'
+import Marquee from './Marquee'
 import Settings from './Settings'
 
 const Controllers = {
@@ -19,6 +20,7 @@ const Controllers = {
     Gallery: Object.assign(Gallery, Gallery),
     Board: Object.assign(Board, Board),
     ExplorePune: Object.assign(ExplorePune, ExplorePune),
+    Marquee: Object.assign(Marquee, Marquee),
     Settings: Object.assign(Settings, Settings),
 }
 

@@ -16,7 +16,8 @@ export default function render(page: Parameters<typeof createInertiaApp>[0]['pag
         layout: (name) => {
             switch (true) {
                 case name === 'welcome':
-                    return null;
+                case name === 'ErrorPage':
+                    return FrontendLayout;
                 case name.startsWith('blog/'):
                     return null;
                 case name.startsWith('frontend/'):

@@ -55,6 +55,15 @@ export type ExplorePunePlace = {
     updated_at: string;
 };
 
+export type MarqueeItem = {
+    id: number;
+    text: string;
+    sort_order: number;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+};
+
 export type MediaDimension = {
     id: number;
     name: string;

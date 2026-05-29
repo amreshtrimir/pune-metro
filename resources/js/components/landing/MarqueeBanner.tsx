@@ -1,15 +1,16 @@
-const items = [
-    'Experience the Future of Urban Mobility with Pune Metro',
-    'Your Journey, Simplified',
-    'Redefining City Travel with Speed, Safety & Comfort',
-    'Pune Metro Line 3 — Hinjewadi to Shivajinagar',
-    'Safe · Fast · Sustainable',
-    'Connect. Commute. Celebrate Pune.',
-];
+import type { MarqueeItem } from '@/types/cms';
 
-export default function MarqueeBanner() {
-    // Duplicate items so the loop is seamless
-    const repeated = [...items, ...items];
+type Props = {
+    items: MarqueeItem[];
+};
+
+export default function MarqueeBanner({ items }: Props) {
+    if (items.length === 0) {
+        return null;
+    }
+
+    const texts = items.map((item) => item.text);
+    const repeated = [...texts, ...texts];
 
     return (
         <div className="overflow-hidden bg-[#f5f0c8] py-2.5" style={{ height: '38px' }}>

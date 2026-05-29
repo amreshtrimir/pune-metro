@@ -251,7 +251,7 @@ export default function PassengerAmenities() {
             </section>
 
             {/* ── Gender-Specific & Special Facilities ── */}
-            <section className="bg-white pb-12">
+            <section className="bg-white pb-8 md:pb-12">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10">
                         <GenderSection

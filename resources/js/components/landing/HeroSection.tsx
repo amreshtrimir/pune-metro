@@ -210,7 +210,7 @@ return;
     }, [current]);
 
     return (
-        <section className="relative w-full overflow-hidden bg-metro-dark" style={{ minHeight: heroHeight }}>
+        <section className="relative w-full overflow-hidden bg-metro-dark max-md:min-h-[65vh]!" style={{ minHeight: heroHeight }}>
             {/* ── Background slides — fully GSAP controlled ── */}
             {slides.map((s, i) => (
                 <div
@@ -236,14 +236,19 @@ return;
 
             {/* ── Text content ── */}
             <div
-                className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col justify-end px-6 lg:px-16"
-                style={{ minHeight: heroHeight, paddingBottom: '110px', paddingTop: '80px', zIndex: 20 }}
+                className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col justify-end px-6 lg:px-16 max-md:min-h-[65vh]! max-md:pb-16! max-md:pt-8!"
+                style={{
+                    minHeight: heroHeight,
+                    paddingBottom: '110px',
+                    paddingTop: '80px',
+                    zIndex: 20,
+                }}
             >
                 <div className="w-full">
                     {/* heading innerHTML is controlled by GSAP — no children here */}
                     <h1
                         ref={headingRef}
-                        className="mb-5 font-montserrat font-bold text-white"
+                        className="mb-3 font-montserrat font-bold text-white md:mb-5 max-md:text-[clamp(20px,5.5vw,28px)]! max-md:leading-[clamp(28px,7vw,36px)]!"
                         style={{
                             fontSize: 'clamp(20px, 2.7vw, 36px)',
                             lineHeight: 'clamp(28px, 3.3vw, 44px)',
@@ -251,7 +256,7 @@ return;
                     />
                     <p
                         ref={paraRef}
-                        className="font-montserrat text-white/80"
+                        className="font-montserrat text-white/80 max-md:text-[13px]! max-md:leading-[1.6]!"
                         style={{
                             fontSize: 'clamp(10px, 1.2vw, 15px)',
                             lineHeight: 'clamp(22px, 2.5vw, 32px)',
@@ -260,7 +265,7 @@ return;
                 </div>
 
                 {/* ── Slide dots ── */}
-                <div className="absolute bottom-[90px] left-6 flex items-center gap-2 lg:left-16">
+                <div className="absolute bottom-14 left-6 flex items-center gap-2 md:bottom-22.5 lg:left-16">
                     {slides.map((_, i) => (
                         <button
                             key={i}
@@ -276,19 +281,19 @@ return;
                 {/* ── Prev / Next arrows ── */}
                 <button
                     onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-                    className="absolute right-20 bottom-[82px] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white/60 transition hover:border-white/60 hover:text-white lg:right-24"
+                    className="absolute right-20 bottom-12.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white/60 transition hover:border-white/60 hover:text-white md:bottom-20.5 md:h-10 md:w-10 lg:right-24"
                     aria-label="Previous slide"
                 >
-                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 12H5M11 6l-6 6 6 6" />
                     </svg>
                 </button>
                 <button
                     onClick={() => goTo((current + 1) % slides.length)}
-                    className="absolute right-8 bottom-[82px] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-brand text-brand transition hover:bg-brand hover:text-white lg:right-12"
+                    className="absolute right-8 bottom-12.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-brand text-brand transition hover:bg-brand hover:text-white md:bottom-20.5 md:h-10 md:w-10 lg:right-12"
                     aria-label="Next slide"
                 >
-                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                 </button>

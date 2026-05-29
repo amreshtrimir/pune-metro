@@ -93,7 +93,7 @@ function DirectorAvatar({
         <div className="flex w-full flex-col items-center gap-3 text-center">
             {/* Photo */}
             <div
-                className={`group relative h-62.5 w-full overflow-hidden rounded-2xl${onClick ? ' cursor-pointer' : ''}`}
+                className={`group relative h-80 w-full overflow-hidden rounded-2xl md:h-62.5${onClick ? ' cursor-pointer' : ''}`}
                 style={{ backgroundColor: bg }}
                 onClick={onClick}
             >
@@ -105,7 +105,7 @@ function DirectorAvatar({
                 {/* Hover overlay — only shown when card is interactive */}
                 {onClick && (
                     <div
-                        className="absolute bottom-0 left-0 h-34.5 w-full translate-y-2 rounded-b-2xl opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                        className="absolute bottom-0 left-0 h-34.5 w-full rounded-b-2xl md:translate-y-2 md:opacity-0 md:transition-all md:duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100"
                         style={{ background: 'linear-gradient(180deg, rgba(154, 0, 82, 0) 0%, rgba(154, 0, 82, 0.5) 100%)' }}
                     >
                         <div className="flex h-full items-end justify-center pb-3">
@@ -148,16 +148,16 @@ function DirectorModal({ director, onClose }: { director: Director; onClose: () 
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${visible ? 'bg-black/50' : 'bg-transparent'}`}
+            className={`fixed inset-0 z-50 flex items-end sm:items-center sm:p-4 transition-all duration-300 ${visible ? 'bg-black/50' : 'bg-transparent'}`}
             onClick={handleClose}
         >
             <div
-                className={`relative flex w-full max-w-4xl flex-col overflow-hidden rounded-[25px] bg-white sm:flex-row transition-all duration-300 ${visible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+                className={`relative flex w-full max-h-[90vh] flex-col overflow-hidden rounded-t-[25px] bg-white sm:mx-auto sm:max-h-[520px] sm:max-w-4xl sm:flex-row sm:rounded-[25px] transition-all duration-300 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* Left — Image */}
+                {/* Image — fills top edge-to-edge on mobile, left column on desktop */}
                 <div
-                    className="relative h-64 w-full shrink-0 overflow-hidden rounded-t-[25px] sm:h-auto sm:w-92.5 sm:rounded-l-[25px] sm:rounded-tr-none"
+                    className="relative h-80 w-full shrink-0 overflow-hidden sm:h-auto sm:w-92.5 sm:rounded-l-[25px]"
                     style={{ backgroundColor: director.bg ?? '#dce9f5' }}
                 >
                     <img
@@ -165,17 +165,30 @@ function DirectorModal({ director, onClose }: { director: Director; onClose: () 
                         alt={director.name}
                         className="h-full w-full object-cover object-top"
                     />
-                </div>
-                {/* Right — Details */}
-                <div className="flex flex-1 flex-col justify-center px-8 py-8 sm:px-10 sm:py-10">
-                    <p className="font-montserrat text-base font-semibold text-black">{director.name}</p>
-                    <p className="mt-1 font-montserrat text-sm text-black">{director.role}</p>
+                    {/* Drag handle floated over image — mobile only */}
+                    <div className="absolute inset-x-0 top-3 flex justify-center sm:hidden">
+                        <div className="h-1 w-10 rounded-full bg-white/60" />
+                    </div>
+                    {/* Name + role overlay at bottom of image — mobile only */}
                     <div
-                        className="my-5 h-px w-full"
+                        className="absolute bottom-0 left-0 w-full px-5 pb-4 pt-10 sm:hidden"
+                        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)' }}
+                    >
+                        <p className="font-montserrat text-base font-semibold text-white">{director.name}</p>
+                        <p className="mt-0.5 font-montserrat text-xs text-white/80">{director.role}</p>
+                    </div>
+                </div>
+                {/* Right — Details (scrollable when content overflows) */}
+                <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5 sm:px-10 sm:py-10">
+                    {/* Name + role — desktop only (shown in image overlay on mobile) */}
+                    <p className="hidden font-montserrat text-base font-semibold text-black sm:block">{director.name}</p>
+                    <p className="mt-1 hidden font-montserrat text-sm text-black sm:block">{director.role}</p>
+                    <div
+                        className="my-4 hidden h-px w-full sm:block"
                         style={{ background: 'linear-gradient(to right, #8e8e8e, transparent)' }}
                     />
                     {director.bio && (
-                        <p className="font-montserrat text-sm leading-relaxed text-black">{director.bio}</p>
+                        <p className="pb-2 font-montserrat text-sm leading-relaxed text-black">{director.bio}</p>
                     )}
                 </div>
                 {/* Close button */}

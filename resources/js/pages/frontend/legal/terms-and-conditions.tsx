@@ -19,17 +19,17 @@ export default function TermsAndConditions() {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <PageSectionHeading lineColor="#8e8e8e">Terms and Conditions</PageSectionHeading>
-                    <p className="mt-3 mb-10 font-inter text-xl capitalize text-brand">
+                    <p className="mt-3 mb-6 md:mb-10 font-inter text-base md:text-xl capitalize text-brand">
                         Please read these terms carefully before using our services
                     </p>
                 </div>
             </section>
 
             {/* ── Content ── */}
-            <section className="bg-white pb-24">
+            <section className="bg-white pb-8 md:pb-24">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="space-y-6 font-inter text-base leading-relaxed text-black">
                         <p>

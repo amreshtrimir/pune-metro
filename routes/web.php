@@ -8,6 +8,7 @@ use App\Http\Controllers\Board\BoardMemberController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExplorePune\ExplorePunePlaceController;
 use App\Http\Controllers\Gallery\GalleryAlbumController;
+use App\Http\Controllers\Marquee\MarqueeItemController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SitemapController;
@@ -148,6 +149,13 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/explore-pune/{explorePunePlace}', [ExplorePunePlaceController::class, 'update'])->name('explore-pune.update');
         Route::delete('/explore-pune/{explorePunePlace}', [ExplorePunePlaceController::class, 'destroy'])->name('explore-pune.destroy');
         Route::post('/explore-pune/reorder', [ExplorePunePlaceController::class, 'reorder'])->name('explore-pune.reorder');
+
+        // Marquee Items
+        Route::get('/marquee', [MarqueeItemController::class, 'index'])->name('marquee.index');
+        Route::post('/marquee', [MarqueeItemController::class, 'store'])->name('marquee.store');
+        Route::put('/marquee/{marqueeItem}', [MarqueeItemController::class, 'update'])->name('marquee.update');
+        Route::delete('/marquee/{marqueeItem}', [MarqueeItemController::class, 'destroy'])->name('marquee.destroy');
+        Route::post('/marquee/reorder', [MarqueeItemController::class, 'reorder'])->name('marquee.reorder');
     });
 });
 

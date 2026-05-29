@@ -19,17 +19,17 @@ export default function PrivacyPolicy() {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <PageSectionHeading lineColor="#8e8e8e">Privacy Policy</PageSectionHeading>
-                    <p className="mt-3 mb-10 font-inter text-xl capitalize text-brand">
+                    <p className="mt-3 mb-6 md:mb-10 font-inter text-base md:text-xl capitalize text-brand">
                         Your privacy is important to us
                     </p>
                 </div>
             </section>
 
             {/* ── Content ── */}
-            <section className="bg-white pb-24">
+            <section className="bg-white pb-8 md:pb-24">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="space-y-8 font-inter text-base leading-relaxed text-black">
 
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 1 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">1. Information Collection and Processing</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">1. Information Collection and Processing</h2>
                             <p>We may collect the following information when you use this website:</p>
 
                             <div className="space-y-3 pl-4">
@@ -77,7 +77,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 2 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">2. Purpose of Processing</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">2. Purpose of Processing</h2>
                             <p>Personal data collected by PITCMRL shall be processed only for lawful purposes, including:</p>
                             <ul className="list-disc space-y-1 pl-6">
                                 <li>Responding to queries, requests, or feedback</li>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 3 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">3. Consent</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">3. Consent</h2>
                             <p>
                                 By accessing or using this website and voluntarily providing your personal data, you consent to the collection, use,
                                 processing, and storage of such data in accordance with this Privacy Policy and applicable laws.
@@ -112,7 +112,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 4 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">4. Cookies and Tracking Technologies</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">4. Cookies and Tracking Technologies</h2>
                             <p>
                                 This website may use cookies and similar technologies to enhance user experience and analyse website traffic. Cookies
                                 do not collect personal information.
@@ -125,7 +125,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 5 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">5. Disclosure and Sharing of Information</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">5. Disclosure and Sharing of Information</h2>
                             <p>PITCMRL does not sell or rent personal data. Personal data may be shared only:</p>
                             <ul className="list-disc space-y-1 pl-6">
                                 <li>With affiliates or authorised service providers for legitimate operational purposes</li>
@@ -136,7 +136,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 6 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">6. Data Security</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">6. Data Security</h2>
                             <p>
                                 PITCMRL has implemented reasonable technical and organisational measures to protect personal data from unauthorized
                                 access, disclosure, alteration, or destruction. However, absolute security cannot be guaranteed.
@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 7 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">7. External Links</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">7. External Links</h2>
                             <p>
                                 This website may contain links to third-party websites. PITCMRL is not responsible for the privacy practices or
                                 content of such websites. Users are advised to review their privacy policies independently.
@@ -154,7 +154,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 8 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">8. Changes to Privacy Policy</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">8. Changes to Privacy Policy</h2>
                             <p>
                                 PITCMRL reserves the right to update or modify this Privacy Policy at any time. Changes will be effective upon
                                 publication on the website.
@@ -163,7 +163,7 @@ export default function PrivacyPolicy() {
 
                         {/* Section 9 */}
                         <div className="space-y-4">
-                            <h2 className="font-montserrat text-xl font-bold text-black">9. Contact Information</h2>
+                            <h2 className="font-montserrat text-base font-bold text-black sm:text-xl">9. Contact Information</h2>
                             <p>For any questions or concerns regarding this Privacy Policy, please contact:</p>
                             <div className="mt-2 space-y-1">
                                 <p className="font-medium text-black">Pune IT City Metro Rail Limited (PITCMRL)</p>
@@ -173,9 +173,9 @@ export default function PrivacyPolicy() {
                                 >
                                     contactpunerimetro@tatarealty.in
                                 </a>
-                                <a href="tel:18002705501" className="block text-brand hover:underline">
+                                {/* <a href="tel:18002705501" className="block text-brand hover:underline">
                                     1800 270 5501
-                                </a>
+                                </a> */}
                             </div>
                         </div>
 

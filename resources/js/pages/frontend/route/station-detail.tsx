@@ -132,7 +132,7 @@ export default function StationDetail({ station }: Props) {
                 {/* Pink station header */}
                 <div className="bg-[#e8449a]">
                     <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                        <div className="flex flex-col gap-1 py-6 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex flex-col gap-1 py-3 sm:py-6 sm:flex-row sm:items-center sm:justify-between">
                             <div>
                                 <Link
                                     href={stationList.url()}
@@ -173,28 +173,30 @@ export default function StationDetail({ station }: Props) {
             </div>
 
             {/* ── Content ── */}
-            <div className="bg-gray-50 py-10">
+            <div className="bg-gray-50 py-6 md:py-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-4 md:gap-6">
                     {/* ── Map ── */}
-                    <section id="map" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                    <section id="map" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                         <SectionHeading>Station Location</SectionHeading>
                         <div className="overflow-hidden rounded-xl border border-gray-200">
-                            <iframe
-                                src="https://maps.google.com/maps?q=18.5777367,73.6961295&hl=en&z=16&output=embed"
-                                title={`${station.name} - Station Location`}
-                                width="100%"
-                                height="400"
-                                style={{ border: 0, display: 'block' }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            />
+                            <div className="h-[250px] sm:h-[400px]">
+                                <iframe
+                                    src="https://maps.google.com/maps?q=18.5777367,73.6961295&hl=en&z=16&output=embed"
+                                    title={`${station.name} - Station Location`}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0, display: 'block' }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
+                            </div>
                         </div>
                     </section>
 
                     {!hasData ? (
-                        <div className="rounded-2xl border border-gray-100 bg-white px-8 py-14 text-center shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white px-4 py-10 sm:px-8 sm:py-14 text-center shadow-sm">
                             <svg className="mx-auto mb-4 size-12 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -202,10 +204,10 @@ export default function StationDetail({ station }: Props) {
                             <p className="mt-1 font-montserrat text-sm text-gray-400">Station details for {station.name} will be updated shortly.</p>
                         </div>
                     ) : (
-                        <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-4 md:gap-6">
 
                             {/* Entrances */}
-                            <section id="entrances" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="entrances" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Entrances</SectionHeading>
                                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                                     {station.entrances.map((e, i) => (
@@ -225,7 +227,7 @@ export default function StationDetail({ station }: Props) {
                             </section>
 
                             {/* Platforms */}
-                            <section id="platforms" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="platforms" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Platforms</SectionHeading>
                                 {station.platforms.length === 0 ? (
                                     <EmptyState label="Platform" />
@@ -247,34 +249,62 @@ export default function StationDetail({ station }: Props) {
                             </section>
 
                             {/* Lifts & Escalators */}
-                            <section id="lifts" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="lifts" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Lifts &amp; Escalators</SectionHeading>
                                 {station.liftsEscalators.length === 0 ? (
                                     <EmptyState label="Lift & escalator" />
                                 ) : (
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full min-w-96 border-collapse">
-                                            <thead>
-                                                <tr className="border-b border-gray-100 bg-gray-50">
-                                                    <th className="px-4 py-3 text-left font-montserrat text-xs font-semibold uppercase tracking-wide text-gray-500">Unit</th>
-                                                    <th className="px-4 py-3 text-left font-montserrat text-xs font-semibold uppercase tracking-wide text-gray-500">Level / Detail</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-gray-50">
-                                                {station.liftsEscalators.map((item, i) => (
-                                                    <tr key={i} className="transition hover:bg-gray-50/60">
-                                                        <td className="px-4 py-3 font-montserrat text-sm font-semibold text-[#e8449a]">{item.name}</td>
-                                                        <td className="px-4 py-3 font-montserrat text-sm text-gray-700">{item.level}</td>
+                                    <>
+                                        {/* Mobile: cards */}
+                                        <div className="grid grid-cols-1 gap-3 sm:hidden">
+                                            {station.liftsEscalators.map((item, i) => {
+                                                const isLift = item.name.toLowerCase().includes('lift');
+                                                return (
+                                                    <div key={i} className="flex gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4">
+                                                        <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#fce3f0]">
+                                                            {isLift ? (
+                                                                <svg className="size-4 text-[#e8449a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7M12 3v18" />
+                                                                </svg>
+                                                            ) : (
+                                                                <svg className="size-4 text-[#e8449a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 7l9 9 9-9" />
+                                                                </svg>
+                                                            )}
+                                                        </div>
+                                                        <div className="min-w-0">
+                                                            <p className="font-montserrat text-xs font-bold text-[#e8449a]">{item.name}</p>
+                                                            <p className="mt-0.5 font-montserrat text-sm text-gray-700">{item.level}</p>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                        {/* Desktop: table */}
+                                        <div className="hidden sm:block overflow-x-auto">
+                                            <table className="w-full min-w-96 border-collapse">
+                                                <thead>
+                                                    <tr className="border-b border-gray-100 bg-gray-50">
+                                                        <th className="px-4 py-3 text-left font-montserrat text-xs font-semibold uppercase tracking-wide text-gray-500">Unit</th>
+                                                        <th className="px-4 py-3 text-left font-montserrat text-xs font-semibold uppercase tracking-wide text-gray-500">Level / Detail</th>
                                                     </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                </thead>
+                                                <tbody className="divide-y divide-gray-50">
+                                                    {station.liftsEscalators.map((item, i) => (
+                                                        <tr key={i} className="transition hover:bg-gray-50/60">
+                                                            <td className="px-4 py-3 font-montserrat text-sm font-semibold text-[#e8449a]">{item.name}</td>
+                                                            <td className="px-4 py-3 font-montserrat text-sm text-gray-700">{item.level}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </>
                                 )}
                             </section>
 
                             {/* Station Facilities */}
-                            <section id="facilities" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="facilities" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Station Facilities</SectionHeading>
                                 {station.facilities.length === 0 ? (
                                     <EmptyState label="Facilities" />
@@ -298,7 +328,7 @@ export default function StationDetail({ station }: Props) {
                             </section>
 
                             {/* Nearby Places */}
-                            <section id="nearby" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="nearby" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Nearby Places</SectionHeading>
                                 {station.nearbyPlaces.length === 0 ? (
                                     <EmptyState label="Nearby places" />
@@ -317,7 +347,7 @@ export default function StationDetail({ station }: Props) {
                             </section>
 
                             {/* Emergency Facilities */}
-                            <section id="emergency" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="emergency" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Emergency Facilities</SectionHeading>
                                 {station.emergency.length === 0 ? (
                                     <EmptyState label="Emergency facilities" />
@@ -344,7 +374,7 @@ export default function StationDetail({ station }: Props) {
                             </section>
 
                             {/* Transport Connections */}
-                            <section id="transport" className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                            <section id="transport" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
                                 <SectionHeading>Transport Connections</SectionHeading>
                                 {station.transport.length === 0 ? (
                                     <EmptyState label="Transport connections" />

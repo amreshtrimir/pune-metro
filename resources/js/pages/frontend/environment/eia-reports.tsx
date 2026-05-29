@@ -61,9 +61,9 @@ export default function EiaReports() {
             />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-6 flex items-center gap-6">Environmental Impact Assessment (EIA) Reports</PageSectionHeading>
+                    <PageSectionHeading wrap className="mb-6 flex items-center gap-6">Environmental Impact Assessment (EIA) Reports</PageSectionHeading>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Puneri Metro Line 3 is committed to transparent, science-led environmental governance. Our Environmental
                         Impact Assessment (EIA) reports document all significant environmental reviews, mitigation measures and
@@ -73,22 +73,22 @@ export default function EiaReports() {
             </section>
 
             {/* ── About EIA ── */}
-            <section className="bg-white py-16">
+            <section className="bg-white py-8 md:py-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-6 md:gap-10 lg:grid-cols-2">
                         {/* Left: Image */}
                         <div className="relative overflow-hidden rounded-lg shadow-md">
                             <img
                                 src={eiaAboutImage}
                                 alt="Environmental Impact Assessment"
-                                className="h-full min-h-[400px] w-full object-cover"
+                                className="h-full min-h-[220px] w-full object-cover md:min-h-[400px]"
                             />
                             <div className="absolute inset-0 bg-black/20" />
                         </div>
 
                         {/* Right: Content */}
                         <div className="flex flex-col justify-center">
-                            <h2 className="mb-5 font-montserrat text-[30px] font-semibold text-black">About EIA</h2>
+                            <h2 className="mb-4 font-montserrat text-xl font-semibold text-black md:mb-5 md:text-[30px]">About EIA</h2>
                             <p className="mb-5 font-montserrat text-sm leading-relaxed text-black">
                                 Before making decisions, we systematically evaluate the environmental consequences of a proposed
                                 project through an EIA. For Puneri Metro Line 3, EIA forms the backbone of our environmental
@@ -107,10 +107,10 @@ export default function EiaReports() {
             </section>
 
             {/* ── Key Reports ── */}
-            <section className="bg-white pb-20">
+            <section className="bg-white pb-8 md:pb-20">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <h2 className="mb-4 font-montserrat text-[30px] font-semibold text-black">Key Reports</h2>
-                    <p className="mb-10 font-montserrat text-sm leading-relaxed text-black">
+                    <h2 className="mb-4 font-montserrat text-xl font-semibold text-black md:text-[30px]">Key Reports</h2>
+                    <p className="mb-6 font-montserrat text-sm leading-relaxed text-black md:mb-10">
                         Our commitment to a greener urban future is backed by measurable action. Explore the key reports and data
                         driving our environmental stewardship for the Puneri Metro Line 3 Project.
                     </p>
@@ -119,17 +119,19 @@ export default function EiaReports() {
                         {keyReports.map((report) => (
                             <div
                                 key={report.title}
-                                className="group relative border border-gray-200 bg-white p-6 pl-20 transition-colors hover:border-[#e8449a]"
+                                className="group relative border border-gray-200 bg-white p-5 transition-colors hover:border-[#e8449a] md:p-6 md:pl-20"
                             >
                                 {/* Corner accent */}
                                 <div className="absolute top-0 left-0 size-5 border-t-2 border-l-2 border-[#e8449a]" />
 
-                                {/* Icon */}
-                                <div className="absolute top-6 left-6">
-                                    <img src={report.icon} alt="" className="size-[46px] object-contain" />
+                                {/* Icon + title row on mobile, icon absolute on desktop */}
+                                <div className="mb-2 flex items-center gap-3 md:contents">
+                                    <div className="shrink-0 md:absolute md:top-6 md:left-6">
+                                        <img src={report.icon} alt="" className="size-10 object-contain md:size-[46px]" />
+                                    </div>
+                                    <h3 className="font-montserrat text-base font-semibold text-black md:hidden">{report.title}</h3>
                                 </div>
-
-                                <h3 className="mb-2 font-montserrat text-base font-semibold text-black">{report.title}</h3>
+                                <h3 className="mb-2 hidden font-montserrat text-base font-semibold text-black md:block">{report.title}</h3>
                                 <p className="font-montserrat text-sm leading-relaxed text-black">{report.description}</p>
                             </div>
                         ))}

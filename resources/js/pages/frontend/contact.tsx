@@ -23,38 +23,28 @@ export default function Contact() {
             />
 
             {/* ── Contact Section ── */}
-            <section className="bg-white py-12 lg:py-16">
+            <section className="bg-white py-8 md:py-12 lg:py-16">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-10 flex items-center gap-6">Contact Us</PageSectionHeading>
+                    <PageSectionHeading className="mb-6 md:mb-10 flex items-center gap-6">Contact Us</PageSectionHeading>
 
                     {/* ── Row 1: Info Cards ── */}
-                    <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div className="mb-5 md:mb-8 grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
                         {/* Address Card */}
                         <div
-                            className="flex gap-4 rounded-xl bg-white p-6 shadow-sm"
+                            className="flex items-start gap-3 rounded-xl bg-white p-4 sm:gap-4 sm:p-6 shadow-sm"
                             style={{
                                 border: '1px solid transparent',
                                 background:
                                     'linear-gradient(white, white) padding-box, linear-gradient(to bottom, #f91c91 0%, transparent 80%) border-box',
                             }}
                         >
-                            <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
+                            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand sm:h-10 sm:w-10">
                                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={1.8}
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                                    />
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={1.8}
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </div>
-                            <div>
+                            <div className="min-w-0">
                                 <p className="mb-2 font-montserrat text-xs font-semibold uppercase tracking-widest text-brand">
                                     Office Address
                                 </p>
@@ -66,23 +56,21 @@ export default function Contact() {
                                     <br />
                                     Survey No. 191, Village-Maan, Phase 3,
                                     <br />
-                                    Hinjawadi, Pune,Maharashtra 411057
+                                    Hinjawadi, Pune, Maharashtra 411057
                                 </p>
-
-
                             </div>
                         </div>
 
                         {/* Email Card */}
                         <div
-                            className="flex gap-4 rounded-xl bg-white p-6 shadow-sm"
+                            className="flex gap-3 rounded-xl bg-white p-4 sm:gap-4 sm:p-6 shadow-sm"
                             style={{
                                 border: '1px solid transparent',
                                 background:
                                     'linear-gradient(white, white) padding-box, linear-gradient(to bottom, #f91c91 0%, transparent 80%) border-box',
                             }}
                         >
-                            <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
+                            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand sm:h-10 sm:w-10">
                                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path
                                         strokeLinecap="round"
@@ -98,7 +86,7 @@ export default function Contact() {
                                 </p>
                                 <a
                                     href="mailto:contactpunerimetro@tatarealty.in"
-                                    className="font-montserrat text-sm font-medium text-gray-800 underline-offset-2 transition-colors hover:text-brand hover:underline"
+                                    className="break-all font-montserrat text-sm font-medium text-gray-800 underline-offset-2 transition-colors hover:text-brand hover:underline"
                                 >
                                     contactpunerimetro@tatarealty.in
                                 </a>

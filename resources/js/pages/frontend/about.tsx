@@ -24,7 +24,7 @@ export default function About() {
             />
 
             {/* ── Overview Content ── */}
-            <section className="bg-white py-10">
+            <section className="bg-white py-8 md:py-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <PageSectionHeading className="mb-5 flex items-center gap-6">Overview of Puneri Metro</PageSectionHeading>
                     {/* Intro paragraphs */}
@@ -84,17 +84,20 @@ export default function About() {
                         {/* Right: Vision + Mission cards */}
                         <div className="flex flex-col justify-center gap-6">
                             {/* Vision */}
-                            <div className="rounded-xl border border-gray-200 p-8">
-                                <div className="flex items-start gap-6">
-                                    <img
-                                        src="/about/vison-icons/visionary.png"
-                                        alt="Vision"
-                                        width={69}
-                                        height={69}
-                                        className="shrink-0"
-                                    />
+                            <div className="rounded-xl border border-gray-200 p-5 md:p-8">
+                                <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-6">
+                                    <div className="flex items-center gap-3 md:contents">
+                                        <img
+                                            src="/about/vison-icons/visionary.png"
+                                            alt="Vision"
+                                            width={69}
+                                            height={69}
+                                            className="h-12 w-12 shrink-0 md:h-[69px] md:w-[69px]"
+                                        />
+                                        <h3 className="font-montserrat text-lg font-bold text-black md:hidden">Vision</h3>
+                                    </div>
                                     <div>
-                                        <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Vision</h3>
+                                        <h3 className="mb-2 hidden font-montserrat text-xl font-bold text-black md:mb-3 md:block">Vision</h3>
                                         <div className="space-y-3 font-montserrat text-sm leading-relaxed text-black">
                                             <p>
                                                 To transform the urban mobility system, by delivering safe, seamless, and sustainable transport that enhances quality of life and drives inclusive economic growth for the city of Pune.
@@ -106,17 +109,20 @@ export default function About() {
                             </div>
 
                             {/* Mission */}
-                            <div className="rounded-xl border border-gray-200 p-8">
-                                <div className="flex items-start gap-6">
-                                    <img
-                                        src="/about/vison-icons/mission.png"
-                                        alt="Mission"
-                                        width={69}
-                                        height={69}
-                                        className="shrink-0"
-                                    />
+                            <div className="rounded-xl border border-gray-200 p-5 md:p-8">
+                                <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-6">
+                                    <div className="flex items-center gap-3 md:contents">
+                                        <img
+                                            src="/about/vison-icons/mission.png"
+                                            alt="Mission"
+                                            width={69}
+                                            height={69}
+                                            className="h-12 w-12 shrink-0 md:h-[69px] md:w-[69px]"
+                                        />
+                                        <h3 className="font-montserrat text-lg font-bold text-black md:hidden">Mission</h3>
+                                    </div>
                                     <div>
-                                        <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Mission</h3>
+                                        <h3 className="mb-2 hidden font-montserrat text-xl font-bold text-black md:mb-3 md:block">Mission</h3>
                                         <ul className="space-y-3 font-montserrat text-sm leading-relaxed text-black list-disc pl-4">
                                             <li>
                                                 Launch revenue operations in 2026, delivering Pune's most anticipated transit corridor on schedule
@@ -142,17 +148,20 @@ export default function About() {
                             </div>
 
                             {/* Values */}
-                            <div className="rounded-xl border border-gray-200 p-8">
-                                <div className="flex items-start gap-6">
-                                    <img
-                                        src="/about/vison-icons/value.png"
-                                        alt="Values"
-                                        width={69}
-                                        height={69}
-                                        className="shrink-0"
-                                    />
+                            <div className="rounded-xl border border-gray-200 p-5 md:p-8">
+                                <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-6">
+                                    <div className="flex items-center gap-3 md:contents">
+                                        <img
+                                            src="/about/vison-icons/value.png"
+                                            alt="Values"
+                                            width={69}
+                                            height={69}
+                                            className="h-12 w-12 shrink-0 md:h-[69px] md:w-[69px]"
+                                        />
+                                        <h3 className="font-montserrat text-lg font-bold text-black md:hidden">Values</h3>
+                                    </div>
                                     <div>
-                                        <h3 className="mb-3 font-montserrat text-xl font-bold text-black">Values</h3>
+                                        <h3 className="mb-2 hidden font-montserrat text-xl font-bold text-black md:mb-3 md:block">Values</h3>
                                         <ul className="space-y-3 font-montserrat text-sm leading-relaxed text-black list-disc pl-4">
                                             <li>Integrity in every decision.</li>
                                             <li>Safety in every journey.</li>

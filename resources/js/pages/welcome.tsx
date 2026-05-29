@@ -9,20 +9,21 @@ import KeyFeaturesSection from '@/components/landing/KeyFeaturesSection';
 import MarqueeBanner from '@/components/landing/MarqueeBanner';
 import QuoteBanner from '@/components/landing/QuoteBanner';
 import RoutesSection from '@/components/landing/RoutesSection';
-import type { BoardMember, ExplorePunePlace } from '@/types/cms';
+import type { BoardMember, ExplorePunePlace, MarqueeItem } from '@/types/cms';
 
 type Props = {
     canRegister: boolean;
     members: BoardMember[];
     explorePlaces: ExplorePunePlace[];
+    marqueeItems: MarqueeItem[];
 };
 
-export default function Welcome({ members, explorePlaces }: Props) {
+export default function Welcome({ members, explorePlaces, marqueeItems }: Props) {
     return (
         <>
             <Head title="Puneri Metro - Transforming Urban Mobility" />
             <HeroSection />
-            <MarqueeBanner />
+            <MarqueeBanner items={marqueeItems} />
             <AboutSection />
             <RoutesSection />
             <KeyFeaturesSection />

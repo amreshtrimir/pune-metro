@@ -130,7 +130,7 @@ export default function FooterSection() {
                                     <img
                                         src="/assets/pune-metro-log.png"
                                         alt="Pune Metro"
-                                        className="h-auto w-32 shrink-0"
+                                        className="h-auto w-24 shrink-0 lg:w-32"
                                     />
                                 </Link>
 

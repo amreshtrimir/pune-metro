@@ -316,17 +316,22 @@ function PlaceModal({
 
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-6"
+            className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 md:items-center md:p-6"
             onClick={onClose}
         >
             <div
-                className="relative w-full max-w-250 max-h-[90vh] overflow-y-auto rounded-[25px] bg-white shadow-2xl"
+                className="relative w-full max-h-[88vh] overflow-y-auto rounded-t-[25px] bg-white shadow-2xl md:max-w-250 md:max-h-[90vh] md:rounded-[25px]"
                 onClick={(e) => e.stopPropagation()}
             >
+                {/* Drag handle (mobile only) */}
+                <div className="flex justify-center pt-3 pb-1 md:hidden">
+                    <div className="h-1 w-10 rounded-full bg-gray-300" />
+                </div>
+
                 {/* Close button */}
                 <button
                     onClick={onClose}
-                    className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 transition hover:bg-gray-50 hover:text-gray-600"
+                    className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 transition hover:bg-gray-50 hover:text-gray-600"
                     aria-label="Close"
                 >
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -334,15 +339,15 @@ function PlaceModal({
                     </svg>
                 </button>
 
-                <div className="p-8 pr-14 md:p-10 md:pr-16">
+                <div className="p-5 pr-12 md:p-10 md:pr-16">
                     <>
                         {/* Category pill */}
-                        <div className="mb-4 inline-flex items-center rounded-full bg-[#fadaeb] px-4 py-1">
+                        <div className="mb-3 inline-flex items-center rounded-full bg-[#fadaeb] px-4 py-1">
                             <span className="font-montserrat text-sm font-medium text-brand">{place.category}</span>
                         </div>
 
                         {/* Title */}
-                        <h2 className="mb-6 font-montserrat text-2xl font-semibold text-black md:text-[26px]">
+                        <h2 className="mb-5 font-montserrat text-xl font-semibold text-black md:text-[26px]">
                             {place.name}
                         </h2>
 
@@ -351,12 +356,12 @@ function PlaceModal({
                             {rows.map(({ label, type, value, note }, i) => (
                                 <div
                                     key={label}
-                                    className={`flex ${i % 2 === 0 ? 'bg-white' : 'bg-[#f3f3f3]'}`}
+                                    className={`flex flex-col md:flex-row ${i % 2 === 0 ? 'bg-white' : 'bg-[#f3f3f3]'}`}
                                 >
-                                    <div className="w-47.5 shrink-0 border-r border-gray-100 px-6 py-4 font-montserrat text-sm font-medium text-black">
+                                    <div className="md:w-47.5 shrink-0 border-b border-gray-100 px-4 pt-3 pb-1 font-montserrat text-xs font-semibold uppercase tracking-wide text-gray-400 md:border-b-0 md:border-r md:px-6 md:py-4 md:text-sm md:font-medium md:normal-case md:tracking-normal md:text-black">
                                         {label}
                                     </div>
-                                    <div className="flex-1 px-6 py-4 font-montserrat text-sm text-black">
+                                    <div className="flex-1 px-4 pb-3 pt-1 font-montserrat text-sm text-black md:px-6 md:py-4">
                                         {type === 'link' ? (
                                             <a
                                                 href={value}
@@ -573,18 +578,20 @@ export default function ExplorePuneSection({ places }: { places: ExplorePunePlac
                         <div
                             key={`${place.id}-${index}`}
                             style={{ background: place.fallback_bg ?? undefined }}
-                            className="group relative h-70 w-[75%] shrink-0 snap-start cursor-pointer overflow-hidden sm:h-100 sm:w-[calc(50%-12px)] lg:w-[25%]"
+                            className="group relative h-80 min-[390px]:h-112 w-[75%] shrink-0 snap-start cursor-pointer overflow-hidden sm:h-100 sm:w-[calc(50%-12px)] lg:w-[25%]"
                             onClick={() => setSelectedPlace(place)}
                         >
                             {/* Photo */}
-                            <img
-                                src={place.media?.url ?? ''}
-                                alt={place.name}
-                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                onError={(e) => {
-                                    (e.target as HTMLImageElement).style.display = 'none';
-                                }}
-                            />
+                            {place.media?.url && (
+                                <img
+                                    src={place.media.url}
+                                    alt={place.name}
+                                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    onError={(e) => {
+                                        (e.target as HTMLImageElement).style.display = 'none';
+                                    }}
+                                />
+                            )}
 
                             {/* Bottom gradient overlay */}
                             <div

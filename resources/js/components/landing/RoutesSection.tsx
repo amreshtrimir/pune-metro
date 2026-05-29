@@ -40,7 +40,7 @@ export default function RoutesSection() {
                 onClose={() => setLightboxOpen(false)}
             />
         )}
-        <section id="routes" className="pt-16 pb-0" style={{
+        <section id="routes" className="pt-16 pb-0 max-md:min-h-0!" style={{
             minHeight: '866px',
             background: `
                 linear-gradient(to bottom, transparent 0%, #9A0052 60%),
@@ -106,7 +106,7 @@ export default function RoutesSection() {
                         className="bg-white shadow-xl"
                         style={{ borderRadius: '25px 25px 0 0' }}
                     >
-                        <div className="overflow-hidden p-4" style={{ borderRadius: '25px 25px 0 0' }}>
+                        <div className="overflow-hidden p-4 max-md:pb-0" style={{ borderRadius: '25px 25px 0 0' }}>
                             <div
                                 className="relative w-full cursor-zoom-in"
                                 style={{ aspectRatio: '16 / 9' }}

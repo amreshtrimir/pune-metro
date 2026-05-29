@@ -34,9 +34,9 @@ export default function GreenInitiatives() {
             />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-10 pb-10">
+            <section className="bg-white pt-8 pb-8 md:pt-10 md:pb-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-3 flex items-center gap-6">Green Initiatives</PageSectionHeading>
+                    <PageSectionHeading className="mb-3 flex flex-wrap items-center gap-x-6 gap-y-1">Green Initiatives</PageSectionHeading>
                     <p className="mb-3 font-montserrat text-xl font-normal text-brand">Green at Every Step</p>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         From construction sites to station design, Puneri Metro Line 3 embeds sustainability into every phase.
@@ -46,7 +46,7 @@ export default function GreenInitiatives() {
             </section>
 
             {/* ── Energy Conservation ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Images */}
@@ -69,7 +69,7 @@ export default function GreenInitiatives() {
 
                         {/* Content */}
                         <div>
-                            <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">
+                            <h2 className="mb-3 font-montserrat text-xl font-semibold text-black md:text-[30px]">
                                 Energy Conservation
                             </h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
@@ -164,12 +164,12 @@ export default function GreenInitiatives() {
             </section>
 
             {/* ── Water Conservation ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Content */}
                         <div>
-                            <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">
+                            <h2 className="mb-3 font-montserrat text-xl font-semibold text-black md:text-[30px]">
                                 Water Conservation
                             </h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
@@ -266,7 +266,7 @@ export default function GreenInitiatives() {
             </section>
 
             {/* ── Resource Conservation ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Image */}
@@ -280,7 +280,7 @@ export default function GreenInitiatives() {
 
                         {/* Content */}
                         <div>
-                            <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">
+                            <h2 className="mb-3 font-montserrat text-xl font-semibold text-black md:text-[30px]">
                                 Resource Conservation
                             </h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
@@ -328,12 +328,12 @@ export default function GreenInitiatives() {
             </section>
 
             {/* ── Waste Management ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Content */}
                         <div>
-                            <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">Waste Management</h2>
+                            <h2 className="mb-3 font-montserrat text-xl font-semibold text-black md:text-[30px]">Waste Management</h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
                                 The project adheres to a strict &ldquo;Zero Landfill&rdquo; philosophy, ensuring that
                                 construction byproducts are treated as valuable resources.
@@ -387,7 +387,7 @@ export default function GreenInitiatives() {
             </section>
 
             {/* ── Plantation & Recognition ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                         {/* Image */}
@@ -401,7 +401,7 @@ export default function GreenInitiatives() {
 
                         {/* Content */}
                         <div>
-                            <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">
+                            <h2 className="mb-3 font-montserrat text-xl font-semibold text-black md:text-[30px]">
                                 Plantation &amp; Recognition
                             </h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
@@ -441,9 +441,9 @@ export default function GreenInitiatives() {
             </section>
 
             {/* ── Community & Awareness ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <h2 className="mb-3 font-montserrat text-[30px] font-semibold text-black">
+                    <h2 className="mb-3 font-montserrat text-xl font-semibold text-black md:text-[30px]">
                         Community &amp; Awareness
                     </h2>
                     <p className="mb-5 font-montserrat text-sm leading-relaxed text-black">

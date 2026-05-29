@@ -61,9 +61,9 @@ export default function ArtFromScrap() {
             />
 
             {/* ── Page Title + Intro ── */}
-            <section className="bg-white pt-10 pb-10">
+            <section className="bg-white pt-8 pb-8 md:pt-10 md:pb-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-5 flex items-center gap-6">Where Waste Becomes Something Beautiful</PageSectionHeading>
+                    <PageSectionHeading wrap className="mb-5 flex items-center gap-6">Where Waste Becomes Something Beautiful</PageSectionHeading>
                     <p className="mb-3 font-montserrat text-sm leading-relaxed text-black">
                         At Puneri Metro Line 3, we believe that nothing should be wasted, not material, not soil, not imagination.
                         Our &lsquo;Art from Scrap&rsquo; initiative turns construction by-products into green spaces, community
@@ -76,9 +76,9 @@ export default function ArtFromScrap() {
             </section>
 
             {/* ── Project Highlights ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <h2 className="mb-8 font-montserrat text-[30px] font-semibold text-black">Project Highlights</h2>
+                    <h2 className="mb-6 font-montserrat text-xl font-semibold text-black md:mb-8 md:text-[30px]">Project Highlights</h2>
 
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {highlights.map((item) => (
@@ -99,9 +99,9 @@ export default function ArtFromScrap() {
             </section>
 
             {/* ── Collaborate with Us ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <h2 className="mb-4 font-montserrat text-[30px] font-semibold text-black">Collaborate with Us</h2>
+                    <h2 className="mb-4 font-montserrat text-xl font-semibold text-black md:text-[30px]">Collaborate with Us</h2>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         We welcome artists, schools, and community groups to partner on Art from Scrap. To get involved, please
                         contact our Environment &amp; Sustainability team at{' '}

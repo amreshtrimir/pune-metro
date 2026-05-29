@@ -26,14 +26,14 @@ export default function LastMileConnectivity() {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0 mb-5">
+            <section className="bg-white pt-8 pb-0 mb-5 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-6 flex items-center gap-6">Last Mile Connectivity (LMC) – Pune Metro Line 3</PageSectionHeading>
+                    <PageSectionHeading wrap>Last Mile Connectivity (LMC) – Pune Metro Line 3</PageSectionHeading>
                 </div>
             </section>
 
             {/* ── Content ── */}
-            <section className="bg-white pb-16">
+            <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8 space-y-4">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Pune Metro Line 3 (Hinjewadi – Shivajinagar Corridor) is supported by a well-planned Last Mile

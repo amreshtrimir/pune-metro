@@ -84,7 +84,7 @@ export default function KeyHighlights() {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <PageSectionHeading>Key Highlights</PageSectionHeading>
                 </div>
@@ -101,7 +101,7 @@ export default function KeyHighlights() {
             </section>
 
             {/* ── Highlight Cards ── */}
-            <section className="bg-white py-8">
+            <section className="bg-white py-6 md:py-8">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-10">
                         {highlights.map((item) => (
@@ -115,7 +115,7 @@ export default function KeyHighlights() {
                                     alt={item.title}
                                     style={{ width: '63px', height: '63px', marginBottom: '16px' }}
                                 />
-                                <h3 className="mb-3 font-montserrat text-2xl font-semibold text-black">{item.title}</h3>
+                                <h3 className="mb-3 font-montserrat text-lg font-semibold text-black md:text-2xl">{item.title}</h3>
                                 <ul className="list-disc space-y-1 pl-5">
                                     {item.bullets.map((bullet) => (
                                         <li key={bullet} className="font-montserrat text-sm text-black">
@@ -130,9 +130,9 @@ export default function KeyHighlights() {
             </section>
 
             {/* ── Chronology of Major Milestones ── */}
-            <section className="bg-white py-10">
+            <section className="bg-white py-6 md:py-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <h2 className="font-montserrat text-2xl font-semibold text-black mb-5">Chronology of Major Milestones</h2>
+                    <h2 className="font-montserrat text-lg font-semibold text-black mb-4 md:text-2xl md:mb-5">Chronology of Major Milestones</h2>
                     {/* Mobile image */}
                     <img
                         src="/key-highlight/chronology/chronology-mobile.png"
@@ -151,14 +151,14 @@ export default function KeyHighlights() {
             {/* ── Project Highlights ── */}
             <section className="bg-white py-6">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <h2 className="font-montserrat text-2xl font-semibold text-black mb-5">Project Highlights</h2>
+                    <h2 className="font-montserrat text-lg font-semibold text-black mb-4 md:text-2xl md:mb-5">Project Highlights</h2>
                     <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
                         {/* Left: numbered highlights */}
                         <div className="w-full space-y-10 lg:order-1">
                             {projectHighlights.map((item, index) => (
                                 <div key={item.title}>
 
-                                    <h3 className="mb-3 font-montserrat text-xl font-semibold text-black">
+                                    <h3 className="mb-3 font-montserrat text-base font-semibold text-black md:text-xl">
                                         {index + 1}. {item.title}
                                     </h3>
                                     <p className="font-montserrat text-sm leading-relaxed text-black">{item.description}</p>

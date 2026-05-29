@@ -29,7 +29,7 @@ export default function Board({ members }: Props) {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0">
+            <section className="bg-white pt-8 pb-0 md:pt-10">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <PageSectionHeading>Board of Directors</PageSectionHeading>
                 </div>
