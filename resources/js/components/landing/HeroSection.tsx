@@ -210,7 +210,7 @@ return;
     }, [current]);
 
     return (
-        <section className="relative w-full overflow-hidden bg-metro-dark max-md:min-h-[65vh]!" style={{ minHeight: heroHeight }}>
+        <section className="relative w-full overflow-hidden bg-metro-dark max-md:min-h-[33vh]!" style={{ minHeight: heroHeight }}>
             {/* ── Background slides — fully GSAP controlled ── */}
             {slides.map((s, i) => (
                 <div
@@ -236,7 +236,7 @@ return;
 
             {/* ── Text content ── */}
             <div
-                className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col justify-end px-6 lg:px-16 max-md:min-h-[65vh]! max-md:pb-16! max-md:pt-8!"
+                className="relative mx-auto flex max-w-[1303px] min-[1440px]:max-w-[1440px] flex-col justify-end px-6 lg:px-16 max-md:min-h-[33vh]! max-md:pb-16! max-md:pt-8!"
                 style={{
                     minHeight: heroHeight,
                     paddingBottom: '110px',
@@ -256,7 +256,7 @@ return;
                     />
                     <p
                         ref={paraRef}
-                        className="font-montserrat text-white/80 max-md:text-[13px]! max-md:leading-[1.6]!"
+                        className="font-montserrat text-white/80 max-md:hidden max-md:text-[13px]! max-md:leading-[1.6]!"
                         style={{
                             fontSize: 'clamp(10px, 1.2vw, 15px)',
                             lineHeight: 'clamp(22px, 2.5vw, 32px)',
@@ -281,7 +281,7 @@ return;
                 {/* ── Prev / Next arrows ── */}
                 <button
                     onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-                    className="absolute right-20 bottom-12.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white/60 transition hover:border-white/60 hover:text-white md:bottom-20.5 md:h-10 md:w-10 lg:right-24"
+                    className="absolute right-20 bottom-12.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/30 text-white/60 transition hover:border-white/60 hover:text-white md:bottom-20.5 md:h-10 md:w-10 lg:right-24 max-md:hidden"
                     aria-label="Previous slide"
                 >
                     <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -290,7 +290,7 @@ return;
                 </button>
                 <button
                     onClick={() => goTo((current + 1) % slides.length)}
-                    className="absolute right-8 bottom-12.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-brand text-brand transition hover:bg-brand hover:text-white md:bottom-20.5 md:h-10 md:w-10 lg:right-12"
+                    className="absolute right-8 bottom-12.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-brand text-brand transition hover:bg-brand hover:text-white md:bottom-20.5 md:h-10 md:w-10 lg:right-12 max-md:hidden"
                     aria-label="Next slide"
                 >
                     <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
