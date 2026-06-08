@@ -68,7 +68,7 @@ const mainNavLinks: NavLink[] = [
             { label: 'Offences and Penalties', href: '/documents/offence- penalties.pdf', external: true },
             { label: 'Lost and Found Enquiry', href: lostAndFound.url() },
             { label: 'Customer Service', href: customerService.url() },
-            { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
+            // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
             { label: 'Passenger Amenities', href: passengerAmenities.url() },
             { label: 'Station Area Map', href: stationAreaMap.url() },
 
