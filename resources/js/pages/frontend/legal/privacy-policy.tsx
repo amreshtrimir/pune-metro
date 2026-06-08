@@ -44,8 +44,7 @@ export default function PrivacyPolicy() {
                                 information about Puneri Metro Line 3 and PITCMRL.
                             </p>
                             <p>
-                                This website is controlled by Pune IT City Metro Rail Limited (PITCMRL), the Special Purpose Vehicle established for
-                                the implementation of Puneri Metro Line 3, which is solely authorised to manage and control this website.
+                                This website is controlled by Pune IT City Metro Rail Limited (PITCMRL), which is solely authorised to manage and control this website.
                             </p>
                         </div>
 

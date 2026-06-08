@@ -27,7 +27,7 @@ import {
 } from '@/actions/App/Http/Controllers/PagesController';
 
 const quickLinks = [
-    { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
+    // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
     { label: 'Lost & Found', href: lostAndFound.url() },
     { label: 'Metro Stations', href: stationList.url() },
 ];
@@ -61,10 +61,10 @@ const mainNavLinks: NavLink[] = [
         label: 'PASSENGER INFO',
         href: timeTable.url(),
         children: [
-            { label: 'Time Table', href: timeTable.url() },
-            { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
+            // { label: 'Time Table', href: timeTable.url() },
+            // { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
             { label: "Do's and Don'ts", href: dosAndDonts.url() },
-            { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
+            // { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
             { label: 'Offences and Penalties', href: '/documents/offence- penalties.pdf', external: true },
             { label: 'Lost and Found Enquiry', href: lostAndFound.url() },
             { label: 'Customer Service', href: customerService.url() },

@@ -35,7 +35,7 @@ export default function TermsAndConditions() {
                         <p>
                             By accessing and using this website, users agree to use the information and services provided for lawful and general
                             reference purposes only. The content available on this website is intended to provide information related to Puneri Metro
-                            Line 3, its project updates, passenger services, and related communication.
+                            Line 3 project, passenger services, and related communication.
                         </p>
                         <p>
                             All content, including text, images, graphics, documents, and other materials published on this website, is for
@@ -45,11 +45,11 @@ export default function TermsAndConditions() {
                         <p>
                             Users are advised not to misuse the website, attempt unauthorized access, interfere with website functionality, or use any
                             material for unlawful purposes. Any misuse of forms, digital services, or communication features provided through the
-                            website may lead to restricted access.
+                            website or mobile app may lead to restricted access and other legal consequences.
                         </p>
                         <p>
-                            All intellectual property rights related to website content remain with the authorized project entity or respective content
-                            owners. Reproduction, distribution, or commercial use of website material without prior permission is not permitted.
+                            All intellectual property rights related to website content remain with the concerned authorized project entity or respective content
+                            owners. Reproduction, distribution, or commercial use of website content without prior permission is not permitted.
                         </p>
                         <p>
                             Links to external websites, where provided, are for convenience only. The website is not responsible for the content,
