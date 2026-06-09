@@ -6,7 +6,7 @@ import QuoteBanner from '@/components/landing/QuoteBanner';
 const highlights = [
     {
         title: 'Infrastructure & Connectivity',
-        bullets: ['23.3 km elevated corridor', '23 stations'],
+        bullets: ['23.3 km elevated corridor', '23 stations', 'Hinjewadi to Shivajinagar', 'Covers key IT and business hubs'],
         icon: '/project-profile/key-heighlight-icons/flexible-infrastructure 1.png',
     },
     {
