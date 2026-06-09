@@ -16,12 +16,12 @@ const highlights = [
     },
     {
         title: 'Technology',
-        bullets: ['Modern stainless-steel rolling stock', 'PITCMRL as Concessionaire (Tata Group + Siemens AG)', 'Tata Projects Limited (TPL) as EPC Contractor', 'Siemens Project Ventures GmbH for Systems and Signalling', 'Alstom for Rolling Stock', 'Data Metrics for IT and Data Systems'],
+        bullets: ['CBTC signalling', '750V DC electrification','Modern stainless-steel rolling stock', '⁠Precision-engineered elevated trackway'],
         icon: '/project-profile/key-heighlight-icons/ad-tech 1.png',
     },
     {
         title: 'Project Model',
-        bullets: ['DBFOT PPP framework', 'Tata Projects + Siemens execution'],
+        bullets: ['DBFOT PPP framework', 'PITCMRL as Concessionaire (Tata Group + Siemens AG)', 'Tata Projects Limited (TPL) as EPC Contractor', 'Siemens Project Ventures GmbH for Systems and Signalling', 'Alstom for Rolling Stock', 'Data Metrics for IT and Data Systems'],
         icon: '/project-profile/key-heighlight-icons/3d-model-viewer 1.png',
     },
 ];
