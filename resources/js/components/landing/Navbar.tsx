@@ -70,7 +70,7 @@ const mainNavLinks: NavLink[] = [
             { label: 'Customer Service', href: customerService.url() },
             // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
             { label: 'Passenger Amenities', href: passengerAmenities.url() },
-            { label: 'Station Area Map', href: stationAreaMap.url() },
+            // { label: 'Station Area Map', href: stationAreaMap.url() },
 
         ],
     },

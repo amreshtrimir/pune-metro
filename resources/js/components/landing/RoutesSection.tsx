@@ -13,13 +13,13 @@ const lines: Line[] = [
     {
         id: 'all',
         label: 'All line',
-        image: '/landing/route-section/map-all-updated.png',
+        image: '/landing/route-section/map-all-updated-new.png',
         imageAlt: 'Pune Metro Full Network Map',
     },
     {
         id: 'line1',
         label: 'Line 3',
-        image: '/landing/route-section/map-line-3.jpg',
+        image: '/landing/route-section/map-line-3-new.png',
         imageAlt: 'Pune Metro Line 3 Pink — Maan to District Court',
     },
 ];

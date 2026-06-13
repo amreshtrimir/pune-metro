@@ -18,6 +18,8 @@ type Station = {
     platforms: Platform[];
     liftsEscalators: LiftEscalator[];
     facilities: Facility[];
+    mapKey: string | null;
+    embedMapUrl: string | null;
     nearbyPlaces: string[];
     emergency: Emergency[];
     transport: Transport[];
@@ -53,6 +55,29 @@ function EmptyState({ label }: { label: string }) {
     );
 }
 
+function MapEmbed({ embedHtml, title }: { embedHtml: string | null; title: string }) {
+    if (!embedHtml) {
+        return null;
+    }
+
+    if (embedHtml.trim().startsWith('<iframe')) {
+        return <div className="h-full w-full" dangerouslySetInnerHTML={{ __html: embedHtml }} />;
+    }
+
+    return (
+        <iframe
+            src={embedHtml}
+            title={title}
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: 'block' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+        />
+    );
+}
+
 function EmergencyIcon({ type }: { type: string }) {
     if (type === 'Hospital') {
         return (
@@ -81,7 +106,9 @@ function EmergencyIcon({ type }: { type: string }) {
 
 export default function StationDetail({ station }: Props) {
     const hasData = station.entrances.length > 0;
+    const mapEmbedUrl = station.embedMapUrl || 'https://maps.google.com/maps?q=18.5777367,73.6961295&hl=en&z=16&output=embed';
     const stickyRef = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
         const sticky = stickyRef.current;
@@ -176,24 +203,30 @@ export default function StationDetail({ station }: Props) {
             <div className="bg-gray-50 py-6 md:py-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <div className="flex flex-col gap-4 md:gap-6">
-                    {/* ── Map ── */}
-                    <section id="map" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
-                        <SectionHeading>Station Location</SectionHeading>
-                        <div className="overflow-hidden rounded-xl border border-gray-200">
-                            <div className="h-[250px] sm:h-[400px]">
-                                <iframe
-                                    src="https://maps.google.com/maps?q=18.5777367,73.6961295&hl=en&z=16&output=embed"
-                                    title={`${station.name} - Station Location`}
-                                    width="100%"
-                                    height="100%"
-                                    style={{ border: 0, display: 'block' }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                />
+                        {/* ── Map ── */}
+                        <section id="map" className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
+                            <SectionHeading>Station Location</SectionHeading>
+                            {station.mapKey ? (
+                                <div className="mb-4 flex flex-wrap items-center gap-3">
+                                    <a
+                                        href={station.mapKey}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex items-center rounded-full bg-[#e8449a] px-4 py-2 font-montserrat text-xs font-semibold text-white transition hover:bg-[#cf2d81]"
+                                    >
+                                        Open Business Profile
+                                    </a>
+                                    <span className="font-montserrat text-xs text-gray-500">
+                                        Google share link from the station profile
+                                    </span>
+                                </div>
+                            ) : null}
+                            <div className="overflow-hidden rounded-xl border border-gray-200">
+                                <div className="h-[250px] sm:h-[400px]">
+                                    <MapEmbed embedHtml={mapEmbedUrl} title={`${station.name} - Station Location`} />
+                                </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
                     {!hasData ? (
                         <div className="rounded-2xl border border-gray-100 bg-white px-4 py-10 sm:px-8 sm:py-14 text-center shadow-sm">

@@ -1,3 +1,4 @@
+import { passengerAmenities } from '@/actions/App/Http/Controllers/PagesController';
 import { useInView } from '@/hooks/useInView';
 
 const facilities = [
@@ -57,6 +58,12 @@ export default function FacilitiesSection() {
                             spaces to smart services, Puneri Metro ensures a safe and
                             hassle-free travel experience.
                         </p>
+                        <a
+                            href={passengerAmenities.url()}
+                            className="inline-block rounded-md bg-brand-dark px-7 py-3 mt-4 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                        >
+                            Know More
+                        </a>
                     </div>
 
                     {/* Right: 2-column card grid */}
