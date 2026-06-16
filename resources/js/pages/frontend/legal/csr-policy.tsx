@@ -28,7 +28,7 @@ export default function CsrPolicy() {
 
             <section className="bg-white pt-4 pb-8 md:pb-16">
                 <div className="mx-auto max-w-325.75 px-6 min-[1303px]:px-8 min-[1440px]:max-w-360">
-                    <div className="space-y-5 font-montserrat text-sm leading-relaxed text-black">
+                    <div className="space-y-2 font-montserrat text-sm leading-relaxed text-black">
                         <p>
                             At Pune IT City Metro Rail Limited (PITCMRL), we believe that building infrastructure is only
                             part of our responsibility. Our commitment extends beyond tracks and stations, to the
