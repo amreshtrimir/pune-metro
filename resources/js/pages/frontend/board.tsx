@@ -13,7 +13,7 @@ export default function Board({ members }: Props) {
     return (
         <>
             <Head>
-                <title>Board of Directors - Puneri Metro</title>
+                <title>Board of Directors - Pune Metro</title>
                 <meta
                     name="description"
                     content="Meet the Board of Directors of Pune IT City Metro Rail Limited (PITCMRL) — the leaders guiding Pune Metro Line 3."
@@ -25,7 +25,7 @@ export default function Board({ members }: Props) {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Board of Directors - Puneri Metro"
+                alt="Board of Directors - Pune Metro"
             />
 
             {/* ── Page Title ── */}

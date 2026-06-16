@@ -21,7 +21,7 @@ type Props = {
 export default function Welcome({ members, explorePlaces, marqueeItems }: Props) {
     return (
         <>
-            <Head title="Puneri Metro - Transforming Urban Mobility" />
+            <Head title="Pune Metro - Transforming Urban Mobility" />
             <HeroSection />
             <MarqueeBanner items={marqueeItems} />
             <AboutSection />
@@ -33,7 +33,7 @@ export default function Welcome({ members, explorePlaces, marqueeItems }: Props)
 
             {/* <BoardSection interactive={false} showKnowMore={true} members={members} /> */}
             <QuoteBanner>
-                &ldquo;Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
+                &ldquo;Pune Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
                 opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
                 travel into a seamless urban experience.&rdquo;
             </QuoteBanner>

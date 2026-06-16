@@ -29,7 +29,7 @@ export default function CarbonCredit() {
     return (
         <>
             <Head>
-                <title>Carbon Credit - Puneri Metro</title>
+                <title>Carbon Credit - Pune Metro</title>
                 <meta
                     name="description"
                     content="Discover how Pune Metro Line 3 measures and reduces its carbon impact across construction and operations, and its journey towards carbon credit registration."

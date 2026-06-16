@@ -139,7 +139,7 @@ export default function StationDetail({ station }: Props) {
     return (
         <>
             <Head>
-                <title>{`${station.name} (${station.code}) - Puneri Metro`}</title>
+                <title>{`${station.name} (${station.code}) - Pune Metro`}</title>
                 <meta
                     name="description"
                     content={`Station details for ${station.name} (${station.code}) on Pune Metro Line 3 – Hinjawadi to District Court, Pune.`}
@@ -151,7 +151,7 @@ export default function StationDetail({ station }: Props) {
                 src="/banners/route/route-banner-md.png"
                 srcMd="/banners/route/route-banner-md.png"
                 srcLg="/banners/route/route-banner-lg.png"
-                alt={`${station.name} Station - Puneri Metro`}
+                alt={`${station.name} Station - Pune Metro`}
             />
 
             {/* ── Sticky Station Header + Tab Nav ── */}

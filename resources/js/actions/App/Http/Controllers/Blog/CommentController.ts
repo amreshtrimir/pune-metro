@@ -85,7 +85,7 @@ index.form = indexForm
 * @see app/Http/Controllers/Blog/CommentController.php:28
 * @route '/dashboard/comments/{comment}/moderate'
 */
-export const moderate = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const moderate = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: moderate.url(args, options),
     method: 'patch',
 })
@@ -100,7 +100,7 @@ moderate.definition = {
 * @see app/Http/Controllers/Blog/CommentController.php:28
 * @route '/dashboard/comments/{comment}/moderate'
 */
-moderate.url = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+moderate.url = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { comment: args }
     }
@@ -133,7 +133,7 @@ moderate.url = (args: { comment: number | { id: number } } | [comment: number | 
 * @see app/Http/Controllers/Blog/CommentController.php:28
 * @route '/dashboard/comments/{comment}/moderate'
 */
-moderate.patch = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+moderate.patch = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: moderate.url(args, options),
     method: 'patch',
 })
@@ -143,7 +143,7 @@ moderate.patch = (args: { comment: number | { id: number } } | [comment: number 
 * @see app/Http/Controllers/Blog/CommentController.php:28
 * @route '/dashboard/comments/{comment}/moderate'
 */
-const moderateForm = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const moderateForm = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: moderate.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -158,7 +158,7 @@ const moderateForm = (args: { comment: number | { id: number } } | [comment: num
 * @see app/Http/Controllers/Blog/CommentController.php:28
 * @route '/dashboard/comments/{comment}/moderate'
 */
-moderateForm.patch = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+moderateForm.patch = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: moderate.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -175,7 +175,7 @@ moderate.form = moderateForm
 * @see app/Http/Controllers/Blog/CommentController.php:35
 * @route '/dashboard/comments/{comment}'
 */
-export const destroy = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -190,7 +190,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Blog/CommentController.php:35
 * @route '/dashboard/comments/{comment}'
 */
-destroy.url = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { comment: args }
     }
@@ -223,7 +223,7 @@ destroy.url = (args: { comment: number | { id: number } } | [comment: number | {
 * @see app/Http/Controllers/Blog/CommentController.php:35
 * @route '/dashboard/comments/{comment}'
 */
-destroy.delete = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -233,7 +233,7 @@ destroy.delete = (args: { comment: number | { id: number } } | [comment: number 
 * @see app/Http/Controllers/Blog/CommentController.php:35
 * @route '/dashboard/comments/{comment}'
 */
-const destroyForm = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -248,7 +248,7 @@ const destroyForm = (args: { comment: number | { id: number } } | [comment: numb
 * @see app/Http/Controllers/Blog/CommentController.php:35
 * @route '/dashboard/comments/{comment}'
 */
-destroyForm.delete = (args: { comment: number | { id: number } } | [comment: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { comment: string | number | { id: string | number } } | [comment: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

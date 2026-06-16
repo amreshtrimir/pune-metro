@@ -6,12 +6,12 @@ export default function LostAndFound() {
     return (
         <>
             <Head>
-                <title>Lost and Found Enquiry - Puneri Metro</title>
+                <title>Lost and Found Enquiry - Pune Metro</title>
                 <meta name="description" content="Submit a lost and found enquiry for items misplaced at Pune Metro stations or trains." />
             </Head>
 
             {/* ── Hero Banner ── */}
-            <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Lost and Found Enquiry - Puneri Metro" />
+            <PageHeroBanner src="/banners/items-not-tocarry.png" alt="Lost and Found Enquiry - Pune Metro" />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0 mb-5">
@@ -27,7 +27,7 @@ export default function LostAndFound() {
                     <div className="mb-8 flex gap-3">
                         <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
                         <p className="font-inter text-sm text-gray-700">
-                            Puneri Metro advises all passengers to remain mindful of their belongings during the journey. Passengers are responsible for their personal items at all times.
+                            Pune Metro advises all passengers to remain mindful of their belongings during the journey. Passengers are responsible for their personal items at all times.
                         </p>
                     </div>
 

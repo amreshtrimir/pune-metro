@@ -7,10 +7,10 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>About Us - Puneri Metro</title>
+                <title>About Us - Pune Metro</title>
                 <meta
                     name="description"
-                    content="Learn about Puneri IT City Metro Rail Limited (PITCMRL), a joint venture between Tata Group and Siemens delivering Pune's metro Line 3 under a 35-year DBFOT concession."
+                    content="Learn about Pune IT City Metro Rail Limited (PITCMRL), a joint venture between Tata Group and Siemens delivering Pune's metro Line 3 under a 35-year DBFOT concession."
                 />
                 <meta name="keywords" content="Pune Metro, PITCMRL, Pune Metro Line 3, Hinjewadi Shivajinagar Metro, Tata Siemens Metro" />
             </Head>
@@ -20,13 +20,13 @@ export default function About() {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Puneri Metro Train"
+                alt="Pune Metro Train"
             />
 
             {/* ── Overview Content ── */}
             <section className="bg-white py-8 md:py-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
-                    <PageSectionHeading className="mb-5 flex items-center gap-6">Overview of Puneri Metro</PageSectionHeading>
+                    <PageSectionHeading className="mb-5 flex items-center gap-6">Overview of Pune Metro</PageSectionHeading>
                     {/* Intro paragraphs */}
                     <div className="mb-16 space-y-5">
                         <p className="font-montserrat text-sm leading-relaxed text-black">
@@ -37,7 +37,7 @@ export default function About() {
                             deliver a transformative urban transit solution for the city of Pune.
                         </p>
                         <p className="font-montserrat text-sm leading-relaxed text-black">
-                            Pune Metro Line 3, Puneri Metro, is being developed as a Public-Private Partnership (PPP) project in
+                            Pune Metro Line 3, Pune Metro, is being developed as a Public-Private Partnership (PPP) project in
                             partnership with the Pune Metropolitan Region Development Authority (PMRDA). PMRDA has awarded the
                             Concession to Design Build Finance Operate Transfer (DBFOT) to PITCMRL for a term of 35 years extendable
                             for a further period of 25 years. This is the first project that has been developed under the aegis of the
@@ -179,7 +179,7 @@ export default function About() {
 
             {/* ── Quote Banner ── */}
             <QuoteBanner>
-                &ldquo;Puneri Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
+                &ldquo;Pune Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
                 opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
                 travel into a seamless urban experience.&rdquo;
             </QuoteBanner>

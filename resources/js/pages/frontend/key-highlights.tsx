@@ -55,7 +55,7 @@ const projectHighlights = [
     // {
     //     title: 'Carbon Credit & Environmental Responsibility',
     //     description:
-    //         'By shifting thousands of daily commuters from private vehicles to public transport, Puneri Metro Line 3 will contribute to a measurable reduction in carbon emissions across Pune, actively earning carbon credits through its sustainable operations and energy-efficient systems.',
+    //         'By shifting thousands of daily commuters from private vehicles to public transport, Pune Metro Line 3 will contribute to a measurable reduction in carbon emissions across Pune, actively earning carbon credits through its sustainable operations and energy-efficient systems.',
     // },
     {
         title: 'Last-Mile Connectivity',
@@ -68,7 +68,7 @@ export default function KeyHighlights() {
     return (
         <>
             <Head>
-                <title>Key Highlights - Puneri Metro</title>
+                <title>Key Highlights - Pune Metro</title>
                 <meta
                     name="description"
                     content="Discover the key highlights and milestones of Pune Metro Line 3 — a landmark public-private partnership in Indian urban transit."
@@ -80,7 +80,7 @@ export default function KeyHighlights() {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Key Highlights - Puneri Metro"
+                alt="Key Highlights - Pune Metro"
             />
 
             {/* ── Page Title ── */}
@@ -94,7 +94,7 @@ export default function KeyHighlights() {
             <section className="bg-white py-6">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-base leading-relaxed text-gray-700">
-                        Puneri Metro Line 3 brings together large-scale infrastructure, advanced metro systems, and city-wide
+                        Pune Metro Line 3 brings together large-scale infrastructure, advanced metro systems, and city-wide
                         connectivity across one of Pune&apos;s most important urban corridors.
                     </p>
                 </div>
@@ -174,7 +174,7 @@ export default function KeyHighlights() {
                         <div className="overflow-hidden rounded-3xl lg:order-2 lg:ml-auto" style={{ background: 'rgba(109,0,58,0.1)', maxWidth: '592px', width: '100%' }}>
                             <img
                                 src="/project-profile/key-high-point.png"
-                                alt="Puneri Metro Project Highlights"
+                                alt="Pune Metro Project Highlights"
                                 className="h-full w-full object-cover"
                             />
                         </div>
@@ -185,7 +185,7 @@ export default function KeyHighlights() {
             {/* ── CTA Banner ── */}
             <QuoteBanner>
                 Whether you&rsquo;re planning your daily commute, exploring the city, or seeking a faster and smarter way to
-                travel, Puneri Metro is here to transform your journey with comfort, efficiency, and modern connectivity.
+                travel, Pune Metro is here to transform your journey with comfort, efficiency, and modern connectivity.
             </QuoteBanner>
         </>
     );

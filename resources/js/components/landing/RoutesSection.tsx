@@ -59,14 +59,14 @@ export default function RoutesSection() {
                 <div ref={headerRef} className={`mb-6 transition-all duration-700 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="mb-4 inline-flex items-center rounded-full border border-white/40 bg-white/10 px-4 py-1.5">
                         <span className="font-montserrat text-xs font-semibold text-white">
-                            PUNERI Metro Route
+                            Pune Metro Route
                         </span>
                     </div>
                     <h2 className="mb-3 font-montserrat text-4xl font-bold text-white lg:text-5xl">
                         Routes &amp; Network
                     </h2>
                     <p className="mb-6 max-w-4xl font-montserrat text-sm leading-relaxed text-white/80">
-                        Puneri Metro Line 3 connects one of the city's most important daily movement corridors, linking the
+                        Pune Metro Line 3 connects one of the city's most important daily movement corridors, linking the
                         Hinjewadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
                         reduce congestion and integrate with the wider metro network.
                     </p>

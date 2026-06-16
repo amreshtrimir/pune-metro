@@ -55,7 +55,7 @@ export default function FacilitiesSection() {
                         <p className="font-montserrat text-sm leading-relaxed text-black">
                             Enjoy modern station facilities designed for comfort,
                             convenience and accessibility at every step. From clean
-                            spaces to smart services, Puneri Metro ensures a safe and
+                            spaces to smart services, Pune Metro ensures a safe and
                             hassle-free travel experience.
                         </p>
                         <a

@@ -7,7 +7,7 @@ export default function StationRetail() {
     return (
         <>
             <Head>
-                <title>Station Retail - Puneri Metro</title>
+                <title>Station Retail - Pune Metro</title>
                 <meta
                     name="description"
                     content="Explore station retail and business development opportunities with Pune Metro Line 3."
@@ -19,7 +19,7 @@ export default function StationRetail() {
                 src="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
-                alt="Station Retail - Puneri Metro"
+                alt="Station Retail - Pune Metro"
             />
 
             {/* ── Content Section ── */}
@@ -63,10 +63,10 @@ export default function StationRetail() {
                                 For retail enquiries, please contact:
                             </p>
                             <a
-                                href="mailto:contactpunerimetro@tatarealty.in"
+                                href="mailto:contactPunemetro@tatarealty.in"
                                 className="font-montserrat text-sm text-brand hover:underline"
                             >
-                                contactpunerimetro@tatarealty.in
+                                contactPunemetro@tatarealty.in
                             </a>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
     return (
         <>
             <Head>
-                <title>Privacy Policy - Puneri Metro</title>
+                <title>Privacy Policy - Pune Metro</title>
                 <meta name="description" content="Read Pune Metro's privacy policy to understand how we collect, use, and protect your personal information." />
             </Head>
 
@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
                 src="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
-                alt="Privacy Policy - Puneri Metro"
+                alt="Privacy Policy - Pune Metro"
             />
 
             {/* ── Page Title ── */}
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
                                 process, or transfer Personal Information ("PI") in the conduct of our activities and internal administration.
                                 PITCMRL will not sell, rent, publish, or trade any of your personal information to any individual or organisation
                                 under any circumstances. The information provided on this website is solely in the interest of the public to provide
-                                information about Puneri Metro Line 3 and PITCMRL.
+                                information about Pune Metro Line 3 and PITCMRL.
                             </p>
                             <p>
                                 This website is controlled by Pune IT City Metro Rail Limited (PITCMRL), which is solely authorised to manage and control this website.
@@ -80,7 +80,7 @@ export default function PrivacyPolicy() {
                             <p>Personal data collected by PITCMRL shall be processed only for lawful purposes, including:</p>
                             <ul className="list-disc space-y-1 pl-6">
                                 <li>Responding to queries, requests, or feedback</li>
-                                <li>Providing information related to Puneri Metro Line 3 services, operations, or initiatives</li>
+                                <li>Providing information related to Pune Metro Line 3 services, operations, or initiatives</li>
                                 <li>Improving website content, functionality, and user experience</li>
                                 <li>Ensuring website security and preventing misuse</li>
                                 <li>Complying with applicable laws, regulations, and statutory obligations</li>
@@ -167,10 +167,10 @@ export default function PrivacyPolicy() {
                             <div className="mt-2 space-y-1">
                                 <p className="font-medium text-black">Pune IT City Metro Rail Limited (PITCMRL)</p>
                                 <a
-                                    href="mailto:contactpunerimetro@tatarealty.in"
+                                    href="mailto:contactPunemetro@tatarealty.in"
                                     className="block text-brand hover:underline"
                                 >
-                                    contactpunerimetro@tatarealty.in
+                                    contactPunemetro@tatarealty.in
                                 </a>
                                 {/* <a href="tel:18002705501" className="block text-brand hover:underline">
                                     1800 270 5501

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import type { BoardMember, SelectedMedia } from '@/types/cms';
 
 type Props = {
@@ -315,15 +316,12 @@ return;
                                 />
                             </div>
 
-                            <div className="space-y-1">
-                                <label className="text-xs font-medium text-muted-foreground">Bio <span className="font-normal opacity-60">(optional — shown in modal on frontend)</span></label>
-                                <textarea
-                                    value={editForm.bio}
-                                    onChange={(e) => setEditForm((p) => ({ ...p, bio: e.target.value }))}
-                                    rows={3}
-                                    className="w-full rounded-md border px-3 py-2 text-sm bg-background resize-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                                />
-                            </div>
+                            <RichTextEditor
+                                label="Bio"
+                                value={editForm.bio}
+                                onChange={(bio) => setEditForm((p) => ({ ...p, bio }))}
+                                helperText="Optional. Formatting added here is shown in the board member modal on the frontend."
+                            />
 
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="space-y-1">

@@ -46,7 +46,7 @@ export default function TimeTable() {
     return (
         <>
             <Head>
-                <title>Time Table - Puneri Metro</title>
+                <title>Time Table - Pune Metro</title>
                 <meta name="description" content="View the Pune Metro train time table for all lines and stations." />
             </Head>
 
@@ -55,7 +55,7 @@ export default function TimeTable() {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Puneri Metro Train"
+                alt="Pune Metro Train"
             />
 
             {/* ── Page Title ── */}

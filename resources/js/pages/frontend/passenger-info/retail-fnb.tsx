@@ -5,7 +5,7 @@ export default function RetailFnb() {
     return (
         <>
             <Head>
-                <title>Retail / F&B (Food &amp; Beverage) - Puneri Metro</title>
+                <title>Retail / F&B (Food &amp; Beverage) - Pune Metro</title>
                 <meta name="description" content="Discover retail and food & beverage outlets available at Pune Metro stations." />
             </Head>
 
@@ -14,7 +14,7 @@ export default function RetailFnb() {
                 <div className="relative flex h-[240px] items-end justify-end overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 md:h-[400px]">
                         <div className="absolute inset-0 bg-black/40" />
                         <p className="relative mb-6 mr-6 font-montserrat text-[clamp(32px,7vw,100px)] font-semibold leading-none text-white/25 select-none md:mb-10 md:mr-10">
-                            PUNERI METRO
+                            Pune METRO
                         </p>
                 </div>
             </section>

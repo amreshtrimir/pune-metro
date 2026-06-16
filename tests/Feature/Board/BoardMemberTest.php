@@ -68,11 +68,13 @@ it('admin can update a board member', function (): void {
         ->put(route('dashboard.board-members.update', $member), [
             'name' => 'Updated Name',
             'role' => 'Chairman',
+            'bio' => '<p><strong>Updated bio</strong> with details.</p><script>alert(1)</script>',
             'is_active' => true,
         ])
         ->assertRedirect(route('dashboard.board-members.index'));
 
-    expect($member->fresh()->name)->toBe('Updated Name');
+    expect($member->fresh()->name)->toBe('Updated Name')
+        ->and($member->fresh()->bio)->toBe('<p><strong>Updated bio</strong> with details.</p>');
 });
 
 it('admin can delete a board member', function (): void {

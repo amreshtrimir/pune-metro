@@ -14,7 +14,7 @@ export default function GreenInitiatives() {
     return (
         <>
             <Head>
-                <title>Green Initiatives - Puneri Metro</title>
+                <title>Green Initiatives - Pune Metro</title>
                 <meta
                     name="description"
                     content="Discover how Pune Metro Line 3 embeds sustainability into every phase — from energy conservation and water management to waste reduction and community engagement."
@@ -30,7 +30,7 @@ export default function GreenInitiatives() {
                 src="/banners/environment/environment-banner-md.png"
                 srcMd="/banners/environment/environment-banner-md.png"
                 srcLg="/banners/environment/environment-banner-lg.png"
-                alt="Green Initiatives - Puneri Metro"
+                alt="Green Initiatives - Pune Metro"
             />
 
             {/* ── Page Title + Intro ── */}
@@ -39,7 +39,7 @@ export default function GreenInitiatives() {
                     <PageSectionHeading className="mb-3 flex flex-wrap items-center gap-x-6 gap-y-1">Green Initiatives</PageSectionHeading>
                     <p className="mb-3 font-montserrat text-xl font-normal text-brand">Green at Every Step</p>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        From construction sites to station design, Puneri Metro Line 3 embeds sustainability into every phase.
+                        From construction sites to station design, Pune Metro Line 3 embeds sustainability into every phase.
                         Here&rsquo;s what we&rsquo;re doing across energy, water, waste, and biodiversity.
                     </p>
                 </div>
@@ -73,7 +73,7 @@ export default function GreenInitiatives() {
                                 Energy Conservation
                             </h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
-                                The Puneri Metro Line 3 is an energy-conscious ecosystem that minimizes consumption and maximizes
+                                The Pune Metro Line 3 is an energy-conscious ecosystem that minimizes consumption and maximizes
                                 recovery at every stage of construction and operation.
                             </p>
 
@@ -174,7 +174,7 @@ export default function GreenInitiatives() {
                             </h2>
                             <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
                                 Water is one of our most precious shared resources. From the first day of construction to our
-                                long-term daily operations, the Puneri Metro Line 3 Project employs a circular water management
+                                long-term daily operations, the Pune Metro Line 3 Project employs a circular water management
                                 strategy to minimize freshwater intake and maximize reuse.
                             </p>
 

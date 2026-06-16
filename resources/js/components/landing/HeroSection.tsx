@@ -14,7 +14,7 @@ const slides: Slide[] = [
         image: '/landing/sliders-slides/first-image.webp',
         heading: 'Transforming Urban Mobility with Speed, Safety and Comfort',
         description:
-            'Puneri Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city.',
+            'Pune Metro Line 3 is a key urban infrastructure initiative designed to provide safe, efficient and reliable travel across the city.',
     },
     {
         image: '/landing/sliders-slides/hero-section-slides/slide-2-desktop.png',
@@ -26,7 +26,7 @@ const slides: Slide[] = [
         image: '/landing/sliders-slides/hero-section-slides/slide-3-desktop.png',
         heading: 'A blueprint for sustainable urban mobility',
         description:
-            'Puneri Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes the carbon footprint of the city.',
+            'Pune Metro Line 3 embeds environmental stewardship into its design, construction, and daily operations. By deploying sustainable practices, the project minimizes the carbon footprint of the city.',
     },
 ];
 

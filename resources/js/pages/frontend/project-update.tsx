@@ -158,7 +158,7 @@ export default function ProjectUpdate({ images }: Props) {
             )}
 
             <Head>
-                <title>Project Update - Puneri Metro</title>
+                <title>Project Update - Pune Metro</title>
                 <meta
                     name="description"
                     content="Stay up to date with the latest construction and development progress of Pune Metro Line 3."
@@ -170,7 +170,7 @@ export default function ProjectUpdate({ images }: Props) {
                 src="/banners/project-update/project-update-banner-md.png"
                 srcMd="/banners/project-update/project-update-banner-md.png"
                 srcLg="/banners/project-update/project-update-banner-lg.png"
-                alt="Project Update - Puneri Metro"
+                alt="Project Update - Pune Metro"
             />
 
             {/* ── Page Title ── */}
@@ -184,7 +184,7 @@ export default function ProjectUpdate({ images }: Props) {
             <section className="bg-white pt-4 pb-4">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        Puneri Metro Line 3  is progressing steadily, with significant construction milestones achieved across the 23.3 km elevated corridor. The Pink Line will offer commuters a modern, reliable, and comfortable alternative to road travel, connecting the IT hub of Hinjewadi to Shivajinagar District Court seamlessly. Commuters across key areas including Wakad, Baner, Balewadi, and University Circle will benefit from reduced travel time, lesser dependence on private vehicles, and a safe, efficient daily commute. The Pink Line is set to transform urban mobility for thousands of Pune residents every single day.
+                        Pune Metro Line 3  is progressing steadily, with significant construction milestones achieved across the 23.3 km elevated corridor. The Pink Line will offer commuters a modern, reliable, and comfortable alternative to road travel, connecting the IT hub of Hinjewadi to Shivajinagar District Court seamlessly. Commuters across key areas including Wakad, Baner, Balewadi, and University Circle will benefit from reduced travel time, lesser dependence on private vehicles, and a safe, efficient daily commute. The Pink Line is set to transform urban mobility for thousands of Pune residents every single day.
 
                     </p>
                 </div>

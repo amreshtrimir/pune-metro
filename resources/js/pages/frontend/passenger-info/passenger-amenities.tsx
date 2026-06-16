@@ -197,7 +197,7 @@ export default function PassengerAmenities() {
     return (
         <>
             <Head>
-                <title>Passenger Amenities - Puneri Metro</title>
+                <title>Passenger Amenities - Pune Metro</title>
                 <meta
                     name="description"
                     content="Explore the comprehensive passenger amenities at Pune Metro stations including ticketing, accessibility, safety, last-mile connectivity, and more."
@@ -213,7 +213,7 @@ export default function PassengerAmenities() {
                 src="/banners/passenger-aminities/amenniteis.png"
                 srcMd="/banners/passenger-aminities/amenniteis.png"
                 srcLg="/banners/passenger-aminities/amenniteis.png"
-                alt="Passenger Amenities - Puneri Metro"
+                alt="Passenger Amenities - Pune Metro"
             />
 
             {/* ── Page Title ── */}

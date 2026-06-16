@@ -242,7 +242,7 @@ export default function PhotoGallery({ albums }: Props) {
                 />
             )}
             <Head>
-                <title>Photo Gallery - Puneri Metro</title>
+                <title>Photo Gallery - Pune Metro</title>
                 <meta
                     name="description"
                     content="Explore the photo gallery of Pune IT City Metro Rail Limited showcasing key events, green initiatives, and community activities."
@@ -254,7 +254,7 @@ export default function PhotoGallery({ albums }: Props) {
                 src="/banners/gallery/gallery-banner-md.png"
                 srcMd="/banners/gallery/gallery-banner-md.png"
                 srcLg="/banners/gallery/gallery-banner-lg.png"
-                alt="Photo Gallery - Puneri Metro"
+                alt="Photo Gallery - Pune Metro"
             />
 
             {/* ── Page Title ── */}

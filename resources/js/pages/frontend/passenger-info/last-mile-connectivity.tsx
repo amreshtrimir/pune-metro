@@ -13,7 +13,7 @@ export default function LastMileConnectivity() {
     return (
         <>
             <Head>
-                <title>Last Mile Connectivity - Puneri Metro</title>
+                <title>Last Mile Connectivity - Pune Metro</title>
                 <meta name="description" content="Explore last-mile connectivity options available at Pune Metro stations including buses, autos, and parking." />
             </Head>
 
@@ -22,7 +22,7 @@ export default function LastMileConnectivity() {
                 src="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
-                alt="Last Mile Connectivity - Puneri Metro"
+                alt="Last Mile Connectivity - Pune Metro"
             />
 
             {/* ── Page Title ── */}

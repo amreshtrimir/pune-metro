@@ -41,7 +41,7 @@ export default function EiaReports() {
     return (
         <>
             <Head>
-                <title>EIA Reports - Puneri Metro</title>
+                <title>EIA Reports - Pune Metro</title>
                 <meta
                     name="description"
                     content="Explore the Environmental Impact Assessment (EIA) reports for Pune Metro Line 3, covering compliance, sustainability, and environmental stewardship."
@@ -65,7 +65,7 @@ export default function EiaReports() {
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
                     <PageSectionHeading wrap className="mb-6 flex items-center gap-6">Environmental Impact Assessment (EIA) Reports</PageSectionHeading>
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        Puneri Metro Line 3 is committed to transparent, science-led environmental governance. Our Environmental
+                        Pune Metro Line 3 is committed to transparent, science-led environmental governance. Our Environmental
                         Impact Assessment (EIA) reports document all significant environmental reviews, mitigation measures and
                         compliance updates throughout the project lifecycle.
                     </p>
@@ -91,7 +91,7 @@ export default function EiaReports() {
                             <h2 className="mb-4 font-montserrat text-xl font-semibold text-black md:mb-5 md:text-[30px]">About EIA</h2>
                             <p className="mb-5 font-montserrat text-sm leading-relaxed text-black">
                                 Before making decisions, we systematically evaluate the environmental consequences of a proposed
-                                project through an EIA. For Puneri Metro Line 3, EIA forms the backbone of our environmental
+                                project through an EIA. For Pune Metro Line 3, EIA forms the backbone of our environmental
                                 planning, ensuring every phase of construction and operations respects ecological limits and
                                 regulatory requirements.
                             </p>
@@ -112,7 +112,7 @@ export default function EiaReports() {
                     <h2 className="mb-4 font-montserrat text-xl font-semibold text-black md:text-[30px]">Key Reports</h2>
                     <p className="mb-6 font-montserrat text-sm leading-relaxed text-black md:mb-10">
                         Our commitment to a greener urban future is backed by measurable action. Explore the key reports and data
-                        driving our environmental stewardship for the Puneri Metro Line 3 Project.
+                        driving our environmental stewardship for the Pune Metro Line 3 Project.
                     </p>
 
                     <div className="space-y-4">

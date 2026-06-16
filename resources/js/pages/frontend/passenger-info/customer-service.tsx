@@ -10,17 +10,17 @@ const commitments = [
     'Passenger safety remains our top priority through robust systems and proactive monitoring.',
     'We are committed to inclusive services, ensuring convenience for senior citizens, women, and persons with disabilities.',
     'Transparency, accountability, and service excellence guide our day-to-day operations.',
-    'Through these efforts, Puneri Metro Line 3 aims to build lasting trust and deliver a world-class urban transit experience.',
+    'Through these efforts, Pune Metro Line 3 aims to build lasting trust and deliver a world-class urban transit experience.',
 ];
 
 export default function CustomerService() {
     return (
         <>
             <Head>
-                <title>Customer Service - Puneri Metro</title>
+                <title>Customer Service - Pune Metro</title>
                 <meta
                     name="description"
-                    content="Learn about Puneri Metro Line 3's commitment to safe, reliable, and comfortable travel experience for every passenger."
+                    content="Learn about Pune Metro Line 3's commitment to safe, reliable, and comfortable travel experience for every passenger."
                 />
             </Head>
 
@@ -29,7 +29,7 @@ export default function CustomerService() {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Customer Service - Puneri Metro"
+                alt="Customer Service - Pune Metro"
             />
 
             {/* ── Page Title ── */}
@@ -47,7 +47,7 @@ export default function CustomerService() {
                     <div className="mb-8 flex gap-3">
                         <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
                         <p className="font-inter text-sm text-black">
-                            At Puneri Metro Line 3, our customers are at the heart of everything we do. We are committed to providing a safe, reliable, and comfortable travel experience for every passenger. Our services are designed to be punctual, efficient, and responsive to the daily mobility needs of Pune&apos;s citizens.
+                            At Pune Metro Line 3, our customers are at the heart of everything we do. We are committed to providing a safe, reliable, and comfortable travel experience for every passenger. Our services are designed to be punctual, efficient, and responsive to the daily mobility needs of Pune&apos;s citizens.
                         </p>
                     </div>
 
@@ -72,8 +72,8 @@ export default function CustomerService() {
                             <p className="font-inter text-sm text-black">
                                 If you have any feedback or complaints, you can reach us on our helpline{' '}
                                 <span className="font-semibold text-black">(xxxxxxxx)</span>, write to us at{' '}
-                                <a href="mailto:contactpunerimetro@tatarealty.in" className="font-semibold text-brand hover:underline">
-                                   contactpunerimetro@tatarealty.in
+                                <a href="mailto:contactPunemetro@tatarealty.in" className="font-semibold text-brand hover:underline">
+                                   contactPunemetro@tatarealty.in
                                 </a>
                                 , or visit our Customer Care Centre at any metro station.
                             </p>

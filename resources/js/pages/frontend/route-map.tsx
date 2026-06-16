@@ -21,7 +21,7 @@ export default function RouteMap() {
     return (
         <>
             <Head>
-                <title>Route Map - Puneri Metro</title>
+                <title>Route Map - Pune Metro</title>
                 <meta
                     name="description"
                     content="Explore the Pune Metro Line 3 route map — connecting Hinjewadi to Shivajinagar District Court across 23 stations."
@@ -33,7 +33,7 @@ export default function RouteMap() {
                 src="/banners/route/route-banner-md.png"
                 srcMd="/banners/route/route-banner-md.png"
                 srcLg="/banners/route/route-banner-lg.png"
-                alt="Route Map - Puneri Metro"
+                alt="Route Map - Pune Metro"
             />
 
             {/* ── Page Title ── */}
@@ -47,7 +47,7 @@ export default function RouteMap() {
             <section className="bg-white pt-4 pb-0">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        Puneri Metro Line 3 connects one of the city&apos;s most important daily movement corridors, linking the
+                        Pune Metro Line 3 connects one of the city&apos;s most important daily movement corridors, linking the
                         Hinjewadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
                         reduce congestion and integrate with the wider metro network.
                     </p>
@@ -141,7 +141,7 @@ export default function RouteMap() {
             {/* ── Quote CTA Banner ── */}
             <QuoteBanner>
                 &ldquo;Whether you&rsquo;re planning your daily commute, exploring the city, or seeking a faster and smarter way
-                to travel, Puneri Metro is here to transform your journey with comfort, efficiency, and modern
+                to travel, Pune Metro is here to transform your journey with comfort, efficiency, and modern
                 connectivity.&rdquo;
             </QuoteBanner>
         </>

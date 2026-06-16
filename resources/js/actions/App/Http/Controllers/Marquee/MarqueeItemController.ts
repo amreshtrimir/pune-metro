@@ -141,7 +141,7 @@ store.form = storeForm
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-export const update = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -156,7 +156,7 @@ update.definition = {
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-update.url = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { marqueeItem: args }
     }
@@ -189,7 +189,7 @@ update.url = (args: { marqueeItem: number | { id: number } } | [marqueeItem: num
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-update.put = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -199,7 +199,7 @@ update.put = (args: { marqueeItem: number | { id: number } } | [marqueeItem: num
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-const updateForm = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -214,7 +214,7 @@ const updateForm = (args: { marqueeItem: number | { id: number } } | [marqueeIte
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-updateForm.put = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -231,7 +231,7 @@ update.form = updateForm
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-export const destroy = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -246,7 +246,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-destroy.url = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { marqueeItem: args }
     }
@@ -279,7 +279,7 @@ destroy.url = (args: { marqueeItem: number | { id: number } } | [marqueeItem: nu
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-destroy.delete = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -289,7 +289,7 @@ destroy.delete = (args: { marqueeItem: number | { id: number } } | [marqueeItem:
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-const destroyForm = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -304,7 +304,7 @@ const destroyForm = (args: { marqueeItem: number | { id: number } } | [marqueeIt
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
 * @route '/dashboard/marquee/{marqueeItem}'
 */
-destroyForm.delete = (args: { marqueeItem: number | { id: number } } | [marqueeItem: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

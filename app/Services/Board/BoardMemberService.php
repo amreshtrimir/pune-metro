@@ -4,6 +4,7 @@ namespace App\Services\Board;
 
 use App\Models\BoardMember;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 
 class BoardMemberService
 {
@@ -31,7 +32,7 @@ class BoardMemberService
      */
     public function createMember(array $data): BoardMember
     {
-        return BoardMember::create($data);
+        return BoardMember::create($this->sanitizeMemberData($data));
     }
 
     /**
@@ -39,7 +40,7 @@ class BoardMemberService
      */
     public function updateMember(BoardMember $member, array $data): void
     {
-        $member->update($data);
+        $member->update($this->sanitizeMemberData($data));
     }
 
     public function deleteMember(BoardMember $member): void
@@ -55,5 +56,24 @@ class BoardMemberService
         foreach ($orderedIds as $position => $id) {
             BoardMember::where('id', $id)->update(['sort_order' => $position]);
         }
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
+     */
+    private function sanitizeMemberData(array $data): array
+    {
+        $bio = Arr::get($data, 'bio');
+
+        if (! is_string($bio)) {
+            return $data;
+        }
+
+        $bioWithoutDangerousBlocks = preg_replace('/<(script|style)\b[^>]*>.*?<\/\1>/is', '', $bio) ?? $bio;
+        $sanitizedBio = trim(strip_tags($bioWithoutDangerousBlocks, '<p><br><strong><em><ul><ol><li>'));
+        $data['bio'] = $sanitizedBio !== '' ? $sanitizedBio : null;
+
+        return $data;
     }
 }

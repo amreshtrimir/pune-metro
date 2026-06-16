@@ -177,7 +177,7 @@ export default function ItemsNotToCarry() {
     return (
         <>
             <Head>
-                <title>Items Not to Carry - Puneri Metro</title>
+                <title>Items Not to Carry - Pune Metro</title>
                 <meta
                     name="description"
                     content="Find out which items are prohibited inside Pune Metro premises and trains. Stay safe and follow Pune Metro's restricted items policy."
@@ -193,7 +193,7 @@ export default function ItemsNotToCarry() {
                 src="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
-                alt="Items Not to Carry - Puneri Metro"
+                alt="Items Not to Carry - Pune Metro"
             />
 
             {/* ── Page Title + Intro ── */}

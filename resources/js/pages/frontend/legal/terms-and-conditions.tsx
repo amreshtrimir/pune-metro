@@ -6,7 +6,7 @@ export default function TermsAndConditions() {
     return (
         <>
             <Head>
-                <title>Terms and Conditions - Puneri Metro</title>
+                <title>Terms and Conditions - Pune Metro</title>
                 <meta name="description" content="Read the terms and conditions for using Pune Metro services and facilities." />
             </Head>
 
@@ -15,7 +15,7 @@ export default function TermsAndConditions() {
                 src="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcMd="/banners/items-not-carry/items-not-carry-banner-md.png"
                 srcLg="/banners/items-not-carry/items-not-carry-banner-lg.png"
-                alt="Terms and Conditions - Puneri Metro"
+                alt="Terms and Conditions - Pune Metro"
             />
 
             {/* ── Page Title ── */}
@@ -34,7 +34,7 @@ export default function TermsAndConditions() {
                     <div className="space-y-6 font-inter text-base leading-relaxed text-black">
                         <p>
                             By accessing and using this website, users agree to use the information and services provided for lawful and general
-                            reference purposes only. The content available on this website is intended to provide information related to Puneri Metro
+                            reference purposes only. The content available on this website is intended to provide information related to Pune Metro
                             Line 3 project, passenger services, and related communication.
                         </p>
                         <p>

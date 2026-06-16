@@ -11,6 +11,10 @@ type Director = {
     bio?: string;
 };
 
+function containsHtml(value: string): boolean {
+    return /<[a-z][\s\S]*>/i.test(value);
+}
+
 function memberToDirector(member: BoardMember): Director {
     return {
         name: member.name,
@@ -188,7 +192,14 @@ function DirectorModal({ director, onClose }: { director: Director; onClose: () 
                         style={{ background: 'linear-gradient(to right, #8e8e8e, transparent)' }}
                     />
                     {director.bio && (
-                        <p className="pb-2 font-montserrat text-sm leading-relaxed text-black">{director.bio}</p>
+                        containsHtml(director.bio) ? (
+                            <div
+                                className="prose prose-sm max-w-none pb-2 font-montserrat text-black prose-p:my-0 prose-p:pb-2 prose-strong:text-black prose-em:text-black prose-li:my-1"
+                                dangerouslySetInnerHTML={{ __html: director.bio }}
+                            />
+                        ) : (
+                            <p className="whitespace-pre-line pb-2 font-montserrat text-sm leading-relaxed text-black">{director.bio}</p>
+                        )
                     )}
                 </div>
                 {/* Close button */}

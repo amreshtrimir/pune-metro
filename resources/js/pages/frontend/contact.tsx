@@ -6,7 +6,7 @@ export default function Contact() {
     return (
         <>
             <Head>
-                <title>Contact Us - Puneri Metro</title>
+                <title>Contact Us - Pune Metro</title>
                 <meta
                     name="description"
                     content="Get in touch with PITCMRL – Pune IT City Metro Rail Limited. Find our office address, email, and location at Maan, Hinjawadi, Pune."
@@ -19,7 +19,7 @@ export default function Contact() {
                 src="/banners/contact-banner/contact-banner-md.png"
                 srcMd="/banners/contact-banner/contact-banner-md.png"
                 srcLg="/banners/contact-banner/contact-banner-lg.png"
-                alt="Contact Us - Puneri Metro"
+                alt="Contact Us - Pune Metro"
             />
 
             {/* ── Contact Section ── */}
@@ -85,10 +85,10 @@ export default function Contact() {
                                     Email Us
                                 </p>
                                 <a
-                                    href="mailto:contactpunerimetro@tatarealty.in"
+                                    href="mailto:contactPunemetro@tatarealty.in"
                                     className="break-all font-montserrat text-sm font-medium text-gray-800 underline-offset-2 transition-colors hover:text-brand hover:underline"
                                 >
-                                    contactpunerimetro@tatarealty.in
+                                    contactPunemetro@tatarealty.in
                                 </a>
                             </div>
                         </div>

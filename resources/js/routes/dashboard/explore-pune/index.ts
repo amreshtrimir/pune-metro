@@ -141,7 +141,7 @@ store.form = storeForm
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:33
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-export const update = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -156,7 +156,7 @@ update.definition = {
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:33
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-update.url = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { explorePunePlace: args }
     }
@@ -189,7 +189,7 @@ update.url = (args: { explorePunePlace: number | { id: number } } | [explorePune
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:33
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-update.put = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -199,7 +199,7 @@ update.put = (args: { explorePunePlace: number | { id: number } } | [explorePune
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:33
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-const updateForm = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -214,7 +214,7 @@ const updateForm = (args: { explorePunePlace: number | { id: number } } | [explo
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:33
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-updateForm.put = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -231,7 +231,7 @@ update.form = updateForm
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:40
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-export const destroy = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -246,7 +246,7 @@ destroy.definition = {
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:40
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-destroy.url = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { explorePunePlace: args }
     }
@@ -279,7 +279,7 @@ destroy.url = (args: { explorePunePlace: number | { id: number } } | [explorePun
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:40
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-destroy.delete = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -289,7 +289,7 @@ destroy.delete = (args: { explorePunePlace: number | { id: number } } | [explore
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:40
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-const destroyForm = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -304,7 +304,7 @@ const destroyForm = (args: { explorePunePlace: number | { id: number } } | [expl
 * @see app/Http/Controllers/ExplorePune/ExplorePunePlaceController.php:40
 * @route '/dashboard/explore-pune/{explorePunePlace}'
 */
-destroyForm.delete = (args: { explorePunePlace: number | { id: number } } | [explorePunePlace: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { explorePunePlace: string | number | { id: string | number } } | [explorePunePlace: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
