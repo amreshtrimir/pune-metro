@@ -31,13 +31,13 @@ export default function About() {
                     <div className="mb-16 space-y-5">
                         <p className="font-montserrat text-sm leading-relaxed text-black">
                             Pune IT City Metro Rail Limited (PITCMRL), a Special Purpose Vehicle (SPV) established through a strategic
-                            joint venture between the Tata Group and Siemens is developing the Pune Metro Line 3 connecting the IT hub
+                            joint venture between the Tata Group and Siemens has developed the Pune Metro Line 3 connecting the IT hub
                             of Hinjewadi with the Shivajinagar, which is the centre of the bustling city of Pune. This partnership
                             brings together two respected business houses possessing global expertise in engineering and technology to
                             deliver a transformative urban transit solution for the city of Pune.
                         </p>
                         <p className="font-montserrat text-sm leading-relaxed text-black">
-                            Pune Metro Line 3, Pune Metro, is being developed as a Public-Private Partnership (PPP) project in
+                            Pune Metro Line 3, Pune Metro, has developed as a Public-Private Partnership (PPP) project in
                             partnership with the Pune Metropolitan Region Development Authority (PMRDA). PMRDA has awarded the
                             Concession to Design Build Finance Operate Transfer (DBFOT) to PITCMRL for a term of 35 years extendable
                             for a further period of 25 years. This is the first project that has been developed under the aegis of the

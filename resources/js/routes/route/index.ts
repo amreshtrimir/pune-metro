@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::stationList
 * @see app/Http/Controllers/PagesController.php:73
@@ -42,43 +42,6 @@ stationList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: stationList.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:73
-* @route '/route/station-list'
-*/
-const stationListForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationList.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:73
-* @route '/route/station-list'
-*/
-stationListForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationList.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:73
-* @route '/route/station-list'
-*/
-stationListForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationList.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stationList.form = stationListForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
@@ -141,43 +104,6 @@ stationDetail.head = (args: { slug: string | number } | [slug: string | number ]
     url: stationDetail.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:78
-* @route '/route/station/{slug}'
-*/
-const stationDetailForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationDetail.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:78
-* @route '/route/station/{slug}'
-*/
-stationDetailForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationDetail.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:78
-* @route '/route/station/{slug}'
-*/
-stationDetailForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationDetail.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stationDetail.form = stationDetailForm
 
 const route = {
     stationList: Object.assign(stationList, stationList),

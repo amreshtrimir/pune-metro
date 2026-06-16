@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::index
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:22
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::index
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:22
-* @route '/dashboard/gallery-albums'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::index
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:22
-* @route '/dashboard/gallery-albums'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::index
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:22
-* @route '/dashboard/gallery-albums'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::store
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:29
 * @route '/dashboard/gallery-albums'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::store
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:29
-* @route '/dashboard/gallery-albums'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::store
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:29
-* @route '/dashboard/gallery-albums'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::edit
@@ -205,43 +146,6 @@ edit.head = (args: { galleryAlbum: string | number | { id: string | number } } |
 })
 
 /**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::edit
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:36
-* @route '/dashboard/gallery-albums/{galleryAlbum}/edit'
-*/
-const editForm = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::edit
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:36
-* @route '/dashboard/gallery-albums/{galleryAlbum}/edit'
-*/
-editForm.get = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::edit
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:36
-* @route '/dashboard/gallery-albums/{galleryAlbum}/edit'
-*/
-editForm.head = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
-/**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:43
 * @route '/dashboard/gallery-albums/{galleryAlbum}'
@@ -298,38 +202,6 @@ update.put = (args: { galleryAlbum: string | number | { id: string | number } } 
     url: update.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:43
-* @route '/dashboard/gallery-albums/{galleryAlbum}'
-*/
-const updateForm = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::update
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:43
-* @route '/dashboard/gallery-albums/{galleryAlbum}'
-*/
-updateForm.put = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
@@ -390,38 +262,6 @@ destroy.delete = (args: { galleryAlbum: string | number | { id: string | number 
 })
 
 /**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:50
-* @route '/dashboard/gallery-albums/{galleryAlbum}'
-*/
-const destroyForm = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroy
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:50
-* @route '/dashboard/gallery-albums/{galleryAlbum}'
-*/
-destroyForm.delete = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
-/**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::storeImage
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:57
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images'
@@ -478,28 +318,6 @@ storeImage.post = (args: { galleryAlbum: string | number | { id: string | number
     url: storeImage.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::storeImage
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:57
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images'
-*/
-const storeImageForm = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: storeImage.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::storeImage
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:57
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images'
-*/
-storeImageForm.post = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: storeImage.url(args, options),
-    method: 'post',
-})
-
-storeImage.form = storeImageForm
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStoreImages
@@ -560,28 +378,6 @@ bulkStoreImages.post = (args: { galleryAlbum: string | number | { id: string | n
 })
 
 /**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStoreImages
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
-*/
-const bulkStoreImagesForm = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkStoreImages.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::bulkStoreImages
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:64
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/bulk'
-*/
-bulkStoreImagesForm.post = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkStoreImages.url(args, options),
-    method: 'post',
-})
-
-bulkStoreImages.form = bulkStoreImagesForm
-
-/**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::updateImage
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
@@ -637,38 +433,6 @@ updateImage.put = (args: { galleryAlbum: string | number | { id: string | number
 })
 
 /**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::updateImage
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
-*/
-const updateImageForm = (args: { galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updateImage.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::updateImage
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:77
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
-*/
-updateImageForm.put = (args: { galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updateImage.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-updateImage.form = updateImageForm
-
-/**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroyImage
 * @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
 * @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
@@ -722,38 +486,6 @@ destroyImage.delete = (args: { galleryAlbum: string | number | { id: string | nu
     url: destroyImage.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroyImage
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
-*/
-const destroyImageForm = (args: { galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroyImage.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::destroyImage
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:84
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/{image}'
-*/
-destroyImageForm.delete = (args: { galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number }, image: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroyImage.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroyImage.form = destroyImageForm
 
 /**
 * @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorderImages
@@ -812,28 +544,6 @@ reorderImages.post = (args: { galleryAlbum: string | number | { id: string | num
     url: reorderImages.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorderImages
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
-*/
-const reorderImagesForm = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorderImages.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Gallery\GalleryAlbumController::reorderImages
-* @see app/Http/Controllers/Gallery/GalleryAlbumController.php:91
-* @route '/dashboard/gallery-albums/{galleryAlbum}/images/reorder'
-*/
-reorderImagesForm.post = (args: { galleryAlbum: string | number | { id: string | number } } | [galleryAlbum: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorderImages.url(args, options),
-    method: 'post',
-})
-
-reorderImages.form = reorderImagesForm
 
 const GalleryAlbumController = { index, store, edit, update, destroy, storeImage, bulkStoreImages, updateImage, destroyImage, reorderImages }
 

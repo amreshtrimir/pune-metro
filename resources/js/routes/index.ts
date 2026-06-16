@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../wayfinder'
 /**
 * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
 * @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
@@ -44,43 +44,6 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
-* @route '/login'
-*/
-const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: login.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
-* @route '/login'
-*/
-loginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: login.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::login
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:47
-* @route '/login'
-*/
-loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: login.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-login.form = loginForm
-
-/**
 * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::logout
 * @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
 * @route '/logout'
@@ -113,28 +76,6 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logout.url(options),
     method: 'post',
 })
-
-/**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::logout
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
-* @route '/logout'
-*/
-const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::logout
-* @see vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php:100
-* @route '/logout'
-*/
-logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-logout.form = logoutForm
 
 /**
 * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
@@ -181,43 +122,6 @@ register.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-const registerForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: register.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-registerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: register.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
-* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:41
-* @route '/register'
-*/
-registerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: register.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-register.form = registerForm
-
-/**
 * @see \App\Http\Controllers\PagesController::home
 * @see app/Http/Controllers/PagesController.php:22
 * @route '/'
@@ -260,43 +164,6 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: home.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:22
-* @route '/'
-*/
-const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: home.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:22
-* @route '/'
-*/
-homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: home.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:22
-* @route '/'
-*/
-homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: home.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-home.form = homeForm
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
@@ -343,41 +210,48 @@ contact.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:37
-* @route '/contact'
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
 */
-const contactForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: contact.url(options),
+export const csrPolicy = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: csrPolicy.url(options),
+    method: 'get',
+})
+
+csrPolicy.definition = {
+    methods: ["get","head"],
+    url: '/csr-policy',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
+*/
+csrPolicy.url = (options?: RouteQueryOptions) => {
+    return csrPolicy.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
+*/
+csrPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: csrPolicy.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:37
-* @route '/contact'
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
 */
-contactForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: contact.url(options),
-    method: 'get',
+csrPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: csrPolicy.url(options),
+    method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:37
-* @route '/contact'
-*/
-contactForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: contact.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-contact.form = contactForm
 
 /**
 * @see \App\Http\Controllers\SitemapController::sitemap
@@ -424,43 +298,6 @@ sitemap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\SitemapController::sitemap
-* @see app/Http/Controllers/SitemapController.php:10
-* @route '/sitemap.xml'
-*/
-const sitemapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: sitemap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\SitemapController::sitemap
-* @see app/Http/Controllers/SitemapController.php:10
-* @route '/sitemap.xml'
-*/
-sitemapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: sitemap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\SitemapController::sitemap
-* @see app/Http/Controllers/SitemapController.php:10
-* @route '/sitemap.xml'
-*/
-sitemapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: sitemap.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-sitemap.form = sitemapForm
-
-/**
 * @see \App\Http\Controllers\DashboardController::dashboard
 * @see app/Http/Controllers/DashboardController.php:14
 * @route '/dashboard'
@@ -504,39 +341,3 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
-/**
-* @see \App\Http\Controllers\DashboardController::dashboard
-* @see app/Http/Controllers/DashboardController.php:14
-* @route '/dashboard'
-*/
-const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\DashboardController::dashboard
-* @see app/Http/Controllers/DashboardController.php:14
-* @route '/dashboard'
-*/
-dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\DashboardController::dashboard
-* @see app/Http/Controllers/DashboardController.php:14
-* @route '/dashboard'
-*/
-dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-dashboard.form = dashboardForm

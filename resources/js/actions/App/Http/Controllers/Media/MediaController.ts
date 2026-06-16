@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Media\MediaController::index
 * @see app/Http/Controllers/Media/MediaController.php:21
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Media\MediaController::index
-* @see app/Http/Controllers/Media/MediaController.php:21
-* @route '/dashboard/media'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::index
-* @see app/Http/Controllers/Media/MediaController.php:21
-* @route '/dashboard/media'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::index
-* @see app/Http/Controllers/Media/MediaController.php:21
-* @route '/dashboard/media'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \App\Http\Controllers\Media\MediaController::store
 * @see app/Http/Controllers/Media/MediaController.php:40
 * @route '/dashboard/media'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::store
-* @see app/Http/Controllers/Media/MediaController.php:40
-* @route '/dashboard/media'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::store
-* @see app/Http/Controllers/Media/MediaController.php:40
-* @route '/dashboard/media'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\Media\MediaController::dimensions
@@ -179,43 +120,6 @@ dimensions.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: dimensions.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::dimensions
-* @see app/Http/Controllers/Media/MediaController.php:88
-* @route '/dashboard/media/dimensions'
-*/
-const dimensionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dimensions.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::dimensions
-* @see app/Http/Controllers/Media/MediaController.php:88
-* @route '/dashboard/media/dimensions'
-*/
-dimensionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dimensions.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::dimensions
-* @see app/Http/Controllers/Media/MediaController.php:88
-* @route '/dashboard/media/dimensions'
-*/
-dimensionsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dimensions.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-dimensions.form = dimensionsForm
 
 /**
 * @see \App\Http\Controllers\Media\MediaController::show
@@ -280,43 +184,6 @@ show.head = (args: { id: string | number } | [id: string | number ] | string | n
 })
 
 /**
-* @see \App\Http\Controllers\Media\MediaController::show
-* @see app/Http/Controllers/Media/MediaController.php:62
-* @route '/dashboard/media/{id}'
-*/
-const showForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::show
-* @see app/Http/Controllers/Media/MediaController.php:62
-* @route '/dashboard/media/{id}'
-*/
-showForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::show
-* @see app/Http/Controllers/Media/MediaController.php:62
-* @route '/dashboard/media/{id}'
-*/
-showForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \App\Http\Controllers\Media\MediaController::usages
 * @see app/Http/Controllers/Media/MediaController.php:69
 * @route '/dashboard/media/{id}/usages'
@@ -379,43 +246,6 @@ usages.head = (args: { id: string | number } | [id: string | number ] | string |
 })
 
 /**
-* @see \App\Http\Controllers\Media\MediaController::usages
-* @see app/Http/Controllers/Media/MediaController.php:69
-* @route '/dashboard/media/{id}/usages'
-*/
-const usagesForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: usages.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::usages
-* @see app/Http/Controllers/Media/MediaController.php:69
-* @route '/dashboard/media/{id}/usages'
-*/
-usagesForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: usages.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::usages
-* @see app/Http/Controllers/Media/MediaController.php:69
-* @route '/dashboard/media/{id}/usages'
-*/
-usagesForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: usages.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-usages.form = usagesForm
-
-/**
 * @see \App\Http\Controllers\Media\MediaController::update
 * @see app/Http/Controllers/Media/MediaController.php:74
 * @route '/dashboard/media/{id}'
@@ -468,38 +298,6 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
 })
 
 /**
-* @see \App\Http\Controllers\Media\MediaController::update
-* @see app/Http/Controllers/Media/MediaController.php:74
-* @route '/dashboard/media/{id}'
-*/
-const updateForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::update
-* @see app/Http/Controllers/Media/MediaController.php:74
-* @route '/dashboard/media/{id}'
-*/
-updateForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \App\Http\Controllers\Media\MediaController::destroy
 * @see app/Http/Controllers/Media/MediaController.php:81
 * @route '/dashboard/media/{id}'
@@ -550,38 +348,6 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::destroy
-* @see app/Http/Controllers/Media/MediaController.php:81
-* @route '/dashboard/media/{id}'
-*/
-const destroyForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Media\MediaController::destroy
-* @see app/Http/Controllers/Media/MediaController.php:81
-* @route '/dashboard/media/{id}'
-*/
-destroyForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const MediaController = { index, store, dimensions, show, usages, update, destroy }
 

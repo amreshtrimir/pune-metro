@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::update
 * @see app/Http/Controllers/PagesController.php:49
@@ -42,43 +42,6 @@ update.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: update.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::update
-* @see app/Http/Controllers/PagesController.php:49
-* @route '/project-profile/update'
-*/
-const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: update.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::update
-* @see app/Http/Controllers/PagesController.php:49
-* @route '/project-profile/update'
-*/
-updateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: update.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::update
-* @see app/Http/Controllers/PagesController.php:49
-* @route '/project-profile/update'
-*/
-updateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: update.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\PagesController::highlights
@@ -125,43 +88,6 @@ highlights.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::highlights
-* @see app/Http/Controllers/PagesController.php:56
-* @route '/project-profile/highlights'
-*/
-const highlightsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: highlights.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::highlights
-* @see app/Http/Controllers/PagesController.php:56
-* @route '/project-profile/highlights'
-*/
-highlightsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: highlights.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::highlights
-* @see app/Http/Controllers/PagesController.php:56
-* @route '/project-profile/highlights'
-*/
-highlightsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: highlights.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-highlights.form = highlightsForm
-
-/**
 * @see \App\Http\Controllers\PagesController::routeMap
 * @see app/Http/Controllers/PagesController.php:68
 * @route '/project-profile/route-map'
@@ -206,43 +132,6 @@ routeMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:68
-* @route '/project-profile/route-map'
-*/
-const routeMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: routeMap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:68
-* @route '/project-profile/route-map'
-*/
-routeMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: routeMap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:68
-* @route '/project-profile/route-map'
-*/
-routeMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: routeMap.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-routeMap.form = routeMapForm
-
-/**
 * @see \App\Http\Controllers\PagesController::photoGallery
 * @see app/Http/Controllers/PagesController.php:61
 * @route '/project-profile/photo-gallery'
@@ -285,43 +174,6 @@ photoGallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: photoGallery.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::photoGallery
-* @see app/Http/Controllers/PagesController.php:61
-* @route '/project-profile/photo-gallery'
-*/
-const photoGalleryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: photoGallery.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::photoGallery
-* @see app/Http/Controllers/PagesController.php:61
-* @route '/project-profile/photo-gallery'
-*/
-photoGalleryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: photoGallery.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::photoGallery
-* @see app/Http/Controllers/PagesController.php:61
-* @route '/project-profile/photo-gallery'
-*/
-photoGalleryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: photoGallery.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-photoGallery.form = photoGalleryForm
 
 const projectProfile = {
     update: Object.assign(update, update),

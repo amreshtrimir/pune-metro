@@ -5,13 +5,11 @@ import {
     board,
     contact,
     customerService,
+    csrPolicy,
     dosAndDonts,
     eiaReports,
-    fareTable,
     greenInitiatives,
-    itemsNotToCarry,
     keyHighlights,
-    lastMileConnectivity,
     lostAndFound,
     overview,
     passengerAmenities,
@@ -19,7 +17,6 @@ import {
     privacyPolicy,
     projectUpdate,
     routeMap,
-    stationAreaMap,
     stationList,
     stationRetail,
     termsAndConditions,
@@ -35,6 +32,7 @@ const quickLinks = [
 type NavLink = {
     label: string;
     href: string;
+    external?: boolean;
     children?: { label: string; href: string; external?: boolean }[];
 };
 
@@ -106,6 +104,7 @@ const mainNavLinks: NavLink[] = [
             { label: 'Station Retail', href: stationRetail.url() },
         ],
     },
+    { label: 'CSR POLICY', href: csrPolicy.url() },
     // { label: 'CAREER', href: '#' },
     // { label: 'BLOG', href: '/blog' },
     { label: 'LEGAL', href: termsAndConditions.url(), children: [
@@ -163,7 +162,10 @@ export default function Navbar() {
     const { url } = usePage();
 
     function openMenu() {
-        if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+        if (menuTimeoutRef.current) {
+            clearTimeout(menuTimeoutRef.current);
+        }
+
         setMobileClosing(false);
         setMobileOpen(true);
     }
@@ -177,13 +179,18 @@ export default function Navbar() {
     }
 
     function toggleMenu() {
-        if (mobileOpen && !mobileClosing) closeMenu();
-        else openMenu();
+        if (mobileOpen && !mobileClosing) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     }
 
     useEffect(() => {
         return () => {
-            if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+            if (menuTimeoutRef.current) {
+                clearTimeout(menuTimeoutRef.current);
+            }
         };
     }, []);
 
@@ -347,17 +354,29 @@ export default function Navbar() {
                                 )}
                             </div>
                         ) : (
-                            <Link
-                                key={link.label}
-                                href={link.href}
-                                className={`px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20 ${
-                                    isActive(link.href, url)
-                                        ? 'bg-brand-dark'
-                                        : ''
-                                }`}
-                            >
-                                {link.label}
-                            </Link>
+                            link.external ? (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20"
+                                >
+                                    {link.label}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={link.label}
+                                    href={link.href}
+                                    className={`px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20 ${
+                                        isActive(link.href, url)
+                                            ? 'bg-brand-dark'
+                                            : ''
+                                    }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            )
                         ),
                     )}
                 </div>
@@ -443,18 +462,31 @@ export default function Navbar() {
                                     )}
                                 </div>
                             ) : (
-                                <Link
-                                    key={link.label}
-                                    href={link.href}
-                                    onClick={() => closeMenu()}
-                                    className={`block py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${
-                                        isActive(link.href, url)
-                                            ? 'text-brand'
-                                            : 'text-gray-700'
-                                    }`}
-                                >
-                                    {link.label}
-                                </Link>
+                                link.external ? (
+                                    <a
+                                        key={link.label}
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => closeMenu()}
+                                        className="block py-2.5 font-montserrat text-sm font-semibold tracking-wide text-gray-700 transition-colors hover:text-brand"
+                                    >
+                                        {link.label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        key={link.label}
+                                        href={link.href}
+                                        onClick={() => closeMenu()}
+                                        className={`block py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${
+                                            isActive(link.href, url)
+                                                ? 'text-brand'
+                                                : 'text-gray-700'
+                                        }`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                )
                             ),
                         )}
                     </div>

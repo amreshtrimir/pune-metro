@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Marquee\MarqueeItemController::index
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:19
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::index
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:19
-* @route '/dashboard/marquee'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::index
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:19
-* @route '/dashboard/marquee'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::index
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:19
-* @route '/dashboard/marquee'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \App\Http\Controllers\Marquee\MarqueeItemController::store
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:26
 * @route '/dashboard/marquee'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::store
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:26
-* @route '/dashboard/marquee'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::store
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:26
-* @route '/dashboard/marquee'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\Marquee\MarqueeItemController::update
@@ -195,38 +136,6 @@ update.put = (args: { marqueeItem: string | number | { id: string | number } } |
 })
 
 /**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::update
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
-* @route '/dashboard/marquee/{marqueeItem}'
-*/
-const updateForm = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::update
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:33
-* @route '/dashboard/marquee/{marqueeItem}'
-*/
-updateForm.put = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \App\Http\Controllers\Marquee\MarqueeItemController::destroy
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
 * @route '/dashboard/marquee/{marqueeItem}'
@@ -285,38 +194,6 @@ destroy.delete = (args: { marqueeItem: string | number | { id: string | number }
 })
 
 /**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::destroy
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
-* @route '/dashboard/marquee/{marqueeItem}'
-*/
-const destroyForm = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::destroy
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:40
-* @route '/dashboard/marquee/{marqueeItem}'
-*/
-destroyForm.delete = (args: { marqueeItem: string | number | { id: string | number } } | [marqueeItem: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
-/**
 * @see \App\Http\Controllers\Marquee\MarqueeItemController::reorder
 * @see app/Http/Controllers/Marquee/MarqueeItemController.php:47
 * @route '/dashboard/marquee/reorder'
@@ -349,28 +226,6 @@ reorder.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reorder.url(options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::reorder
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:47
-* @route '/dashboard/marquee/reorder'
-*/
-const reorderForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorder.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Marquee\MarqueeItemController::reorder
-* @see app/Http/Controllers/Marquee/MarqueeItemController.php:47
-* @route '/dashboard/marquee/reorder'
-*/
-reorderForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorder.url(options),
-    method: 'post',
-})
-
-reorder.form = reorderForm
 
 const MarqueeItemController = { index, store, update, destroy, reorder }
 

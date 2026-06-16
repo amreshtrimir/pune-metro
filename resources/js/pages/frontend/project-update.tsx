@@ -191,7 +191,7 @@ export default function ProjectUpdate({ images }: Props) {
             </section>
 
             {/* ── Documents ── */}
-            <section className="bg-white pb-6 md:pb-10">
+            {/* <section className="bg-white pb-6 md:pb-10">
                 <div className="mx-auto max-w-325.75 min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <ul className="space-y-3">
                         {[
@@ -219,7 +219,7 @@ export default function ProjectUpdate({ images }: Props) {
                         ))}
                     </ul>
                 </div>
-            </section>
+            </section> */}
 
             {/* ── Construction Gallery ── */}
             {images.length > 0 && (

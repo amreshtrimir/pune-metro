@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Blog\PublicBlogController::index
 * @see app/Http/Controllers/Blog/PublicBlogController.php:15
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::index
-* @see app/Http/Controllers/Blog/PublicBlogController.php:15
-* @route '/blog'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::index
-* @see app/Http/Controllers/Blog/PublicBlogController.php:15
-* @route '/blog'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::index
-* @see app/Http/Controllers/Blog/PublicBlogController.php:15
-* @route '/blog'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\Blog\PublicBlogController::show
@@ -143,43 +106,6 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
 })
 
 /**
-* @see \App\Http\Controllers\Blog\PublicBlogController::show
-* @see app/Http/Controllers/Blog/PublicBlogController.php:44
-* @route '/blog/{slug}'
-*/
-const showForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::show
-* @see app/Http/Controllers/Blog/PublicBlogController.php:44
-* @route '/blog/{slug}'
-*/
-showForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::show
-* @see app/Http/Controllers/Blog/PublicBlogController.php:44
-* @route '/blog/{slug}'
-*/
-showForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \App\Http\Controllers\Blog\PublicBlogController::storeComment
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
 * @route '/blog/{post}/comments'
@@ -236,28 +162,6 @@ storeComment.post = (args: { post: string | number | { id: string | number } } |
     url: storeComment.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::storeComment
-* @see app/Http/Controllers/Blog/PublicBlogController.php:77
-* @route '/blog/{post}/comments'
-*/
-const storeCommentForm = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: storeComment.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::storeComment
-* @see app/Http/Controllers/Blog/PublicBlogController.php:77
-* @route '/blog/{post}/comments'
-*/
-storeCommentForm.post = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: storeComment.url(args, options),
-    method: 'post',
-})
-
-storeComment.form = storeCommentForm
 
 const PublicBlogController = { index, show, storeComment }
 

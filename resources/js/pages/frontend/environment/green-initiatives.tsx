@@ -99,7 +99,7 @@ export default function GreenInitiatives() {
                                     </h3>
                                     <p className="font-montserrat text-sm leading-relaxed text-black">
                                         19,85,786 kWh of grid electricity used in FY 2025–26, saving 7,94,314 litres of diesel and
-                                        reducing ~675 tonnes of CO₂e. Cumulative: 1,16,18,585 KWH used, 46,47,434 litres diesel
+                                        reducing ~675 tonnes of CO₂e. Cumulative: 1,16,18,585 kWh used, 46,47,434 litres diesel
                                         saved and approximately 3,950 tonnes CO₂e avoided.
                                     </p>
                                 </div>
@@ -344,8 +344,8 @@ export default function GreenInitiatives() {
                                     <span className="mt-2 size-1.5 shrink-0 rounded-full bg-black" />
                                     <span>
                                         <strong>Bulk Logistics:</strong> By delivering cement via bulk tankers directly into silos,
-                                        the project eliminated the use of 1,632,200 plastic bags in FY 2025-26, bringing the
-                                        cumulative total to over 3.6 million bags.
+                                        the project eliminated the use of 16,32,200 plastic bags in FY 2025-26, bringing the
+                                        cumulative total to over 36 lakh bags.
                                     </span>
                                 </li>
                                 <li className="flex gap-2">

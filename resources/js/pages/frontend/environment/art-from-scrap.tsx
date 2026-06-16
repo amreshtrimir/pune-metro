@@ -15,13 +15,13 @@ const highlights = [
         image: '/art-from-scrap/item-2.png',
         title: 'Topsoil to Farmland',
         description:
-            'We preserved and donated 170,450 cubic meters of excavated topsoil to local farmers, converting barren land into fertile agricultural plots. What is considered waste for a metro project becomes wealth for the community.',
+            'We preserved and utilised 1,70,450 cubic meters of excavated topsoil- 60,000 cubic meters donated to local farmers to convert barren land into fertile plots, and 1,00,000 cubic meters reserved for onsite landscaping',
     },
     {
         image: '/art-from-scrap/item-3.png',
         title: 'Steel Scrap Reuse',
         description:
-            'Approximately 200 tonnes of steel waste were straightened and reused for temporary site works. We are also exploring the use of scrap steel for sculptures and installations that reflect the industrial character of metro construction.',
+            'Approximately 200 tonnes of steel waste were straightened and reused for temporary site works. We are also exploring the use of scrap steel for sculptures and installations that reflect the industrial character of metro construction. We are also exploring the use of scrap steel for sculptures and installations that reflect the industrial character of metro construction',
     },
     {
         image: '/art-from-scrap/item-4.png',

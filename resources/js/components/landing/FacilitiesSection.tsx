@@ -5,32 +5,68 @@ const facilities = [
     {
         icon: '/landing/facilities-icons/last-mile-connectivity.png',
         title: 'Last Mile Connectivity',
-        items: ['Cycle Connectivity', 'Rapido / Uber Access', 'PMPML Integration', 'Auto Rickshaw Support', 'MSRTC Connectivity'],
+        items: [
+            'PMPML Bus Integration',
+            'Auto Rickshaw Pickup Zones',
+            'Cab and Rapido Access',
+            'Cycle Parking at Stations',
+            'Pedestrian Walkways',
+        ],
     },
     {
         icon: '/landing/facilities-icons/passenger-comfort.png',
         title: 'Passenger Comfort',
-        items: ['Air-conditioned Coaches', 'Spacious Interiors', 'Smooth Boarding'],
+        items: [
+            'Air-Conditioned Coaches',
+            'Women-Only Coach Sections',
+            'Spacious and Clean Interiors',
+            'Comfortable Waiting Areas',
+            'Step-Free Easy Boarding',
+        ],
     },
     {
         icon: '/landing/facilities-icons/accessibility.png',
         title: 'Accessibility',
-        items: ['Lifts & Escalators', 'Tactile Flooring', 'Inclusive Access'],
+        items: [
+            'Lifts and Escalators',
+            'Wheelchair Ramps at Entry',
+            'Tactile Paths for Visually Impaired',
+            'Priority Seating Available',
+            'Accessible Toilets at Stations',
+        ],
     },
     {
         icon: '/landing/facilities-icons/smart-features.png',
         title: 'Smart Features',
-        items: ['Real-time Updates', 'Digital Displays', 'Audio Announcements'],
+        items: [
+            'Live Train Updates on Displays',
+            'Audio in Marathi, Hindi, English',
+            'Route Maps at Every Point',
+            'Emergency Help Points',
+            'Digital Ticketing Options',
+        ],
     },
     {
         icon: '/landing/facilities-icons/convenience-services.png',
         title: 'Convenience & Services',
-        items: ['Clean Spaces', 'Easy Movement', 'Commuter Amenities'],
+        items: [
+            'Clean Restrooms for All',
+            'Drinking Water at Stations',
+            'Waste Segregation Systems',
+            'Female Security Staff Available',
+            'Assistance for Senior Citizens',
+        ],
     },
     {
         icon: '/landing/facilities-icons/ticketing-entry.png',
         title: 'Ticketing & Entry',
-        items: ['Smart Card Access', 'QR Ticketing', 'Automated Gates'],
+        items: [
+            'Ticket Counters at Stations',
+            'QR Ticketing via WhatsApp',
+            'One Pune Card Accepted',
+            'Ticket Vending Machines',
+            'Automatic Entry Gates',
+        ],
     },
 ];
 

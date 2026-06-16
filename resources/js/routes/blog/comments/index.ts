@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Blog\PublicBlogController::store
 * @see app/Http/Controllers/Blog/PublicBlogController.php:77
@@ -56,28 +56,6 @@ store.post = (args: { post: string | number | { id: string | number } } | [post:
     url: store.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::store
-* @see app/Http/Controllers/Blog/PublicBlogController.php:77
-* @route '/blog/{post}/comments'
-*/
-const storeForm = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Blog\PublicBlogController::store
-* @see app/Http/Controllers/Blog/PublicBlogController.php:77
-* @route '/blog/{post}/comments'
-*/
-storeForm.post = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(args, options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 const comments = {
     store: Object.assign(store, store),

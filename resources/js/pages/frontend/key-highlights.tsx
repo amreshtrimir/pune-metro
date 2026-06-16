@@ -6,22 +6,22 @@ import QuoteBanner from '@/components/landing/QuoteBanner';
 const highlights = [
     {
         title: 'Infrastructure & Connectivity',
-        bullets: ['23.3 km elevated corridor', '23 stations', 'Hinjewadi to Shivajinagar', 'Covers key IT and business hubs'],
+        bullets: ['23.3 km elevated corridor', '23 stations', 'Hinjewadi to Shivajinagar', 'Covers key IT and business hubs', 'Precision-engineered elevated trackway'],
         icon: '/project-profile/key-heighlight-icons/flexible-infrastructure 1.png',
     },
     {
         title: 'Operation & Maintenance (O&M)',
-        bullets: ['O&M Partner: M/s Keolis', 'Rooftop Solar at Depot & Stations', 'All-Women Pilot Workforce'],
+        bullets: ['O&M Partner: M/s Keolis', 'All-Women Pilot Workforce', 'Rooftop Solar at Depot & Stations'],
         icon: '/project-profile/key-heighlight-icons/connectivity 1.png',
     },
     {
         title: 'Technology',
-        bullets: ['CBTC signalling', '750V DC electrification','Modern stainless-steel rolling stock', '⁠Precision-engineered elevated trackway'],
+        bullets: ['CBTC signalling', '750V DC electrification','Modern stainless-steel rolling stock', '⁠Precision-engineered elevated trackway', 'Siemens Project Ventures GmbH for Systems and Signalling', 'Alstom for Rolling Stock', 'Data Metrics for IT and Data Systems'],
         icon: '/project-profile/key-heighlight-icons/ad-tech 1.png',
     },
     {
         title: 'Project Model',
-        bullets: ['DBFOT PPP framework', 'PITCMRL as Concessionaire (Tata Group + Siemens AG)', 'Tata Projects Limited (TPL) as EPC Contractor', 'Siemens Project Ventures GmbH for Systems and Signalling', 'Alstom for Rolling Stock', 'Data Metrics for IT and Data Systems'],
+        bullets: ['DBFOT PPP framework', 'PITCMRL as Concessionaire (Tata Group + Siemens AG)', 'Tata Projects Limited (TPL) as EPC Contractor', ],
         icon: '/project-profile/key-heighlight-icons/3d-model-viewer 1.png',
     },
 ];
@@ -141,7 +141,7 @@ export default function KeyHighlights() {
                     />
                     {/* Desktop image */}
                     <img
-                        src="/key-highlight/chronology/chronology-desktop.png"
+                        src="/Pune-Metro-milestone-map-B-png.png"
                         alt="Chronology of Major Milestones"
                         className="mt-6 w-full hidden md:block"
                     />

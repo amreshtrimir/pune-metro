@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
 * @see app/Http/Controllers/PagesController.php:166
@@ -44,43 +44,6 @@ termsAndConditions.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
-* @route '/legal/terms-and-conditions'
-*/
-const termsAndConditionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: termsAndConditions.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
-* @route '/legal/terms-and-conditions'
-*/
-termsAndConditionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: termsAndConditions.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
-* @route '/legal/terms-and-conditions'
-*/
-termsAndConditionsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: termsAndConditions.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-termsAndConditions.form = termsAndConditionsForm
-
-/**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
 * @see app/Http/Controllers/PagesController.php:171
 * @route '/legal/privacy-policy'
@@ -123,43 +86,6 @@ privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
     url: privacyPolicy.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
-* @route '/legal/privacy-policy'
-*/
-const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: privacyPolicy.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
-* @route '/legal/privacy-policy'
-*/
-privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: privacyPolicy.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
-* @route '/legal/privacy-policy'
-*/
-privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: privacyPolicy.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-privacyPolicy.form = privacyPolicyForm
 
 const legal = {
     termsAndConditions: Object.assign(termsAndConditions, termsAndConditions),

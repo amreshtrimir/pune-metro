@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Slider\SliderController::store
 * @see app/Http/Controllers/Slider/SliderController.php:58
@@ -58,28 +58,6 @@ store.post = (args: { slider: string | number | { id: string | number } } | [sli
 })
 
 /**
-* @see \App\Http\Controllers\Slider\SliderController::store
-* @see app/Http/Controllers/Slider/SliderController.php:58
-* @route '/dashboard/sliders/{slider}/slides'
-*/
-const storeForm = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Slider\SliderController::store
-* @see app/Http/Controllers/Slider/SliderController.php:58
-* @route '/dashboard/sliders/{slider}/slides'
-*/
-storeForm.post = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(args, options),
-    method: 'post',
-})
-
-store.form = storeForm
-
-/**
 * @see \App\Http\Controllers\Slider\SliderController::update
 * @see app/Http/Controllers/Slider/SliderController.php:65
 * @route '/dashboard/sliders/{slider}/slides/{slide}'
@@ -135,38 +113,6 @@ update.put = (args: { slider: string | number | { id: string | number }, slide: 
 })
 
 /**
-* @see \App\Http\Controllers\Slider\SliderController::update
-* @see app/Http/Controllers/Slider/SliderController.php:65
-* @route '/dashboard/sliders/{slider}/slides/{slide}'
-*/
-const updateForm = (args: { slider: string | number | { id: string | number }, slide: string | number | { id: string | number } } | [slider: string | number | { id: string | number }, slide: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Slider\SliderController::update
-* @see app/Http/Controllers/Slider/SliderController.php:65
-* @route '/dashboard/sliders/{slider}/slides/{slide}'
-*/
-updateForm.put = (args: { slider: string | number | { id: string | number }, slide: string | number | { id: string | number } } | [slider: string | number | { id: string | number }, slide: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \App\Http\Controllers\Slider\SliderController::destroy
 * @see app/Http/Controllers/Slider/SliderController.php:72
 * @route '/dashboard/sliders/{slider}/slides/{slide}'
@@ -220,38 +166,6 @@ destroy.delete = (args: { slider: string | number | { id: string | number }, sli
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \App\Http\Controllers\Slider\SliderController::destroy
-* @see app/Http/Controllers/Slider/SliderController.php:72
-* @route '/dashboard/sliders/{slider}/slides/{slide}'
-*/
-const destroyForm = (args: { slider: string | number | { id: string | number }, slide: string | number | { id: string | number } } | [slider: string | number | { id: string | number }, slide: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Slider\SliderController::destroy
-* @see app/Http/Controllers/Slider/SliderController.php:72
-* @route '/dashboard/sliders/{slider}/slides/{slide}'
-*/
-destroyForm.delete = (args: { slider: string | number | { id: string | number }, slide: string | number | { id: string | number } } | [slider: string | number | { id: string | number }, slide: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 /**
 * @see \App\Http\Controllers\Slider\SliderController::reorder
@@ -310,28 +224,6 @@ reorder.post = (args: { slider: string | number | { id: string | number } } | [s
     url: reorder.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Slider\SliderController::reorder
-* @see app/Http/Controllers/Slider/SliderController.php:79
-* @route '/dashboard/sliders/{slider}/slides/reorder'
-*/
-const reorderForm = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorder.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Slider\SliderController::reorder
-* @see app/Http/Controllers/Slider/SliderController.php:79
-* @route '/dashboard/sliders/{slider}/slides/reorder'
-*/
-reorderForm.post = (args: { slider: string | number | { id: string | number } } | [slider: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorder.url(args, options),
-    method: 'post',
-})
-
-reorder.form = reorderForm
 
 const slides = {
     store: Object.assign(store, store),

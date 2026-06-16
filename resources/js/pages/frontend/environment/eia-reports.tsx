@@ -9,19 +9,19 @@ const keyReports = [
         icon: '/evvironment/eia-report-key-section-icons/environment-1.png',
         title: 'Environmental Impact Assessment Report',
         description:
-            'The full project Alignment serves as a cornerstone for urban decarbonization. By integrating the construction and operational phases, the project is set to remove approximately 158,431 vehicles from the road every day, resulting in a massive annual reduction of ~128,433 tCO₂e. To further ensure long-term sustainability, the project includes a robust renewable energy strategy with 7.67 MW of solar power currently planned for installation.',
+            'The full project Alignment serves as a cornerstone for urban decarbonization. By integrating the construction and operational phases, resulting in a massive To further ensure long-term sustainability, the project includes a robust renewable energy strategy with 7.67 MW of solar power currently planned for installation.',
     },
     {
         icon: '/evvironment/eia-report-key-section-icons/environment-2.png',
         title: 'Environmental Management Plan (EMP) Report',
         description:
-            'Our commitment to operational excellence is reflected in our 100% compliance record with both MoEFCC and MPCB regulations. This is achieved through a heavy investment in human capital, totaling 3,880 man-hours of environment-specific training for our workforce. Beyond the site boundaries, we actively foster local stewardship by engaging with over 50 students through community outreach and environmental education initiatives.',
+            'Our commitment to operational excellence is reflected in our regulations. This is achieved through a heavy investment in human capital, totaling 3,880 man-hours of environment-specific training for our workforce. Beyond the site boundaries, we actively foster local stewardship by engaging with over 50 students through community outreach and environmental education initiatives.',
     },
     {
         icon: '/evvironment/eia-report-key-section-icons/environment-3.png',
         title: 'Key Environmental Reports & Performance Report',
         description:
-            'The latest monitoring cycle highlights significant resource efficiency and carbon mitigation. In the past fiscal year, we utilized 1,985,786 KWH of grid electricity while successfully saving 794,314 litres of diesel. Our water conservation efforts have been equally impactful, with 7,696 KL recycled via STP and an additional 23,205 KL saved through optimized chemical processes, collectively avoiding approximately 675 tCO₂e.',
+            'The latest monitoring cycle highlights significant resource efficiency and carbon mitigation. In the past fiscal year, we utilized 19,85,786 kWh of grid electricity while successfully saving 7,94,314 litres of diesel. Our water conservation efforts have been equally impactful, with 7,696 KL recycled via STP and an additional 23,205 KL saved through optimized chemical processes, collectively avoiding approximately 675 tCO₂e.',
     },
     {
         icon: '/evvironment/eia-report-key-section-icons/environment-4.png',
@@ -33,7 +33,7 @@ const keyReports = [
         icon: '/evvironment/eia-report-key-section-icons/environment-5.png',
         title: 'Construction & Demolition Waste Management Report',
         description:
-            'Adhering to a strict "Zero Landfill" policy, our waste management strategy emphasizes the circular economy. By optimizing our material stream, we have eliminated the use of 1,632,200 cement bags and successfully reused ~200 tonnes of steel. Furthermore, we maintain a rigorous plastic recovery programme, collecting roughly 1,000 kg of single-use plastic every month to prevent environmental contamination.',
+            'Adhering to a strict "Zero Landfill" policy, our waste management strategy emphasizes the circular economy. By optimizing our material stream, we have eliminated the use of 16,32,200 cement bags and successfully reused ~200 tonnes of steel. Furthermore, we maintain a rigorous plastic recovery programme, collecting roughly 1,000 kg of single-use plastic every month to prevent environmental contamination.',
     },
 ];
 

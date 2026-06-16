@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::home
 * @see app/Http/Controllers/PagesController.php:22
@@ -42,43 +42,6 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: home.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:22
-* @route '/'
-*/
-const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: home.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:22
-* @route '/'
-*/
-homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: home.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::home
-* @see app/Http/Controllers/PagesController.php:22
-* @route '/'
-*/
-homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: home.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-home.form = homeForm
 
 /**
 * @see \App\Http\Controllers\PagesController::contact
@@ -125,43 +88,6 @@ contact.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:37
-* @route '/contact'
-*/
-const contactForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: contact.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:37
-* @route '/contact'
-*/
-contactForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: contact.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::contact
-* @see app/Http/Controllers/PagesController.php:37
-* @route '/contact'
-*/
-contactForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: contact.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-contact.form = contactForm
-
-/**
 * @see \App\Http\Controllers\PagesController::overview
 * @see app/Http/Controllers/PagesController.php:32
 * @route '/about/overview'
@@ -204,43 +130,6 @@ overview.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: overview.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:32
-* @route '/about/overview'
-*/
-const overviewForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: overview.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:32
-* @route '/about/overview'
-*/
-overviewForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: overview.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::overview
-* @see app/Http/Controllers/PagesController.php:32
-* @route '/about/overview'
-*/
-overviewForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: overview.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-overview.form = overviewForm
 
 /**
 * @see \App\Http\Controllers\PagesController::board
@@ -287,43 +176,6 @@ board.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:42
-* @route '/about/board'
-*/
-const boardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: board.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:42
-* @route '/about/board'
-*/
-boardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: board.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::board
-* @see app/Http/Controllers/PagesController.php:42
-* @route '/about/board'
-*/
-boardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: board.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-board.form = boardForm
-
-/**
 * @see \App\Http\Controllers\PagesController::projectUpdate
 * @see app/Http/Controllers/PagesController.php:49
 * @route '/project-profile/update'
@@ -366,43 +218,6 @@ projectUpdate.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
     url: projectUpdate.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::projectUpdate
-* @see app/Http/Controllers/PagesController.php:49
-* @route '/project-profile/update'
-*/
-const projectUpdateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: projectUpdate.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::projectUpdate
-* @see app/Http/Controllers/PagesController.php:49
-* @route '/project-profile/update'
-*/
-projectUpdateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: projectUpdate.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::projectUpdate
-* @see app/Http/Controllers/PagesController.php:49
-* @route '/project-profile/update'
-*/
-projectUpdateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: projectUpdate.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-projectUpdate.form = projectUpdateForm
 
 /**
 * @see \App\Http\Controllers\PagesController::keyHighlights
@@ -449,43 +264,6 @@ keyHighlights.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::keyHighlights
-* @see app/Http/Controllers/PagesController.php:56
-* @route '/project-profile/highlights'
-*/
-const keyHighlightsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: keyHighlights.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::keyHighlights
-* @see app/Http/Controllers/PagesController.php:56
-* @route '/project-profile/highlights'
-*/
-keyHighlightsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: keyHighlights.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::keyHighlights
-* @see app/Http/Controllers/PagesController.php:56
-* @route '/project-profile/highlights'
-*/
-keyHighlightsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: keyHighlights.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-keyHighlights.form = keyHighlightsForm
-
-/**
 * @see \App\Http\Controllers\PagesController::routeMap
 * @see app/Http/Controllers/PagesController.php:68
 * @route '/project-profile/route-map'
@@ -528,43 +306,6 @@ routeMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: routeMap.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:68
-* @route '/project-profile/route-map'
-*/
-const routeMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: routeMap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:68
-* @route '/project-profile/route-map'
-*/
-routeMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: routeMap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::routeMap
-* @see app/Http/Controllers/PagesController.php:68
-* @route '/project-profile/route-map'
-*/
-routeMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: routeMap.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-routeMap.form = routeMapForm
 
 /**
 * @see \App\Http\Controllers\PagesController::photoGallery
@@ -611,43 +352,6 @@ photoGallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::photoGallery
-* @see app/Http/Controllers/PagesController.php:61
-* @route '/project-profile/photo-gallery'
-*/
-const photoGalleryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: photoGallery.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::photoGallery
-* @see app/Http/Controllers/PagesController.php:61
-* @route '/project-profile/photo-gallery'
-*/
-photoGalleryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: photoGallery.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::photoGallery
-* @see app/Http/Controllers/PagesController.php:61
-* @route '/project-profile/photo-gallery'
-*/
-photoGalleryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: photoGallery.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-photoGallery.form = photoGalleryForm
-
-/**
 * @see \App\Http\Controllers\PagesController::stationList
 * @see app/Http/Controllers/PagesController.php:73
 * @route '/route/station-list'
@@ -690,43 +394,6 @@ stationList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: stationList.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:73
-* @route '/route/station-list'
-*/
-const stationListForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationList.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:73
-* @route '/route/station-list'
-*/
-stationListForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationList.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationList
-* @see app/Http/Controllers/PagesController.php:73
-* @route '/route/station-list'
-*/
-stationListForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationList.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stationList.form = stationListForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationDetail
@@ -791,43 +458,6 @@ stationDetail.head = (args: { slug: string | number } | [slug: string | number ]
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:78
-* @route '/route/station/{slug}'
-*/
-const stationDetailForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationDetail.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:78
-* @route '/route/station/{slug}'
-*/
-stationDetailForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationDetail.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationDetail
-* @see app/Http/Controllers/PagesController.php:78
-* @route '/route/station/{slug}'
-*/
-stationDetailForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationDetail.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stationDetail.form = stationDetailForm
-
-/**
 * @see \App\Http\Controllers\PagesController::timeTable
 * @see app/Http/Controllers/PagesController.php:111
 * @route '/passenger-info/time-table'
@@ -870,43 +500,6 @@ timeTable.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: timeTable.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:111
-* @route '/passenger-info/time-table'
-*/
-const timeTableForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: timeTable.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:111
-* @route '/passenger-info/time-table'
-*/
-timeTableForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: timeTable.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::timeTable
-* @see app/Http/Controllers/PagesController.php:111
-* @route '/passenger-info/time-table'
-*/
-timeTableForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: timeTable.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-timeTable.form = timeTableForm
 
 /**
 * @see \App\Http\Controllers\PagesController::fareTable
@@ -953,43 +546,6 @@ fareTable.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:116
-* @route '/passenger-info/fare-table'
-*/
-const fareTableForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: fareTable.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:116
-* @route '/passenger-info/fare-table'
-*/
-fareTableForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: fareTable.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::fareTable
-* @see app/Http/Controllers/PagesController.php:116
-* @route '/passenger-info/fare-table'
-*/
-fareTableForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: fareTable.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-fareTable.form = fareTableForm
-
-/**
 * @see \App\Http\Controllers\PagesController::dosAndDonts
 * @see app/Http/Controllers/PagesController.php:121
 * @route '/passenger-info/dos-and-donts'
@@ -1032,43 +588,6 @@ dosAndDonts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: dosAndDonts.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:121
-* @route '/passenger-info/dos-and-donts'
-*/
-const dosAndDontsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dosAndDonts.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:121
-* @route '/passenger-info/dos-and-donts'
-*/
-dosAndDontsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dosAndDonts.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::dosAndDonts
-* @see app/Http/Controllers/PagesController.php:121
-* @route '/passenger-info/dos-and-donts'
-*/
-dosAndDontsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dosAndDonts.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-dosAndDonts.form = dosAndDontsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::itemsNotToCarry
@@ -1115,43 +634,6 @@ itemsNotToCarry.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =>
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:126
-* @route '/passenger-info/items-not-to-carry'
-*/
-const itemsNotToCarryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: itemsNotToCarry.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:126
-* @route '/passenger-info/items-not-to-carry'
-*/
-itemsNotToCarryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: itemsNotToCarry.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::itemsNotToCarry
-* @see app/Http/Controllers/PagesController.php:126
-* @route '/passenger-info/items-not-to-carry'
-*/
-itemsNotToCarryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: itemsNotToCarry.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-itemsNotToCarry.form = itemsNotToCarryForm
-
-/**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:131
 * @route '/passenger-info/offences-and-penalties'
@@ -1194,43 +676,6 @@ offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head
     url: offencesAndPenalties.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:131
-* @route '/passenger-info/offences-and-penalties'
-*/
-const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: offencesAndPenalties.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:131
-* @route '/passenger-info/offences-and-penalties'
-*/
-offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: offencesAndPenalties.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::offencesAndPenalties
-* @see app/Http/Controllers/PagesController.php:131
-* @route '/passenger-info/offences-and-penalties'
-*/
-offencesAndPenaltiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: offencesAndPenalties.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-offencesAndPenalties.form = offencesAndPenaltiesForm
 
 /**
 * @see \App\Http\Controllers\PagesController::lostAndFound
@@ -1277,43 +722,6 @@ lostAndFound.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:136
-* @route '/passenger-info/lost-and-found'
-*/
-const lostAndFoundForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: lostAndFound.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:136
-* @route '/passenger-info/lost-and-found'
-*/
-lostAndFoundForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: lostAndFound.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::lostAndFound
-* @see app/Http/Controllers/PagesController.php:136
-* @route '/passenger-info/lost-and-found'
-*/
-lostAndFoundForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: lostAndFound.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-lostAndFound.form = lostAndFoundForm
-
-/**
 * @see \App\Http\Controllers\PagesController::customerService
 * @see app/Http/Controllers/PagesController.php:141
 * @route '/passenger-info/customer-service'
@@ -1356,43 +764,6 @@ customerService.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =>
     url: customerService.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:141
-* @route '/passenger-info/customer-service'
-*/
-const customerServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: customerService.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:141
-* @route '/passenger-info/customer-service'
-*/
-customerServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: customerService.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::customerService
-* @see app/Http/Controllers/PagesController.php:141
-* @route '/passenger-info/customer-service'
-*/
-customerServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: customerService.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-customerService.form = customerServiceForm
 
 /**
 * @see \App\Http\Controllers\PagesController::lastMileConnectivity
@@ -1439,43 +810,6 @@ lastMileConnectivity.head = (options?: RouteQueryOptions): RouteDefinition<'head
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:146
-* @route '/passenger-info/last-mile-connectivity'
-*/
-const lastMileConnectivityForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: lastMileConnectivity.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:146
-* @route '/passenger-info/last-mile-connectivity'
-*/
-lastMileConnectivityForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: lastMileConnectivity.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::lastMileConnectivity
-* @see app/Http/Controllers/PagesController.php:146
-* @route '/passenger-info/last-mile-connectivity'
-*/
-lastMileConnectivityForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: lastMileConnectivity.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-lastMileConnectivity.form = lastMileConnectivityForm
-
-/**
 * @see \App\Http\Controllers\PagesController::retailFnb
 * @see app/Http/Controllers/PagesController.php:151
 * @route '/passenger-info/retail-fnb'
@@ -1518,43 +852,6 @@ retailFnb.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: retailFnb.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:151
-* @route '/passenger-info/retail-fnb'
-*/
-const retailFnbForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: retailFnb.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:151
-* @route '/passenger-info/retail-fnb'
-*/
-retailFnbForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: retailFnb.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::retailFnb
-* @see app/Http/Controllers/PagesController.php:151
-* @route '/passenger-info/retail-fnb'
-*/
-retailFnbForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: retailFnb.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-retailFnb.form = retailFnbForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationAreaMap
@@ -1601,43 +898,6 @@ stationAreaMap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => 
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:156
-* @route '/passenger-info/station-area-map'
-*/
-const stationAreaMapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationAreaMap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:156
-* @route '/passenger-info/station-area-map'
-*/
-stationAreaMapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationAreaMap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationAreaMap
-* @see app/Http/Controllers/PagesController.php:156
-* @route '/passenger-info/station-area-map'
-*/
-stationAreaMapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationAreaMap.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stationAreaMap.form = stationAreaMapForm
-
-/**
 * @see \App\Http\Controllers\PagesController::passengerAmenities
 * @see app/Http/Controllers/PagesController.php:161
 * @route '/passenger-info/passenger-amenities'
@@ -1682,45 +942,8 @@ passengerAmenities.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:161
-* @route '/passenger-info/passenger-amenities'
-*/
-const passengerAmenitiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: passengerAmenities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:161
-* @route '/passenger-info/passenger-amenities'
-*/
-passengerAmenitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: passengerAmenities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::passengerAmenities
-* @see app/Http/Controllers/PagesController.php:161
-* @route '/passenger-info/passenger-amenities'
-*/
-passengerAmenitiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: passengerAmenities.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-passengerAmenities.form = passengerAmenitiesForm
-
-/**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
+* @see app/Http/Controllers/PagesController.php:181
 * @route '/business-development/station-retail'
 */
 export const stationRetail = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1735,7 +958,7 @@ stationRetail.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
+* @see app/Http/Controllers/PagesController.php:181
 * @route '/business-development/station-retail'
 */
 stationRetail.url = (options?: RouteQueryOptions) => {
@@ -1744,7 +967,7 @@ stationRetail.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
+* @see app/Http/Controllers/PagesController.php:181
 * @route '/business-development/station-retail'
 */
 stationRetail.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1754,50 +977,13 @@ stationRetail.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
+* @see app/Http/Controllers/PagesController.php:181
 * @route '/business-development/station-retail'
 */
 stationRetail.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: stationRetail.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
-* @route '/business-development/station-retail'
-*/
-const stationRetailForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationRetail.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
-* @route '/business-development/station-retail'
-*/
-stationRetailForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationRetail.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::stationRetail
-* @see app/Http/Controllers/PagesController.php:176
-* @route '/business-development/station-retail'
-*/
-stationRetailForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stationRetail.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stationRetail.form = stationRetailForm
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
@@ -1844,43 +1030,6 @@ termsAndConditions.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
-* @route '/legal/terms-and-conditions'
-*/
-const termsAndConditionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: termsAndConditions.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
-* @route '/legal/terms-and-conditions'
-*/
-termsAndConditionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: termsAndConditions.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
-* @route '/legal/terms-and-conditions'
-*/
-termsAndConditionsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: termsAndConditions.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-termsAndConditions.form = termsAndConditionsForm
-
-/**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
 * @see app/Http/Controllers/PagesController.php:171
 * @route '/legal/privacy-policy'
@@ -1925,41 +1074,48 @@ privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
-* @route '/legal/privacy-policy'
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
 */
-const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: privacyPolicy.url(options),
+export const csrPolicy = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: csrPolicy.url(options),
+    method: 'get',
+})
+
+csrPolicy.definition = {
+    methods: ["get","head"],
+    url: '/csr-policy',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
+*/
+csrPolicy.url = (options?: RouteQueryOptions) => {
+    return csrPolicy.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
+*/
+csrPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: csrPolicy.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
-* @route '/legal/privacy-policy'
+* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see app/Http/Controllers/PagesController.php:176
+* @route '/csr-policy'
 */
-privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: privacyPolicy.url(options),
-    method: 'get',
+csrPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: csrPolicy.url(options),
+    method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
-* @route '/legal/privacy-policy'
-*/
-privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: privacyPolicy.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-privacyPolicy.form = privacyPolicyForm
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
@@ -2006,43 +1162,6 @@ eiaReports.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
-* @route '/environment/eia-reports'
-*/
-const eiaReportsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: eiaReports.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
-* @route '/environment/eia-reports'
-*/
-eiaReportsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: eiaReports.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::eiaReports
-* @see app/Http/Controllers/PagesController.php:91
-* @route '/environment/eia-reports'
-*/
-eiaReportsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: eiaReports.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-eiaReports.form = eiaReportsForm
-
-/**
 * @see \App\Http\Controllers\PagesController::carbonCredit
 * @see app/Http/Controllers/PagesController.php:96
 * @route '/environment/carbon-credit'
@@ -2085,43 +1204,6 @@ carbonCredit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: carbonCredit.url(options),
     method: 'head',
 })
-
-/**
-* @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
-* @route '/environment/carbon-credit'
-*/
-const carbonCreditForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: carbonCredit.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
-* @route '/environment/carbon-credit'
-*/
-carbonCreditForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: carbonCredit.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::carbonCredit
-* @see app/Http/Controllers/PagesController.php:96
-* @route '/environment/carbon-credit'
-*/
-carbonCreditForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: carbonCredit.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-carbonCredit.form = carbonCreditForm
 
 /**
 * @see \App\Http\Controllers\PagesController::artFromScrap
@@ -2168,43 +1250,6 @@ artFromScrap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
-* @route '/environment/art-from-scrap'
-*/
-const artFromScrapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: artFromScrap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
-* @route '/environment/art-from-scrap'
-*/
-artFromScrapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: artFromScrap.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::artFromScrap
-* @see app/Http/Controllers/PagesController.php:101
-* @route '/environment/art-from-scrap'
-*/
-artFromScrapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: artFromScrap.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-artFromScrap.form = artFromScrapForm
-
-/**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
 * @see app/Http/Controllers/PagesController.php:106
 * @route '/environment/green-initiatives'
@@ -2248,43 +1293,6 @@ greenInitiatives.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
     method: 'head',
 })
 
-/**
-* @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
-* @route '/environment/green-initiatives'
-*/
-const greenInitiativesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: greenInitiatives.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
-* @route '/environment/green-initiatives'
-*/
-greenInitiativesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: greenInitiatives.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\PagesController::greenInitiatives
-* @see app/Http/Controllers/PagesController.php:106
-* @route '/environment/green-initiatives'
-*/
-greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: greenInitiatives.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-greenInitiatives.form = greenInitiativesForm
-
-const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, termsAndConditions, privacyPolicy, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
+const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, termsAndConditions, privacyPolicy, csrPolicy, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
 
 export default PagesController
