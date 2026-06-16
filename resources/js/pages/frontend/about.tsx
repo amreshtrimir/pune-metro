@@ -37,8 +37,7 @@ export default function About() {
                             deliver a transformative urban transit solution for the city of Pune.
                         </p>
                         <p className="font-montserrat text-sm leading-relaxed text-black">
-                            Pune Metro Line 3, Pune Metro, has developed as a Public-Private Partnership (PPP) project in
-                            partnership with the Pune Metropolitan Region Development Authority (PMRDA). PMRDA has awarded the
+                            Pune Metro Line 3 has been developed as a Public-Private Partnership (PPP) project in collaboration with the Pune Metropolitan Region Development Authority (PMRDA). PMRDA has awarded the
                             Concession to Design Build Finance Operate Transfer (DBFOT) to PITCMRL for a term of 35 years extendable
                             for a further period of 25 years. This is the first project that has been developed under the aegis of the
                             New Metro Policy 2017, which was formulated by the Government of India to encourage Private investment in

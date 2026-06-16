@@ -52,7 +52,7 @@ const mainNavLinks: NavLink[] = [
         children: [
             { label: 'Project Update', href: projectUpdate.url() },
             { label: 'Key Highlights', href: keyHighlights.url() },
-            { label: 'Route Map', href: routeMap.url() },
+            // { label: 'Route Map', href: routeMap.url() },
         ],
     },
     {

@@ -21,7 +21,7 @@ const highlights = [
         image: '/art-from-scrap/item-3.png',
         title: 'Steel Scrap Reuse',
         description:
-            'Approximately 200 tonnes of steel waste were straightened and reused for temporary site works. We are also exploring the use of scrap steel for sculptures and installations that reflect the industrial character of metro construction. We are also exploring the use of scrap steel for sculptures and installations that reflect the industrial character of metro construction',
+            'Approximately 200 tonnes of steel waste were straightened and reused for temporary site works. We are also exploring the use of scrap steel for sculptures and installations that reflect the industrial character of metro construction',
     },
     {
         image: '/art-from-scrap/item-4.png',

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::overview
 * @see app/Http/Controllers/PagesController.php:32
@@ -44,6 +44,43 @@ overview.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\PagesController::overview
+* @see app/Http/Controllers/PagesController.php:32
+* @route '/about/overview'
+*/
+const overviewForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: overview.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::overview
+* @see app/Http/Controllers/PagesController.php:32
+* @route '/about/overview'
+*/
+overviewForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: overview.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::overview
+* @see app/Http/Controllers/PagesController.php:32
+* @route '/about/overview'
+*/
+overviewForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: overview.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+overview.form = overviewForm
+
+/**
 * @see \App\Http\Controllers\PagesController::board
 * @see app/Http/Controllers/PagesController.php:42
 * @route '/about/board'
@@ -86,6 +123,43 @@ board.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: board.url(options),
     method: 'head',
 })
+
+/**
+* @see \App\Http\Controllers\PagesController::board
+* @see app/Http/Controllers/PagesController.php:42
+* @route '/about/board'
+*/
+const boardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: board.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::board
+* @see app/Http/Controllers/PagesController.php:42
+* @route '/about/board'
+*/
+boardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: board.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::board
+* @see app/Http/Controllers/PagesController.php:42
+* @route '/about/board'
+*/
+boardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: board.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+board.form = boardForm
 
 const about = {
     overview: Object.assign(overview, overview),

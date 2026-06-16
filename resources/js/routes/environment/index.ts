@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
 * @see app/Http/Controllers/PagesController.php:91
@@ -42,6 +42,43 @@ eiaReports.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: eiaReports.url(options),
     method: 'head',
 })
+
+/**
+* @see \App\Http\Controllers\PagesController::eiaReports
+* @see app/Http/Controllers/PagesController.php:91
+* @route '/environment/eia-reports'
+*/
+const eiaReportsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: eiaReports.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::eiaReports
+* @see app/Http/Controllers/PagesController.php:91
+* @route '/environment/eia-reports'
+*/
+eiaReportsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: eiaReports.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::eiaReports
+* @see app/Http/Controllers/PagesController.php:91
+* @route '/environment/eia-reports'
+*/
+eiaReportsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: eiaReports.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+eiaReports.form = eiaReportsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::carbonCredit
@@ -88,6 +125,43 @@ carbonCredit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\PagesController::carbonCredit
+* @see app/Http/Controllers/PagesController.php:96
+* @route '/environment/carbon-credit'
+*/
+const carbonCreditForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: carbonCredit.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::carbonCredit
+* @see app/Http/Controllers/PagesController.php:96
+* @route '/environment/carbon-credit'
+*/
+carbonCreditForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: carbonCredit.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::carbonCredit
+* @see app/Http/Controllers/PagesController.php:96
+* @route '/environment/carbon-credit'
+*/
+carbonCreditForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: carbonCredit.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+carbonCredit.form = carbonCreditForm
+
+/**
 * @see \App\Http\Controllers\PagesController::artFromScrap
 * @see app/Http/Controllers/PagesController.php:101
 * @route '/environment/art-from-scrap'
@@ -132,6 +206,43 @@ artFromScrap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\PagesController::artFromScrap
+* @see app/Http/Controllers/PagesController.php:101
+* @route '/environment/art-from-scrap'
+*/
+const artFromScrapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: artFromScrap.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::artFromScrap
+* @see app/Http/Controllers/PagesController.php:101
+* @route '/environment/art-from-scrap'
+*/
+artFromScrapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: artFromScrap.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::artFromScrap
+* @see app/Http/Controllers/PagesController.php:101
+* @route '/environment/art-from-scrap'
+*/
+artFromScrapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: artFromScrap.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+artFromScrap.form = artFromScrapForm
+
+/**
 * @see \App\Http\Controllers\PagesController::greenInitiatives
 * @see app/Http/Controllers/PagesController.php:106
 * @route '/environment/green-initiatives'
@@ -174,6 +285,43 @@ greenInitiatives.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
     url: greenInitiatives.url(options),
     method: 'head',
 })
+
+/**
+* @see \App\Http\Controllers\PagesController::greenInitiatives
+* @see app/Http/Controllers/PagesController.php:106
+* @route '/environment/green-initiatives'
+*/
+const greenInitiativesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: greenInitiatives.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::greenInitiatives
+* @see app/Http/Controllers/PagesController.php:106
+* @route '/environment/green-initiatives'
+*/
+greenInitiativesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: greenInitiatives.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::greenInitiatives
+* @see app/Http/Controllers/PagesController.php:106
+* @route '/environment/green-initiatives'
+*/
+greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: greenInitiatives.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+greenInitiatives.form = greenInitiativesForm
 
 const environment = {
     eiaReports: Object.assign(eiaReports, eiaReports),

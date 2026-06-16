@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Board\BoardMemberController::index
 * @see app/Http/Controllers/Board/BoardMemberController.php:19
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\Board\BoardMemberController::index
+* @see app/Http/Controllers/Board/BoardMemberController.php:19
+* @route '/dashboard/board-members'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::index
+* @see app/Http/Controllers/Board/BoardMemberController.php:19
+* @route '/dashboard/board-members'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::index
+* @see app/Http/Controllers/Board/BoardMemberController.php:19
+* @route '/dashboard/board-members'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \App\Http\Controllers\Board\BoardMemberController::store
 * @see app/Http/Controllers/Board/BoardMemberController.php:26
 * @route '/dashboard/board-members'
@@ -78,11 +115,33 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\Board\BoardMemberController::store
+* @see app/Http/Controllers/Board/BoardMemberController.php:26
+* @route '/dashboard/board-members'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::store
+* @see app/Http/Controllers/Board/BoardMemberController.php:26
+* @route '/dashboard/board-members'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
+
+/**
 * @see \App\Http\Controllers\Board\BoardMemberController::update
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-export const update = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -97,7 +156,7 @@ update.definition = {
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-update.url = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { boardMember: args }
     }
@@ -130,17 +189,49 @@ update.url = (args: { boardMember: string | number | { id: string | number } } |
 * @see app/Http/Controllers/Board/BoardMemberController.php:33
 * @route '/dashboard/board-members/{boardMember}'
 */
-update.put = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::update
+* @see app/Http/Controllers/Board/BoardMemberController.php:33
+* @route '/dashboard/board-members/{boardMember}'
+*/
+const updateForm = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::update
+* @see app/Http/Controllers/Board/BoardMemberController.php:33
+* @route '/dashboard/board-members/{boardMember}'
+*/
+updateForm.put = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Board\BoardMemberController::destroy
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-export const destroy = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -155,7 +246,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-destroy.url = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { boardMember: args }
     }
@@ -188,10 +279,42 @@ destroy.url = (args: { boardMember: string | number | { id: string | number } } 
 * @see app/Http/Controllers/Board/BoardMemberController.php:40
 * @route '/dashboard/board-members/{boardMember}'
 */
-destroy.delete = (args: { boardMember: string | number | { id: string | number } } | [boardMember: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::destroy
+* @see app/Http/Controllers/Board/BoardMemberController.php:40
+* @route '/dashboard/board-members/{boardMember}'
+*/
+const destroyForm = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::destroy
+* @see app/Http/Controllers/Board/BoardMemberController.php:40
+* @route '/dashboard/board-members/{boardMember}'
+*/
+destroyForm.delete = (args: { boardMember: number | { id: number } } | [boardMember: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \App\Http\Controllers\Board\BoardMemberController::reorder
@@ -226,6 +349,28 @@ reorder.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reorder.url(options),
     method: 'post',
 })
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::reorder
+* @see app/Http/Controllers/Board/BoardMemberController.php:47
+* @route '/dashboard/board-members/reorder'
+*/
+const reorderForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reorder.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Board\BoardMemberController::reorder
+* @see app/Http/Controllers/Board/BoardMemberController.php:47
+* @route '/dashboard/board-members/reorder'
+*/
+reorderForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reorder.url(options),
+    method: 'post',
+})
+
+reorder.form = reorderForm
 
 const boardMembers = {
     index: Object.assign(index, index),
