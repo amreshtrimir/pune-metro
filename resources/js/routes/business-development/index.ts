@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
 * @see app/Http/Controllers/PagesController.php:181
@@ -42,6 +42,43 @@ stationRetail.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
     url: stationRetail.url(options),
     method: 'head',
 })
+
+/**
+* @see \App\Http\Controllers\PagesController::stationRetail
+* @see app/Http/Controllers/PagesController.php:181
+* @route '/business-development/station-retail'
+*/
+const stationRetailForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: stationRetail.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::stationRetail
+* @see app/Http/Controllers/PagesController.php:181
+* @route '/business-development/station-retail'
+*/
+stationRetailForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: stationRetail.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::stationRetail
+* @see app/Http/Controllers/PagesController.php:181
+* @route '/business-development/station-retail'
+*/
+stationRetailForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: stationRetail.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+stationRetail.form = stationRetailForm
 
 const businessDevelopment = {
     stationRetail: Object.assign(stationRetail, stationRetail),
