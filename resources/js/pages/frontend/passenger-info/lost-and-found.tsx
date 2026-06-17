@@ -19,7 +19,6 @@ export default function LostAndFound() {
                 srcLg="/banners/items-not-tocarry-lg-new.png"
                 alt="Lost and Found Enquiry - Pune Metro"
             />
-            items-not-tocarry-md-new
             {/* ── Page Title ── */}
             <section className="mb-5 bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-325.75 px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
