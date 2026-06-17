@@ -15,7 +15,7 @@ const stats = [
 export default function RouteMap() {
     const [activeTab, setActiveTab] = useState<'all' | 'line3'>('all');
     const [lightboxOpen, setLightboxOpen] = useState(false);
-    const activeImage = activeTab === 'all' ? '/landing/route-section/map-all-updated-new.png' : '/landing/route-section/map-line-3-new.png';
+    const activeImage = activeTab === 'all' ? '/landing/route-section/map-all-updated-new.png' : '/landing/route-section/map-line-3-new-1.png';
     const activeImageAlt = activeTab === 'all' ? 'Pune Metro All Lines Route Map' : 'Pune Metro Line 3 Route Map';
 
     return (

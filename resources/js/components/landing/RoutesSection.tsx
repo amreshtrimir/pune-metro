@@ -19,7 +19,7 @@ const lines: Line[] = [
     {
         id: 'line1',
         label: 'Line 3',
-        image: '/landing/route-section/map-line-3-new.png',
+        image: '/landing/route-section/map-line-3-new-1.png',
         imageAlt: 'Pune Metro Line 3 Pink — Maan to District Court',
     },
 ];
