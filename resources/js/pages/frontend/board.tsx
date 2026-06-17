@@ -13,7 +13,7 @@ export default function Board({ members }: Props) {
     return (
         <>
             <Head>
-                <title>Board of Directors - Pune Metro</title>
+                <title>Board of Directors - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Meet the Board of Directors of Pune IT City Metro Rail Limited (PITCMRL) — the leaders guiding Pune Metro Line 3."

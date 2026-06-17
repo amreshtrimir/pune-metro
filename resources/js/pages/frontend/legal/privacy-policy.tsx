@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
     return (
         <>
             <Head>
-                <title>Privacy Policy - Pune Metro</title>
+                <title>Privacy Policy - Pune Metro Line 3</title>
                 <meta name="description" content="Read Pune Metro's privacy policy to understand how we collect, use, and protect your personal information." />
             </Head>
 

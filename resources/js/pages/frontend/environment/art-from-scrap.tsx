@@ -41,14 +41,14 @@ export default function ArtFromScrap() {
     return (
         <>
             <Head>
-                <title>Art from Scrap - Pune Metro</title>
+                <title>Art from Scrap - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Discover how Pune Metro Line 3 turns construction by-products into green spaces, community experiences, and creative installations through the Art from Scrap initiative."
                 />
                 <meta
                     name="keywords"
-                    content="Pune Metro Art from Scrap, PITCMRL Sustainability, Circular Economy Metro, Pune Metro Green Initiative"
+                    content="Pune Metro Line 3 Art from Scrap, PITCMRL Sustainability, Circular Economy Metro, Pune Metro Line 3 Green Initiative"
                 />
             </Head>
 

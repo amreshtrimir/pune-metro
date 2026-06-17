@@ -7,7 +7,7 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>About Us - Pune Metro</title>
+                <title>About Us - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Learn about Pune IT City Metro Rail Limited (PITCMRL), a joint venture between Tata Group and Siemens delivering Pune's metro Line 3 under a 35-year DBFOT concession."
@@ -20,7 +20,7 @@ export default function About() {
                 src="/banners/about-banner/about-banner-md.png"
                 srcMd="/banners/about-banner/about-banner-md.png"
                 srcLg="/banners/about-banner/about-banner-lg.png"
-                alt="Pune Metro Train"
+                alt="Pune Metro Line 3 Train"
             />
 
             {/* ── Overview Content ── */}
@@ -178,7 +178,7 @@ export default function About() {
 
             {/* ── Quote Banner ── */}
             <QuoteBanner>
-                &ldquo;Pune Metro is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
+                &ldquo;Pune Metro Line 3 is more than transport, it reflects the rhythm of a smarter, faster city, connecting people to
                 opportunities with greater ease. Designed for comfort, sustainability and efficiency, it transforms everyday
                 travel into a seamless urban experience.&rdquo;
             </QuoteBanner>

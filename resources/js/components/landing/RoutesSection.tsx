@@ -14,7 +14,7 @@ const lines: Line[] = [
         id: 'all',
         label: 'All line',
         image: '/landing/route-section/map-all-updated-new.png',
-        imageAlt: 'Pune Metro Full Network Map',
+        imageAlt: 'Pune Metro Line 3 Full Network Map',
     },
     {
         id: 'line1',
@@ -59,7 +59,7 @@ export default function RoutesSection() {
                 <div ref={headerRef} className={`mb-6 transition-all duration-700 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="mb-4 inline-flex items-center rounded-full border border-white/40 bg-white/10 px-4 py-1.5">
                         <span className="font-montserrat text-xs font-semibold text-white">
-                            Pune Metro Route
+                            Pune Metro Line 3 Route
                         </span>
                     </div>
                     <h2 className="mb-3 font-montserrat text-4xl font-bold text-white lg:text-5xl">

@@ -71,8 +71,8 @@ export default function DosAndDonts() {
     return (
         <>
             <Head>
-                <title>Do's and Don'ts - Pune Metro</title>
-                <meta name="description" content="Learn about the do's and don'ts for Pune Metro passengers to ensure a safe and comfortable journey." />
+                <title>Do's and Don'ts - Pune Metro Line 3</title>
+                <meta name="description" content="Learn about the do's and don'ts for Pune Metro Line 3 passengers to ensure a safe and comfortable journey." />
             </Head>
 
             {/* ── Hero Banner ── */}
@@ -155,7 +155,7 @@ export default function DosAndDonts() {
                     <div className="flex gap-3 rounded-lg bg-[#fdf0f7] px-6 py-5">
                         <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
                         <p className="font-montserrat text-sm font-semibold text-[#e8449a]">
-                            Please note: Pune Metro reserves the right to penalise a passenger who does not follow Metro rules.
+                            Please note: Pune Metro Line 3 reserves the right to penalise a passenger who does not follow Metro rules.
                         </p>
                     </div>
                 </div>

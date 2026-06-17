@@ -14,14 +14,14 @@ export default function GreenInitiatives() {
     return (
         <>
             <Head>
-                <title>Green Initiatives - Pune Metro</title>
+                <title>Green Initiatives - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Discover how Pune Metro Line 3 embeds sustainability into every phase — from energy conservation and water management to waste reduction and community engagement."
                 />
                 <meta
                     name="keywords"
-                    content="Pune Metro Green Initiatives, PITCMRL Sustainability, Energy Conservation, Water Conservation, Pune Metro Environment"
+                    content="Pune Metro Line 3 Green Initiatives, PITCMRL Sustainability, Energy Conservation, Water Conservation, Pune Metro Line 3 Environment"
                 />
             </Head>
 

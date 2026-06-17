@@ -133,7 +133,7 @@ const categories: Category[] = [
         items: [
             'Gas cylinders of any type',
             'Any item posing a threat to passenger safety, public order, or metro operations',
-            'Items prohibited under the Metro Railway (Operation & Maintenance) rules as interpreted by Pune Metro security',
+            'Items prohibited under the Metro Railway (Operation & Maintenance) rules as interpreted by Line 3 security',
         ],
         icon: imgOther,
     },
@@ -177,14 +177,14 @@ export default function ItemsNotToCarry() {
     return (
         <>
             <Head>
-                <title>Items Not to Carry - Pune Metro</title>
+                <title>Items Not to Carry - Pune Metro Line 3</title>
                 <meta
                     name="description"
-                    content="Find out which items are prohibited inside Pune Metro premises and trains. Stay safe and follow Pune Metro's restricted items policy."
+                    content="Find out which items are prohibited inside Pune Metro Line 3 premises and trains. Stay safe and follow Pune Metro's restricted items policy."
                 />
                 <meta
                     name="keywords"
-                    content="Pune Metro prohibited items, items not to carry, restricted items, Pune Metro safety rules"
+                    content="Pune Metro Line 3 prohibited items, items not to carry, restricted items, Pune Metro Line 3 safety rules"
                 />
             </Head>
 

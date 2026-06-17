@@ -17,7 +17,7 @@ export default function CustomerService() {
     return (
         <>
             <Head>
-                <title>Customer Service - Pune Metro</title>
+                <title>Customer Service - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Learn about Pune Metro Line 3's commitment to safe, reliable, and comfortable travel experience for every passenger."
@@ -71,7 +71,7 @@ export default function CustomerService() {
                             <h2 className="mb-2 font-montserrat text-base font-semibold text-black">Contact Us</h2>
                             <p className="font-inter text-sm text-black">
                                 If you have any feedback or complaints, you can reach us on our helpline{' '}
-                                <span className="font-semibold text-black">(xxxxxxxx)</span>, write to us at{' '}
+                                <span className="font-semibold text-black">020 65525000</span>, write to us at{' '}
                                 <a href="mailto:contactPunemetro@tatarealty.in" className="font-semibold text-brand hover:underline">
                                    contactPunemetro@tatarealty.in
                                 </a>

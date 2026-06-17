@@ -41,14 +41,14 @@ export default function EiaReports() {
     return (
         <>
             <Head>
-                <title>EIA Reports - Pune Metro</title>
+                <title>EIA Reports - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Explore the Environmental Impact Assessment (EIA) reports for Pune Metro Line 3, covering compliance, sustainability, and environmental stewardship."
                 />
                 <meta
                     name="keywords"
-                    content="Pune Metro EIA, Environmental Impact Assessment, Pune Metro Environment, PITCMRL EIA, Metro Line 3 Sustainability"
+                    content="Pune Metro Line 3 EIA, Environmental Impact Assessment, Pune Metro Line 3 Environment, PITCMRL EIA, Metro Line 3 Sustainability"
                 />
             </Head>
 
@@ -57,7 +57,7 @@ export default function EiaReports() {
                 src="/banners/environment/environment-banner-md.png"
                 srcMd="/banners/environment/environment-banner-md.png"
                 srcLg="/banners/environment/environment-banner-lg.png"
-                alt="Pune Metro Environment"
+                alt="Pune Metro Line 3 Environment"
             />
 
             {/* ── Page Title + Intro ── */}

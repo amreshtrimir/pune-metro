@@ -22,6 +22,8 @@ const facilities = [
             'Spacious and Clean Interiors',
             'Comfortable Waiting Areas',
             'Step-Free Easy Boarding',
+            'First aid available at all stations',
+            'Occupational Health Centre available at few stations',
         ],
     },
     {
@@ -79,7 +81,10 @@ export default function FacilitiesSection() {
             <div className="mx-auto max-w-360 px-6 lg:px-16">
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
                     {/* Left: sticky header */}
-                    <div ref={leftRef} className={`lg:sticky lg:top-24 lg:self-start transition-all duration-700 ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <div
+                        ref={leftRef}
+                        className={`transition-all duration-700 lg:sticky lg:top-24 lg:self-start ${leftInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                    >
                         <div className="mb-4 inline-flex items-center rounded-full bg-brand/10 px-4 py-1.5">
                             <span className="font-montserrat text-xs font-semibold text-brand">
                                 Metro Facilities
@@ -89,14 +94,15 @@ export default function FacilitiesSection() {
                             Facilities
                         </h2>
                         <p className="font-montserrat text-sm leading-relaxed text-black">
-                            Enjoy modern station facilities designed for comfort,
-                            convenience and accessibility at every step. From clean
-                            spaces to smart services, Pune Metro ensures a safe and
-                            hassle-free travel experience.
+                            Enjoy modern station facilities designed for
+                            comfort, convenience and accessibility at every
+                            step. From clean spaces to smart services, Pune
+                            Metro Line 3 ensures a safe and hassle-free travel
+                            experience.
                         </p>
                         <a
                             href={passengerAmenities.url()}
-                            className="inline-block rounded-md bg-brand-dark px-7 py-3 mt-4 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                            className="mt-4 inline-block rounded-md bg-brand-dark px-7 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
                         >
                             Know More
                         </a>
@@ -104,19 +110,39 @@ export default function FacilitiesSection() {
 
                     {/* Right: 2-column card grid */}
                     <div className="lg:col-span-2">
-                        <div ref={cardsRef} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: '1fr' }}>
+                        <div
+                            ref={cardsRef}
+                            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                            style={{ gridAutoRows: '1fr' }}
+                        >
                             {facilities.map((facility, i) => (
                                 <div
                                     key={facility.title}
-                                    className={`flex h-full flex-col rounded-2xl p-5 transition-all duration-500 hover:shadow-md ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                                    style={{ background: '#FEE9F4', transitionDelay: cardsInView ? `${i * 80}ms` : '0ms' }}
+                                    className={`flex h-full flex-col rounded-2xl p-5 transition-all duration-500 hover:shadow-md ${cardsInView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                                    style={{
+                                        background: '#FEE9F4',
+                                        transitionDelay: cardsInView
+                                            ? `${i * 80}ms`
+                                            : '0ms',
+                                    }}
                                 >
                                     {/* Icon */}
                                     <div
                                         className="mb-3 flex items-center justify-center rounded-xl"
-                                        style={{ width: '44px', height: '44px', background: '#E8449A' }}
+                                        style={{
+                                            width: '44px',
+                                            height: '44px',
+                                            background: '#E8449A',
+                                        }}
                                     >
-                                        <img src={facility.icon} alt={facility.title} className="h-5 w-5 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+                                        <img
+                                            src={facility.icon}
+                                            alt={facility.title}
+                                            className="h-5 w-5 object-contain"
+                                            style={{
+                                                filter: 'brightness(0) invert(1)',
+                                            }}
+                                        />
                                     </div>
 
                                     <h3 className="mb-2 font-montserrat text-sm font-semibold text-gray-900">

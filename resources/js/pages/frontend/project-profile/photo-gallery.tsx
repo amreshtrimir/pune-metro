@@ -242,7 +242,7 @@ export default function PhotoGallery({ albums }: Props) {
                 />
             )}
             <Head>
-                <title>Photo Gallery - Pune Metro</title>
+                <title>Photo Gallery - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Explore the photo gallery of Pune IT City Metro Rail Limited showcasing key events, green initiatives, and community activities."

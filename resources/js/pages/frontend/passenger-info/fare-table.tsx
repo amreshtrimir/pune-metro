@@ -5,8 +5,8 @@ export default function FareTable() {
     return (
         <>
             <Head>
-                <title>Fare Table / Ticket Rules - Pune Metro</title>
-                <meta name="description" content="View the Pune Metro fare table and ticket rules for all routes." />
+                <title>Fare Table / Ticket Rules - Pune Metro Line 3</title>
+                <meta name="description" content="View the Pune Metro Line 3 fare table and ticket rules for all routes." />
             </Head>
 
             {/* ── Hero Banner ── */}

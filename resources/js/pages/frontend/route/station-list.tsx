@@ -36,7 +36,7 @@ export default function StationList() {
     return (
         <>
             <Head>
-                <title>Station List - Pune Metro</title>
+                <title>Station List - Pune Metro Line 3</title>
                 <meta name="description" content="View the complete list of Pune Metro Line 3 stations from Hinjewadi to Shivajinagar District Court." />
             </Head>
 

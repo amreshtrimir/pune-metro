@@ -5,8 +5,8 @@ export default function OffencesAndPenalties() {
     return (
         <>
             <Head>
-                <title>Offences and Penalties - Pune Metro</title>
-                <meta name="description" content="Learn about offences and corresponding penalties under the Pune Metro Railway rules." />
+                <title>Offences and Penalties - Pune Metro Line 3</title>
+                <meta name="description" content="Learn about offences and corresponding penalties under the Pune Metro Line 3 Railway rules." />
             </Head>
 
             {/* ── Hero Banner ── */}

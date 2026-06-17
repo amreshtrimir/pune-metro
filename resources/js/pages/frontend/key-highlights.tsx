@@ -68,7 +68,7 @@ export default function KeyHighlights() {
     return (
         <>
             <Head>
-                <title>Key Highlights - Pune Metro</title>
+                <title>Key Highlights - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Discover the key highlights and milestones of Pune Metro Line 3 — a landmark public-private partnership in Indian urban transit."
@@ -173,8 +173,8 @@ export default function KeyHighlights() {
                         {/* Right: image */}
                         <div className="overflow-hidden rounded-3xl lg:order-2 lg:ml-auto" style={{ background: 'rgba(109,0,58,0.1)', maxWidth: '592px', width: '100%' }}>
                             <img
-                                src="/project-profile/key-high-point.png"
-                                alt="Pune Metro Project Highlights"
+                                src="/project-profile/key-high-point-new.png"
+                                alt="Pune Metro Line 3 Project Highlights"
                                 className="h-full w-full object-cover"
                             />
                         </div>
@@ -185,7 +185,7 @@ export default function KeyHighlights() {
             {/* ── CTA Banner ── */}
             <QuoteBanner>
                 Whether you&rsquo;re planning your daily commute, exploring the city, or seeking a faster and smarter way to
-                travel, Pune Metro is here to transform your journey with comfort, efficiency, and modern connectivity.
+                travel, Pune Metro Line 3 is here to transform your journey with comfort, efficiency, and modern connectivity.
             </QuoteBanner>
         </>
     );

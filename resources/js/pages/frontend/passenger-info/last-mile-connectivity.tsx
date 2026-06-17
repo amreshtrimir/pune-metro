@@ -13,8 +13,8 @@ export default function LastMileConnectivity() {
     return (
         <>
             <Head>
-                <title>Last Mile Connectivity - Pune Metro</title>
-                <meta name="description" content="Explore last-mile connectivity options available at Pune Metro stations including buses, autos, and parking." />
+                <title>Last Mile Connectivity - Pune Metro Line 3</title>
+                <meta name="description" content="Explore last-mile connectivity options available at Pune Metro Line 3 stations including buses, autos, and parking." />
             </Head>
 
             {/* ── Hero Banner ── */}

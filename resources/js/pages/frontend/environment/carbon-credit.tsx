@@ -29,14 +29,14 @@ export default function CarbonCredit() {
     return (
         <>
             <Head>
-                <title>Carbon Credit - Pune Metro</title>
+                <title>Carbon Credit - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Discover how Pune Metro Line 3 measures and reduces its carbon impact across construction and operations, and its journey towards carbon credit registration."
                 />
                 <meta
                     name="keywords"
-                    content="Pune Metro Carbon Credit, PITCMRL Carbon Reduction, Pune Metro ESG, Metro Line 3 Sustainability, Carbon Impact"
+                    content="Pune Metro Line 3 Carbon Credit, PITCMRL Carbon Reduction, Pune Metro Line 3 ESG, Metro Line 3 Sustainability, Carbon Impact"
                 />
             </Head>
 
@@ -45,7 +45,7 @@ export default function CarbonCredit() {
                 src="/banners/environment/environment-banner-md.png"
                 srcMd="/banners/environment/environment-banner-md.png"
                 srcLg="/banners/environment/environment-banner-lg.png"
-                alt="Pune Metro Carbon Credit"
+                alt="Pune Metro Line 3 Carbon Credit"
             />
 
             {/* ── Page Title + Intro ── */}

@@ -6,8 +6,8 @@ export default function TermsAndConditions() {
     return (
         <>
             <Head>
-                <title>Terms and Conditions - Pune Metro</title>
-                <meta name="description" content="Read the terms and conditions for using Pune Metro services and facilities." />
+                <title>Terms and Conditions - Pune Metro Line 3</title>
+                <meta name="description" content="Read the terms and conditions for using Pune Metro Line 3 services and facilities." />
             </Head>
 
             {/* ── Hero Banner ── */}

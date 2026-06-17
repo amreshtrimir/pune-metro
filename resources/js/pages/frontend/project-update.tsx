@@ -158,7 +158,7 @@ export default function ProjectUpdate({ images }: Props) {
             )}
 
             <Head>
-                <title>Project Update - Pune Metro</title>
+                <title>Project Update - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Stay up to date with the latest construction and development progress of Pune Metro Line 3."
@@ -167,9 +167,9 @@ export default function ProjectUpdate({ images }: Props) {
 
             {/* ── Page Hero Banner ── */}
             <PageHeroBanner
-                src="/banners/project-update/project-update-banner-md.png"
-                srcMd="/banners/project-update/project-update-banner-md.png"
-                srcLg="/banners/project-update/project-update-banner-lg.png"
+                src="/banners/project-update/project-update-banner-md-new.png"
+                srcMd="/banners/project-update/project-update-md-new.png"
+                srcLg="/banners/project-update/project-update-lg-new.png"
                 alt="Project Update - Pune Metro"
             />
 

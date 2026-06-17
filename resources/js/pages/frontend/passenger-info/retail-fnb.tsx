@@ -5,8 +5,8 @@ export default function RetailFnb() {
     return (
         <>
             <Head>
-                <title>Retail / F&B (Food &amp; Beverage) - Pune Metro</title>
-                <meta name="description" content="Discover retail and food & beverage outlets available at Pune Metro stations." />
+                <title>Retail / F&B (Food &amp; Beverage) - Pune Metro Line 3</title>
+                <meta name="description" content="Discover retail and food & beverage outlets available at Pune Metro Line 3 stations." />
             </Head>
 
             {/* ── Hero Banner ── */}

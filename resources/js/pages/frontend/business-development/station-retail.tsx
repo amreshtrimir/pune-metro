@@ -7,7 +7,7 @@ export default function StationRetail() {
     return (
         <>
             <Head>
-                <title>Station Retail - Pune Metro</title>
+                <title>Station Retail - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Explore station retail and business development opportunities with Pune Metro Line 3."

@@ -21,7 +21,7 @@ export default function RouteMap() {
     return (
         <>
             <Head>
-                <title>Route Map - Pune Metro</title>
+                <title>Route Map - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="Explore the Pune Metro Line 3 route map — connecting Hinjewadi to Shivajinagar District Court across 23 stations."
@@ -141,7 +141,7 @@ export default function RouteMap() {
             {/* ── Quote CTA Banner ── */}
             <QuoteBanner>
                 &ldquo;Whether you&rsquo;re planning your daily commute, exploring the city, or seeking a faster and smarter way
-                to travel, Pune Metro is here to transform your journey with comfort, efficiency, and modern
+                to travel, Pune Metro Line 3 is here to transform your journey with comfort, efficiency, and modern
                 connectivity.&rdquo;
             </QuoteBanner>
         </>

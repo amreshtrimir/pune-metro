@@ -20,8 +20,8 @@ const imgElevator = '/pass-amenities/section-elevator.png';
 const imgLastMile = '/pass-amenities/section-last-mile.png';
 const imgTicketing = '/pass-amenities/section-ticketing.png';
 const imgSafety = '/pass-amenities/section-safety.png';
-const imgRestroom = '/pass-amenities/section-restroom.png';
-const imgPlatform = '/pass-amenities/pids-new.png';
+const imgRestroom = '/pass-amenities/restroom.png';
+const imgPlatform = '/pass-amenities/pids-new-1.png';
 
 // Amenity sections ordered left-to-right, top-to-bottom in the 3-column grid
 const amenitySections: AmenitySection[] = [
@@ -71,7 +71,7 @@ const amenitySections: AmenitySection[] = [
         items: [
             'Ticket counters at stations',
             'Contactless Ticket Vending Machines (CTVMs)',
-            'QR-based tickets via Pune Metro App and WhatsApp',
+            'QR-based tickets via Pune Metro Line 3 App and WhatsApp',
             'National Common Mobility Card (One Pune Card)',
             'Automatic Fare Collection (AFC) gates',
         ],
@@ -116,11 +116,18 @@ const commonFacilities: CommonFacility[] = [
     },
     {
         group: 'Waiting & Circulation Areas',
-        items: ['Platforms with seating', 'Passenger information display boards'],
+        items: [
+            'Platforms with seating',
+            'Passenger information display boards',
+        ],
     },
     {
         group: 'Security',
-        items: ['CCTV Surveillance', 'Security Personnel', 'Emergency help points'],
+        items: [
+            'CCTV Surveillance',
+            'Security Personnel',
+            'Emergency help points',
+        ],
     },
     {
         group: 'Entry & Exit',
@@ -136,7 +143,12 @@ const commonFacilities: CommonFacility[] = [
     },
     {
         group: 'Safety & Emergency',
-        items: ['Fire-fighting equipment', 'Emergency evacuation'],
+        items: [
+            'Fire-fighting equipment',
+            'Emergency evacuation',
+            'First aid available at all stations',
+            'Occupational Health Centre available at few stations',
+        ],
     },
 ];
 
@@ -153,8 +165,10 @@ function SectionCard({ section }: { section: AmenitySection }) {
             <div className="flex gap-3">
                 <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" />
                 <div>
-                    <h2 className="mb-3 font-montserrat text-base font-semibold text-black">{section.title}</h2>
-                    <ol className="list-decimal space-y-1 pl-5 font-montserrat text-sm capitalize text-black">
+                    <h2 className="mb-3 font-montserrat text-base font-semibold text-black">
+                        {section.title}
+                    </h2>
+                    <ol className="list-decimal space-y-1 pl-5 font-montserrat text-sm text-black capitalize">
                         {section.items.map((item) => (
                             <li key={item}>{item}</li>
                         ))}
@@ -168,8 +182,10 @@ function SectionCard({ section }: { section: AmenitySection }) {
 function CommonFacilityCard({ facility }: { facility: CommonFacility }) {
     return (
         <div className="bg-[#fceef6] px-5 py-4">
-            <p className="mb-2 font-montserrat text-base font-semibold text-black">{facility.group}</p>
-            <ol className="list-decimal space-y-1 pl-5 font-montserrat text-sm capitalize text-black">
+            <p className="mb-2 font-montserrat text-base font-semibold text-black">
+                {facility.group}
+            </p>
+            <ol className="list-decimal space-y-1 pl-5 font-montserrat text-sm text-black capitalize">
                 {facility.items.map((item) => (
                     <li key={item}>{item}</li>
                 ))}
@@ -181,9 +197,11 @@ function CommonFacilityCard({ facility }: { facility: CommonFacility }) {
 function GenderSection({ title, items }: { title: string; items: string[] }) {
     return (
         <div>
-            <h2 className="mb-4 font-montserrat text-xl font-semibold text-black sm:text-2xl lg:text-3xl">{title}</h2>
+            <h2 className="mb-4 font-montserrat text-xl font-semibold text-black sm:text-2xl lg:text-3xl">
+                {title}
+            </h2>
             <div className="bg-[#f0f0f0] px-6 py-4">
-                <ol className="grid grid-cols-1 gap-x-8 gap-y-1 list-decimal pl-5 font-montserrat text-sm capitalize text-black sm:grid-cols-2">
+                <ol className="grid list-decimal grid-cols-1 gap-x-8 gap-y-1 pl-5 font-montserrat text-sm text-black capitalize sm:grid-cols-2">
                     {items.map((item) => (
                         <li key={item}>{item}</li>
                     ))}
@@ -197,14 +215,14 @@ export default function PassengerAmenities() {
     return (
         <>
             <Head>
-                <title>Passenger Amenities - Pune Metro</title>
+                <title>Passenger Amenities - Pune Metro Line 3</title>
                 <meta
                     name="description"
-                    content="Explore the comprehensive passenger amenities at Pune Metro stations including ticketing, accessibility, safety, last-mile connectivity, and more."
+                    content="Explore the comprehensive passenger amenities at Pune Metro Line 3 stations including ticketing, accessibility, safety, last-mile connectivity, and more."
                 />
                 <meta
                     name="keywords"
-                    content="Pune Metro amenities, passenger facilities, accessibility, ticketing, escalators, elevators, PIDS, Pune Metro services"
+                    content="Pune Metro Line 3 amenities, passenger facilities, accessibility, ticketing, escalators, elevators, PIDS, Pune Metro Line 3 services"
                 />
             </Head>
 
@@ -217,19 +235,23 @@ export default function PassengerAmenities() {
             />
 
             {/* ── Page Title ── */}
-            <section className="bg-white pt-10 pb-0 mb-5">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
-                    <PageSectionHeading lineColor="#8e8e8e">Passenger Amenities</PageSectionHeading>
-
+            <section className="mb-5 bg-white pt-10 pb-0">
+                <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
+                    <PageSectionHeading lineColor="#8e8e8e">
+                        Passenger Amenities
+                    </PageSectionHeading>
                 </div>
             </section>
 
             {/* ── Amenity Sections (3-column grid with images) ── */}
             <section className="bg-white pb-12">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
+                <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                         {amenitySections.map((section) => (
-                            <SectionCard key={section.title} section={section} />
+                            <SectionCard
+                                key={section.title}
+                                section={section}
+                            />
                         ))}
                     </div>
                 </div>
@@ -237,14 +259,19 @@ export default function PassengerAmenities() {
 
             {/* ── Common Facilities ── */}
             <section className="bg-white pb-12">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
+                <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <h2 className="mb-6 font-montserrat text-xl font-semibold text-black sm:text-2xl lg:text-3xl">
                         Common Facilities{' '}
-                        <span className="text-sm font-normal">(For Both Males, Females and other special groups)</span>
+                        <span className="text-sm font-normal">
+                            (For Both Males, Females and other special groups)
+                        </span>
                     </h2>
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {commonFacilities.map((facility) => (
-                            <CommonFacilityCard key={facility.group} facility={facility} />
+                            <CommonFacilityCard
+                                key={facility.group}
+                                facility={facility}
+                            />
                         ))}
                     </div>
                 </div>
@@ -252,7 +279,7 @@ export default function PassengerAmenities() {
 
             {/* ── Gender-Specific & Special Facilities ── */}
             <section className="bg-white pb-8 md:pb-12">
-                <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8">
+                <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <div className="grid grid-cols-1 gap-10">
                         <GenderSection
                             title="Facilities Specifically for Males"
@@ -280,7 +307,9 @@ export default function PassengerAmenities() {
                         />
                         <GenderSection
                             title="Other Facilities"
-                            items={['Assistance for senior citizens, pregnant women, and wheelchair users']}
+                            items={[
+                                'Assistance for senior citizens, pregnant women, and wheelchair users',
+                            ]}
                         />
                     </div>
                 </div>

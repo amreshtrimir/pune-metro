@@ -5,8 +5,8 @@ export default function StationAreaMap() {
     return (
         <>
             <Head>
-                <title>Station Area Map - Pune Metro</title>
-                <meta name="description" content="View station area maps for all Pune Metro stations with surroundings and accessibility information." />
+                <title>Station Area Map - Pune Metro Line 3</title>
+                <meta name="description" content="View station area maps for all Pune Metro Line 3 stations with surroundings and accessibility information." />
             </Head>
 
             {/* ── Hero Banner ── */}
