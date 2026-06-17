@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react';
 import {
     contact,
+    policies,
     fareTable,
     keyHighlights,
     overview,
@@ -22,6 +23,7 @@ const footerLinks = [
     // { label: 'Fare Table', href: fareTable.url() },
     { label: 'Station List', href: stationList.url() },
     { label: 'Photo Gallery', href: photoGallery.url() },
+    { label: 'Policies', href: policies.url() },
     { label: 'Contact Us', href: contact.url() },
     { label: 'Terms & Conditions', href: termsAndConditions.url() },
     { label: 'Privacy Policy', href: privacyPolicy.url() },

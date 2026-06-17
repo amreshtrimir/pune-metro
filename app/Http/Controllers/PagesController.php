@@ -173,7 +173,7 @@ class PagesController extends Controller
         return Inertia::render('frontend/legal/privacy-policy');
     }
 
-    public function csrPolicy(): Response
+    public function policies(): Response
     {
         return Inertia::render('frontend/legal/csr-policy');
     }

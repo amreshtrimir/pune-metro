@@ -104,7 +104,7 @@ const mainNavLinks: NavLink[] = [
             { label: 'Station Retail', href: stationRetail.url() },
         ],
     },
-    { label: 'CSR POLICY', href: csrPolicy.url() },
+    // { label: 'CSR POLICY', href: csrPolicy.url() },
     // { label: 'CAREER', href: '#' },
     // { label: 'BLOG', href: '/blog' },
     { label: 'LEGAL', href: termsAndConditions.url(), children: [

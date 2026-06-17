@@ -1962,76 +1962,76 @@ privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get
 privacyPolicy.form = privacyPolicyForm
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-export const csrPolicy = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: csrPolicy.url(options),
+export const policies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: policies.url(options),
     method: 'get',
 })
 
-csrPolicy.definition = {
+policies.definition = {
     methods: ["get","head"],
-    url: '/csr-policy',
+    url: '/policies',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-csrPolicy.url = (options?: RouteQueryOptions) => {
-    return csrPolicy.definition.url + queryParams(options)
+policies.url = (options?: RouteQueryOptions) => {
+    return policies.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-csrPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: csrPolicy.url(options),
+policies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: policies.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-csrPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: csrPolicy.url(options),
+policies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: policies.url(options),
     method: 'head',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-const csrPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: csrPolicy.url(options),
+const policiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: policies.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-csrPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: csrPolicy.url(options),
+policiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: policies.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::csrPolicy
+* @see \App\Http\Controllers\PagesController::policies
 * @see app/Http/Controllers/PagesController.php:176
-* @route '/csr-policy'
+* @route '/policies'
 */
-csrPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: csrPolicy.url({
+policiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: policies.url({
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -2040,7 +2040,7 @@ csrPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
     method: 'get',
 })
 
-csrPolicy.form = csrPolicyForm
+policies.form = policiesForm
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
@@ -2366,6 +2366,6 @@ greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 greenInitiatives.form = greenInitiativesForm
 
-const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, termsAndConditions, privacyPolicy, csrPolicy, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
+const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, termsAndConditions, privacyPolicy, policies, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
 
 export default PagesController
