@@ -72,8 +72,8 @@ export default function CustomerService() {
                             <p className="font-inter text-sm text-black">
                                 If you have any feedback or complaints, you can reach us on our helpline{' '}
                                 <span className="font-semibold text-black">020 65525000</span>, write to us at{' '}
-                                <a href="mailto:contactPunemetro@tatarealty.in" className="font-semibold text-brand hover:underline">
-                                   contactPunemetro@tatarealty.in
+                                <a href="mailto:contactpunerimetro@tatarealty.in" className="font-semibold text-brand hover:underline">
+                                   contactpunerimetro@tatarealty.in
                                 </a>
                                 , or visit our Customer Care Centre at any metro station.
                             </p>

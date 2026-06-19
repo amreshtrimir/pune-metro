@@ -217,7 +217,7 @@ export default function Navbar() {
                     <div className="hidden flex-1 flex-col justify-between py-4 lg:flex">
                         <div className="flex items-center justify-end gap-3">
                             <a
-                                href="mailto:contactPunemetro@tatarealty.in"
+                                href="mailto:contactpunerimetro@tatarealty.in"
                                 className="flex items-center gap-2 rounded-full border border-brand px-4 py-1.5 font-montserrat text-xs font-medium text-brand transition-colors hover:bg-brand hover:text-white"
                             >
                                 <svg
@@ -233,7 +233,7 @@ export default function Navbar() {
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                     />
                                 </svg>
-                                Mail Us: contactPunemetro@tatarealty.in
+                                Mail Us: contactpunerimetro@tatarealty.in
                             </a>
                             {/* Phone hidden */}
                         </div>
@@ -387,7 +387,7 @@ export default function Navbar() {
                 <div className={`${mobileClosing ? 'animate-out slide-out-to-top-2 fade-out' : 'animate-in slide-in-from-top-2 fade-in'} duration-200 max-h-[80vh] overflow-y-auto border-t border-gray-100 bg-white shadow-lg lg:hidden`}>
                     <div className="border-b border-gray-100 px-4 py-3">
                         <a
-                            href="mailto:contactPunemetro@tatarealty.in"
+                            href="mailto:contactpunerimetro@tatarealty.in"
                             className="flex items-center gap-2 py-1.5 font-montserrat text-xs text-brand"
                         >
                             <svg
@@ -403,7 +403,7 @@ export default function Navbar() {
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                 />
                             </svg>
-                            contactPunemetro@tatarealty.in
+                            contactpunerimetro@tatarealty.in
                         </a>
                         {/* Phone hidden */}
                     </div>

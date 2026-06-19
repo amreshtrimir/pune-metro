@@ -92,13 +92,13 @@ export default function FooterSection() {
                             {/* Contact buttons */}
                             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                                 <a
-                                    href="mailto:contactPunemetro@tatarealty.in"
+                                    href="mailto:contactpunerimetro@tatarealty.in"
                                     className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 font-montserrat text-xs font-semibold text-brand-dark transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
                                 >
                                     <svg className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
-                                    Mail Us: contactPunemetro@tatarealty.in
+                                    Mail Us: contactpunerimetro@tatarealty.in
                                 </a>
                                 {/* <a
                                     href="tel:18002705501"

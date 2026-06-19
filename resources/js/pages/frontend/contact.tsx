@@ -80,7 +80,7 @@ export default function Contact() {
                                     Tel No. 020 65525000
                                     <br />
                                     Email: trilsec@tatarealty.in /
-                                    contactPunemetro@tatarealty.in.
+                                    contactpunerimetro@tatarealty.in.
                                 </p>
                             </div>
                         </div>

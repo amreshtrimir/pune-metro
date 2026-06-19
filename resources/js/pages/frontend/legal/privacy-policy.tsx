@@ -167,10 +167,10 @@ export default function PrivacyPolicy() {
                             <div className="mt-2 space-y-1">
                                 <p className="font-medium text-black">Pune IT City Metro Rail Limited (PITCMRL)</p>
                                 <a
-                                    href="mailto:contactPunemetro@tatarealty.in"
+                                    href="mailto:contactpunerimetro@tatarealty.in"
                                     className="block text-brand hover:underline"
                                 >
-                                    contactPunemetro@tatarealty.in
+                                    contactpunerimetro@tatarealty.in
                                 </a>
                                 {/* <a href="tel:18002705501" className="block text-brand hover:underline">
                                     1800 270 5501

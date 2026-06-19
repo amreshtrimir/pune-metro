@@ -63,10 +63,10 @@ export default function StationRetail() {
                                 For retail enquiries, please contact:
                             </p>
                             <a
-                                href="mailto:contactPunemetro@tatarealty.in"
+                                href="mailto:contactpunerimetro@tatarealty.in"
                                 className="font-montserrat text-sm text-brand hover:underline"
                             >
-                                contactPunemetro@tatarealty.in
+                                contactpunerimetro@tatarealty.in
                             </a>
                         </div>
                     </div>
