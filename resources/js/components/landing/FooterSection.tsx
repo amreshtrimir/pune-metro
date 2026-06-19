@@ -77,7 +77,7 @@ export default function FooterSection() {
                     <div className="relative min-h-75 w-full">
                         <img
                             src="/landing/train-exterior.png"
-                            alt="Pune Metro"
+                            alt="Puneri Metro"
                             className="absolute inset-0 h-full w-full object-cover"
                         />
                         <div className="absolute inset-0 bg-metro-dark/70" />
@@ -86,7 +86,7 @@ export default function FooterSection() {
                         <div className="relative z-10 flex flex-col items-center justify-center px-6 py-10 text-center sm:py-12">
                             <p className="mb-5 max-w-3xl font-montserrat text-sm font-normal leading-relaxed text-white/80 sm:mb-8 lg:text-base">
                                 Whether you're planning your daily commute, exploring the city, or seeking a faster and smarter way to
-                                travel, Pune Metro Line 3 is here to transform your journey with comfort, efficiency, and modern connectivity.
+                                travel, Puneri Metro Line 3 is here to transform your journey with comfort, efficiency, and modern connectivity.
                             </p>
 
                             {/* Contact buttons */}
@@ -131,7 +131,7 @@ export default function FooterSection() {
                                 <Link href="/">
                                     <img
                                         src="/assets/pune-metro-log.png"
-                                        alt="Pune Metro"
+                                        alt="Puneri Metro"
                                         className="h-auto w-24 shrink-0 lg:w-32"
                                     />
                                 </Link>
@@ -167,7 +167,7 @@ export default function FooterSection() {
 
                             {/* Copyright */}
                             <p className="text-center font-montserrat text-xs text-gray-400">
-                                Copyright © 2026 | Pune Metro Line 3 Rail Project. | All Rights Reserved.
+                                Copyright © 2026 | Puneri Metro Line 3 Rail Project. | All Rights Reserved.
                             </p>
                         </div>
 
