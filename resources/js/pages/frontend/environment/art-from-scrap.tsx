@@ -180,10 +180,10 @@ export default function ArtFromScrap() {
                         partner on Art from Scrap. To get involved, please
                         contact our Environment &amp; Sustainability team at{' '}
                         <a
-                            href="mailto:customercare.pmrp@mahametro.org"
+                            href="mailto:contactpunerimetro@tatarealty.in"
                             className="text-brand hover:underline"
                         >
-                            customercare.pmrp@mahametro.org
+                            contactpunerimetro@tatarealty.in
                         </a>
                         .
                     </p>
