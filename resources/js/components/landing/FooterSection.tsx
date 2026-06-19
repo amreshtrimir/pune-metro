@@ -167,7 +167,7 @@ export default function FooterSection() {
 
                             {/* Copyright */}
                             <p className="text-center font-montserrat text-xs text-gray-400">
-                                Copyright © 2026 | Puneri Metro Line 3 Rail Project. | All Rights Reserved.
+                                Copyright © 2026 | Pune Metro Line 3 Rail Project. | All Rights Reserved.
                             </p>
                         </div>
 
