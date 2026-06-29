@@ -16,7 +16,7 @@ const highlights = [
     },
     {
         title: 'Technology',
-        bullets: ['CBTC signalling', '750V DC electrification','Modern stainless-steel rolling stock', '⁠Precision-engineered elevated trackway', 'Siemens Project Ventures GmbH for Systems and Signalling', 'Alstom for Rolling Stock', 'Data Metrics for IT and Data Systems'],
+        bullets: ['CBTC signalling', '750V DC electrification','Modern stainless-steel rolling stock', '⁠Precision-engineered elevated trackway', 'Siemens Project Ventures GmbH for Systems and Signalling', 'Alstom for Rolling Stock', 'Datamatics for IT and Data Systems'],
         icon: '/project-profile/key-heighlight-icons/ad-tech 1.png',
     },
     {
