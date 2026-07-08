@@ -308,6 +308,9 @@ function PlaceModal({
 }) {
     const rows: { label: string; type: 'text' | 'distance' | 'link'; value: string; note?: string }[] = [
         { label: 'Nearest Metro Station', type: 'text', value: place.nearest_station },
+        ...(place.other_nearby_mahametro_stations
+            ? [{ label: 'Other Nearby MahaMetro Station(s)', type: 'text' as const, value: place.other_nearby_mahametro_stations }]
+            : []),
         { label: 'Distance from Station', type: 'distance', value: place.distance_from_station, note: place.distance_note ?? undefined },
         { label: 'About', type: 'text', value: place.about },
         { label: 'Highlights', type: 'text', value: place.highlights },
@@ -620,4 +623,3 @@ export default function ExplorePuneSection({ places }: { places: ExplorePunePlac
         </section>
     );
 }
-

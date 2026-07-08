@@ -22,6 +22,7 @@ import {
     termsAndConditions,
     timeTable,
 } from '@/actions/App/Http/Controllers/PagesController';
+import { nonFareBusinessRevenue } from '@/routes/business-development';
 
 const quickLinks = [
     // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
@@ -102,6 +103,7 @@ const mainNavLinks: NavLink[] = [
         href: stationRetail.url(),
         children: [
             { label: 'Station Retail', href: stationRetail.url() },
+            { label: 'Non-Fare Business Revenue', href: nonFareBusinessRevenue.url() },
         ],
     },
     // { label: 'CSR POLICY', href: csrPolicy.url() },

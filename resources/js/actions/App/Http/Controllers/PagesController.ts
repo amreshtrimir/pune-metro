@@ -1800,6 +1800,87 @@ stationRetailForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get
 stationRetail.form = stationRetailForm
 
 /**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+export const nonFareBusinessRevenue = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: nonFareBusinessRevenue.url(options),
+    method: 'get',
+})
+
+nonFareBusinessRevenue.definition = {
+    methods: ["get","head"],
+    url: '/business-development/non-fare-business-revenue',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+nonFareBusinessRevenue.url = (options?: RouteQueryOptions) => {
+    return nonFareBusinessRevenue.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+nonFareBusinessRevenue.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: nonFareBusinessRevenue.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+nonFareBusinessRevenue.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: nonFareBusinessRevenue.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+const nonFareBusinessRevenueForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: nonFareBusinessRevenue.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+nonFareBusinessRevenueForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: nonFareBusinessRevenue.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
+* @see app/Http/Controllers/PagesController.php:186
+* @route '/business-development/non-fare-business-revenue'
+*/
+nonFareBusinessRevenueForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: nonFareBusinessRevenue.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+nonFareBusinessRevenue.form = nonFareBusinessRevenueForm
+
+/**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
 * @see app/Http/Controllers/PagesController.php:166
 * @route '/legal/terms-and-conditions'
@@ -2366,6 +2447,6 @@ greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 greenInitiatives.form = greenInitiativesForm
 
-const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, termsAndConditions, privacyPolicy, policies, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
+const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, nonFareBusinessRevenue, termsAndConditions, privacyPolicy, policies, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
 
 export default PagesController

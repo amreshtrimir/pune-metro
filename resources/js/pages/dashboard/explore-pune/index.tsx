@@ -18,6 +18,7 @@ type PlaceFormState = {
     name: string;
     category: string;
     nearest_station: string;
+    other_nearby_mahametro_stations: string;
     distance_from_station: string;
     distance_note: string;
     about: string;
@@ -34,6 +35,7 @@ const emptyForm = (sort_order = 0): PlaceFormState => ({
     name: '',
     category: '',
     nearest_station: '',
+    other_nearby_mahametro_stations: '',
     distance_from_station: '',
     distance_note: '',
     about: '',
@@ -65,6 +67,7 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
             name: place.name,
             category: place.category,
             nearest_station: place.nearest_station,
+            other_nearby_mahametro_stations: place.other_nearby_mahametro_stations ?? '',
             distance_from_station: place.distance_from_station,
             distance_note: place.distance_note ?? '',
             about: place.about,
@@ -141,6 +144,7 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
                 name: editForm.name,
                 category: editForm.category,
                 nearest_station: editForm.nearest_station,
+                other_nearby_mahametro_stations: editForm.other_nearby_mahametro_stations || null,
                 distance_from_station: editForm.distance_from_station,
                 distance_note: editForm.distance_note || null,
                 about: editForm.about,
@@ -253,6 +257,7 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
                                     <th className="px-4 py-3 text-left font-medium">Name</th>
                                     <th className="px-4 py-3 text-left font-medium hidden md:table-cell">Category</th>
                                     <th className="px-4 py-3 text-left font-medium hidden lg:table-cell">Nearest Station</th>
+                                    <th className="px-4 py-3 text-left font-medium hidden xl:table-cell">Other Nearby MahaMetro Station(s)</th>
                                     <th className="px-4 py-3 text-left font-medium">Order</th>
                                     <th className="px-4 py-3 text-left font-medium">Status</th>
                                     <th className="px-4 py-3 text-right font-medium">Actions</th>
@@ -284,6 +289,7 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
                                         <td className="px-4 py-3 font-medium">{place.name}</td>
                                         <td className="px-4 py-3 text-muted-foreground hidden md:table-cell">{place.category}</td>
                                         <td className="px-4 py-3 text-muted-foreground hidden lg:table-cell">{place.nearest_station}</td>
+                                        <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell">{place.other_nearby_mahametro_stations}</td>
                                         <td className="px-4 py-3 text-muted-foreground">{place.sort_order}</td>
                                         <td className="px-4 py-3">
                                             {place.is_active ? (
@@ -338,7 +344,10 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
             {/* Edit Dialog */}
             {editDialog && (
                 <Dialog open onOpenChange={closeEdit}>
-                    <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                    <DialogContent
+                        className="!w-[95vw] !max-w-none sm:!max-w-[95vw] lg:!max-w-5xl max-h-[92vh] overflow-y-auto"
+                        style={{ width: 'min(95vw, 1024px)', maxWidth: 'none' }}
+                    >
                         <DialogHeader>
                             <DialogTitle>Edit Place</DialogTitle>
                         </DialogHeader>
@@ -423,6 +432,14 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
                                     />
                                 </div>
                                 <div className="space-y-1">
+                                    <label className="text-xs font-medium text-muted-foreground">Other Nearby MahaMetro Station(s)</label>
+                                    <Input
+                                        value={editForm.other_nearby_mahametro_stations}
+                                        onChange={(e) => setEditForm((p) => ({ ...p, other_nearby_mahametro_stations: e.target.value }))}
+                                        placeholder="e.g. PMR 22 — Deccan Gymkhana"
+                                    />
+                                </div>
+                                <div className="space-y-1">
                                     <label className="text-xs font-medium text-muted-foreground">Distance from Station</label>
                                     <Input
                                         value={editForm.distance_from_station}
@@ -446,7 +463,7 @@ export default function ExplorePunePlacesIndex({ places }: Props) {
                                 <textarea
                                     value={editForm.about}
                                     onChange={(e) => setEditForm((p) => ({ ...p, about: e.target.value }))}
-                                    rows={4}
+                                    rows={8}
                                     className="w-full rounded-md border px-3 py-2 text-sm bg-background resize-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                                 />
                             </div>

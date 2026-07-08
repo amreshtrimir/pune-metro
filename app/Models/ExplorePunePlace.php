@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'name',
     'category',
     'nearest_station',
+    'other_nearby_mahametro_stations',
     'distance_from_station',
     'distance_note',
     'about',

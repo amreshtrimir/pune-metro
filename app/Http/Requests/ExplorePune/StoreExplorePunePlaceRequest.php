@@ -24,6 +24,7 @@ class StoreExplorePunePlaceRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', 'max:255'],
             'nearest_station' => ['nullable', 'string', 'max:255'],
+            'other_nearby_mahametro_stations' => ['nullable', 'string', 'max:500'],
             'distance_from_station' => ['nullable', 'string', 'max:255'],
             'distance_note' => ['nullable', 'string', 'max:500'],
             'about' => ['nullable', 'string'],

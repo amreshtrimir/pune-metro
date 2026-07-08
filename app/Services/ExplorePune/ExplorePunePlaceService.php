@@ -31,7 +31,7 @@ class ExplorePunePlaceService
     }
 
     /**
-     * @param  array{name: string, category: string, nearest_station: string, distance_from_station: string, distance_note?: string|null, about: string, highlights: string, google_maps_link?: string|null, media_id?: int|null, fallback_bg?: string|null, sort_order?: int, is_active?: bool}  $data
+     * @param  array{name: string, category: string, nearest_station: string, other_nearby_mahametro_stations?: string|null, distance_from_station: string, distance_note?: string|null, about: string, highlights: string, google_maps_link?: string|null, media_id?: int|null, fallback_bg?: string|null, sort_order?: int, is_active?: bool}  $data
      */
     public function createPlace(array $data): ExplorePunePlace
     {
@@ -43,7 +43,7 @@ class ExplorePunePlaceService
     }
 
     /**
-     * @param  array{name?: string, category?: string, nearest_station?: string, distance_from_station?: string, distance_note?: string|null, about?: string, highlights?: string, google_maps_link?: string|null, media_id?: int|null, fallback_bg?: string|null, sort_order?: int, is_active?: bool}  $data
+     * @param  array{name?: string, category?: string, nearest_station?: string, other_nearby_mahametro_stations?: string|null, distance_from_station?: string, distance_note?: string|null, about?: string, highlights?: string, google_maps_link?: string|null, media_id?: int|null, fallback_bg?: string|null, sort_order?: int, is_active?: bool}  $data
      */
     public function updatePlace(ExplorePunePlace $place, array $data): ExplorePunePlace
     {

@@ -54,6 +54,7 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
 // Business Development routes
 Route::prefix('business-development')->name('business-development.')->group(function (): void {
     Route::get('/station-retail', [PagesController::class, 'stationRetail'])->name('station-retail');
+    Route::get('/non-fare-business-revenue', [PagesController::class, 'nonFareBusinessRevenue'])->name('non-fare-business-revenue');
 });
 
 // Legal routes

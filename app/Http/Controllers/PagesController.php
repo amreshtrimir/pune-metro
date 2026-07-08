@@ -182,4 +182,9 @@ class PagesController extends Controller
     {
         return Inertia::render('frontend/business-development/station-retail');
     }
+
+    public function nonFareBusinessRevenue(): Response
+    {
+        return Inertia::render('frontend/business-development/non-fare-business-revenue');
+    }
 }
