@@ -41,6 +41,7 @@ export type ExplorePunePlace = {
     name: string;
     category: string;
     nearest_station: string;
+    other_nearby_mahametro_stations: string | null;
     distance_from_station: string;
     distance_note: string | null;
     about: string;
