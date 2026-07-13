@@ -104,7 +104,11 @@ export default function StationFullNamingSemiNamingOpportunities() {
                             <h3 className="mb-3 font-montserrat text-xl font-semibold text-black">
                                 Contact for Partnership Discussion
                             </h3>
+                            <p className='font-montserrat text-sm text-black mb-3.5'>
+                                Associate your brand with Pune Metro Line 3 through exclusive Station’s Full Naming and Semi-Naming Rights. Build a lasting identity across one of the city's most prominent public infrastructure networks while reaching millions of commuters over the concession period
+                            </p>
                             <p className="font-montserrat text-sm text-black">
+
                                 For partnership details, availability and commercial information, please contact:
                             </p>
                             <p className="mt-4 font-montserrat text-sm text-black">
