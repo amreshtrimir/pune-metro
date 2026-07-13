@@ -27,7 +27,7 @@ export default function CustomerServiceSubmissionsIndex({ submissions, filters }
             <div className="space-y-6 p-6">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h1 className="text-2xl font-bold">Customer Service Submissions</h1>
+                        <h1 className="text-2xl font-bold">Customer Feedback Submissions</h1>
                         <p className="text-sm text-muted-foreground">{submissions.total} total submissions</p>
                     </div>
                     <div className="flex gap-2">
@@ -50,7 +50,7 @@ export default function CustomerServiceSubmissionsIndex({ submissions, filters }
                             <tr>
                                 <th className="px-4 py-3 text-left font-medium">Name</th>
                                 <th className="px-4 py-3 text-left font-medium">Contact</th>
-                                <th className="px-4 py-3 text-left font-medium">Subject</th>
+                                <th className="px-4 py-3 text-left font-medium">Type of Feedback</th>
                                 <th className="px-4 py-3 text-left font-medium">Status</th>
                                 <th className="px-4 py-3 text-left font-medium">Date</th>
                             </tr>

@@ -14,9 +14,7 @@ class CustomerServiceSubmissionNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public CustomerServiceSubmission $submission)
-    {
-    }
+    public function __construct(public CustomerServiceSubmission $submission) {}
 
     /**
      * Get the message envelope.
@@ -24,7 +22,7 @@ class CustomerServiceSubmissionNotification extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Customer Service Submission',
+            subject: 'New Customer Feedback Submission',
         );
     }
 

@@ -30,6 +30,8 @@ const commitments = [
     'Through these efforts, Pune Metro Line 3 aims to build lasting trust and deliver a world-class urban transit experience.',
 ];
 
+const feedbackTypes = ['Appreciation', 'Comment', 'Complaint', 'Enquiry'];
+
 export default function CustomerService() {
     const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
     const [formData, setFormData] = useState<FormState>({
@@ -91,8 +93,8 @@ export default function CustomerService() {
                     name="description"
                     content="Learn about Pune Metro Line 3's commitment to safe, reliable, and comfortable travel experience for every passenger."
                 />
+                {siteKey ? <script src="https://www.google.com/recaptcha/api.js" async defer></script> : null}
             </Head>
-            {siteKey && <script src="https://www.google.com/recaptcha/api.js" async defer></script>}
 
             {/* ── Hero Banner ── */}
             <PageHeroBanner
@@ -134,12 +136,10 @@ export default function CustomerService() {
                         </ul>
                     </div>
 
-                    {/* Contact Us */}
-                    <div className="flex gap-3 rounded-lg bg-[#fdf0f7] px-6 py-5">
-                        {/* <span className="block w-[3px] flex-shrink-0 self-stretch rounded-full bg-[#e8449a]" /> */}
-                        <div>
-                            <h2 className="mb-2 font-montserrat text-base font-semibold text-black">Contact Us</h2>
-                            <p className="font-inter text-sm text-black">
+
+                    <div className="mt-12 rounded-xl border border-[#f2c8e0] bg-[#fef7fb] p-6">
+                        <h2 className="mb-3 font-montserrat text-base font-semibold text-black text-center">Feedback</h2>
+                         <p className="font-inter text-sm text-black">
                                 If you have any feedback or complaints, you can reach us on our helpline{' '}
                                 <span className="font-semibold text-black">020 65525000</span>, write to us at{' '}
                                 <a href="mailto:contactpunerimetro@tatarealty.in" className="font-semibold text-brand hover:underline">
@@ -147,14 +147,6 @@ export default function CustomerService() {
                                 </a>
                                 , or visit our Customer Care Centre at any metro station.
                             </p>
-                        </div>
-                    </div>
-
-                    <div className="mt-12 rounded-xl border border-[#f2c8e0] bg-[#fef7fb] p-6">
-                        <h2 className="mb-3 font-montserrat text-base font-semibold text-black">Customer Service Form</h2>
-                        <p className="mb-5 max-w-3xl font-inter text-sm text-black">
-                            Share your enquiry or feedback and our team will contact you at the earliest.
-                        </p>
                         {feedback && (
                             <p className="mb-4 rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
                                 {feedback}
@@ -166,14 +158,31 @@ export default function CustomerService() {
                             </p>
                         )}
 
-                        <form
-                            onSubmit={handleSubmit}
-                            className="grid gap-4"
-                        >
+                        <form onSubmit={handleSubmit} className="mt-3.5 grid gap-4">
                             <div className="grid gap-4 md:grid-cols-2">
                                 <div className="flex flex-col gap-1.5">
+                                    <label htmlFor="cs-subject" className="font-inter text-sm font-medium text-black">
+                                        Type of Feedback
+                                    </label>
+                                    <select
+                                        id="cs-subject"
+                                        name="subject"
+                                        className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                                        value={formData.subject}
+                                        onChange={(event) => setFormData((current) => ({ ...current, subject: event.target.value }))}
+                                        required
+                                    >
+                                        <option value="">Select type of feedback</option>
+                                        {feedbackTypes.map((type) => (
+                                            <option key={type} value={type}>
+                                                {type}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="flex flex-col gap-1.5">
                                     <label htmlFor="cs-name" className="font-inter text-sm font-medium text-black">
-                                        Full Name
+                                        Name
                                     </label>
                                     <input
                                         id="cs-name"
@@ -186,26 +195,26 @@ export default function CustomerService() {
                                         required
                                     />
                                 </div>
-                            <div className="flex flex-col gap-1.5">
-                                <label htmlFor="cs-mobile" className="font-inter text-sm font-medium text-black">
-                                    Mobile Number
-                                </label>
-                                <input
-                                    id="cs-mobile"
-                                    type="tel"
-                                    name="mobile"
-                                    className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                            </div>
+
+                            <div className="grid gap-4 md:grid-cols-2">
+                                <div className="flex flex-col gap-1.5">
+                                    <label htmlFor="cs-mobile" className="font-inter text-sm font-medium text-black">
+                                        Mobile Number
+                                    </label>
+                                    <input
+                                        id="cs-mobile"
+                                        type="tel"
+                                        name="mobile"
+                                        className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
                                         placeholder="10 digit number (e.g. 9876543210)"
                                         value={formData.mobile}
-                                        pattern="^(?:\\+91[-\\s]?)?[6-9]\\d{9}$"
+                                        pattern="^(?:\\+91[- ]?)?[6-9][0-9]{9}$"
                                         onChange={(event) => setFormData((current) => ({ ...current, mobile: event.target.value }))}
                                         title="Indian mobile number: 10 digits starting 6-9, optional +91"
                                         required
                                     />
                                 </div>
-                            </div>
-
-                            <div className="grid gap-4 md:grid-cols-2">
                                 <div className="flex flex-col gap-1.5">
                                     <label htmlFor="cs-email" className="font-inter text-sm font-medium text-black">
                                         Email
@@ -218,21 +227,6 @@ export default function CustomerService() {
                                         placeholder="you@example.com"
                                         value={formData.email}
                                         onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
-                                        required
-                                    />
-                                </div>
-                                <div className="flex flex-col gap-1.5">
-                                    <label htmlFor="cs-subject" className="font-inter text-sm font-medium text-black">
-                                        Subject
-                                    </label>
-                                    <input
-                                        id="cs-subject"
-                                        type="text"
-                                        name="subject"
-                                        className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
-                                        placeholder="Complaint / Feedback"
-                                        value={formData.subject}
-                                        onChange={(event) => setFormData((current) => ({ ...current, subject: event.target.value }))}
                                         required
                                     />
                                 </div>
@@ -253,14 +247,19 @@ export default function CustomerService() {
                                     required
                                 />
                             </div>
-                            {siteKey ? <div className="g-recaptcha" data-sitekey={siteKey}></div> : null}
+                            {siteKey ? (
+                                <div className="flex flex-col gap-1.5">
+                                    <span className="font-inter text-sm font-medium text-black">Verification</span>
+                                    <div className="g-recaptcha" data-sitekey={siteKey}></div>
+                                </div>
+                            ) : null}
 
                             <button
                                 type="submit"
                                 className="inline-flex w-fit items-center rounded-md bg-brand px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                                 disabled={isSubmitting}
                             >
-                                {isSubmitting ? 'Submitting...' : 'Submit Query'}
+                                {isSubmitting ? 'Sending...' : 'Send'}
                             </button>
                         </form>
                     </div>

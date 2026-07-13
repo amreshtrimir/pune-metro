@@ -1,7 +1,7 @@
 <x-mail::message>
-# New customer service submission received
+# New feedback submission received
 
-A new customer service submission has been received on the website.
+A new customer feedback submission has been received on the website.
 
 **Submitted by:** {{ $submission->name }}
 
@@ -10,7 +10,7 @@ A new customer service submission has been received on the website.
 | Name | {{ $submission->name }} |
 | Email | {{ $submission->email }} |
 | Mobile | {{ $submission->mobile }} |
-| Subject | {{ $submission->subject }} |
+| Type of Feedback | {{ $submission->subject }} |
 | Status | {{ $submission->status }} |
 | Message | {{ $submission->message }} |
 

@@ -56,7 +56,7 @@ const cmsNavItems: NavItem[] = [
         icon: MessageSquare,
     },
     {
-        title: 'Customer Service Queries',
+        title: 'Customer Feedback',
         href: '/dashboard/customer-service-submissions',
         icon: MessageSquare,
     },

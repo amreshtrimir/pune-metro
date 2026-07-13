@@ -1,16 +1,16 @@
 <x-mail::message>
-# We received your customer service request
+# We received your feedback
 
 Hi {{ $submission->name }},
 
-Thank you for contacting Pune Metro Line 3. We received your request and will get back to you shortly.
+Thank you for sharing your feedback with Pune Metro Line 3. We received your submission and will get back to you shortly if follow-up is required.
 
 **Submitted details:**
 
 - **Name:** {{ $submission->name }}
 - **Mobile:** {{ $submission->mobile }}
 - **Email:** {{ $submission->email }}
-- **Subject:** {{ $submission->subject }}
+- **Type of Feedback:** {{ $submission->subject }}
 
 <x-mail::panel>
 {{ $submission->message }}
