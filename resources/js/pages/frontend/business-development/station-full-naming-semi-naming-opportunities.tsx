@@ -121,14 +121,7 @@ export default function StationFullNamingSemiNamingOpportunities() {
                     </div>
 
                     <div className="mt-8 rounded-3xl p-6" style={{ backgroundColor: '#E9F4FF' }}>
-                        <h3 className="mb-3 font-montserrat text-lg font-semibold text-black">
-                            Why brands choose metro station naming
-                        </h3>
-                        <p className="mb-4 font-montserrat text-sm leading-relaxed text-black">
-                            Associate your brand with Pune Metro Line 3 through exclusive Station's Full Naming and
-                            Semi-Naming Rights. Build a lasting identity across one of the city's most prominent public
-                            infrastructure networks while reaching millions of commuters over the concession period.
-                        </p>
+                        <h3 className="mb-3 font-montserrat text-lg font-semibold text-black">Key Benefits</h3>
                         <ul className="list-disc space-y-2 pl-5 font-montserrat text-sm text-black">
                             {benefits.map((benefit) => (
                                 <li key={benefit}>{benefit}</li>
@@ -147,22 +140,13 @@ export default function StationFullNamingSemiNamingOpportunities() {
                         Station Naming and Semi-Naming opportunities are currently available at the following Pune Metro Line
                         3 stations:
                     </p>
-                    <div className="overflow-hidden rounded-2xl border border-black/10">
-                        <div className="grid grid-cols-[125px,1fr] border-b border-black/10 bg-black/5 px-4 py-3 text-sm font-semibold text-black">
-                            <span>Station Code</span>
-                            <span>Station Name</span>
-                        </div>
-                        <div className="divide-y divide-black/10">
-                            {availableStations.map((station) => (
-                                <div
-                                    key={`${station.pmr}-${station.station}`}
-                                    className="grid grid-cols-[125px,1fr] gap-2 px-4 py-3 text-sm"
-                                >
-                                    <div className="font-semibold text-brand">{station.pmr}</div>
-                                    <div className="font-montserrat text-sm text-black">{station.station}</div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {availableStations.map((station) => (
+                            <div key={`${station.pmr}-${station.station}`} className="rounded-2xl border border-black/10 bg-white p-4">
+                                <div className="mb-1 font-montserrat text-sm font-semibold text-brand">{station.pmr}</div>
+                                <div className="font-montserrat text-sm leading-relaxed text-black">{station.station}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
