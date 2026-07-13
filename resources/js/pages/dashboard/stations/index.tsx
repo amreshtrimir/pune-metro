@@ -1,7 +1,7 @@
 import { Head, router } from '@inertiajs/react';
 import { ArrowUp, ArrowDown, Pencil, Save, Plus, Trash2, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import * as DashboardRoutes from '@/routes/dashboard';
+import DashboardRoutes from '@/routes/dashboard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
