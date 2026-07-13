@@ -6,6 +6,7 @@ use App\Services\Board\BoardMemberService;
 use App\Services\ExplorePune\ExplorePunePlaceService;
 use App\Services\Gallery\GalleryAlbumService;
 use App\Services\Marquee\MarqueeItemService;
+use App\Services\Station\StationService;
 use Inertia\Inertia;
 use Inertia\Response;
 use Laravel\Fortify\Features;
@@ -16,6 +17,7 @@ class PagesController extends Controller
         private readonly GalleryAlbumService $galleryAlbumService,
         private readonly BoardMemberService $boardMemberService,
         private readonly ExplorePunePlaceService $explorePunePlaceService,
+        private readonly StationService $stationService,
         private readonly MarqueeItemService $marqueeItemService,
     ) {}
 
@@ -72,19 +74,26 @@ class PagesController extends Controller
 
     public function stationList(): Response
     {
-        return Inertia::render('frontend/route/station-list');
+        $stations = $this->stationService->getActiveStationsForFrontend()->map(
+            fn ($station) => $this->mapToFrontend($station),
+        )->values();
+
+        return Inertia::render('frontend/route/station-list', [
+            'stations' => $stations,
+        ]);
     }
 
     public function stationDetail(string $slug): Response
     {
-        $station = collect(config('station.stations', []))->firstWhere('slug', $slug);
+        $station = $this->stationService->getActiveStationsForFrontend()
+            ->firstWhere('slug', $slug);
 
         if (! $station) {
             abort(404);
         }
 
         return Inertia::render('frontend/route/station-detail', [
-            'station' => $station,
+            'station' => $this->mapToFrontend($station),
         ]);
     }
 
@@ -186,5 +195,40 @@ class PagesController extends Controller
     public function nonFareBusinessRevenue(): Response
     {
         return Inertia::render('frontend/business-development/non-fare-business-revenue');
+    }
+
+    public function stationFullNamingSemiNamingOpportunities(): Response
+    {
+        return Inertia::render('frontend/business-development/station-full-naming-semi-naming-opportunities');
+    }
+
+    public function stationInternalAdvertising(): Response
+    {
+        return Inertia::render('frontend/business-development/station-internal-advertising');
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function mapToFrontend(mixed $station): array
+    {
+        return [
+            'id' => $station->id,
+            'code' => (string) $station->code,
+            'name' => (string) $station->name,
+            'slug' => (string) $station->slug,
+            'description' => (string) ($station->description ?? ''),
+            'mapKey' => (string) ($station->map_key ?? ''),
+            'embedMapUrl' => (string) ($station->embed_map_url ?? ''),
+            'entrances' => $station->entrances ?? [],
+            'platforms' => $station->platforms ?? [],
+            'liftsEscalators' => $station->lifts_escalators ?? [],
+            'facilities' => $station->facilities ?? [],
+            'nearbyPlaces' => $station->nearby_places ?? [],
+            'emergency' => $station->emergency ?? [],
+            'transport' => $station->transport ?? [],
+            'sortOrder' => (int) $station->sort_order,
+            'isActive' => (bool) $station->is_active,
+        ];
     }
 }

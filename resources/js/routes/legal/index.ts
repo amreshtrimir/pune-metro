@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 export const termsAndConditions = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ termsAndConditions.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditions.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ termsAndConditions.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditions.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ termsAndConditions.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditions.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ termsAndConditions.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 const termsAndConditionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const termsAndConditionsForm = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ termsAndConditionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::termsAndConditions
-* @see app/Http/Controllers/PagesController.php:166
+* @see app/Http/Controllers/PagesController.php:175
 * @route '/legal/terms-and-conditions'
 */
 termsAndConditionsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ termsAndConditions.form = termsAndConditionsForm
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 export const privacyPolicy = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ privacyPolicy.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 privacyPolicy.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ privacyPolicy.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ privacyPolicy.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ privacyPolicy.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const privacyPolicyForm = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ privacyPolicyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \App\Http\Controllers\PagesController::privacyPolicy
-* @see app/Http/Controllers/PagesController.php:171
+* @see app/Http/Controllers/PagesController.php:180
 * @route '/legal/privacy-policy'
 */
 privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

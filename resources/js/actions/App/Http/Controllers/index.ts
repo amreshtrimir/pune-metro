@@ -9,6 +9,7 @@ import Gallery from './Gallery'
 import Board from './Board'
 import ExplorePune from './ExplorePune'
 import Marquee from './Marquee'
+import Station from './Station'
 import Settings from './Settings'
 
 const Controllers = {
@@ -23,6 +24,7 @@ const Controllers = {
     Board: Object.assign(Board, Board),
     ExplorePune: Object.assign(ExplorePune, ExplorePune),
     Marquee: Object.assign(Marquee, Marquee),
+    Station: Object.assign(Station, Station),
     Settings: Object.assign(Settings, Settings),
 }
 

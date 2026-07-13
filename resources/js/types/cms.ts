@@ -56,6 +56,27 @@ export type ExplorePunePlace = {
     updated_at: string;
 };
 
+export type Station = {
+    id: number;
+    code: string;
+    name: string;
+    slug: string;
+    description: string;
+    mapKey: string;
+    embedMapUrl: string;
+    entrances: Array<{ gate: string; landmarks: string }>;
+    platforms: Array<{ number: string; direction: string }>;
+    liftsEscalators: Array<{ name: string; level: string }>;
+    facilities: Array<{ name: string; location: string }>;
+    nearbyPlaces: string[];
+    emergency: Array<{ type: string; name: string; distance: string; walking: string; car: string }>;
+    transport: Array<{ type: string; name: string; distance: string; car: string }>;
+    sortOrder: number;
+    isActive: boolean;
+    created_at?: string;
+    updated_at?: string;
+};
+
 export type MarqueeItem = {
     id: number;
     text: string;

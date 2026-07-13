@@ -22,7 +22,7 @@ import {
     termsAndConditions,
     timeTable,
 } from '@/actions/App/Http/Controllers/PagesController';
-import { nonFareBusinessRevenue } from '@/routes/business-development';
+import { nonFareBusinessRevenue, stationFullNamingSemiNamingOpportunities, stationInternalAdvertising } from '@/routes/business-development';
 
 const quickLinks = [
     // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
@@ -104,15 +104,19 @@ const mainNavLinks: NavLink[] = [
         children: [
             { label: 'Station Retail', href: stationRetail.url() },
             { label: 'Non-Fare Business Revenue', href: nonFareBusinessRevenue.url() },
+            { label: 'Station Full Naming & Semi-Naming Opportunities', href: stationFullNamingSemiNamingOpportunities.url() },
+            { label: 'Station Internal Advertising', href: stationInternalAdvertising.url() },
         ],
     },
     // { label: 'CSR POLICY', href: csrPolicy.url() },
     // { label: 'CAREER', href: '#' },
     // { label: 'BLOG', href: '/blog' },
-    { label: 'LEGAL', href: termsAndConditions.url(), children: [
-        { label: 'Terms and Conditions', href: termsAndConditions.url() },
-        { label: 'Privacy Policy', href: privacyPolicy.url() },
-    ] },
+    {
+        label: 'LEGAL', href: termsAndConditions.url(), children: [
+            { label: 'Terms and Conditions', href: termsAndConditions.url() },
+            { label: 'Privacy Policy', href: privacyPolicy.url() },
+        ]
+    },
     { label: 'CONTACT US', href: contact.url() },
 ];
 
@@ -314,11 +318,10 @@ export default function Navbar() {
                                                 : link.label,
                                         )
                                     }
-                                    className={`flex items-center gap-1 px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20 ${
-                                        isActive(link.href, url)
+                                    className={`flex items-center gap-1 px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20 ${isActive(link.href, url)
                                             ? 'bg-brand-dark'
                                             : ''
-                                    }`}
+                                        }`}
                                 >
                                     {link.label}
                                     <Chevron
@@ -370,11 +373,10 @@ export default function Navbar() {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className={`px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20 ${
-                                        isActive(link.href, url)
+                                    className={`px-4 py-3 font-montserrat text-[11px] font-bold tracking-wide whitespace-nowrap text-white transition-colors hover:bg-white/20 ${isActive(link.href, url)
                                             ? 'bg-brand-dark'
                                             : ''
-                                    }`}
+                                        }`}
                                 >
                                     {link.label}
                                 </Link>
@@ -422,11 +424,10 @@ export default function Navbar() {
                                                     : link.label,
                                             )
                                         }
-                                        className={`flex w-full items-center justify-between py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${
-                                            isActive(link.href, url)
+                                        className={`flex w-full items-center justify-between py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${isActive(link.href, url)
                                                 ? 'text-brand'
                                                 : 'text-gray-700'
-                                        }`}
+                                            }`}
                                     >
                                         {link.label}
                                         <Chevron
@@ -480,11 +481,10 @@ export default function Navbar() {
                                         key={link.label}
                                         href={link.href}
                                         onClick={() => closeMenu()}
-                                        className={`block py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${
-                                            isActive(link.href, url)
+                                        className={`block py-2.5 font-montserrat text-sm font-semibold tracking-wide transition-colors hover:text-brand ${isActive(link.href, url)
                                                 ? 'text-brand'
                                                 : 'text-gray-700'
-                                        }`}
+                                            }`}
                                     >
                                         {link.label}
                                     </Link>

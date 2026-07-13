@@ -8,6 +8,7 @@ import galleryAlbums from './gallery-albums'
 import boardMembers from './board-members'
 import explorePune from './explore-pune'
 import marquee from './marquee'
+import stations from './stations'
 
 const dashboard = {
     media: Object.assign(media, media),
@@ -20,6 +21,7 @@ const dashboard = {
     boardMembers: Object.assign(boardMembers, boardMembers),
     explorePune: Object.assign(explorePune, explorePune),
     marquee: Object.assign(marquee, marquee),
+    stations: Object.assign(stations, stations),
 }
 
 export default dashboard

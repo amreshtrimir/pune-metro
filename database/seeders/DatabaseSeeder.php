@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(BoardMemberSeeder::class);
         $this->call(MarqueeItemSeeder::class);
+        $this->call(StationSeeder::class);
 
         $admin = User::factory()->create([
             'name' => 'Admin User',

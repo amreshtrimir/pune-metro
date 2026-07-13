@@ -14,6 +14,7 @@ use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Slider\SliderController;
+use App\Http\Controllers\Station\StationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
@@ -57,6 +58,8 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
 Route::prefix('business-development')->name('business-development.')->group(function (): void {
     Route::get('/station-retail', [PagesController::class, 'stationRetail'])->name('station-retail');
     Route::get('/non-fare-business-revenue', [PagesController::class, 'nonFareBusinessRevenue'])->name('non-fare-business-revenue');
+    Route::get('/station-full-naming-semi-naming-opportunities', [PagesController::class, 'stationFullNamingSemiNamingOpportunities'])->name('station-full-naming-semi-naming-opportunities');
+    Route::get('/station-internal-advertising', [PagesController::class, 'stationInternalAdvertising'])->name('station-internal-advertising');
 });
 
 // Legal routes
@@ -162,6 +165,13 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/marquee/{marqueeItem}', [MarqueeItemController::class, 'update'])->name('marquee.update');
         Route::delete('/marquee/{marqueeItem}', [MarqueeItemController::class, 'destroy'])->name('marquee.destroy');
         Route::post('/marquee/reorder', [MarqueeItemController::class, 'reorder'])->name('marquee.reorder');
+
+        // Stations
+        Route::get('/stations', [StationController::class, 'index'])->name('stations.index');
+        Route::post('/stations', [StationController::class, 'store'])->name('stations.store');
+        Route::put('/stations/{station}', [StationController::class, 'update'])->name('stations.update');
+        Route::delete('/stations/{station}', [StationController::class, 'destroy'])->name('stations.destroy');
+        Route::post('/stations/reorder', [StationController::class, 'reorder'])->name('stations.reorder');
     });
 });
 

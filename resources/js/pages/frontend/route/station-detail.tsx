@@ -2,28 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import { useEffect, useRef } from 'react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import { stationList } from '@/routes/route';
-
-type Entrance = { gate: string; landmarks: string };
-type Platform = { number: string; direction: string };
-type LiftEscalator = { name: string; level: string };
-type Facility = { name: string; location: string };
-type Emergency = { type: string; name: string; distance: string; walking: string; car: string };
-type Transport = { type: string; name: string; distance: string; car: string };
-
-type Station = {
-    code: string;
-    name: string;
-    slug: string;
-    entrances: Entrance[];
-    platforms: Platform[];
-    liftsEscalators: LiftEscalator[];
-    facilities: Facility[];
-    mapKey: string | null;
-    embedMapUrl: string | null;
-    nearbyPlaces: string[];
-    emergency: Emergency[];
-    transport: Transport[];
-};
+import type { Station } from '@/types/cms';
 
 type Props = { station: Station };
 
