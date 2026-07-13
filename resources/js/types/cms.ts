@@ -182,6 +182,20 @@ export type SliderSlide = {
     updated_at: string;
 };
 
+export type CustomerServiceSubmissionStatus = 'new' | 'in_progress' | 'resolved';
+
+export type CustomerServiceSubmission = {
+    id: number;
+    name: string;
+    email: string;
+    mobile: string;
+    subject: string;
+    message: string;
+    status: CustomerServiceSubmissionStatus;
+    created_at: string;
+    updated_at: string;
+};
+
 export type Slider = {
     id: number;
     name: string;

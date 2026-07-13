@@ -2,6 +2,7 @@ import media from './media'
 import posts from './posts'
 import categories from './categories'
 import comments from './comments'
+import customerServiceSubmissions from './customer-service-submissions'
 import sliders from './sliders'
 import galleryAlbums from './gallery-albums'
 import boardMembers from './board-members'
@@ -13,6 +14,7 @@ const dashboard = {
     posts: Object.assign(posts, posts),
     categories: Object.assign(categories, categories),
     comments: Object.assign(comments, comments),
+    customerServiceSubmissions: Object.assign(customerServiceSubmissions, customerServiceSubmissions),
     sliders: Object.assign(sliders, sliders),
     galleryAlbums: Object.assign(galleryAlbums, galleryAlbums),
     boardMembers: Object.assign(boardMembers, boardMembers),

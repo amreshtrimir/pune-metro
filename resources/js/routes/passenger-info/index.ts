@@ -1,4 +1,5 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import customerService420214 from './customer-service'
 /**
 * @see \App\Http\Controllers\PagesController::timeTable
 * @see app/Http/Controllers/PagesController.php:111
@@ -897,7 +898,7 @@ const passengerInfo = {
     itemsNotToCarry: Object.assign(itemsNotToCarry, itemsNotToCarry),
     offencesAndPenalties: Object.assign(offencesAndPenalties, offencesAndPenalties),
     lostAndFound: Object.assign(lostAndFound, lostAndFound),
-    customerService: Object.assign(customerService, customerService),
+    customerService: Object.assign(customerService, customerService420214),
     lastMileConnectivity: Object.assign(lastMileConnectivity, lastMileConnectivity),
     retailFnb: Object.assign(retailFnb, retailFnb),
     stationAreaMap: Object.assign(stationAreaMap, stationAreaMap),

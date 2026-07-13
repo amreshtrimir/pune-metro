@@ -5,6 +5,7 @@ use App\Http\Controllers\Blog\CommentController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\PublicBlogController;
 use App\Http\Controllers\Board\BoardMemberController;
+use App\Http\Controllers\CustomerServiceSubmissionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExplorePune\ExplorePunePlaceController;
 use App\Http\Controllers\Gallery\GalleryAlbumController;
@@ -45,6 +46,7 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
     Route::get('/offences-and-penalties', [PagesController::class, 'offencesAndPenalties'])->name('offences-and-penalties');
     Route::get('/lost-and-found', [PagesController::class, 'lostAndFound'])->name('lost-and-found');
     Route::get('/customer-service', [PagesController::class, 'customerService'])->name('customer-service');
+    Route::post('/customer-service', [CustomerServiceSubmissionController::class, 'store'])->name('customer-service.store');
     Route::get('/last-mile-connectivity', [PagesController::class, 'lastMileConnectivity'])->name('last-mile-connectivity');
     Route::get('/retail-fnb', [PagesController::class, 'retailFnb'])->name('retail-fnb');
     Route::get('/station-area-map', [PagesController::class, 'stationAreaMap'])->name('station-area-map');
@@ -115,6 +117,7 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
         Route::patch('/comments/{comment}/moderate', [CommentController::class, 'moderate'])->name('comments.moderate');
         Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+        Route::get('/customer-service-submissions', [CustomerServiceSubmissionController::class, 'index'])->name('customer-service-submissions.index');
 
         // Sliders
         Route::get('/sliders', [SliderController::class, 'index'])->name('sliders.index');

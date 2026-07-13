@@ -55,6 +55,11 @@ const cmsNavItems: NavItem[] = [
         icon: MessageSquare,
     },
     {
+        title: 'Customer Service Queries',
+        href: '/dashboard/customer-service-submissions',
+        icon: MessageSquare,
+    },
+    {
         title: 'Sliders',
         href: SliderController.index.url(),
         icon: SlidersHorizontal,

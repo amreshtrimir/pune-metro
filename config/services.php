@@ -22,6 +22,12 @@ return [
         'key' => env('RESEND_API_KEY'),
     ],
 
+    'recaptcha' => [
+        'secret' => env('RECAPTCHA_SECRET_KEY'),
+        'site_key' => env('RECAPTCHA_SITE_KEY'),
+        'endpoint' => env('RECAPTCHA_ENDPOINT', 'https://www.google.com/recaptcha/api/siteverify'),
+    ],
+
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),

@@ -1,6 +1,23 @@
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
+import { type FormEvent, useState } from 'react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
+
+type FormState = {
+    name: string;
+    mobile: string;
+    email: string;
+    subject: string;
+    message: string;
+    recaptcha_token: string;
+};
+
+type WindowWithRecaptcha = Window & {
+    grecaptcha?: {
+        getResponse: () => string;
+        reset: () => void;
+    };
+};
 
 const commitments = [
     'We strive to maintain the highest standards of cleanliness, safety, and accessibility across all stations and trains.',
@@ -14,6 +31,58 @@ const commitments = [
 ];
 
 export default function CustomerService() {
+    const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+    const [formData, setFormData] = useState<FormState>({
+        name: '',
+        mobile: '',
+        email: '',
+        subject: '',
+        message: '',
+        recaptcha_token: '',
+    });
+    const [feedback, setFeedback] = useState('');
+    const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setFeedback('');
+        setError('');
+
+        const grecaptcha = (window as WindowWithRecaptcha).grecaptcha;
+        const token = grecaptcha?.getResponse() ?? '';
+
+        if (import.meta.env.PROD && siteKey && !token) {
+            setError('Please complete the reCAPTCHA challenge.');
+            return;
+        }
+
+        setFormData((current) => ({ ...current, recaptcha_token: token }));
+        setIsSubmitting(true);
+
+        router.post('/passenger-info/customer-service', { ...formData, recaptcha_token: token }, {
+            preserveScroll: true,
+            onSuccess: () => {
+                setFeedback('Thank you for contacting us. We will get back to you shortly.');
+                setFormData({ name: '', mobile: '', email: '', subject: '', message: '', recaptcha_token: '' });
+                grecaptcha?.reset();
+            },
+            onError: (errors) => {
+                if (typeof errors === 'object' && errors !== null) {
+                    const errorMessage = typeof errors.recaptcha_token === 'string'
+                        ? errors.recaptcha_token
+                        : 'Something went wrong. Please check the inputs and try again.';
+                    setError(errorMessage);
+
+                    return;
+                }
+
+                setError('Something went wrong. Please check the inputs and try again.');
+            },
+            onFinish: () => setIsSubmitting(false),
+        });
+    };
+
     return (
         <>
             <Head>
@@ -23,6 +92,7 @@ export default function CustomerService() {
                     content="Learn about Pune Metro Line 3's commitment to safe, reliable, and comfortable travel experience for every passenger."
                 />
             </Head>
+            {siteKey && <script src="https://www.google.com/recaptcha/api.js" async defer></script>}
 
             {/* ── Hero Banner ── */}
             <PageHeroBanner
@@ -78,6 +148,121 @@ export default function CustomerService() {
                                 , or visit our Customer Care Centre at any metro station.
                             </p>
                         </div>
+                    </div>
+
+                    <div className="mt-12 rounded-xl border border-[#f2c8e0] bg-[#fef7fb] p-6">
+                        <h2 className="mb-3 font-montserrat text-base font-semibold text-black">Customer Service Form</h2>
+                        <p className="mb-5 max-w-3xl font-inter text-sm text-black">
+                            Share your enquiry or feedback and our team will contact you at the earliest.
+                        </p>
+                        {feedback && (
+                            <p className="mb-4 rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                                {feedback}
+                            </p>
+                        )}
+                        {error && (
+                            <p className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                                {error}
+                            </p>
+                        )}
+
+                        <form
+                            onSubmit={handleSubmit}
+                            className="grid gap-4"
+                        >
+                            <div className="grid gap-4 md:grid-cols-2">
+                                <div className="flex flex-col gap-1.5">
+                                    <label htmlFor="cs-name" className="font-inter text-sm font-medium text-black">
+                                        Full Name
+                                    </label>
+                                    <input
+                                        id="cs-name"
+                                        type="text"
+                                        name="name"
+                                        className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                                        placeholder="Your name"
+                                        value={formData.name}
+                                        onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
+                                        required
+                                    />
+                                </div>
+                            <div className="flex flex-col gap-1.5">
+                                <label htmlFor="cs-mobile" className="font-inter text-sm font-medium text-black">
+                                    Mobile Number
+                                </label>
+                                <input
+                                    id="cs-mobile"
+                                    type="tel"
+                                    name="mobile"
+                                    className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                                        placeholder="10 digit number (e.g. 9876543210)"
+                                        value={formData.mobile}
+                                        pattern="^(?:\\+91[-\\s]?)?[6-9]\\d{9}$"
+                                        onChange={(event) => setFormData((current) => ({ ...current, mobile: event.target.value }))}
+                                        title="Indian mobile number: 10 digits starting 6-9, optional +91"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid gap-4 md:grid-cols-2">
+                                <div className="flex flex-col gap-1.5">
+                                    <label htmlFor="cs-email" className="font-inter text-sm font-medium text-black">
+                                        Email
+                                    </label>
+                                    <input
+                                        id="cs-email"
+                                        type="email"
+                                        name="email"
+                                        className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                                        placeholder="you@example.com"
+                                        value={formData.email}
+                                        onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
+                                        required
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-1.5">
+                                    <label htmlFor="cs-subject" className="font-inter text-sm font-medium text-black">
+                                        Subject
+                                    </label>
+                                    <input
+                                        id="cs-subject"
+                                        type="text"
+                                        name="subject"
+                                        className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                                        placeholder="Complaint / Feedback"
+                                        value={formData.subject}
+                                        onChange={(event) => setFormData((current) => ({ ...current, subject: event.target.value }))}
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5">
+                                <label htmlFor="cs-message" className="font-inter text-sm font-medium text-black">
+                                    Message
+                                </label>
+                                <textarea
+                                    id="cs-message"
+                                    name="message"
+                                    rows={5}
+                                    className="rounded-md border border-[#e2b8d2] bg-white px-4 py-2.5 text-sm text-black outline-none focus:border-[#e8449a]"
+                                    placeholder="Please share your details and query"
+                                    value={formData.message}
+                                    onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
+                                    required
+                                />
+                            </div>
+                            {siteKey ? <div className="g-recaptcha" data-sitekey={siteKey}></div> : null}
+
+                            <button
+                                type="submit"
+                                className="inline-flex w-fit items-center rounded-md bg-brand px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Submitting...' : 'Submit Query'}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </section>

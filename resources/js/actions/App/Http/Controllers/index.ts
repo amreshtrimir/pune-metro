@@ -1,4 +1,5 @@
 import PagesController from './PagesController'
+import CustomerServiceSubmissionController from './CustomerServiceSubmissionController'
 import SitemapController from './SitemapController'
 import Blog from './Blog'
 import DashboardController from './DashboardController'
@@ -12,6 +13,7 @@ import Settings from './Settings'
 
 const Controllers = {
     PagesController: Object.assign(PagesController, PagesController),
+    CustomerServiceSubmissionController: Object.assign(CustomerServiceSubmissionController, CustomerServiceSubmissionController),
     SitemapController: Object.assign(SitemapController, SitemapController),
     Blog: Object.assign(Blog, Blog),
     DashboardController: Object.assign(DashboardController, DashboardController),
