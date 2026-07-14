@@ -49,20 +49,28 @@ export default function StationInternalAdvertising() {
 
             <section className="bg-white py-8 md:py-10">
                 <div className="mx-auto max-w-325.75 px-6 min-[1303px]:px-8 min-[1440px]:max-w-360">
-                    <PageSectionHeading wrap className="mb-6 flex items-center gap-6 md:mb-8">
+                    <PageSectionHeading
+                        wrap
+                        className="mb-6 flex items-center gap-6 md:mb-8"
+                    >
                         Station Internal Advertising
                     </PageSectionHeading>
 
                     <p className="mb-4 font-montserrat text-sm leading-relaxed text-black">
-                        Station Internal Advertising at Pune Metro Line 3 provides brands with an opportunity to
-                        reach a large and diverse commuter base across one of Pune's fastest-growing transit
-                        corridors. Strategically located advertising spaces within metro stations ensure high
-                        visibility and continuous engagement with passengers throughout their journey.
+                        Station Internal Advertising at Pune Metro Line 3
+                        provides brands with an opportunity to reach a large and
+                        diverse commuter base across one of Pune's
+                        fastest-growing transit corridors. Strategically located
+                        advertising spaces within metro stations ensure high
+                        visibility and continuous engagement with passengers
+                        throughout their journey.
                     </p>
                     <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
-                        With premium advertising locations across all 23 stations between Hinjewadi and Shivajinagar,
-                        businesses can strengthen brand awareness while connecting with commuters, professionals, students
-                        and visitors travelling on the corridor.
+                        With premium advertising locations across all 23
+                        stations between Hinjewadi and Shivajinagar, businesses
+                        can strengthen brand awareness while connecting with
+                        commuters, professionals, students and visitors
+                        travelling on the corridor.
                     </p>
 
                     <h3 className="mb-3 font-montserrat text-xl font-semibold text-black">
@@ -70,7 +78,10 @@ export default function StationInternalAdvertising() {
                     </h3>
                     <div className="mb-6 grid gap-3">
                         {advertisingFormats.map((format) => (
-                            <div key={format.title} className="rounded-2xl border border-black/10 p-4">
+                            <div
+                                key={format.title}
+                                className="rounded-2xl border border-black/10 p-4"
+                            >
                                 <h4 className="mb-2 font-montserrat text-sm font-semibold text-black">
                                     {format.title}
                                 </h4>
@@ -92,7 +103,16 @@ export default function StationInternalAdvertising() {
                         </ul>
                     </div>
 
-                    <h3 className="mb-3 font-montserrat text-xl font-semibold text-black">
+                    <a
+                        href="https://drive.google.com/file/d/1a1MJiEExmQ4LFu2hoLMj0nwZutZoBo39/view"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 font-montserrat text-sm font-medium text-white transition hover:bg-brand/90"
+                    >
+                        Download Reference Images
+                    </a>
+
+                    <h3 className="my-3 font-montserrat text-xl font-semibold text-black">
                         Key Benefits
                     </h3>
                     <ul className="list-disc space-y-2 pl-5 font-montserrat text-sm text-black">
@@ -105,25 +125,46 @@ export default function StationInternalAdvertising() {
 
             <section className="bg-white py-8 md:py-10">
                 <div className="mx-auto max-w-325.75 px-6 min-[1303px]:px-8 min-[1440px]:max-w-360">
-                    <PageSectionHeading wrap className="mb-6 flex items-center gap-6 md:mb-8">
+                    <PageSectionHeading
+                        wrap
+                        className="mb-6 flex items-center gap-6 md:mb-8"
+                    >
                         Enquire for Campaign Planning
                     </PageSectionHeading>
-                    <div className="rounded-3xl p-6" style={{ backgroundColor: '#E9F4FF' }}>
+                    <div
+                        className="rounded-3xl p-6"
+                        style={{ backgroundColor: '#E9F4FF' }}
+                    >
                         <p className="font-montserrat text-sm leading-relaxed text-black">
-                            Position your brand where thousands of commuters engage every day. Explore premium
-                            advertising opportunities across Pune Metro Line 3 stations and connect with one of Pune's
-                            fastest-growing urban audiences.
+                            Position your brand where thousands of commuters
+                            engage every day. Explore premium advertising
+                            opportunities across Pune Metro Line 3 stations and
+                            connect with one of Pune's fastest-growing urban
+                            audiences.
                         </p>
                         <p className="mt-4 font-montserrat text-sm text-black">
-                            Get in touch with our Business Development team to explore available advertising inventory
-                            and partnership opportunities.
+                            Get in touch with our Business Development team to
+                            explore available advertising inventory and
+                            partnership opportunities.
                         </p>
                     </div>
                     <p className="mt-4 font-montserrat text-sm text-black">
-                        📞 Phone: <a href="tel:+919960774871" className="text-brand hover:underline">+91 9960774871</a>
+                        📞 Phone:{' '}
+                        <a
+                            href="tel:+919960774871"
+                            className="text-brand hover:underline"
+                        >
+                            +91 9960774871
+                        </a>
                     </p>
                     <p className="mt-1 font-montserrat text-sm text-black">
-                        ✉️ Email: <a href="mailto:stationretail@punerimetro.in" className="text-brand hover:underline">stationretail@punerimetro.in</a>
+                        ✉️ Email:{' '}
+                        <a
+                            href="mailto:stationretail@punerimetro.in"
+                            className="text-brand hover:underline"
+                        >
+                            stationretail@punerimetro.in
+                        </a>
                     </p>
                 </div>
             </section>
