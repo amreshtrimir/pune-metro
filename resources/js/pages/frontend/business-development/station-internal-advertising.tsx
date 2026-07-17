@@ -41,9 +41,9 @@ export default function StationInternalAdvertising() {
             </Head>
 
             <PageHeroBanner
-                src="/banners/non-fare-business/non-fare-business-banner-md.png"
-                srcMd="/banners/non-fare-business/non-fare-business-banner-md.png"
-                srcLg="/banners/non-fare-business/non-fare-business-banner-lg.png"
+                src="/banners/station-internal-detail/internal-advertising-banner-md.webp"
+                srcMd="/banners/station-internal-detail/internal-advertising-banner-md.webp"
+                srcLg="/banners/station-internal-detail/internal-advertising-banner-lg.webp"
                 alt="Internal advertising opportunities at Pune Metro stations"
             />
 

@@ -54,12 +54,12 @@ export default function StationFullNamingSemiNamingOpportunities() {
                 />
             </Head>
 
-            <PageHeroBanner
-                src="/banners/non-fare-business/non-fare-business-banner-md.png"
-                srcMd="/banners/non-fare-business/non-fare-business-banner-md.png"
-                srcLg="/banners/non-fare-business/non-fare-business-banner-lg.png"
-                alt="Station Naming opportunities at Pune Metro"
-            />
+           <PageHeroBanner
+                          src="/banners/station-internal-detail/semi-naming-opportunities-md.webp"
+                          srcMd="/banners/station-internal-detail/semi-naming-opportunities-md.webp"
+                          srcLg="/banners/station-internal-detail/semi-naming-opportunities-lg.webp"
+                          alt="Internal advertising opportunities at Pune Metro stations"
+                      />
 
             <section className="bg-white py-8 md:py-10">
                 <div className="mx-auto max-w-325.75 px-6 min-[1303px]:px-8 min-[1440px]:max-w-360">

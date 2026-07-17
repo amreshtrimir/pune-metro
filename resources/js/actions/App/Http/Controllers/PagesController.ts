@@ -1882,7 +1882,7 @@ nonFareBusinessRevenue.form = nonFareBusinessRevenueForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 export const stationFullNamingSemiNamingOpportunities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1897,7 +1897,7 @@ stationFullNamingSemiNamingOpportunities.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunities.url = (options?: RouteQueryOptions) => {
@@ -1906,7 +1906,7 @@ stationFullNamingSemiNamingOpportunities.url = (options?: RouteQueryOptions) => 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1916,7 +1916,7 @@ stationFullNamingSemiNamingOpportunities.get = (options?: RouteQueryOptions): Ro
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1926,7 +1926,7 @@ stationFullNamingSemiNamingOpportunities.head = (options?: RouteQueryOptions): R
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 const stationFullNamingSemiNamingOpportunitiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1936,7 +1936,7 @@ const stationFullNamingSemiNamingOpportunitiesForm = (options?: RouteQueryOption
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1946,7 +1946,7 @@ stationFullNamingSemiNamingOpportunitiesForm.get = (options?: RouteQueryOptions)
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunitiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1963,7 +1963,7 @@ stationFullNamingSemiNamingOpportunities.form = stationFullNamingSemiNamingOppor
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 export const stationInternalAdvertising = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1978,7 +1978,7 @@ stationInternalAdvertising.definition = {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertising.url = (options?: RouteQueryOptions) => {
@@ -1987,7 +1987,7 @@ stationInternalAdvertising.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertising.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1997,7 +1997,7 @@ stationInternalAdvertising.get = (options?: RouteQueryOptions): RouteDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertising.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -2007,7 +2007,7 @@ stationInternalAdvertising.head = (options?: RouteQueryOptions): RouteDefinition
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 const stationInternalAdvertisingForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -2017,7 +2017,7 @@ const stationInternalAdvertisingForm = (options?: RouteQueryOptions): RouteFormD
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertisingForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -2027,7 +2027,7 @@ stationInternalAdvertisingForm.get = (options?: RouteQueryOptions): RouteFormDef
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertisingForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -2609,39 +2609,6 @@ greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 greenInitiatives.form = greenInitiativesForm
 
-const PagesController = {
-    home,
-    contact,
-    overview,
-    board,
-    projectUpdate,
-    keyHighlights,
-    routeMap,
-    photoGallery,
-    stationList,
-    stationDetail,
-    timeTable,
-    fareTable,
-    dosAndDonts,
-    itemsNotToCarry,
-    offencesAndPenalties,
-    lostAndFound,
-    customerService,
-    lastMileConnectivity,
-    retailFnb,
-    stationAreaMap,
-    passengerAmenities,
-    stationRetail,
-    nonFareBusinessRevenue,
-    stationFullNamingSemiNamingOpportunities,
-    stationInternalAdvertising,
-    termsAndConditions,
-    privacyPolicy,
-    policies,
-    eiaReports,
-    carbonCredit,
-    artFromScrap,
-    greenInitiatives,
-}
+const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, nonFareBusinessRevenue, stationFullNamingSemiNamingOpportunities, stationInternalAdvertising, termsAndConditions, privacyPolicy, policies, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
 
 export default PagesController

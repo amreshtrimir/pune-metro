@@ -1,5 +1,4 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
-
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
 * @see app/Http/Controllers/PagesController.php:190
@@ -11,9 +10,9 @@ export const stationRetail = (options?: RouteQueryOptions): RouteDefinition<'get
 })
 
 stationRetail.definition = {
-    methods: ["get", "head"],
+    methods: ["get","head"],
     url: '/business-development/station-retail',
-} satisfies RouteDefinition<["get", "head"]>
+} satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PagesController::stationRetail
@@ -74,7 +73,7 @@ stationRetailForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
-        },
+        }
     }),
     method: 'get',
 })
@@ -92,9 +91,9 @@ export const nonFareBusinessRevenue = (options?: RouteQueryOptions): RouteDefini
 })
 
 nonFareBusinessRevenue.definition = {
-    methods: ["get", "head"],
+    methods: ["get","head"],
     url: '/business-development/non-fare-business-revenue',
-} satisfies RouteDefinition<["get", "head"]>
+} satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PagesController::nonFareBusinessRevenue
@@ -155,7 +154,7 @@ nonFareBusinessRevenueForm.head = (options?: RouteQueryOptions): RouteFormDefini
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
-        },
+        }
     }),
     method: 'get',
 })
@@ -164,7 +163,7 @@ nonFareBusinessRevenue.form = nonFareBusinessRevenueForm
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 export const stationFullNamingSemiNamingOpportunities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -173,13 +172,13 @@ export const stationFullNamingSemiNamingOpportunities = (options?: RouteQueryOpt
 })
 
 stationFullNamingSemiNamingOpportunities.definition = {
-    methods: ["get", "head"],
+    methods: ["get","head"],
     url: '/business-development/station-full-naming-semi-naming-opportunities',
-} satisfies RouteDefinition<["get", "head"]>
+} satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunities.url = (options?: RouteQueryOptions) => {
@@ -188,7 +187,7 @@ stationFullNamingSemiNamingOpportunities.url = (options?: RouteQueryOptions) => 
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -198,7 +197,7 @@ stationFullNamingSemiNamingOpportunities.get = (options?: RouteQueryOptions): Ro
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -208,7 +207,7 @@ stationFullNamingSemiNamingOpportunities.head = (options?: RouteQueryOptions): R
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 const stationFullNamingSemiNamingOpportunitiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -218,7 +217,7 @@ const stationFullNamingSemiNamingOpportunitiesForm = (options?: RouteQueryOption
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -228,7 +227,7 @@ stationFullNamingSemiNamingOpportunitiesForm.get = (options?: RouteQueryOptions)
 
 /**
 * @see \App\Http\Controllers\PagesController::stationFullNamingSemiNamingOpportunities
-* @see app/Http/Controllers/PagesController.php:197
+* @see app/Http/Controllers/PagesController.php:200
 * @route '/business-development/station-full-naming-semi-naming-opportunities'
 */
 stationFullNamingSemiNamingOpportunitiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -236,7 +235,7 @@ stationFullNamingSemiNamingOpportunitiesForm.head = (options?: RouteQueryOptions
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
-        },
+        }
     }),
     method: 'get',
 })
@@ -245,7 +244,7 @@ stationFullNamingSemiNamingOpportunities.form = stationFullNamingSemiNamingOppor
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 export const stationInternalAdvertising = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -254,13 +253,13 @@ export const stationInternalAdvertising = (options?: RouteQueryOptions): RouteDe
 })
 
 stationInternalAdvertising.definition = {
-    methods: ["get", "head"],
+    methods: ["get","head"],
     url: '/business-development/station-internal-advertising',
-} satisfies RouteDefinition<["get", "head"]>
+} satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertising.url = (options?: RouteQueryOptions) => {
@@ -269,7 +268,7 @@ stationInternalAdvertising.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertising.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -279,7 +278,7 @@ stationInternalAdvertising.get = (options?: RouteQueryOptions): RouteDefinition<
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertising.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -289,7 +288,7 @@ stationInternalAdvertising.head = (options?: RouteQueryOptions): RouteDefinition
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 const stationInternalAdvertisingForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -299,7 +298,7 @@ const stationInternalAdvertisingForm = (options?: RouteQueryOptions): RouteFormD
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertisingForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -309,7 +308,7 @@ stationInternalAdvertisingForm.get = (options?: RouteQueryOptions): RouteFormDef
 
 /**
 * @see \App\Http\Controllers\PagesController::stationInternalAdvertising
-* @see app/Http/Controllers/PagesController.php:202
+* @see app/Http/Controllers/PagesController.php:205
 * @route '/business-development/station-internal-advertising'
 */
 stationInternalAdvertisingForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -317,7 +316,7 @@ stationInternalAdvertisingForm.head = (options?: RouteQueryOptions): RouteFormDe
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
-        },
+        }
     }),
     method: 'get',
 })
