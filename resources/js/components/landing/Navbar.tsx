@@ -104,8 +104,8 @@ const mainNavLinks: NavLink[] = [
         children: [
             { label: 'Station Retail', href: stationRetail.url() },
             { label: 'Non-Fare Business Revenue', href: nonFareBusinessRevenue.url() },
-            // { label: 'Station Full Naming & Semi-Naming Opportunities', href: stationFullNamingSemiNamingOpportunities.url() },
-            // { label: 'Station Internal Advertising', href: stationInternalAdvertising.url() },
+            { label: 'Station Full Naming & Semi-Naming Opportunities', href: stationFullNamingSemiNamingOpportunities.url() },
+            { label: 'Station Internal Advertising', href: stationInternalAdvertising.url() },
         ],
     },
     // { label: 'CSR POLICY', href: csrPolicy.url() },
