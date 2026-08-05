@@ -77,10 +77,9 @@ export default function Contact() {
                                     Hinjawadi Phase III, Pune 411057,
                                     Maharashtra, India.
                                     <br />
-                                    Tel No. 020 65525000
+                                    Tel No. 020-65520100
                                     <br />
-                                    Email: trilsec@tatarealty.in /
-                                    contactpunerimetro@tatarealty.in.
+                                    Email: support@punerimetro.in
                                 </p>
                             </div>
                         </div>

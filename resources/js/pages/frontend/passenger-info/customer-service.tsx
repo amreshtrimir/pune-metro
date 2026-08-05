@@ -141,9 +141,9 @@ export default function CustomerService() {
                         <h2 className="mb-3 font-montserrat text-base font-semibold text-black text-center">Feedback</h2>
                          <p className="font-inter text-sm text-black">
                                 If you have any feedback or complaints, you can reach us on our helpline{' '}
-                                <span className="font-semibold text-black">020 65525000</span>, write to us at{' '}
-                                <a href="mailto:contactpunerimetro@tatarealty.in" className="font-semibold text-brand hover:underline">
-                                   contactpunerimetro@tatarealty.in
+                                <span className="font-semibold text-black">020-65520100</span>, write to us at{' '}
+                                <a href="mailto:support@punerimetro.in" className="font-semibold text-brand hover:underline">
+                                   support@punerimetro.in
                                 </a>
                                 , or visit our Customer Care Centre at any metro station.
                             </p>
