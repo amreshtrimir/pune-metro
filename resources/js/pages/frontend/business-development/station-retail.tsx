@@ -4,7 +4,7 @@ import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
 const retailSections = [
     {
-        heading: 'STATION RETAIL - IT/ITES--Hinjewadi IT Zone',
+        heading: 'STATION RETAIL - IT/ITES--Hinjawadi IT Zone',
         images: [
             {
                 src: '/station-retail-sections/Bisleri.png',
@@ -188,7 +188,7 @@ export default function StationRetail() {
                         {/* Right — Content */}
                         <div className="flex-1">
                             <p className="mb-4 font-montserrat text-sm leading-relaxed text-black">
-                                Pune Metro Line 3 (Hinjewadi – Shivajinagar
+                                Pune Metro Line 3 (Hinjawadi – Shivajinagar
                                 Corridor) is designed to make everyday travel
                                 more convenient by offering well-planned retail
                                 spaces at metro stations. Commuters will have
@@ -197,7 +197,7 @@ export default function StationRetail() {
                                 shops, and daily-use accessories, across
                                 stations throughout the Line 3 corridor,
                                 connecting major IT hubs, residential areas, and
-                                commercial centres from Hinjewadi to
+                                commercial centres from Hinjawadi to
                                 Shivajinagar.
                             </p>
 

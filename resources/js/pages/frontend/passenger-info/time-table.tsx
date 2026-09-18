@@ -31,8 +31,8 @@ const directions = [
 
 const stations = [
     'Maan',
-    'Hinjewadi Kasarsai Road',
-    'Hinjewadi Aundh Road',
+    'Hinjawadi Kasarsai Road',
+    'Hinjawadi Aundh Road',
     'Wakad Chowk',
     'Balewadi High Street',
     'Baner',

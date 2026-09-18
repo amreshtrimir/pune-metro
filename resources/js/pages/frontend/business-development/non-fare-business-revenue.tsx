@@ -45,7 +45,7 @@ export default function NonFareBusinessRevenue() {
                         <div className="flex-1">
                             <h3 className="mb-4 text-2xl leading-tight font-semibold text-black">
                                 Station Retail & Commercial Spaces |
-                                Shivajinagar to Hinjewadi Corridor
+                                Shivajinagar to Hinjawadi Corridor
                             </h3>
 
                             <p className="mb-4 font-montserrat text-sm leading-relaxed text-black">
@@ -217,7 +217,7 @@ export default function NonFareBusinessRevenue() {
                     </PageSectionHeading>
                     <p className="mb-4 font-montserrat text-sm leading-relaxed text-black">
                         Prime locations across Pune&apos;s high-growth corridor
-                        from Shivajinagar to Hinjewadi
+                        from Shivajinagar to Hinjawadi
                     </p>
                     <ul className="list-disc space-y-2 pl-5">
                         <li className="font-montserrat text-sm text-black">

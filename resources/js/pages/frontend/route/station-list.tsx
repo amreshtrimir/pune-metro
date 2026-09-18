@@ -47,7 +47,7 @@ export default function StationList({ stations }: Props) {
                 <title>Station List - Pune Metro Line 3</title>
                 <meta
                     name="description"
-                    content="View the complete list of Pune Metro Line 3 stations from Hinjewadi to Shivajinagar District Court."
+                    content="View the complete list of Pune Metro Line 3 stations from Hinjawadi to Shivajinagar District Court."
                 />
             </Head>
 

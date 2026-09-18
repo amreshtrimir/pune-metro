@@ -12,7 +12,7 @@ export default function About() {
                     name="description"
                     content="Learn about Pune IT City Metro Rail Limited (PITCMRL), a joint venture between Tata Group and Siemens delivering Pune's metro Line 3 under a 35-year DBFOT concession."
                 />
-                <meta name="keywords" content="Pune Metro, PITCMRL, Pune Metro Line 3, Hinjewadi Shivajinagar Metro, Tata Siemens Metro" />
+                <meta name="keywords" content="Pune Metro, PITCMRL, Pune Metro Line 3, Hinjawadi Shivajinagar Metro, Tata Siemens Metro" />
             </Head>
 
             {/* ── Page Hero Banner ── */}
@@ -32,7 +32,7 @@ export default function About() {
                         <p className="font-montserrat text-sm leading-relaxed text-black">
                             Pune IT City Metro Rail Limited (PITCMRL), a Special Purpose Vehicle (SPV) established through a strategic
                             joint venture between the Tata Group and Siemens has developed the Pune Metro Line 3 connecting the IT hub
-                            of Hinjewadi with the Shivajinagar, which is the centre of the bustling city of Pune. This partnership
+                            of Hinjawadi with the Shivajinagar, which is the centre of the bustling city of Pune. This partnership
                             brings together two respected business houses possessing global expertise in engineering and technology to
                             deliver a transformative urban transit solution for the city of Pune.
                         </p>
@@ -60,7 +60,7 @@ export default function About() {
                             frequency. To maintain a clean urban skyline, the project employs a 750V DC third-rail electrification
                             system, eliminating the need for overhead wires. Passengers will travel in modern rolling stock supplied by
                             Alstom, designed for comfort and efficiency, with all operations supported by a state-of-the-art
-                            maintenance depot located at Maan, Hinjewadi.
+                            maintenance depot located at Maan, Hinjawadi.
                         </p>
                         <p className="font-montserrat text-sm leading-relaxed text-black">
                             Pune Metro Line 3 provides a sustainable, comfortable and reliable, high-capacity alternative to road

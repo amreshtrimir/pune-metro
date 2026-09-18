@@ -37,7 +37,7 @@ class ExplorePunePlaceSeeder extends Seeder
             [
                 'name' => 'Sinhagad Fort - Historic Hill Fort',
                 'category' => 'Historic Fort & Trekking',
-                'nearest_station' => 'PMR 01 — Hinjewadi Phase 3',
+                'nearest_station' => 'PMR 01 — Hinjawadi Phase 3',
                 'distance_from_station' => '45 min cab ride',
                 'distance_note' => 'Accessible by cab/private vehicle',
                 'about' => "Sinhagad Fort, meaning 'Lion's Fort', is a historic fortification located about 30 km south-west of Pune. Famous for the Battle of Sinhagad (1670), the fort offers panoramic views of the Sahyadri mountain range.",
@@ -133,7 +133,7 @@ class ExplorePunePlaceSeeder extends Seeder
             [
                 'name' => 'Lohagad Fort - Trekking Destination',
                 'category' => 'Historic Fort & Trekking',
-                'nearest_station' => 'PMR 01 — Hinjewadi Phase 3',
+                'nearest_station' => 'PMR 01 — Hinjawadi Phase 3',
                 'distance_from_station' => '60 min cab ride',
                 'distance_note' => 'Accessible by cab/private vehicle',
                 'about' => 'Lohagad Fort is a historic hill fort near Malavli at an altitude of 3,389 feet. Famous for its scenic beauty and Maratha heritage, it was held by Shivaji Maharaj and later by Nana Fadnavis.',
@@ -229,7 +229,7 @@ class ExplorePunePlaceSeeder extends Seeder
             [
                 'name' => 'Phursungi Village - Rural Charm',
                 'category' => 'Rural & Cultural',
-                'nearest_station' => 'PMR 01 — Hinjewadi Phase 3',
+                'nearest_station' => 'PMR 01 — Hinjawadi Phase 3',
                 'distance_from_station' => '45 min cab ride',
                 'distance_note' => 'Accessible by cab/private vehicle',
                 'about' => 'Phursungi Village offers a glimpse into the rural heritage of Pune, with traditional architecture, local festivals, and agrarian culture. It represents the cultural roots of the region amidst the growing urban landscape.',
@@ -241,7 +241,7 @@ class ExplorePunePlaceSeeder extends Seeder
             [
                 'name' => 'Khadakwasla Dam - Scenic Reservoir',
                 'category' => 'Lakes & Reservoirs',
-                'nearest_station' => 'PMR 01 — Hinjewadi Phase 3',
+                'nearest_station' => 'PMR 01 — Hinjawadi Phase 3',
                 'distance_from_station' => '50 min cab ride',
                 'distance_note' => 'Accessible by cab/private vehicle',
                 'about' => 'Khadakwasla Dam is a scenic reservoir located near Pune, known for its picturesque surroundings and stunning views of the Sahyadri hills. It is one of the main water sources for Pune and a popular picnic destination.',

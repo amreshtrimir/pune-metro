@@ -13,7 +13,7 @@ class MarqueeItemSeeder extends Seeder
             'Experience the Future of Urban Mobility with Pune Metro',
             'Your Journey, Simplified',
             'Redefining City Travel with Speed, Safety & Comfort',
-            'Pune Metro Line 3 — Hinjewadi to Shivajinagar',
+            'Pune Metro Line 3 — Hinjawadi to Shivajinagar',
             'Safe · Fast · Sustainable',
             'Connect. Commute. Celebrate Pune.',
         ];

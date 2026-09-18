@@ -24,7 +24,7 @@ export default function RouteMap() {
                 <title>Route Map - Pune Metro Line 3</title>
                 <meta
                     name="description"
-                    content="Explore the Pune Metro Line 3 route map — connecting Hinjewadi to Shivajinagar District Court across 23 stations."
+                    content="Explore the Pune Metro Line 3 route map — connecting Hinjawadi to Shivajinagar District Court across 23 stations."
                 />
             </Head>
 
@@ -48,7 +48,7 @@ export default function RouteMap() {
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-360 px-6 min-[1303px]:px-8">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         Pune Metro Line 3 connects one of the city&apos;s most important daily movement corridors, linking the
-                        Hinjewadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
+                        Hinjawadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
                         reduce congestion and integrate with the wider metro network.
                     </p>
                 </div>

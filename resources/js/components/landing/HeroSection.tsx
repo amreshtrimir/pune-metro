@@ -20,7 +20,7 @@ const slides: Slide[] = [
         image: '/landing/sliders-slides/hero-section-slides/slide-2-desktop.png',
         heading: "Connecting Pune's Vital Commuter Arteries",
         description:
-            "The project features a 23.3 km elevated corridor designed to alleviate congestion along one of Pune's most critical routes. By linking the Hinjewadi IT hub to the Shivajinagar District Court, the line bridges major tech zones with the city centre.",
+            "The project features a 23.3 km elevated corridor designed to alleviate congestion along one of Pune's most critical routes. By linking the Hinjawadi IT hub to the Shivajinagar District Court, the line bridges major tech zones with the city centre.",
     },
     {
         image: '/landing/sliders-slides/hero-section-slides/slide-3-desktop.png',

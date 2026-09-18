@@ -37,8 +37,8 @@ return [
             'nearbyPlaces' => ['Megapolis Residential', 'Pawar Public School', 'TCS', 'Tech Mahindra'],
             'emergency' => [
                 ['type' => 'Hospital', 'name' => 'Farmazia Hospital', 'distance' => '2.4 km', 'walking' => '29 min', 'car' => '8 min'],
-                ['type' => 'Police Station', 'name' => 'Hinjewadi Police Station, Pimpri-Chinchwad Police Commissionerate', 'distance' => '3.1 km', 'walking' => '37 min', 'car' => '10 min'],
-                ['type' => 'Fire Brigade', 'name' => 'Hinjewadi Fire Station, PCMC Fire Brigade', 'distance' => '4.4 km', 'walking' => '54 min', 'car' => '12 min'],
+                ['type' => 'Police Station', 'name' => 'Hinjawadi Police Station, Pimpri-Chinchwad Police Commissionerate', 'distance' => '3.1 km', 'walking' => '37 min', 'car' => '10 min'],
+                ['type' => 'Fire Brigade', 'name' => 'Hinjawadi Fire Station, PCMC Fire Brigade', 'distance' => '4.4 km', 'walking' => '54 min', 'car' => '12 min'],
             ],
             'transport' => [
                 ['type' => 'Airport', 'name' => 'Pune International Airport', 'distance' => '27 km', 'car' => '50 min'],
@@ -78,9 +78,9 @@ return [
             'embedMapUrl' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.7751596828357!2d73.69505360000001!3d18.5841727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb8a339efbdd%3A0x4a4ebb1c354390e!2sMaan%20-%20MIDC%20Circle%2C%20Phase%20II!5e0!3m2!1sen!2sin!4v1781335454029!5m2!1sen!2sin"  style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
             'nearbyPlaces' => ['Quadron Park', 'MIDC', 'Vedant Hospital'],
             'emergency' => [
-                ['type' => 'Hospital', 'name' => 'Ruby Hall Clinic, Hinjewadi', 'distance' => '1.1 km', 'walking' => '14 min', 'car' => '5 min'],
-                ['type' => 'Police Station', 'name' => 'Hinjewadi Police Station, PCMC', 'distance' => '1.4 km', 'walking' => '17 min', 'car' => '6 min'],
-                ['type' => 'Fire Brigade', 'name' => 'Hinjewadi Fire Station, PCMC', 'distance' => '3.7 km', 'walking' => '44 min', 'car' => '10 min'],
+                ['type' => 'Hospital', 'name' => 'Ruby Hall Clinic, Hinjawadi', 'distance' => '1.1 km', 'walking' => '14 min', 'car' => '5 min'],
+                ['type' => 'Police Station', 'name' => 'Hinjawadi Police Station, PCMC', 'distance' => '1.4 km', 'walking' => '17 min', 'car' => '6 min'],
+                ['type' => 'Fire Brigade', 'name' => 'Hinjawadi Fire Station, PCMC', 'distance' => '3.7 km', 'walking' => '44 min', 'car' => '10 min'],
             ],
             'transport' => [
                 ['type' => 'Airport', 'name' => '—', 'distance' => '25 km', 'car' => '48 min'],
@@ -121,8 +121,8 @@ return [
             'nearbyPlaces' => ['Quadron Park', 'MIDC', 'Vedant Hospital'],
             'emergency' => [
                 ['type' => 'Hospital', 'name' => 'LifeTree Hospital', 'distance' => '1.9 km', 'walking' => '23 min', 'car' => '6 min'],
-                ['type' => 'Police Station', 'name' => 'Hinjewadi Police Station, PCMC', 'distance' => '2.0 km', 'walking' => '24 min', 'car' => '7 min'],
-                ['type' => 'Fire Brigade', 'name' => 'Hinjewadi Fire Station, PCMC', 'distance' => '4.1 km', 'walking' => '49 min', 'car' => '11 min'],
+                ['type' => 'Police Station', 'name' => 'Hinjawadi Police Station, PCMC', 'distance' => '2.0 km', 'walking' => '24 min', 'car' => '7 min'],
+                ['type' => 'Fire Brigade', 'name' => 'Hinjawadi Fire Station, PCMC', 'distance' => '4.1 km', 'walking' => '49 min', 'car' => '11 min'],
             ],
             'transport' => [
                 ['type' => 'Airport', 'name' => '—', 'distance' => '26 km', 'car' => '49 min'],
@@ -160,11 +160,11 @@ return [
             ],
             'mapKey' => 'https://share.google/oXKoF1pCio21ZOx6u',
             'embedMapUrl' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.546392176248!2d73.7096912!3d18.594478199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb15a20a07ff%3A0xef444ba1c39b5eca!2sHinjawadi%20Phase-II%20Circle-II!5e0!3m2!1sen!2sin!4v1781335609371!5m2!1sen!2sin" style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
-            'nearbyPlaces' => ['Vedant Hospital', 'Hinjewadi Police Station'],
+            'nearbyPlaces' => ['Vedant Hospital', 'Hinjawadi Police Station'],
             'emergency' => [
-                ['type' => 'Hospital', 'name' => 'Hinjewadi Superspeciality Hospital', 'distance' => '950 m', 'walking' => '11 min', 'car' => '4 min'],
-                ['type' => 'Police Station', 'name' => 'Hinjewadi Police Station, PCMC', 'distance' => '1.2 km', 'walking' => '15 min', 'car' => '5 min'],
-                ['type' => 'Fire Brigade', 'name' => 'Hinjewadi Fire Station, PCMC', 'distance' => '3.4 km', 'walking' => '41 min', 'car' => '9 min'],
+                ['type' => 'Hospital', 'name' => 'Hinjawadi Superspeciality Hospital', 'distance' => '950 m', 'walking' => '11 min', 'car' => '4 min'],
+                ['type' => 'Police Station', 'name' => 'Hinjawadi Police Station, PCMC', 'distance' => '1.2 km', 'walking' => '15 min', 'car' => '5 min'],
+                ['type' => 'Fire Brigade', 'name' => 'Hinjawadi Fire Station, PCMC', 'distance' => '3.4 km', 'walking' => '41 min', 'car' => '9 min'],
             ],
             'transport' => [
                 ['type' => 'Airport', 'name' => '—', 'distance' => '24 km', 'car' => '46 min'],
@@ -242,7 +242,7 @@ return [
                 ['name' => 'Parking', 'location' => 'Not Available'],
                 ['name' => 'Drinking Water', 'location' => 'Paid area beside Station Control Room'],
             ],
-            'nearbyPlaces' => ['Hinjewadi Lake', 'Laxmi Chowk'],
+            'nearbyPlaces' => ['Hinjawadi Lake', 'Laxmi Chowk'],
             'mapKey' => 'https://share.google/IGVsiK3FZzJ7pFWz5',
             'embedMapUrl' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.543918585615!2d73.72743790000001!3d18.5945896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb8a7771c88d%3A0x15a214daba4a10ba!2sPadmabhushan%20Chowk!5e0!3m2!1sen!2sin!4v1781335850343!5m2!1sen!2sin"  style="border:0; width:100%;height:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
             'emergency' => [
@@ -261,7 +261,7 @@ return [
             'slug' => 'pmr-7',
             'entrances' => [
                 ['gate' => 'Gate 01', 'landmarks' => 'Shivaji Chowk'],
-                ['gate' => 'Gate 02', 'landmarks' => 'Hinjewadi Village'],
+                ['gate' => 'Gate 02', 'landmarks' => 'Hinjawadi Village'],
             ],
             'platforms' => [
                 ['number' => 'Platform 1', 'direction' => 'Civil Court (Down Line)'],
@@ -289,8 +289,8 @@ return [
             'embedMapUrl' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.5928792541904!2d73.7374066!3d18.592384499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb22fc3341e1%3A0xbfca0055904ac3e5!2sShree%20Shiv%20Chhatrapati%20Shivaji%20Maharaj%20Chowk%2C%20Hinjawadi!5e0!3m2!1sen!2sin!4v1781335975073!5m2!1sen!2sin" style="border:0;width:100%;height:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
             'emergency' => [
                 ['type' => 'Hospital', 'name' => 'Manipal Hospitals, Baner', 'distance' => '1.5 km', 'walking' => '18 min', 'car' => '5 min'],
-                ['type' => 'Police Station', 'name' => 'Hinjewadi Police Station, PCMC', 'distance' => '1.2 km', 'walking' => '14 min', 'car' => '5 min'],
-                ['type' => 'Fire Brigade', 'name' => 'Hinjewadi Fire Station, PCMC', 'distance' => '3.0 km', 'walking' => '36 min', 'car' => '9 min'],
+                ['type' => 'Police Station', 'name' => 'Hinjawadi Police Station, PCMC', 'distance' => '1.2 km', 'walking' => '14 min', 'car' => '5 min'],
+                ['type' => 'Fire Brigade', 'name' => 'Hinjawadi Fire Station, PCMC', 'distance' => '3.0 km', 'walking' => '36 min', 'car' => '9 min'],
             ],
             'transport' => [
                 ['type' => 'Airport', 'name' => '—', 'distance' => '18 km', 'car' => '34 min'],

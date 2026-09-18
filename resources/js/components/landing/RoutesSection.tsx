@@ -67,7 +67,7 @@ export default function RoutesSection() {
                     </h2>
                     <p className="mb-6 max-w-4xl font-montserrat text-sm leading-relaxed text-white/80">
                         Pune Metro Line 3 connects one of the city's most important daily movement corridors, linking the
-                        Hinjewadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
+                        Hinjawadi IT hub with central Pune through a fully elevated route designed to improve commuter access,
                         reduce congestion and integrate with the wider metro network.
                     </p>
 

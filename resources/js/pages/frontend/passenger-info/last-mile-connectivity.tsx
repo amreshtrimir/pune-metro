@@ -36,7 +36,7 @@ export default function LastMileConnectivity() {
             <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] min-[1440px]:max-w-[1440px] px-6 min-[1303px]:px-8 space-y-4">
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        Pune Metro Line 3 (Hinjewadi – Shivajinagar Corridor) is supported by a well-planned Last Mile
+                        Pune Metro Line 3 (Hinjawadi – Shivajinagar Corridor) is supported by a well-planned Last Mile
                         Connectivity (LMC) network to ensure smooth and convenient travel between metro stations and
                         final destinations. The aim is to provide seamless access across key IT hubs, residential areas,
                         commercial zones, and important transit points along the corridor.
@@ -44,13 +44,13 @@ export default function LastMileConnectivity() {
 
                     <p className="font-montserrat text-sm leading-relaxed text-black">
                         PMPML buses will act as the primary feeder service, operating on routes aligned with metro
-                        stations to offer reliable and affordable connectivity across areas such as Hinjewadi Phase I,
+                        stations to offer reliable and affordable connectivity across areas such as Hinjawadi Phase I,
                         II, III, Balewadi, Baner, University Circle, and Shivajinagar. To further improve regional
                         access, MSRTC buses will connect passengers from nearby towns to major metro stations.
                     </p>
 
                     <p className="font-montserrat text-sm leading-relaxed text-black">
-                        For the Hinjewadi IT corridor, Svida has been appointed as a dedicated LMC operator, providing
+                        For the Hinjawadi IT corridor, Svida has been appointed as a dedicated LMC operator, providing
                         organised and technology-enabled transport solutions for corporate commuters, ensuring easy
                         connectivity between metro stations and office campuses.
                     </p>

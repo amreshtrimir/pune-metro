@@ -67,7 +67,7 @@ export default function StationInternalAdvertising() {
                     </p>
                     <p className="mb-6 font-montserrat text-sm leading-relaxed text-black">
                         With premium advertising locations across all 23
-                        stations between Hinjewadi and Shivajinagar, businesses
+                        stations between Hinjawadi and Shivajinagar, businesses
                         can strengthen brand awareness while connecting with
                         commuters, professionals, students and visitors
                         travelling on the corridor.

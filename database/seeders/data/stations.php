@@ -5,7 +5,7 @@ return [
         'code' => 'PMR 1',
         'name' => 'Maan',
         'slug' => 'pmr-1',
-        'description' => 'Maan Station is located at Maan Village near the proposed Metro Depot in Hinjewadi.',
+        'description' => 'Maan Station is located at Maan Village near the proposed Metro Depot in Hinjawadi.',
         'map_key' => 'https://share.google/XnfxergPfyJ1CQLPH',
         'embed_map_url' => '',
         'sort_order' => 1,
@@ -101,14 +101,14 @@ return [
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, Pimpri-Chinchwad Police Commissionerate',
+                'name' => 'Hinjawadi Police Station, Pimpri-Chinchwad Police Commissionerate',
                 'distance' => '3.1 km',
                 'walking' => '37 min',
                 'car' => '10 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC Fire Brigade',
+                'name' => 'Hinjawadi Fire Station, PCMC Fire Brigade',
                 'distance' => '4.4 km',
                 'walking' => '54 min',
                 'car' => '12 min'
@@ -133,7 +133,7 @@ return [
         'code' => 'PMR 2',
         'name' => 'Maan - MIDC Circle, Phase II',
         'slug' => 'pmr-2',
-        'description' => 'Maan - MIDC Circle, Phase II Station is located near MIDC Circle in Hinjewadi Phase II.',
+        'description' => 'Maan - MIDC Circle, Phase II Station is located near MIDC Circle in Hinjawadi Phase II.',
         'map_key' => 'https://share.google/ZfIlIqPnqmFYXeTR6',
         'embed_map_url' => '',
         'sort_order' => 2,
@@ -217,21 +217,21 @@ return [
         'emergency' => [
             [
                 'type' => 'Hospital',
-                'name' => 'Ruby Hall Clinic, Hinjewadi',
+                'name' => 'Ruby Hall Clinic, Hinjawadi',
                 'distance' => '1.1 km',
                 'walking' => '14 min',
                 'car' => '5 min'
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '1.4 km',
                 'walking' => '17 min',
                 'car' => '6 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '3.7 km',
                 'walking' => '44 min',
                 'car' => '10 min'
@@ -256,7 +256,7 @@ return [
         'code' => 'PMR 3',
         'name' => 'Maan Bus Depot',
         'slug' => 'pmr-3',
-        'description' => 'Maan Bus Depot Station is located adjacent to the Maan Bus Depot in Hinjewadi.',
+        'description' => 'Maan Bus Depot Station is located adjacent to the Maan Bus Depot in Hinjawadi.',
         'map_key' => 'https://share.google/8vd0NjXJUtprSpGfl',
         'embed_map_url' => '',
         'sort_order' => 3,
@@ -347,14 +347,14 @@ return [
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '2.0 km',
                 'walking' => '24 min',
                 'car' => '7 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '4.1 km',
                 'walking' => '49 min',
                 'car' => '11 min'
@@ -377,9 +377,9 @@ return [
     ],
     [
         'code' => 'PMR 4',
-        'name' => 'Hinjewadi Phase II - Circle II',
+        'name' => 'Hinjawadi Phase II - Circle II',
         'slug' => 'pmr-4',
-        'description' => 'Hinjewadi Phase II Circle II Station is located near the Infosys Phase II campus in Rajiv Gandhi Infotech Park.',
+        'description' => 'Hinjawadi Phase II Circle II Station is located near the Infosys Phase II campus in Rajiv Gandhi Infotech Park.',
         'map_key' => 'https://share.google/oXKoF1pCio21ZOx6u',
         'embed_map_url' => '',
         'sort_order' => 4,
@@ -457,26 +457,26 @@ return [
         ],
         'nearby_places' => [
             'Vedant Hospital',
-            'Hinjewadi Police Station'
+            'Hinjawadi Police Station'
         ],
         'emergency' => [
             [
                 'type' => 'Hospital',
-                'name' => 'Hinjewadi Superspeciality Hospital',
+                'name' => 'Hinjawadi Superspeciality Hospital',
                 'distance' => '950 m',
                 'walking' => '11 min',
                 'car' => '4 min'
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '1.2 km',
                 'walking' => '15 min',
                 'car' => '5 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '3.4 km',
                 'walking' => '41 min',
                 'car' => '9 min'
@@ -499,9 +499,9 @@ return [
     ],
     [
         'code' => 'PMR 5',
-        'name' => 'Hinjewadi Phase II - Circle I',
+        'name' => 'Hinjawadi Phase II - Circle I',
         'slug' => 'pmr-5',
-        'description' => 'Hinjewadi Phase II Circle I Station is located near Bodakewadi locality along the Hinjewadi corridor.',
+        'description' => 'Hinjawadi Phase II Circle I Station is located near Bodakewadi locality along the Hinjawadi corridor.',
         'map_key' => 'https://share.google/lF0PubnVH2ddqAZtj',
         'embed_map_url' => '',
         'sort_order' => 5,
@@ -590,14 +590,14 @@ return [
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '2.0 km',
                 'walking' => '24 min',
                 'car' => '7 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '4.0 km',
                 'walking' => '48 min',
                 'car' => '11 min'
@@ -705,21 +705,21 @@ return [
         'emergency' => [
             [
                 'type' => 'Hospital',
-                'name' => 'Hinjewadi Superspeciality Hospital',
+                'name' => 'Hinjawadi Superspeciality Hospital',
                 'distance' => '2.7 km',
                 'walking' => '33 min',
                 'car' => '9 min'
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '2.4 km',
                 'walking' => '29 min',
                 'car' => '8 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '4.8 km',
                 'walking' => '58 min',
                 'car' => '13 min'
@@ -742,9 +742,9 @@ return [
     ],
     [
         'code' => 'PMR 7',
-        'name' => 'Shree Shiv Chhatrapati Shivaji Maharaj Chowk, Hinjewadi',
+        'name' => 'Shree Shiv Chhatrapati Shivaji Maharaj Chowk, Hinjawadi',
         'slug' => 'pmr-7',
-        'description' => 'Shree Shiv Chhatrapati Shivaji Maharaj Chowk Station is located at Chhatrapati Shivaji Maharaj Chowk in Hinjewadi.',
+        'description' => 'Shree Shiv Chhatrapati Shivaji Maharaj Chowk Station is located at Chhatrapati Shivaji Maharaj Chowk in Hinjawadi.',
         'map_key' => 'https://share.google/G8uaRUO1lqAa1SwJC',
         'embed_map_url' => '',
         'sort_order' => 7,
@@ -826,21 +826,21 @@ return [
         'emergency' => [
             [
                 'type' => 'Hospital',
-                'name' => 'Ruby Hall Clinic, Hinjewadi',
+                'name' => 'Ruby Hall Clinic, Hinjawadi',
                 'distance' => '1.3 km',
                 'walking' => '16 min',
                 'car' => '5 min'
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '1.7 km',
                 'walking' => '21 min',
                 'car' => '6 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '4.2 km',
                 'walking' => '50 min',
                 'car' => '12 min'
@@ -863,9 +863,9 @@ return [
     ],
     [
         'code' => 'PMR 8',
-        'name' => 'Hinjewadi Phase I',
+        'name' => 'Hinjawadi Phase I',
         'slug' => 'pmr-8',
-        'description' => 'Hinjewadi Phase I Station is located near the Hinjewadi Phase I IT hub in Rajiv Gandhi Infotech Park.',
+        'description' => 'Hinjawadi Phase I Station is located near the Hinjawadi Phase I IT hub in Rajiv Gandhi Infotech Park.',
         'map_key' => 'https://share.google/ZeeA0MCLFktbr2z47',
         'embed_map_url' => '',
         'sort_order' => 8,
@@ -876,7 +876,7 @@ return [
             ],
             [
                 'gate' => 'Gate 02',
-                'landmarks' => 'Truww Hinjewadi'
+                'landmarks' => 'Truww Hinjawadi'
             ]
         ],
         'platforms' => [
@@ -955,14 +955,14 @@ return [
             ],
             [
                 'type' => 'Police Station',
-                'name' => 'Hinjewadi Police Station, PCMC',
+                'name' => 'Hinjawadi Police Station, PCMC',
                 'distance' => '1.4 km',
                 'walking' => '17 min',
                 'car' => '6 min'
             ],
             [
                 'type' => 'Fire Brigade',
-                'name' => 'Hinjewadi Fire Station, PCMC',
+                'name' => 'Hinjawadi Fire Station, PCMC',
                 'distance' => '3.9 km',
                 'walking' => '47 min',
                 'car' => '11 min'
