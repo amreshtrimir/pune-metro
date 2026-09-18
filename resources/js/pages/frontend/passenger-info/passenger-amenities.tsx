@@ -21,7 +21,7 @@ const imgLastMile = '/pass-amenities/section-last-mile.png';
 const imgTicketing = '/pass-amenities/section-ticketing.png';
 const imgSafety = '/pass-amenities/section-safety.png';
 const imgRestroom = '/pass-amenities/restroom.png';
-const imgPlatform = '/pass-amenities/pids-new-1.png';
+const imgPlatform = '/pass-amenities/Hinjawadi.webp';
 
 // Amenity sections ordered left-to-right, top-to-bottom in the 3-column grid
 const amenitySections: AmenitySection[] = [
