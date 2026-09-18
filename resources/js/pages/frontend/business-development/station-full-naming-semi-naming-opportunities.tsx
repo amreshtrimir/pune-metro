@@ -55,9 +55,9 @@ export default function StationFullNamingSemiNamingOpportunities() {
             </Head>
 
            <PageHeroBanner
-                          src="/banners/station-internal-detail/semi-naming-opportunities-md-updated.webp"
-                          srcMd="/banners/station-internal-detail/semi-naming-opportunities-md-updated.webp"
-                          srcLg="/banners/station-internal-detail/semi-naming-opportunities-lg-updated.webp"
+                          src="/banners/station-internal-detail/semi-naming-opportunities-md-updated-1.webp"
+                          srcMd="/banners/station-internal-detail/semi-naming-opportunities-md-updated-1.webp"
+                          srcLg="/banners/station-internal-detail/semi-naming-opportunities-lg-updated-1.webp"
                           alt="Internal advertising opportunities at Pune Metro stations"
                       />
 
