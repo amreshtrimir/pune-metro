@@ -2,6 +2,8 @@ import { Head } from '@inertiajs/react';
 import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 
+const SHOW_RETAIL_SECTIONS = false;
+
 const retailSections = [
     {
         heading: 'STATION RETAIL - IT/ITES--Hinjawadi IT Zone',
@@ -222,17 +224,17 @@ export default function StationRetail() {
                                 For retail enquiries, please contact:
                             </p>
                             <a
-                                href="mailto:contactpunerimetro@tatarealty.in"
+                                href="mailto:support@punerimetro.in"
                                 className="font-montserrat text-sm text-brand hover:underline"
                             >
-                                contactpunerimetro@tatarealty.in
+                                support@punerimetro.in
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {retailSections.map((section, sectionIndex) => {
+            {SHOW_RETAIL_SECTIONS && retailSections.map((section, sectionIndex) => {
                 const sectionLogos =
                     sectionIndex === 0 ? firstSectionLogos : secondSectionLogos;
                 const repeatedLogos = [...sectionLogos, ...sectionLogos];
