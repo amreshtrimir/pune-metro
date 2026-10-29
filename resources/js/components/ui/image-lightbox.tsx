@@ -438,11 +438,11 @@ export default function ImageLightbox({ src, alt, onClose }: ImageLightboxProps)
             </div>
 
             {/* Controls */}
-            <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+            <div className="absolute top-4 right-4 z-10 flex items-center gap-1 rounded-full bg-black/75 p-1.5 shadow-lg ring-1 ring-white/25">
                 <button
                     onClick={() => zoomFromCentre(1 / BUTTON_ZOOM_STEP)}
                     disabled={zoomPercent <= 100}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 active:scale-90 disabled:opacity-30"
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/20 active:scale-90 disabled:opacity-30"
                     aria-label="Zoom out"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
@@ -451,11 +451,11 @@ export default function ImageLightbox({ src, alt, onClose }: ImageLightboxProps)
                         <line x1="8" y1="11" x2="14" y2="11" />
                     </svg>
                 </button>
-                <span className="w-12 text-center font-montserrat text-sm font-semibold text-white/80 tabular-nums">{zoomPercent}%</span>
+                <span className="w-12 text-center font-montserrat text-sm font-semibold text-white tabular-nums">{zoomPercent}%</span>
                 <button
                     onClick={() => zoomFromCentre(BUTTON_ZOOM_STEP)}
                     disabled={zoomPercent >= MAX_ZOOM * 100}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 active:scale-90 disabled:opacity-30"
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/20 active:scale-90 disabled:opacity-30"
                     aria-label="Zoom in"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
@@ -467,7 +467,7 @@ export default function ImageLightbox({ src, alt, onClose }: ImageLightboxProps)
                 </button>
                 <button
                     onClick={requestClose}
-                    className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 active:scale-90"
+                    className="ml-1 flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/20 active:scale-90"
                     aria-label="Close"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
@@ -477,7 +477,7 @@ export default function ImageLightbox({ src, alt, onClose }: ImageLightboxProps)
                 </button>
             </div>
 
-            <p className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 font-montserrat text-xs text-white/50">
+            <p className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/70 px-4 py-1.5 font-montserrat text-xs whitespace-nowrap text-white/90 ring-1 ring-white/15">
                 Scroll or pinch to zoom · Drag to pan · Double-click to zoom · Esc to close
             </p>
         </div>

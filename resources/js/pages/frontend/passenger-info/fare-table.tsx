@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
+import PageHeroBanner from '@/components/landing/PageHeroBanner';
 import PageSectionHeading from '@/components/landing/PageSectionHeading';
 import ImageLightbox from '@/components/ui/image-lightbox';
 
@@ -21,14 +22,12 @@ export default function FareTable() {
             </Head>
 
             {/* ── Hero Banner ── */}
-            <section>
-                <div className="relative flex h-[240px] items-end justify-end overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 md:h-[400px]">
-                    <div className="absolute inset-0 bg-black/40" />
-                    <p className="relative mr-6 mb-6 font-montserrat text-[clamp(32px,7vw,100px)] leading-none font-semibold text-white/25 select-none md:mr-10 md:mb-10">
-                        Pune METRO
-                    </p>
-                </div>
-            </section>
+            <PageHeroBanner
+                src="/banners/passenger-aminities/amenniteis.png"
+                srcMd="/banners/passenger-aminities/amenniteis.png"
+                srcLg="/banners/passenger-aminities/amenniteis.png"
+                alt="Fare Table - Pune Metro"
+            />
 
             {/* ── Page Title ── */}
             <section className="bg-white pt-10 pb-0">
