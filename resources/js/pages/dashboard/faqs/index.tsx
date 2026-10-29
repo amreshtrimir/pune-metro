@@ -59,10 +59,9 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const pageName = (key: string) =>
         pages.find((p) => p.key === key)?.name ?? key;
 
-    const saved = new Set(
-        faqs.filter((f) => f.pages.includes(page)).map((f) => f.id),
-    );
-    const selected = draft?.page === page ? draft.ids : saved;
+    const savedFor = (key: string) =>
+        new Set(faqs.filter((f) => f.pages.includes(key)).map((f) => f.id));
+    const selected = draft?.page === page ? draft.ids : savedFor(page);
     const setSelected = (ids: Set<number>) => setDraft({ page, ids });
 
     const toggle = (id: number, checked: boolean) => {
@@ -75,6 +74,18 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         }
 
         setSelected(next);
+    };
+
+    // Rows ticked before a page is chosen carry over and merge with that page's saved FAQs.
+    const handlePageChange = (next: string) => {
+        const carried = page === '' ? selected : new Set<number>();
+
+        setPage(next);
+        setDraft(
+            carried.size > 0
+                ? { page: next, ids: new Set([...savedFor(next), ...carried]) }
+                : null,
+        );
     };
 
     const allSelected = faqs.length > 0 && selected.size === faqs.length;
@@ -164,13 +175,15 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                             label: p.name,
                         }))}
                         value={page}
-                        onChange={setPage}
+                        onChange={handlePageChange}
                         placeholder="Search a page…"
                     />
                     <span className="text-sm text-muted-foreground">
                         {page
                             ? `${selected.size} selected`
-                            : 'Pick a page, tick the FAQs to show on it, then save.'}
+                            : selected.size > 0
+                              ? `${selected.size} selected. Pick a page to assign them.`
+                              : 'Tick the FAQs, pick a page, then save.'}
                     </span>
                     <Button
                         className="ml-auto"
@@ -193,7 +206,6 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                     <th className="w-10 px-4 py-3">
                                         <Checkbox
                                             aria-label="Select all"
-                                            disabled={!page}
                                             checked={allSelected}
                                             onCheckedChange={(checked) =>
                                                 setSelected(
@@ -231,7 +243,6 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                         <td className="px-4 py-3">
                                             <Checkbox
                                                 aria-label={`Select ${faq.question}`}
-                                                disabled={!page}
                                                 checked={selected.has(faq.id)}
                                                 onCheckedChange={(checked) =>
                                                     toggle(faq.id, !!checked)
