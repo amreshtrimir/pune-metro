@@ -1,8 +1,8 @@
 import { Head, Form, router } from '@inertiajs/react';
-import { Eye, EyeOff, Pencil, Plus, Trash2 } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { useState } from 'react';
 import * as FaqController from '@/actions/App/Http/Controllers/Faq/FaqController';
-import { Badge } from '@/components/ui/badge';
+import { FaqTable } from '@/components/faqs/faq-table';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -29,9 +29,6 @@ type FaqFormState = {
     is_active: boolean;
     pages: string[];
 };
-
-const plainText = (html: string) =>
-    new DOMParser().parseFromString(html, 'text/html').body.textContent ?? '';
 
 export default function FaqsIndex({ faqs, pages }: Props) {
     const [editing, setEditing] = useState<Faq | null>(null);
@@ -64,18 +61,6 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const selected = draft?.page === page ? draft.ids : savedFor(page);
     const setSelected = (ids: Set<number>) => setDraft({ page, ids });
 
-    const toggle = (id: number, checked: boolean) => {
-        const next = new Set(selected);
-
-        if (checked) {
-            next.add(id);
-        } else {
-            next.delete(id);
-        }
-
-        setSelected(next);
-    };
-
     // Rows ticked before a page is chosen carry over and merge with that page's saved FAQs.
     const handlePageChange = (next: string) => {
         const carried = page === '' ? selected : new Set<number>();
@@ -87,8 +72,6 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                 : null,
         );
     };
-
-    const allSelected = faqs.length > 0 && selected.size === faqs.length;
 
     const handleAssign = () => {
         setAssigning(true);
@@ -200,143 +183,16 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                             No FAQs yet. Add one above.
                         </div>
                     ) : (
-                        <table className="w-full text-sm">
-                            <thead>
-                                <tr className="border-b bg-muted/40">
-                                    <th className="w-10 px-4 py-3">
-                                        <Checkbox
-                                            aria-label="Select all"
-                                            checked={allSelected}
-                                            onCheckedChange={(checked) =>
-                                                setSelected(
-                                                    checked
-                                                        ? new Set(
-                                                              faqs.map(
-                                                                  (f) => f.id,
-                                                              ),
-                                                          )
-                                                        : new Set(),
-                                                )
-                                            }
-                                        />
-                                    </th>
-                                    <th className="px-4 py-3 text-left font-medium">
-                                        Question
-                                    </th>
-                                    <th className="px-4 py-3 text-left font-medium">
-                                        Pages
-                                    </th>
-                                    <th className="px-4 py-3 text-left font-medium">
-                                        Status
-                                    </th>
-                                    <th className="px-4 py-3 text-right font-medium">
-                                        Actions
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y">
-                                {faqs.map((faq) => (
-                                    <tr
-                                        key={faq.id}
-                                        className="hover:bg-muted/20"
-                                    >
-                                        <td className="px-4 py-3">
-                                            <Checkbox
-                                                aria-label={`Select ${faq.question}`}
-                                                checked={selected.has(faq.id)}
-                                                onCheckedChange={(checked) =>
-                                                    toggle(faq.id, !!checked)
-                                                }
-                                            />
-                                        </td>
-                                        <td className="max-w-md px-4 py-3">
-                                            <p className="truncate font-medium">
-                                                {faq.question}
-                                            </p>
-                                            <p className="truncate text-xs text-muted-foreground">
-                                                {plainText(faq.answer)}
-                                            </p>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <div className="flex flex-wrap gap-1">
-                                                {faq.pages.length === 0 && (
-                                                    <span className="text-xs text-muted-foreground">
-                                                        Not assigned
-                                                    </span>
-                                                )}
-                                                {faq.pages.map((key) => (
-                                                    <Badge
-                                                        key={key}
-                                                        variant="outline"
-                                                    >
-                                                        {pageName(key)}
-                                                    </Badge>
-                                                ))}
-                                            </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <Badge
-                                                variant={
-                                                    faq.is_active
-                                                        ? 'default'
-                                                        : 'secondary'
-                                                }
-                                            >
-                                                {faq.is_active
-                                                    ? 'Active'
-                                                    : 'Inactive'}
-                                            </Badge>
-                                        </td>
-                                        <td className="px-4 py-3 text-right">
-                                            <div className="flex items-center justify-end gap-2">
-                                                <Button
-                                                    variant="ghost"
-                                                    size="icon"
-                                                    className="size-8"
-                                                    title={
-                                                        faq.is_active
-                                                            ? 'Hide'
-                                                            : 'Show'
-                                                    }
-                                                    onClick={() =>
-                                                        handleToggle(faq)
-                                                    }
-                                                >
-                                                    {faq.is_active ? (
-                                                        <Eye className="size-3.5" />
-                                                    ) : (
-                                                        <EyeOff className="size-3.5" />
-                                                    )}
-                                                </Button>
-                                                <Button
-                                                    variant="ghost"
-                                                    size="icon"
-                                                    className="size-8"
-                                                    onClick={() =>
-                                                        openEdit(faq)
-                                                    }
-                                                >
-                                                    <Pencil className="size-3.5" />
-                                                </Button>
-                                                <Button
-                                                    variant="ghost"
-                                                    size="icon"
-                                                    className="size-8 text-destructive hover:text-destructive"
-                                                    disabled={
-                                                        deletingId === faq.id
-                                                    }
-                                                    onClick={() =>
-                                                        handleDelete(faq)
-                                                    }
-                                                >
-                                                    <Trash2 className="size-3.5" />
-                                                </Button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <FaqTable
+                            faqs={faqs}
+                            selected={selected}
+                            onSelectionChange={setSelected}
+                            pageName={pageName}
+                            onToggleActive={handleToggle}
+                            onEdit={openEdit}
+                            onDelete={handleDelete}
+                            deletingId={deletingId}
+                        />
                     )}
                 </div>
             </div>
