@@ -123,48 +123,62 @@ export default function ArtFromScrap() {
             <section className="bg-white pb-8 md:pb-16">
                 <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <div className="space-y-8 md:space-y-10">
-                        {artInstallations.map((item, index) => (
-                            <div
-                                key={`${item.title}-${index}`}
-                                className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(320px,370px)_minmax(0,1fr)] lg:items-center lg:gap-9"
-                            >
-                                <div className="overflow-hidden">
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="aspect-[370/446] w-full object-cover"
-                                    />
-                                </div>
+                        {artInstallations.map(
+                            (item, index) =>
+                                index === 1 && (
+                                    <div
+                                        key={`${item.title}-${index}`}
+                                        className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(320px,370px)_minmax(0,1fr)] lg:items-center lg:gap-9"
+                                    >
+                                        <div className="overflow-hidden">
+                                            <img
+                                                src={item.image}
+                                                alt={item.title}
+                                                className="aspect-[370/446] w-full object-cover"
+                                            />
+                                        </div>
 
-                                <div>
-                                    <h2 className="mb-3 font-montserrat text-base leading-snug font-bold text-black uppercase">
-                                        {item.title}
-                                    </h2>
+                                        <div>
+                                            <h2 className="mb-3 font-montserrat text-base leading-snug font-bold text-black uppercase">
+                                                {item.title}
+                                            </h2>
 
-                                    <div className="mb-4 space-y-0.5 font-montserrat text-sm leading-relaxed text-black">
-                                        {item.measurements.map(
-                                            (measurement) => (
-                                                <p key={measurement.label}>
-                                                    <span className="font-bold">
-                                                        {measurement.label}:
-                                                    </span>{' '}
-                                                    {measurement.value}
+                                            <div className="mb-4 space-y-0.5 font-montserrat text-sm leading-relaxed text-black">
+                                                {item.measurements.map(
+                                                    (measurement) => (
+                                                        <p
+                                                            key={
+                                                                measurement.label
+                                                            }
+                                                        >
+                                                            <span className="font-bold">
+                                                                {
+                                                                    measurement.label
+                                                                }
+                                                                :
+                                                            </span>{' '}
+                                                            {measurement.value}
+                                                        </p>
+                                                    ),
+                                                )}
+                                            </div>
+
+                                            <div className="space-y-3 font-montserrat text-sm leading-relaxed text-black">
+                                                {item.paragraphs.map(
+                                                    (paragraph) => (
+                                                        <p key={paragraph}>
+                                                            {paragraph}
+                                                        </p>
+                                                    ),
+                                                )}
+                                                <p className="font-semibold text-[#ff3f97] italic">
+                                                    {item.quote}
                                                 </p>
-                                            ),
-                                        )}
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div className="space-y-3 font-montserrat text-sm leading-relaxed text-black">
-                                        {item.paragraphs.map((paragraph) => (
-                                            <p key={paragraph}>{paragraph}</p>
-                                        ))}
-                                        <p className="font-semibold text-[#ff3f97] italic">
-                                            {item.quote}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                                ),
+                        )}
                     </div>
                 </div>
             </section>

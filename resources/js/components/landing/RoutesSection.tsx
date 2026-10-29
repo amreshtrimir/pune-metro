@@ -13,7 +13,7 @@ const lines: Line[] = [
     {
         id: 'all',
         label: 'All line',
-        image: '/landing/route-section/map-all-updated-new.png',
+        image: '/landing/route-section/all-line-system-map.jpg',
         imageAlt: 'Pune Metro Line 3 Full Network Map',
     },
     {
