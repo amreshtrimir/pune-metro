@@ -94,6 +94,12 @@ export type Faq = {
     pages: string[];
 };
 
+export type PageFaq = {
+    id: number;
+    question: string;
+    answer: string;
+};
+
 export type FaqPageOption = { key: string; name: string };
 
 export type MediaDimension = {

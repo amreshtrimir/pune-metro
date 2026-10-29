@@ -182,3 +182,18 @@ it('forbids bulk actions for non-admins', function (): void {
 
     expect($faq->fresh()->is_active)->toBeTrue();
 });
+
+it('shares only the active faqs assigned to the visited frontend page', function (): void {
+    $shown = Faq::factory()->create(['question' => 'Shown?']);
+    $hidden = Faq::factory()->create(['is_active' => false]);
+    $elsewhere = Faq::factory()->create();
+    app(FaqService::class)->assignToPage('contact', [$shown->id, $hidden->id]);
+    app(FaqService::class)->assignToPage('home', [$elsewhere->id]);
+
+    $this->get(route('contact'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('pageFaqs', 1)
+            ->where('pageFaqs.0.question', 'Shown?')
+        );
+});
