@@ -3,6 +3,7 @@ import { Plus } from 'lucide-react';
 import { useState } from 'react';
 import * as FaqController from '@/actions/App/Http/Controllers/Faq/FaqController';
 import { FaqTable } from '@/components/faqs/faq-table';
+import { HeaderActions } from '@/components/header-actions';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -135,21 +136,14 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         <>
             <Head title="FAQs" />
 
-            <div className="space-y-6 p-6">
-                <div className="flex items-start justify-between gap-4">
-                    <div>
-                        <h1 className="text-2xl font-semibold">FAQs</h1>
-                        <p className="text-sm text-muted-foreground">
-                            Create FAQs, then choose which ones appear on each
-                            page.
-                        </p>
-                    </div>
-                    <Button onClick={() => setAdding(true)}>
-                        <Plus className="size-4" />
-                        Add FAQ
-                    </Button>
-                </div>
+            <HeaderActions>
+                <Button onClick={() => setAdding(true)}>
+                    <Plus className="size-4" />
+                    Add FAQ
+                </Button>
+            </HeaderActions>
 
+            <div className="flex h-[calc(100svh-4rem)] flex-col gap-6 overflow-hidden p-6 md:h-[calc(100svh-5rem)]">
                 <div className="flex flex-wrap items-center gap-3 rounded-xl border p-4">
                     <Label htmlFor="page">Assign to page</Label>
                     <SearchSelect
@@ -177,7 +171,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                     </Button>
                 </div>
 
-                <div className="overflow-hidden rounded-xl border">
+                <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border">
                     {faqs.length === 0 ? (
                         <div className="p-12 text-center text-sm text-muted-foreground">
                             No FAQs yet. Add one above.
@@ -350,3 +344,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         </>
     );
 }
+
+FaqsIndex.layout = {
+    breadcrumbs: [{ title: 'FAQs', href: FaqController.index.url() }],
+};

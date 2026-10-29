@@ -38,9 +38,6 @@ const useFaqTable = () => {
     return value;
 };
 
-const plainText = (html: string) =>
-    new DOMParser().parseFromString(html, 'text/html').body.textContent ?? '';
-
 function SelectHeader({ faqs }: { faqs: Faq[] }) {
     const { selected, onSelectionChange } = useFaqTable();
     const pageSelected = faqs.filter((f) => selected.has(f.id)).length;
@@ -177,12 +174,7 @@ const columns = helper.columns([
     helper.accessor('question', {
         header: 'Question',
         cell: ({ row }) => (
-            <>
-                <p className="truncate font-medium">{row.original.question}</p>
-                <p className="truncate text-xs text-muted-foreground">
-                    {plainText(row.original.answer)}
-                </p>
-            </>
+            <p className="truncate font-medium">{row.original.question}</p>
         ),
     }),
     helper.display({
@@ -238,39 +230,41 @@ export function FaqTable({ faqs, ...context }: FaqTableProps) {
 
     return (
         <FaqTableContext.Provider value={context}>
-            <table className="w-full table-fixed text-sm">
-                <thead>
-                    {table.getHeaderGroups().map((group) => (
-                        <tr key={group.id} className="border-b bg-muted/40">
-                            {group.headers.map((header) => (
-                                <th
-                                    key={header.id}
-                                    className={`px-4 py-3 text-left font-medium ${columnWidths[header.column.id] ?? ''}`}
-                                >
-                                    {header.isPlaceholder ? null : (
-                                        <table.FlexRender header={header} />
-                                    )}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody className="divide-y">
-                    {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id} className="hover:bg-muted/20">
-                            {row.getAllCells().map((cell) => (
-                                <td
-                                    key={cell.id}
-                                    className="px-4 py-3 align-middle"
-                                >
-                                    <table.FlexRender cell={cell} />
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <div className="flex items-center justify-between border-t px-4 py-3 text-sm">
+            <div className="min-h-0 flex-1 overflow-auto">
+                <table className="w-full table-fixed text-sm">
+                    <thead className="sticky top-0 z-10 bg-muted">
+                        {table.getHeaderGroups().map((group) => (
+                            <tr key={group.id} className="border-b bg-muted/40">
+                                {group.headers.map((header) => (
+                                    <th
+                                        key={header.id}
+                                        className={`px-4 py-3 text-left font-medium ${columnWidths[header.column.id] ?? ''}`}
+                                    >
+                                        {header.isPlaceholder ? null : (
+                                            <table.FlexRender header={header} />
+                                        )}
+                                    </th>
+                                ))}
+                            </tr>
+                        ))}
+                    </thead>
+                    <tbody className="divide-y">
+                        {table.getRowModel().rows.map((row) => (
+                            <tr key={row.id} className="hover:bg-muted/20">
+                                {row.getAllCells().map((cell) => (
+                                    <td
+                                        key={cell.id}
+                                        className="px-4 py-2 align-middle"
+                                    >
+                                        <table.FlexRender cell={cell} />
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <div className="flex shrink-0 items-center justify-between border-t px-4 py-3 text-sm">
                 <span className="text-muted-foreground">
                     Showing {from}–{to} of {faqs.length}
                 </span>
