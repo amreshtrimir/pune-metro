@@ -39,7 +39,8 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const [saving, setSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
-    const [page, setPage] = useState('');
+    const [pageQuery, setPageQuery] = useState('');
+    const page = pages.find((p) => p.name === pageQuery)?.key ?? '';
     const [draft, setDraft] = useState<{
         page: string;
         ids: Set<number>;
@@ -188,19 +189,20 @@ export default function FaqsIndex({ faqs, pages }: Props) {
 
                 <div className="flex flex-wrap items-center gap-3 rounded-xl border p-4">
                     <Label htmlFor="page">Assign to page</Label>
-                    <select
+                    <input
                         id="page"
-                        value={page}
-                        onChange={(e) => setPage(e.target.value)}
-                        className={selectClass}
-                    >
-                        <option value="">Select a page…</option>
+                        list="faq-pages"
+                        value={pageQuery}
+                        onChange={(e) => setPageQuery(e.target.value)}
+                        placeholder="Search a page…"
+                        autoComplete="off"
+                        className={`${selectClass} w-72`}
+                    />
+                    <datalist id="faq-pages">
                         {pages.map((p) => (
-                            <option key={p.key} value={p.key}>
-                                {p.name}
-                            </option>
+                            <option key={p.key} value={p.name} />
                         ))}
-                    </select>
+                    </datalist>
                     <span className="text-sm text-muted-foreground">
                         {page
                             ? `${selected.size} selected`
