@@ -133,7 +133,7 @@ export default function LostAndFound() {
                             <h2 className="mb-2 font-montserrat text-base font-semibold text-black">
                                 Valuable Items
                             </h2>
-                            <p className="font-inter text-sm text-black">
+                            <p className="font-inter text-xs text-black">
                                 Valuable items will be handed over to the police
                                 authority. Passengers must retrieve such items
                                 through the police with critical identification
