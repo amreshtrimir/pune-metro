@@ -37,3 +37,11 @@ test('sitemap excludes unpublished posts', function () {
         ->assertOk()
         ->assertDontSee(route('blog.show', $post->slug), false);
 });
+
+test('fare table page renders and ships the fare chart image', function () {
+    $this->get(route('passenger-info.fare-table'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page->component('frontend/passenger-info/fare-table'));
+
+    expect(public_path('fare-table/pune-metro-fare-chart.png'))->toBeFile();
+});
