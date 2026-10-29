@@ -142,7 +142,7 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
                                             }}
                                             className={`rounded-2xl border transition-all duration-300 motion-safe:animate-in motion-safe:fill-mode-backwards motion-safe:fade-in motion-safe:slide-in-from-bottom-1 ${
                                                 isOpen
-                                                    ? 'border-brand/40 bg-[#fdf0f7] shadow-sm'
+                                                    ? 'border-brand/40 bg-white shadow-sm'
                                                     : 'border-gray-200 bg-white hover:border-brand/30 hover:shadow-sm'
                                             }`}
                                         >
@@ -179,7 +179,7 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
                                             >
                                                 <div className="overflow-hidden">
                                                     <div
-                                                        className="font-inter mx-5 mb-5 border-l-[3px] border-[#e8449a] pl-4 text-sm leading-relaxed text-black [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6"
+                                                        className="font-inter mx-5 mb-5 text-sm leading-relaxed text-black [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6"
                                                         dangerouslySetInnerHTML={{
                                                             __html: faq.answer,
                                                         }}
