@@ -82,3 +82,25 @@ it('rejects an unknown page', function (): void {
         ->post(route('dashboard.faqs.assign'), ['page' => 'nope', 'faq_ids' => []])
         ->assertSessionHasErrors('page');
 });
+
+it('assigns pages when creating and editing a faq, and keeps them when pages is omitted', function (): void {
+    $admin = faqAdminUser();
+
+    $this->actingAs($admin)
+        ->post(route('dashboard.faqs.store'), ['question' => 'Q?', 'answer' => 'A.', 'pages' => ['contact', 'home']]);
+
+    $faq = Faq::firstOrFail();
+    expect($faq->pages()->pluck('page')->all())->toEqualCanonicalizing(['contact', 'home']);
+
+    $this->actingAs($admin)
+        ->put(route('dashboard.faqs.update', $faq), ['question' => 'Q?', 'answer' => 'A.', 'pages' => ['home', 'policies']]);
+    expect($faq->pages()->pluck('page')->all())->toEqualCanonicalizing(['home', 'policies']);
+
+    $this->actingAs($admin)
+        ->put(route('dashboard.faqs.update', $faq), ['question' => 'Q?', 'answer' => 'A.', 'is_active' => false]);
+    expect($faq->pages()->count())->toBe(2);
+
+    $this->actingAs($admin)
+        ->put(route('dashboard.faqs.update', $faq), ['question' => 'Q?', 'answer' => 'A.', 'pages' => ['nope']])
+        ->assertSessionHasErrors('pages.0');
+});

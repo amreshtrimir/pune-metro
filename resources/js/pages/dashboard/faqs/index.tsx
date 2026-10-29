@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { MultiSelect } from '@/components/ui/multi-select';
 import { SearchSelect } from '@/components/ui/search-select';
 import type { Faq, FaqPageOption } from '@/types/cms';
 
@@ -25,6 +26,7 @@ type FaqFormState = {
     question: string;
     answer: string;
     is_active: boolean;
+    pages: string[];
 };
 
 export default function FaqsIndex({ faqs, pages }: Props) {
@@ -33,8 +35,10 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         question: '',
         answer: '',
         is_active: true,
+        pages: [],
     });
     const [adding, setAdding] = useState(false);
+    const [addPages, setAddPages] = useState<string[]>([]);
     const [saving, setSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
@@ -44,6 +48,8 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         ids: Set<number>;
     } | null>(null);
     const [assigning, setAssigning] = useState(false);
+
+    const pageOptions = pages.map((p) => ({ value: p.key, label: p.name }));
 
     const pageName = (key: string) =>
         pages.find((p) => p.key === key)?.name ?? key;
@@ -86,6 +92,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             question: faq.question,
             answer: faq.answer,
             is_active: faq.is_active,
+            pages: faq.pages,
         });
         setEditing(faq);
     };
@@ -326,7 +333,10 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                     <Form
                         {...FaqController.store.form()}
                         resetOnSuccess
-                        onSuccess={() => setAdding(false)}
+                        onSuccess={() => {
+                            setAdding(false);
+                            setAddPages([]);
+                        }}
                         className="space-y-3"
                     >
                         {({ errors, processing }) => (
@@ -359,6 +369,23 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                             {errors.answer}
                                         </p>
                                     )}
+                                </div>
+                                <div className="space-y-1">
+                                    <Label>Show on pages</Label>
+                                    <MultiSelect
+                                        options={pageOptions}
+                                        selected={addPages}
+                                        onChange={setAddPages}
+                                        placeholder="Search and select pages…"
+                                    />
+                                    {addPages.map((key) => (
+                                        <input
+                                            key={key}
+                                            type="hidden"
+                                            name="pages[]"
+                                            value={key}
+                                        />
+                                    ))}
                                 </div>
                                 <div className="flex justify-end">
                                     <Button type="submit" disabled={processing}>
@@ -406,6 +433,20 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                     }))
                                 }
                                 className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm"
+                            />
+                        </div>
+                        <div className="space-y-1">
+                            <Label>Show on pages</Label>
+                            <MultiSelect
+                                options={pageOptions}
+                                selected={editForm.pages}
+                                onChange={(next) =>
+                                    setEditForm((prev) => ({
+                                        ...prev,
+                                        pages: next,
+                                    }))
+                                }
+                                placeholder="Search and select pages…"
                             />
                         </div>
                         <div className="flex items-center gap-3">

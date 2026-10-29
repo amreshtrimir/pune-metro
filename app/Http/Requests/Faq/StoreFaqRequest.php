@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Faq;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreFaqRequest extends FormRequest
 {
@@ -24,6 +25,8 @@ class StoreFaqRequest extends FormRequest
             'question' => ['required', 'string', 'max:255'],
             'answer' => ['required', 'string'],
             'is_active' => ['boolean'],
+            'pages' => ['sometimes', 'array'],
+            'pages.*' => ['string', Rule::in(array_keys(config('faq_pages')))],
         ];
     }
 }

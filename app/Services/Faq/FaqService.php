@@ -32,9 +32,14 @@ class FaqService
      */
     public function createFaq(array $data): Faq
     {
+        $pages = $data['pages'] ?? [];
+        unset($data['pages']);
         $data['sort_order'] = (Faq::max('sort_order') ?? -1) + 1;
 
-        return Faq::create($data);
+        $faq = Faq::create($data);
+        $this->syncFaqPages($faq, $pages);
+
+        return $faq;
     }
 
     /**
@@ -42,12 +47,31 @@ class FaqService
      */
     public function updateFaq(Faq $faq, array $data): void
     {
+        $pages = $data['pages'] ?? null;
+        unset($data['pages']);
+
         $faq->update($data);
+
+        if ($pages !== null) {
+            $this->syncFaqPages($faq, $pages);
+        }
     }
 
     public function deleteFaq(Faq $faq): void
     {
         $faq->delete();
+    }
+
+    /**
+     * @param  array<int, string>  $pages
+     */
+    private function syncFaqPages(Faq $faq, array $pages): void
+    {
+        $faq->pages()->whereNotIn('page', $pages)->delete();
+
+        foreach (array_unique($pages) as $page) {
+            $faq->pages()->firstOrCreate(['page' => $page]);
+        }
     }
 
     /**
