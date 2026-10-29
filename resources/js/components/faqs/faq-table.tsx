@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { Faq } from '@/types/cms';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 20;
 const VISIBLE_PAGE_BADGES = 2;
 
 type FaqTableContextValue = {
