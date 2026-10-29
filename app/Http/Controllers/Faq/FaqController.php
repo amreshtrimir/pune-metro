@@ -52,8 +52,8 @@ class FaqController extends Controller
 
     public function assign(AssignFaqsRequest $request): RedirectResponse
     {
-        $this->faqService->syncPage($request->validated('page'), $request->validated('faq_ids'));
+        $this->faqService->assignToPage($request->validated('page'), $request->validated('faq_ids'));
 
-        return redirect()->route('dashboard.faqs.index')->with('success', 'Page FAQs saved.');
+        return redirect()->route('dashboard.faqs.index')->with('success', 'FAQs assigned to the page.');
     }
 }

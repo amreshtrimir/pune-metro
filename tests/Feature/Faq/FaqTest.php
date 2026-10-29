@@ -62,7 +62,7 @@ it('admin can create, update and delete a faq', function (): void {
     expect(Faq::count())->toBe(0);
 });
 
-it('syncs the checked faqs to a page', function (): void {
+it('adds the selected faqs to a page without removing existing ones', function (): void {
     [$a, $b, $c] = Faq::factory()->count(3)->create();
     $admin = faqAdminUser();
 
@@ -75,12 +75,18 @@ it('syncs the checked faqs to a page', function (): void {
 
     $ids = app(FaqService::class)->getActiveFaqsForPage('contact')->pluck('id')->all();
 
-    expect($ids)->toEqualCanonicalizing([$b->id, $c->id]);
+    expect($ids)->toEqualCanonicalizing([$a->id, $b->id, $c->id]);
+});
+
+it('requires at least one faq to assign', function (): void {
+    $this->actingAs(faqAdminUser())
+        ->post(route('dashboard.faqs.assign'), ['page' => 'contact', 'faq_ids' => []])
+        ->assertSessionHasErrors('faq_ids');
 });
 
 it('rejects an unknown page', function (): void {
     $this->actingAs(faqAdminUser())
-        ->post(route('dashboard.faqs.assign'), ['page' => 'nope', 'faq_ids' => []])
+        ->post(route('dashboard.faqs.assign'), ['page' => 'nope', 'faq_ids' => [1]])
         ->assertSessionHasErrors('page');
 });
 

@@ -88,19 +88,13 @@ class FaqService
     }
 
     /**
-     * Make the given FAQs the complete set shown on a page.
+     * Add the given FAQs to a page, keeping the FAQs it already has.
      *
      * @param  array<int, int>  $faqIds
      */
-    public function syncPage(string $page, array $faqIds): void
+    public function assignToPage(string $page, array $faqIds): void
     {
-        $faqIds = array_unique($faqIds);
-
-        Faq::query()->whereHas('pages', fn ($query) => $query->where('page', $page))
-            ->whereNotIn('id', $faqIds)
-            ->each(fn (Faq $faq) => $faq->pages()->where('page', $page)->delete());
-
-        foreach ($faqIds as $faqId) {
+        foreach (array_unique($faqIds) as $faqId) {
             Faq::findOrFail($faqId)->pages()->firstOrCreate(['page' => $page]);
         }
     }

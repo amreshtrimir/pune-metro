@@ -16,7 +16,7 @@ class AssignFaqsRequest extends FormRequest
     {
         return [
             'page' => ['required', 'string', Rule::in(array_keys(config('faq_pages')))],
-            'faq_ids' => ['present', 'array'],
+            'faq_ids' => ['required', 'array', 'min:1'],
             'faq_ids.*' => ['integer', 'exists:faqs,id'],
         ];
     }

@@ -1,5 +1,5 @@
 import { Head, Form, router } from '@inertiajs/react';
-import { Plus } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 import * as FaqController from '@/actions/App/Http/Controllers/Faq/FaqController';
 import { FaqTable } from '@/components/faqs/faq-table';
@@ -45,11 +45,8 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const [saving, setSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
+    const [selected, setSelected] = useState<Set<number>>(new Set());
     const [page, setPage] = useState('');
-    const [draft, setDraft] = useState<{
-        page: string;
-        ids: Set<number>;
-    } | null>(null);
     const [assigning, setAssigning] = useState(false);
 
     const pageOptions = pages.map((p) => ({ value: p.key, label: p.name }));
@@ -57,21 +54,9 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const pageName = (key: string) =>
         pages.find((p) => p.key === key)?.name ?? key;
 
-    const savedFor = (key: string) =>
-        new Set(faqs.filter((f) => f.pages.includes(key)).map((f) => f.id));
-    const selected = draft?.page === page ? draft.ids : savedFor(page);
-    const setSelected = (ids: Set<number>) => setDraft({ page, ids });
-
-    // Rows ticked before a page is chosen carry over and merge with that page's saved FAQs.
-    const handlePageChange = (next: string) => {
-        const carried = page === '' ? selected : new Set<number>();
-
-        setPage(next);
-        setDraft(
-            carried.size > 0
-                ? { page: next, ids: new Set([...savedFor(next), ...carried]) }
-                : null,
-        );
+    const clearSelection = () => {
+        setSelected(new Set());
+        setPage('');
     };
 
     const handleAssign = () => {
@@ -81,7 +66,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             { page, faq_ids: [...selected] },
             {
                 preserveScroll: true,
-                onSuccess: () => setDraft(null),
+                onSuccess: clearSelection,
                 onFinish: () => setAssigning(false),
             },
         );
@@ -144,37 +129,10 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             </HeaderActions>
 
             <div className="flex h-[calc(100svh-4rem)] flex-col gap-6 overflow-hidden p-6 md:h-[calc(100svh-5rem)]">
-                <div className="flex flex-wrap items-center gap-3 rounded-xl border p-4">
-                    <Label htmlFor="page">Assign to page</Label>
-                    <SearchSelect
-                        options={pages.map((p) => ({
-                            value: p.key,
-                            label: p.name,
-                        }))}
-                        value={page}
-                        onChange={handlePageChange}
-                        placeholder="Search a page…"
-                    />
-                    <span className="text-sm text-muted-foreground">
-                        {page
-                            ? `${selected.size} selected`
-                            : selected.size > 0
-                              ? `${selected.size} selected. Pick a page to assign them.`
-                              : 'Tick the FAQs, pick a page, then save.'}
-                    </span>
-                    <Button
-                        className="ml-auto"
-                        disabled={!page || assigning}
-                        onClick={handleAssign}
-                    >
-                        {assigning ? 'Saving...' : 'Save selection'}
-                    </Button>
-                </div>
-
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border">
                     {faqs.length === 0 ? (
                         <div className="p-12 text-center text-sm text-muted-foreground">
-                            No FAQs yet. Add one above.
+                            No FAQs yet. Use Add FAQ to create one.
                         </div>
                     ) : (
                         <FaqTable
@@ -190,6 +148,36 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                     )}
                 </div>
             </div>
+
+            {selected.size > 0 && (
+                <div className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-xl border bg-popover p-3 text-popover-foreground shadow-lg">
+                    <span className="text-sm font-medium whitespace-nowrap">
+                        {selected.size} selected
+                    </span>
+                    <SearchSelect
+                        dropUp
+                        options={pageOptions}
+                        value={page}
+                        onChange={setPage}
+                        placeholder="Assign to page…"
+                    />
+                    <Button
+                        disabled={!page || assigning}
+                        onClick={handleAssign}
+                    >
+                        {assigning ? 'Assigning...' : 'Assign'}
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="size-8"
+                        title="Clear selection"
+                        onClick={clearSelection}
+                    >
+                        <X className="size-4" />
+                    </Button>
+                </div>
+            )}
 
             <Dialog open={adding} onOpenChange={setAdding}>
                 <DialogContent>

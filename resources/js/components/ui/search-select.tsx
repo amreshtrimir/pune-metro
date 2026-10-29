@@ -13,9 +13,11 @@ type SearchSelectProps = {
     onChange: (value: string) => void;
     placeholder?: string;
     className?: string;
+    /** Open the list above the input (for pickers near the bottom of the screen). */
+    dropUp?: boolean;
 };
 
-export function SearchSelect({ options, value, onChange, placeholder = 'Select…', className }: SearchSelectProps) {
+export function SearchSelect({ options, value, onChange, placeholder = 'Select…', className, dropUp = false }: SearchSelectProps) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState('');
     const [active, setActive] = useState(0);
@@ -77,7 +79,7 @@ export function SearchSelect({ options, value, onChange, placeholder = 'Select�
                 <ChevronsUpDown className="pointer-events-none absolute top-2.5 right-2.5 size-4 opacity-50" />
             </div>
             {open && (
-                <ul className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border bg-popover p-1 text-sm shadow-md">
+                <ul className={cn('absolute z-50 max-h-60 w-full overflow-auto rounded-md border bg-popover p-1 text-sm shadow-md', dropUp ? 'bottom-full mb-1' : 'mt-1')}>
                     {filtered.length === 0 && <li className="px-2 py-1.5 text-muted-foreground">No pages found.</li>}
                     {filtered.map((o, i) => (
                         <li
