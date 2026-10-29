@@ -50,7 +50,7 @@ test('fare table page source carries the fare intro paragraph', function () {
     $source = file_get_contents(resource_path('js/pages/frontend/passenger-info/fare-table.tsx'));
     $text = preg_replace('/\s+/', ' ', $source);
 
-    expect($text)->toContain('Pune Metro Line 3 offers distance-based fares for all commuters travelling across the Hinjewadi - Shivajinagar corridor.')
+    expect($text)->toContain('Pune Metro Line 3 offers distance-based fares for all commuters travelling across the Hinjawadi - Shivajinagar corridor.')
         ->toContain('Tickets can be purchased using NCMC card, WhatsApp QR, Ticket Vending Machine or manual counter at every station.')
         ->toContain('Refer to the fare chart below for complete details.');
 });
