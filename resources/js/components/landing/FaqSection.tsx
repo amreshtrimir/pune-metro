@@ -1,4 +1,4 @@
-import { Mail, Plus, Search, X } from 'lucide-react';
+import { Plus, Search, X } from 'lucide-react';
 import { useState } from 'react';
 import { useInView } from '@/hooks/useInView';
 import type { PageFaq } from '@/types/cms';
@@ -46,166 +46,152 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
         <section
             ref={ref}
             aria-labelledby="page-faqs-heading"
-            className={`bg-white py-12 transition-all duration-700 lg:py-16 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`bg-white py-10 transition-all duration-700 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
         >
             <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-12">
-                    {/* ── Intro ── */}
-                    <div className="lg:sticky lg:top-28 lg:self-start">
-                        <div className="mb-4 inline-flex items-center rounded-full border border-brand/30 bg-brand/10 px-4 py-1.5">
-                            <span className="font-montserrat text-xs font-medium text-brand">
-                                FAQs
-                            </span>
-                        </div>
-                        <h2
-                            id="page-faqs-heading"
-                            className="font-montserrat text-2xl leading-tight font-bold text-black lg:text-3xl"
-                        >
-                            Frequently Asked Questions
-                        </h2>
-                        <p className="font-inter mt-3 text-sm leading-relaxed text-black">
-                            Quick answers to common questions about travelling
-                            on Pune Metro Line 3.
-                        </p>
+                {/* Same look as PageSectionHeading, as an h2 because the page already has an h1 */}
+                <div className="flex items-center gap-6">
+                    <h2
+                        id="page-faqs-heading"
+                        className="mb-0 shrink-0 border-0 font-montserrat text-xl font-bold text-black sm:text-2xl lg:text-3xl"
+                    >
+                        Frequently Asked Questions
+                    </h2>
+                    <div
+                        className="h-px flex-1"
+                        style={{
+                            background:
+                                'linear-gradient(to right, #d1d5db, transparent)',
+                        }}
+                    />
+                </div>
+                <p className="font-inter mt-3 text-sm text-black">
+                    Quick answers to common questions about travelling on Pune
+                    Metro Line 3.
+                </p>
 
-                        {faqs.length > SEARCH_THRESHOLD && (
-                            <div className="relative mt-6">
-                                <Search className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-gray-400" />
-                                <input
-                                    type="search"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    placeholder="Search questions…"
-                                    aria-label="Search questions"
-                                    className="font-inter w-full rounded-full border border-gray-200 bg-white py-3 pr-10 pl-11 text-sm text-black transition-colors outline-none placeholder:text-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 [&::-webkit-search-cancel-button]:appearance-none"
-                                />
-                                {query && (
-                                    <button
-                                        type="button"
-                                        onClick={() => setQuery('')}
-                                        aria-label="Clear search"
-                                        className="absolute top-1/2 right-3 flex size-6 -translate-y-1/2 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-black"
-                                    >
-                                        <X className="size-4" />
-                                    </button>
-                                )}
-                            </div>
-                        )}
-                        <p
-                            aria-live="polite"
-                            className="font-inter mt-3 text-xs text-gray-500"
-                        >
-                            {needle
-                                ? `${matches.length} of ${faqs.length} questions`
-                                : `${faqs.length} ${faqs.length === 1 ? 'question' : 'questions'}`}
-                        </p>
-
-                        <div className="mt-8 hidden rounded-2xl bg-[#fdf0f7] p-5 lg:block">
-                            <p className="font-montserrat text-sm font-semibold text-black">
-                                Still have a question?
-                            </p>
-                            <a
-                                href="mailto:support@punerimetro.in"
-                                className="mt-3 inline-flex items-center gap-2 font-montserrat text-sm font-semibold text-brand-dark transition-opacity hover:opacity-80"
-                            >
-                                <Mail className="size-4" />
-                                support@punerimetro.in
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* ── Questions ── */}
-                    <div>
-                        {visible.length === 0 ? (
-                            <div className="rounded-2xl border border-dashed border-gray-300 px-6 py-12 text-center">
-                                <p className="font-montserrat text-base font-semibold text-black">
-                                    No questions match “{query.trim()}”
-                                </p>
+                {faqs.length > SEARCH_THRESHOLD && (
+                    <div className="mx-auto mt-8 max-w-xl">
+                        <div className="relative">
+                            <Search className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="search"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Search questions…"
+                                aria-label="Search questions"
+                                className="font-inter w-full rounded-full border border-gray-200 bg-white py-3 pr-10 pl-11 text-sm text-black transition-colors outline-none placeholder:text-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 [&::-webkit-search-cancel-button]:appearance-none"
+                            />
+                            {query && (
                                 <button
                                     type="button"
                                     onClick={() => setQuery('')}
-                                    className="font-inter mt-3 text-sm font-medium text-brand-dark underline-offset-4 hover:underline"
+                                    aria-label="Clear search"
+                                    className="absolute top-1/2 right-3 flex size-6 -translate-y-1/2 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-black"
                                 >
-                                    Clear search
+                                    <X className="size-4" />
                                 </button>
-                            </div>
-                        ) : (
-                            <ul className="flex flex-col gap-3">
-                                {visible.map((faq, index) => {
-                                    const isOpen = openId === faq.id;
-
-                                    return (
-                                        <li
-                                            key={faq.id}
-                                            style={{
-                                                animationDelay: `${Math.min(index, 8) * 40}ms`,
-                                            }}
-                                            className={`rounded-2xl border transition-all duration-300 motion-safe:animate-in motion-safe:fill-mode-backwards motion-safe:fade-in motion-safe:slide-in-from-bottom-1 ${
-                                                isOpen
-                                                    ? 'border-brand/40 bg-white shadow-sm'
-                                                    : 'border-gray-200 bg-white hover:border-brand/30 hover:shadow-sm'
-                                            }`}
-                                        >
-                                            <h3>
-                                                <button
-                                                    type="button"
-                                                    aria-expanded={isOpen}
-                                                    aria-controls={`faq-panel-${faq.id}`}
-                                                    onClick={() =>
-                                                        setOpenId(
-                                                            isOpen
-                                                                ? null
-                                                                : faq.id,
-                                                        )
-                                                    }
-                                                    className="flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left font-montserrat text-base font-semibold text-black focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:outline-none"
-                                                >
-                                                    {faq.question}
-                                                    <span
-                                                        className={`flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                                                            isOpen
-                                                                ? 'rotate-45 bg-brand text-white'
-                                                                : 'bg-brand/10 text-brand'
-                                                        }`}
-                                                    >
-                                                        <Plus className="size-4" />
-                                                    </span>
-                                                </button>
-                                            </h3>
-                                            <div
-                                                id={`faq-panel-${faq.id}`}
-                                                role="region"
-                                                className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
-                                            >
-                                                <div className="overflow-hidden">
-                                                    <div
-                                                        className="font-inter mx-5 mb-5 text-sm leading-relaxed text-black [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6"
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: faq.answer,
-                                                        }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        )}
-
-                        {!needle && isLong && (
-                            <div className="mt-6 text-center">
-                                <button
-                                    type="button"
-                                    onClick={() => setShowAll((v) => !v)}
-                                    className="inline-flex items-center rounded-md bg-brand-dark px-7 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                                >
-                                    {showAll
-                                        ? 'Show fewer questions'
-                                        : `Show all ${faqs.length} questions`}
-                                </button>
-                            </div>
-                        )}
+                            )}
+                        </div>
+                        <p
+                            aria-live="polite"
+                            className="font-inter mt-3 text-center text-xs text-gray-500"
+                        >
+                            {needle
+                                ? `${matches.length} of ${faqs.length} questions`
+                                : `${faqs.length} questions`}
+                        </p>
                     </div>
+                )}
+
+                <div className="mt-8">
+                    {visible.length === 0 ? (
+                        <div className="rounded-2xl border border-dashed border-gray-300 px-6 py-12 text-center">
+                            <p className="font-montserrat text-base font-semibold text-black">
+                                No questions match “{query.trim()}”
+                            </p>
+                            <button
+                                type="button"
+                                onClick={() => setQuery('')}
+                                className="font-inter mt-3 text-sm font-medium text-brand-dark underline-offset-4 hover:underline"
+                            >
+                                Clear search
+                            </button>
+                        </div>
+                    ) : (
+                        <ul className="flex flex-col gap-3">
+                            {visible.map((faq, index) => {
+                                const isOpen = openId === faq.id;
+
+                                return (
+                                    <li
+                                        key={faq.id}
+                                        style={{
+                                            animationDelay: `${Math.min(index, 8) * 40}ms`,
+                                        }}
+                                        className={`rounded-2xl border transition-all duration-300 motion-safe:animate-in motion-safe:fill-mode-backwards motion-safe:fade-in motion-safe:slide-in-from-bottom-1 ${
+                                            isOpen
+                                                ? 'border-brand/40 bg-white shadow-sm'
+                                                : 'border-gray-200 bg-white hover:border-brand/30 hover:shadow-sm'
+                                        }`}
+                                    >
+                                        <h3>
+                                            <button
+                                                type="button"
+                                                aria-expanded={isOpen}
+                                                aria-controls={`faq-panel-${faq.id}`}
+                                                onClick={() =>
+                                                    setOpenId(
+                                                        isOpen ? null : faq.id,
+                                                    )
+                                                }
+                                                className="flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left font-montserrat text-base font-semibold text-black focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:outline-none"
+                                            >
+                                                {faq.question}
+                                                <span
+                                                    className={`flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                                                        isOpen
+                                                            ? 'rotate-45 bg-brand text-white'
+                                                            : 'bg-brand/10 text-brand'
+                                                    }`}
+                                                >
+                                                    <Plus className="size-4" />
+                                                </span>
+                                            </button>
+                                        </h3>
+                                        <div
+                                            id={`faq-panel-${faq.id}`}
+                                            role="region"
+                                            className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                                        >
+                                            <div className="overflow-hidden">
+                                                <div
+                                                    className="font-inter mx-5 mb-5 text-sm leading-relaxed text-black [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6"
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: faq.answer,
+                                                    }}
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    )}
+
+                    {!needle && isLong && (
+                        <div className="mt-6 text-center">
+                            <button
+                                type="button"
+                                onClick={() => setShowAll((v) => !v)}
+                                className="inline-flex items-center rounded-md bg-brand-dark px-7 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                            >
+                                {showAll
+                                    ? 'Show fewer questions'
+                                    : `Show all ${faqs.length} questions`}
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
