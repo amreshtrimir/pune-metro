@@ -1,5 +1,5 @@
 import { Head, Form, router } from '@inertiajs/react';
-import { Eye, EyeOff, Pencil, Trash2 } from 'lucide-react';
+import { Eye, EyeOff, Pencil, Plus, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import * as FaqController from '@/actions/App/Http/Controllers/Faq/FaqController';
 import { Badge } from '@/components/ui/badge';
@@ -34,6 +34,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         answer: '',
         is_active: true,
     });
+    const [adding, setAdding] = useState(false);
     const [saving, setSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
@@ -129,59 +130,18 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             <Head title="FAQs" />
 
             <div className="space-y-6 p-6">
-                <div>
-                    <h1 className="text-2xl font-semibold">FAQs</h1>
-                    <p className="text-sm text-muted-foreground">
-                        Create FAQs, then choose which ones appear on each page.
-                    </p>
-                </div>
-
-                <div className="space-y-3 rounded-xl border p-4">
-                    <h2 className="text-sm font-semibold">Add new FAQ</h2>
-                    <Form
-                        {...FaqController.store.form()}
-                        resetOnSuccess
-                        className="space-y-3"
-                    >
-                        {({ errors, processing }) => (
-                            <>
-                                <div className="space-y-1">
-                                    <Input
-                                        name="question"
-                                        placeholder="Question"
-                                        className={
-                                            errors.question
-                                                ? 'border-destructive'
-                                                : ''
-                                        }
-                                    />
-                                    {errors.question && (
-                                        <p className="text-xs text-destructive">
-                                            {errors.question}
-                                        </p>
-                                    )}
-                                </div>
-                                <div className="space-y-1">
-                                    <textarea
-                                        name="answer"
-                                        rows={3}
-                                        placeholder="Answer"
-                                        className={`w-full rounded-md border bg-transparent px-3 py-2 text-sm ${errors.answer ? 'border-destructive' : 'border-input'}`}
-                                    />
-                                    {errors.answer && (
-                                        <p className="text-xs text-destructive">
-                                            {errors.answer}
-                                        </p>
-                                    )}
-                                </div>
-                                <div className="flex justify-end">
-                                    <Button type="submit" disabled={processing}>
-                                        {processing ? 'Adding...' : 'Add FAQ'}
-                                    </Button>
-                                </div>
-                            </>
-                        )}
-                    </Form>
+                <div className="flex items-start justify-between gap-4">
+                    <div>
+                        <h1 className="text-2xl font-semibold">FAQs</h1>
+                        <p className="text-sm text-muted-foreground">
+                            Create FAQs, then choose which ones appear on each
+                            page.
+                        </p>
+                    </div>
+                    <Button onClick={() => setAdding(true)}>
+                        <Plus className="size-4" />
+                        Add FAQ
+                    </Button>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3 rounded-xl border p-4">
@@ -357,6 +317,59 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                     )}
                 </div>
             </div>
+
+            <Dialog open={adding} onOpenChange={setAdding}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Add FAQ</DialogTitle>
+                    </DialogHeader>
+                    <Form
+                        {...FaqController.store.form()}
+                        resetOnSuccess
+                        onSuccess={() => setAdding(false)}
+                        className="space-y-3"
+                    >
+                        {({ errors, processing }) => (
+                            <>
+                                <div className="space-y-1">
+                                    <Input
+                                        name="question"
+                                        placeholder="Question"
+                                        className={
+                                            errors.question
+                                                ? 'border-destructive'
+                                                : ''
+                                        }
+                                    />
+                                    {errors.question && (
+                                        <p className="text-xs text-destructive">
+                                            {errors.question}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="space-y-1">
+                                    <textarea
+                                        name="answer"
+                                        rows={3}
+                                        placeholder="Answer"
+                                        className={`w-full rounded-md border bg-transparent px-3 py-2 text-sm ${errors.answer ? 'border-destructive' : 'border-input'}`}
+                                    />
+                                    {errors.answer && (
+                                        <p className="text-xs text-destructive">
+                                            {errors.answer}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="flex justify-end">
+                                    <Button type="submit" disabled={processing}>
+                                        {processing ? 'Adding...' : 'Add FAQ'}
+                                    </Button>
+                                </div>
+                            </>
+                        )}
+                    </Form>
+                </DialogContent>
+            </Dialog>
 
             <Dialog
                 open={editing !== null}
