@@ -1,5 +1,5 @@
 import { Head, Form, router } from '@inertiajs/react';
-import { Plus, X } from 'lucide-react';
+import { Plus, Search, X } from 'lucide-react';
 import { useState } from 'react';
 import * as FaqController from '@/actions/App/Http/Controllers/Faq/FaqController';
 import { FaqTable } from '@/components/faqs/faq-table';
@@ -31,6 +31,9 @@ type FaqFormState = {
     pages: string[];
 };
 
+const plainText = (html: string) =>
+    new DOMParser().parseFromString(html, 'text/html').body.textContent ?? '';
+
 export default function FaqsIndex({ faqs, pages }: Props) {
     const [editing, setEditing] = useState<Faq | null>(null);
     const [editForm, setEditForm] = useState<FaqFormState>({
@@ -43,8 +46,10 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const [addAnswer, setAddAnswer] = useState('');
     const [addPages, setAddPages] = useState<string[]>([]);
     const [saving, setSaving] = useState(false);
+    const [deleteTarget, setDeleteTarget] = useState<Faq | null>(null);
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
+    const [search, setSearch] = useState('');
     const [selected, setSelected] = useState<Set<number>>(new Set());
     const [page, setPage] = useState('');
     const [assigning, setAssigning] = useState(false);
@@ -53,6 +58,15 @@ export default function FaqsIndex({ faqs, pages }: Props) {
 
     const pageName = (key: string) =>
         pages.find((p) => p.key === key)?.name ?? key;
+
+    const needle = search.trim().toLowerCase();
+    const visibleFaqs = needle
+        ? faqs.filter(
+              (f) =>
+                  f.question.toLowerCase().includes(needle) ||
+                  plainText(f.answer).toLowerCase().includes(needle),
+          )
+        : faqs;
 
     const clearSelection = () => {
         setSelected(new Set());
@@ -105,14 +119,15 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             { preserveScroll: true },
         );
 
-    const handleDelete = (faq: Faq) => {
-        if (!confirm(`Delete "${faq.question}"?`)) {
+    const handleConfirmDelete = () => {
+        if (!deleteTarget) {
             return;
         }
 
-        setDeletingId(faq.id);
-        router.delete(FaqController.destroy.url(faq.id), {
+        setDeletingId(deleteTarget.id);
+        router.delete(FaqController.destroy.url(deleteTarget.id), {
             preserveScroll: true,
+            onSuccess: () => setDeleteTarget(null),
             onFinish: () => setDeletingId(null),
         });
     };
@@ -122,6 +137,16 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             <Head title="FAQs" />
 
             <HeaderActions>
+                <div className="relative">
+                    <Search className="pointer-events-none absolute top-2.5 left-2.5 size-4 text-muted-foreground" />
+                    <Input
+                        type="search"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search FAQs…"
+                        className="h-9 w-64 pl-8"
+                    />
+                </div>
                 <Button onClick={() => setAdding(true)}>
                     <Plus className="size-4" />
                     Add FAQ
@@ -130,19 +155,22 @@ export default function FaqsIndex({ faqs, pages }: Props) {
 
             <div className="flex h-[calc(100svh-4rem)] flex-col gap-6 overflow-hidden p-6 md:h-[calc(100svh-5rem)]">
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border">
-                    {faqs.length === 0 ? (
+                    {visibleFaqs.length === 0 ? (
                         <div className="p-12 text-center text-sm text-muted-foreground">
-                            No FAQs yet. Use Add FAQ to create one.
+                            {faqs.length === 0
+                                ? 'No FAQs yet. Use Add FAQ to create one.'
+                                : `No FAQs match “${search.trim()}”.`}
                         </div>
                     ) : (
                         <FaqTable
-                            faqs={faqs}
+                            key={needle}
+                            faqs={visibleFaqs}
                             selected={selected}
                             onSelectionChange={setSelected}
                             pageName={pageName}
                             onToggleActive={handleToggle}
                             onEdit={openEdit}
-                            onDelete={handleDelete}
+                            onDelete={setDeleteTarget}
                             deletingId={deletingId}
                         />
                     )}
@@ -178,6 +206,40 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                     </Button>
                 </div>
             )}
+
+            <Dialog
+                open={deleteTarget !== null}
+                onOpenChange={(open) => !open && setDeleteTarget(null)}
+            >
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Delete FAQ</DialogTitle>
+                    </DialogHeader>
+                    <p className="text-sm text-muted-foreground">
+                        This will permanently delete{' '}
+                        <span className="font-medium text-foreground">
+                            “{deleteTarget?.question}”
+                        </span>{' '}
+                        and remove it from every page it appears on. This can’t
+                        be undone.
+                    </p>
+                    <div className="flex justify-end gap-2 pt-2">
+                        <Button
+                            variant="outline"
+                            onClick={() => setDeleteTarget(null)}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            variant="destructive"
+                            disabled={deletingId !== null}
+                            onClick={handleConfirmDelete}
+                        >
+                            {deletingId !== null ? 'Deleting...' : 'Delete'}
+                        </Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
 
             <Dialog open={adding} onOpenChange={setAdding}>
                 <DialogContent>
