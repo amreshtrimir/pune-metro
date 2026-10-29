@@ -48,13 +48,12 @@ export default function FareTable() {
                 />
             )}
             <section className="bg-white pt-6 pb-8 md:pt-8 md:pb-24">
-                {/* No max-width: the chart is dense, so it uses the full page width instead of the content container */}
-                <div className="w-full px-3 md:px-4">
+                <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <button
                         type="button"
                         onClick={() => setLightboxOpen(true)}
                         title="Click to enlarge"
-                        className="block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-gray-200 bg-white"
+                        className="block w-full cursor-zoom-in overflow-hidden rounded-3xl border border-gray-200 bg-white"
                     >
                         <img
                             src={fareChartSrc}
