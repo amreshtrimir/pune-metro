@@ -11,6 +11,7 @@ import { createContext, useContext, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { cn } from '@/lib/utils';
 import type { Faq } from '@/types/cms';
 
 const PAGE_SIZE = 20;
@@ -123,7 +124,7 @@ function ActionsCell({ faq }: { faq: Faq }) {
             <Button
                 variant="ghost"
                 size="icon"
-                className="size-8"
+                className="size-8 transition-transform hover:scale-110 active:scale-95"
                 title={faq.is_active ? 'Hide' : 'Show'}
                 onClick={() => onToggleActive(faq)}
             >
@@ -136,7 +137,7 @@ function ActionsCell({ faq }: { faq: Faq }) {
             <Button
                 variant="ghost"
                 size="icon"
-                className="size-8"
+                className="size-8 transition-transform hover:scale-110 active:scale-95"
                 onClick={() => onEdit(faq)}
             >
                 <Pencil className="size-3.5" />
@@ -144,7 +145,7 @@ function ActionsCell({ faq }: { faq: Faq }) {
             <Button
                 variant="ghost"
                 size="icon"
-                className="size-8 text-destructive hover:text-destructive"
+                className="size-8 text-destructive transition-transform hover:scale-110 hover:text-destructive active:scale-95"
                 disabled={deletingId === faq.id}
                 onClick={() => onDelete(faq)}
             >
@@ -185,7 +186,10 @@ const columns = helper.columns([
     helper.accessor('is_active', {
         header: 'Status',
         cell: ({ row }) => (
-            <Badge variant={row.original.is_active ? 'default' : 'secondary'}>
+            <Badge
+                variant={row.original.is_active ? 'default' : 'secondary'}
+                className="transition-colors"
+            >
                 {row.original.is_active ? 'Active' : 'Inactive'}
             </Badge>
         ),
@@ -249,8 +253,18 @@ export function FaqTable({ faqs, ...context }: FaqTableProps) {
                         ))}
                     </thead>
                     <tbody className="divide-y">
-                        {table.getRowModel().rows.map((row) => (
-                            <tr key={row.id} className="hover:bg-muted/20">
+                        {table.getRowModel().rows.map((row, index) => (
+                            <tr
+                                key={row.id}
+                                style={{
+                                    animationDelay: `${Math.min(index, 10) * 25}ms`,
+                                }}
+                                className={cn(
+                                    'transition-colors hover:bg-muted/30 motion-safe:animate-in motion-safe:duration-300 motion-safe:fill-mode-backwards motion-safe:fade-in motion-safe:slide-in-from-bottom-1',
+                                    context.selected.has(row.original.id) &&
+                                        'bg-primary/10 hover:bg-primary/15',
+                                )}
+                            >
                                 {row.getAllCells().map((cell) => (
                                     <td
                                         key={cell.id}

@@ -126,16 +126,19 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search FAQs…"
-                        className="h-9 w-64 pl-8"
+                        className="h-9 w-56 pl-8 transition-[width] duration-200 focus:w-72"
                     />
                 </div>
-                <Button onClick={() => setFormTarget({ faq: null })}>
+                <Button
+                    className="transition-transform active:scale-95"
+                    onClick={() => setFormTarget({ faq: null })}
+                >
                     <Plus className="size-4" />
                     Add FAQ
                 </Button>
             </HeaderActions>
 
-            <div className="flex h-[calc(100svh-4rem)] flex-col gap-6 overflow-hidden p-6 md:h-[calc(100svh-5rem)]">
+            <div className="flex h-[calc(100svh-4rem)] flex-col gap-6 overflow-hidden p-6 motion-safe:animate-in motion-safe:duration-300 motion-safe:fade-in motion-safe:slide-in-from-bottom-2 md:h-[calc(100svh-5rem)]">
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border">
                     {visibleFaqs.length === 0 ? (
                         <div className="p-12 text-center text-sm text-muted-foreground">
@@ -164,7 +167,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             </div>
 
             {selected.size > 0 && (
-                <div className="fixed bottom-6 left-1/2 z-40 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-2 rounded-xl border bg-popover p-3 text-popover-foreground shadow-lg">
+                <div className="fixed bottom-6 left-1/2 z-40 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-2 rounded-xl border bg-popover p-3 text-popover-foreground shadow-lg motion-safe:animate-in motion-safe:duration-200 motion-safe:fade-in motion-safe:slide-in-from-bottom-4">
                     <span className="text-sm font-medium whitespace-nowrap">
                         {selected.size} selected
                     </span>
