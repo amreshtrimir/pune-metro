@@ -71,7 +71,7 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
                                 >
                                     <div className="overflow-hidden">
                                         <div
-                                            className="px-6 pb-5 font-montserrat text-sm leading-7 text-gray-600 lg:text-base [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6"
+                                            className="font-inter px-6 pb-5 text-sm leading-relaxed text-black [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6"
                                             dangerouslySetInnerHTML={{
                                                 __html: faq.answer,
                                             }}
