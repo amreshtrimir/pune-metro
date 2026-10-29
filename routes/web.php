@@ -8,6 +8,7 @@ use App\Http\Controllers\Board\BoardMemberController;
 use App\Http\Controllers\CustomerServiceSubmissionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExplorePune\ExplorePunePlaceController;
+use App\Http\Controllers\Faq\FaqController;
 use App\Http\Controllers\Gallery\GalleryAlbumController;
 use App\Http\Controllers\Marquee\MarqueeItemController;
 use App\Http\Controllers\Media\MediaController;
@@ -165,6 +166,16 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/marquee/{marqueeItem}', [MarqueeItemController::class, 'update'])->name('marquee.update');
         Route::delete('/marquee/{marqueeItem}', [MarqueeItemController::class, 'destroy'])->name('marquee.destroy');
         Route::post('/marquee/reorder', [MarqueeItemController::class, 'reorder'])->name('marquee.reorder');
+
+        // FAQs
+        Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');
+        Route::post('/faqs', [FaqController::class, 'store'])->name('faqs.store');
+        Route::post('/faqs/assign', [FaqController::class, 'assign'])->name('faqs.assign');
+        Route::post('/faqs/unassign', [FaqController::class, 'unassign'])->name('faqs.unassign');
+        Route::post('/faqs/bulk-status', [FaqController::class, 'bulkStatus'])->name('faqs.bulk-status');
+        Route::delete('/faqs', [FaqController::class, 'bulkDestroy'])->name('faqs.bulk-destroy');
+        Route::put('/faqs/{faq}', [FaqController::class, 'update'])->name('faqs.update');
+        Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->name('faqs.destroy');
 
         // Stations
         Route::get('/stations', [StationController::class, 'index'])->name('stations.index');

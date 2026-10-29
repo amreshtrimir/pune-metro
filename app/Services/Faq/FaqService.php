@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Services\Faq;
+
+use App\Models\Faq;
+use App\Models\FaqPage;
+use Illuminate\Database\Eloquent\Collection;
+
+class FaqService
+{
+    /**
+     * @return Collection<int, Faq>
+     */
+    public function listFaqs(): Collection
+    {
+        return Faq::with('pages')->orderBy('sort_order')->orderBy('id')->get();
+    }
+
+    /**
+     * @return Collection<int, Faq>
+     */
+    public function getActiveFaqsForPage(string $page): Collection
+    {
+        return Faq::where('is_active', true)
+            ->whereHas('pages', fn ($query) => $query->where('page', $page))
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get(['id', 'question', 'answer']);
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    public function createFaq(array $data): Faq
+    {
+        $pages = $data['pages'] ?? [];
+        unset($data['pages']);
+        $data['answer'] = $this->sanitizeAnswer($data['answer']);
+        $data['sort_order'] = (Faq::max('sort_order') ?? -1) + 1;
+
+        $faq = Faq::create($data);
+        $this->syncFaqPages($faq, $pages);
+
+        return $faq;
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    public function updateFaq(Faq $faq, array $data): void
+    {
+        $pages = $data['pages'] ?? null;
+        unset($data['pages']);
+        $data['answer'] = $this->sanitizeAnswer($data['answer']);
+
+        $faq->update($data);
+
+        if ($pages !== null) {
+            $this->syncFaqPages($faq, $pages);
+        }
+    }
+
+    public function deleteFaq(Faq $faq): void
+    {
+        $faq->delete();
+    }
+
+    /**
+     * Keep only basic formatting tags (no attributes), since answers are rendered as HTML.
+     */
+    private function sanitizeAnswer(string $answer): string
+    {
+        $answer = preg_replace('/<(script|style)\b[^>]*>.*?<\/\1>/is', '', $answer) ?? $answer;
+        $answer = strip_tags($answer, '<p><br><strong><b><em><i><ul><ol><li>');
+
+        return trim(preg_replace('/<(\w+)\b[^>]*>/', '<$1>', $answer) ?? $answer);
+    }
+
+    /**
+     * @param  array<int, int>  $faqIds
+     */
+    public function removeFromPage(string $page, array $faqIds): void
+    {
+        FaqPage::where('page', $page)->whereIn('faq_id', $faqIds)->delete();
+    }
+
+    /**
+     * @param  array<int, int>  $faqIds
+     */
+    public function setActive(array $faqIds, bool $isActive): void
+    {
+        Faq::whereIn('id', $faqIds)->update(['is_active' => $isActive]);
+    }
+
+    /**
+     * @param  array<int, int>  $faqIds
+     */
+    public function deleteMany(array $faqIds): void
+    {
+        Faq::whereIn('id', $faqIds)->delete();
+    }
+
+    /**
+     * @param  array<int, string>  $pages
+     */
+    private function syncFaqPages(Faq $faq, array $pages): void
+    {
+        $faq->pages()->whereNotIn('page', $pages)->delete();
+
+        foreach (array_unique($pages) as $page) {
+            $faq->pages()->firstOrCreate(['page' => $page]);
+        }
+    }
+
+    /**
+     * Add the given FAQs to a page, keeping the FAQs it already has.
+     *
+     * @param  array<int, int>  $faqIds
+     */
+    public function assignToPage(string $page, array $faqIds): void
+    {
+        foreach (array_unique($faqIds) as $faqId) {
+            Faq::findOrFail($faqId)->pages()->firstOrCreate(['page' => $page]);
+        }
+    }
+}

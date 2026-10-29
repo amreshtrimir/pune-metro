@@ -86,6 +86,22 @@ export type MarqueeItem = {
     updated_at: string;
 };
 
+export type Faq = {
+    id: number;
+    question: string;
+    answer: string;
+    is_active: boolean;
+    pages: string[];
+};
+
+export type PageFaq = {
+    id: number;
+    question: string;
+    answer: string;
+};
+
+export type FaqPageOption = { key: string; name: string };
+
 export type MediaDimension = {
     id: number;
     name: string;
