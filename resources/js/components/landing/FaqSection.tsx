@@ -93,13 +93,9 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
                                 </button>
                             )}
                         </div>
-                        <p
-                            aria-live="polite"
-                            className="font-inter mt-3 text-center text-xs text-gray-500"
-                        >
-                            {needle
-                                ? `${matches.length} of ${faqs.length} questions`
-                                : `${faqs.length} questions`}
+                        {/* Result count is announced to screen readers only */}
+                        <p aria-live="polite" className="sr-only">
+                            {needle ? `${matches.length} results` : ''}
                         </p>
                     </div>
                 )}
@@ -188,7 +184,7 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
                             >
                                 {showAll
                                     ? 'Show fewer questions'
-                                    : `Show all ${faqs.length} questions`}
+                                    : 'Show all questions'}
                             </button>
                         </div>
                     )}
