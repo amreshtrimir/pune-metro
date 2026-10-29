@@ -124,7 +124,10 @@ class PagesController extends Controller
 
     public function fareTable(): Response
     {
-        return Inertia::render('frontend/passenger-info/fare-table');
+        return Inertia::render('frontend/passenger-info/fare-table', [
+            'stations' => config('fare_chart.stations'),
+            'fares' => config('fare_chart.fares'),
+        ]);
     }
 
     public function dosAndDonts(): Response
