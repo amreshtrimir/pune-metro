@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { SearchSelect } from '@/components/ui/search-select';
 import type { Faq, FaqPageOption } from '@/types/cms';
 
 type Props = {
@@ -26,9 +27,6 @@ type FaqFormState = {
     is_active: boolean;
 };
 
-const selectClass =
-    'h-9 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50';
-
 export default function FaqsIndex({ faqs, pages }: Props) {
     const [editing, setEditing] = useState<Faq | null>(null);
     const [editForm, setEditForm] = useState<FaqFormState>({
@@ -39,8 +37,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
     const [saving, setSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
-    const [pageQuery, setPageQuery] = useState('');
-    const page = pages.find((p) => p.name === pageQuery)?.key ?? '';
+    const [page, setPage] = useState('');
     const [draft, setDraft] = useState<{
         page: string;
         ids: Set<number>;
@@ -189,20 +186,15 @@ export default function FaqsIndex({ faqs, pages }: Props) {
 
                 <div className="flex flex-wrap items-center gap-3 rounded-xl border p-4">
                     <Label htmlFor="page">Assign to page</Label>
-                    <input
-                        id="page"
-                        list="faq-pages"
-                        value={pageQuery}
-                        onChange={(e) => setPageQuery(e.target.value)}
+                    <SearchSelect
+                        options={pages.map((p) => ({
+                            value: p.key,
+                            label: p.name,
+                        }))}
+                        value={page}
+                        onChange={setPage}
                         placeholder="Search a page…"
-                        autoComplete="off"
-                        className={`${selectClass} w-72`}
                     />
-                    <datalist id="faq-pages">
-                        {pages.map((p) => (
-                            <option key={p.key} value={p.name} />
-                        ))}
-                    </datalist>
                     <span className="text-sm text-muted-foreground">
                         {page
                             ? `${selected.size} selected`
