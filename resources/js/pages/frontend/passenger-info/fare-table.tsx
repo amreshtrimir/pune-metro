@@ -35,6 +35,14 @@ export default function FareTable() {
                     <PageSectionHeading>
                         Fare Table / Ticket Rules
                     </PageSectionHeading>
+                    <p className="font-inter mt-3 text-sm leading-relaxed text-black">
+                        Pune Metro Line 3 offers distance-based fares for all
+                        commuters travelling across the Hinjewadi - Shivajinagar
+                        corridor. Tickets can be purchased using NCMC card,
+                        WhatsApp QR, Ticket Vending Machine or manual counter at
+                        every station. Refer to the fare chart below for
+                        complete details.
+                    </p>
                 </div>
             </section>
 
