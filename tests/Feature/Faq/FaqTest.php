@@ -114,3 +114,12 @@ it('seeds the faqs without duplicating on a second run', function (): void {
 
     expect($count)->toBe(52)->and(Faq::count())->toBe(52);
 });
+
+it('keeps basic formatting in answers but strips scripts and attributes', function (): void {
+    $this->actingAs(faqAdminUser())->post(route('dashboard.faqs.store'), [
+        'question' => 'Q?',
+        'answer' => '<p onclick="x()">Hi <strong>there</strong></p><script>alert(1)</script><ul><li>One</li></ul><a href="javascript:x">link</a>',
+    ]);
+
+    expect(Faq::firstOrFail()->answer)->toBe('<p>Hi <strong>there</strong></p><ul><li>One</li></ul>link');
+});

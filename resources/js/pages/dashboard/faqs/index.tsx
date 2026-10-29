@@ -14,6 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { MultiSelect } from '@/components/ui/multi-select';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import { SearchSelect } from '@/components/ui/search-select';
 import type { Faq, FaqPageOption } from '@/types/cms';
 
@@ -29,6 +30,9 @@ type FaqFormState = {
     pages: string[];
 };
 
+const plainText = (html: string) =>
+    new DOMParser().parseFromString(html, 'text/html').body.textContent ?? '';
+
 export default function FaqsIndex({ faqs, pages }: Props) {
     const [editing, setEditing] = useState<Faq | null>(null);
     const [editForm, setEditForm] = useState<FaqFormState>({
@@ -38,6 +42,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
         pages: [],
     });
     const [adding, setAdding] = useState(false);
+    const [addAnswer, setAddAnswer] = useState('');
     const [addPages, setAddPages] = useState<string[]>([]);
     const [saving, setSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
@@ -238,7 +243,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                                 {faq.question}
                                             </p>
                                             <p className="truncate text-xs text-muted-foreground">
-                                                {faq.answer}
+                                                {plainText(faq.answer)}
                                             </p>
                                         </td>
                                         <td className="px-4 py-3">
@@ -336,6 +341,7 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                         onSuccess={() => {
                             setAdding(false);
                             setAddPages([]);
+                            setAddAnswer('');
                         }}
                         className="space-y-3"
                     >
@@ -358,11 +364,15 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                     )}
                                 </div>
                                 <div className="space-y-1">
-                                    <textarea
+                                    <RichTextEditor
+                                        label="Answer"
+                                        value={addAnswer}
+                                        onChange={setAddAnswer}
+                                    />
+                                    <input
+                                        type="hidden"
                                         name="answer"
-                                        rows={3}
-                                        placeholder="Answer"
-                                        className={`w-full rounded-md border bg-transparent px-3 py-2 text-sm ${errors.answer ? 'border-destructive' : 'border-input'}`}
+                                        value={addAnswer}
                                     />
                                     {errors.answer && (
                                         <p className="text-xs text-destructive">
@@ -421,18 +431,12 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                             />
                         </div>
                         <div className="space-y-1">
-                            <Label htmlFor="edit-answer">Answer</Label>
-                            <textarea
-                                id="edit-answer"
-                                rows={5}
+                            <RichTextEditor
+                                label="Answer"
                                 value={editForm.answer}
-                                onChange={(e) =>
-                                    setEditForm((prev) => ({
-                                        ...prev,
-                                        answer: e.target.value,
-                                    }))
+                                onChange={(answer) =>
+                                    setEditForm((prev) => ({ ...prev, answer }))
                                 }
-                                className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm"
                             />
                         </div>
                         <div className="space-y-1">

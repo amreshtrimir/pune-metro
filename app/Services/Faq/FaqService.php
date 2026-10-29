@@ -34,6 +34,7 @@ class FaqService
     {
         $pages = $data['pages'] ?? [];
         unset($data['pages']);
+        $data['answer'] = $this->sanitizeAnswer($data['answer']);
         $data['sort_order'] = (Faq::max('sort_order') ?? -1) + 1;
 
         $faq = Faq::create($data);
@@ -49,6 +50,7 @@ class FaqService
     {
         $pages = $data['pages'] ?? null;
         unset($data['pages']);
+        $data['answer'] = $this->sanitizeAnswer($data['answer']);
 
         $faq->update($data);
 
@@ -60,6 +62,17 @@ class FaqService
     public function deleteFaq(Faq $faq): void
     {
         $faq->delete();
+    }
+
+    /**
+     * Keep only basic formatting tags (no attributes), since answers are rendered as HTML.
+     */
+    private function sanitizeAnswer(string $answer): string
+    {
+        $answer = preg_replace('/<(script|style)\b[^>]*>.*?<\/\1>/is', '', $answer) ?? $answer;
+        $answer = strip_tags($answer, '<p><br><strong><b><em><i><ul><ol><li>');
+
+        return trim(preg_replace('/<(\w+)\b[^>]*>/', '<$1>', $answer) ?? $answer);
     }
 
     /**
