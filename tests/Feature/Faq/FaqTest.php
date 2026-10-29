@@ -4,6 +4,7 @@ use App\Models\Faq;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\Faq\FaqService;
+use Database\Seeders\FaqSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -103,4 +104,13 @@ it('assigns pages when creating and editing a faq, and keeps them when pages is 
     $this->actingAs($admin)
         ->put(route('dashboard.faqs.update', $faq), ['question' => 'Q?', 'answer' => 'A.', 'pages' => ['nope']])
         ->assertSessionHasErrors('pages.0');
+});
+
+it('seeds the faqs without duplicating on a second run', function (): void {
+    $this->seed(FaqSeeder::class);
+    $count = Faq::count();
+
+    $this->seed(FaqSeeder::class);
+
+    expect($count)->toBe(52)->and(Faq::count())->toBe(52);
 });
