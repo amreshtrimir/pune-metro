@@ -46,7 +46,7 @@ function FaqAccordion({ faqs }: { faqs: PageFaq[] }) {
         <section
             ref={ref}
             aria-labelledby="page-faqs-heading"
-            className={`bg-white py-10 transition-all duration-700 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`bg-white pt-0 pb-10 transition-all duration-700 md:-mt-8 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
         >
             <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                 {/* Same look as PageSectionHeading, as an h2 because the page already has an h1 */}
