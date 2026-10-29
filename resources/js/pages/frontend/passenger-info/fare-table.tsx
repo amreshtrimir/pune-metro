@@ -54,7 +54,7 @@ export default function FareTable() {
                     onClose={() => setLightboxOpen(false)}
                 />
             )}
-            <section className="bg-white pt-6 pb-8 md:pt-8 md:pb-24">
+            <section className="bg-white pt-6 pb-6 md:pt-8 md:pb-8">
                 <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <button
                         type="button"
