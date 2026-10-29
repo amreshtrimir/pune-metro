@@ -51,7 +51,7 @@ export default function LostAndFound() {
                             </h2>
                             <ul className="space-y-2">
                                 {[
-                                    'Visit the Customer Care Centre at any metro station immediately or call the helpline to report the loss 020 65525000.',
+                                    'Visit the Customer Care Centre at any metro station immediately or call the helpline to report the loss 020-65520100.',
                                     'Provide complete details such as item description, date and time, and station/location.',
                                 ].map((item) => (
                                     <li
@@ -77,7 +77,7 @@ export default function LostAndFound() {
                             </h2>
                             <p className="font-inter mb-2 text-sm text-gray-700">
                                 All recovered items are stored in the Lost &amp;
-                                Found Office for up to 90 days. Passengers can
+                                Found Office for up to 180 days. Passengers can
                                 claim their belongings by providing:
                             </p>
                             <ul className="space-y-2">
@@ -109,7 +109,7 @@ export default function LostAndFound() {
                             </h2>
                             <ul className="space-y-2">
                                 {[
-                                    'Unclaimed items are donated to NGOs after 90 days.',
+                                    'Unclaimed items are donated to NGOs after 180 days.',
                                     'Perishable items will be destroyed at the end of the business day.',
                                 ].map((item) => (
                                     <li
