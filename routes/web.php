@@ -171,6 +171,9 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');
         Route::post('/faqs', [FaqController::class, 'store'])->name('faqs.store');
         Route::post('/faqs/assign', [FaqController::class, 'assign'])->name('faqs.assign');
+        Route::post('/faqs/unassign', [FaqController::class, 'unassign'])->name('faqs.unassign');
+        Route::post('/faqs/bulk-status', [FaqController::class, 'bulkStatus'])->name('faqs.bulk-status');
+        Route::delete('/faqs', [FaqController::class, 'bulkDestroy'])->name('faqs.bulk-destroy');
         Route::put('/faqs/{faq}', [FaqController::class, 'update'])->name('faqs.update');
         Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->name('faqs.destroy');
 

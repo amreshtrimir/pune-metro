@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Faq;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Faq\AssignFaqsRequest;
+use App\Http\Requests\Faq\BulkFaqsRequest;
 use App\Http\Requests\Faq\StoreFaqRequest;
 use App\Http\Requests\Faq\UpdateFaqRequest;
 use App\Models\Faq;
@@ -55,5 +56,27 @@ class FaqController extends Controller
         $this->faqService->assignToPage($request->validated('page'), $request->validated('faq_ids'));
 
         return redirect()->route('dashboard.faqs.index')->with('success', 'FAQs assigned to the page.');
+    }
+
+    public function unassign(AssignFaqsRequest $request): RedirectResponse
+    {
+        $this->faqService->removeFromPage($request->validated('page'), $request->validated('faq_ids'));
+
+        return redirect()->route('dashboard.faqs.index')->with('success', 'FAQs removed from the page.');
+    }
+
+    public function bulkStatus(BulkFaqsRequest $request): RedirectResponse
+    {
+        $request->validate(['is_active' => ['required', 'boolean']]);
+        $this->faqService->setActive($request->validated('faq_ids'), $request->boolean('is_active'));
+
+        return redirect()->route('dashboard.faqs.index')->with('success', 'FAQs updated.');
+    }
+
+    public function bulkDestroy(BulkFaqsRequest $request): RedirectResponse
+    {
+        $this->faqService->deleteMany($request->validated('faq_ids'));
+
+        return redirect()->route('dashboard.faqs.index')->with('success', 'FAQs deleted.');
     }
 }

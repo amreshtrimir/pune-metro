@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::index
-* @see app/Http/Controllers/Faq/FaqController.php:19
+* @see app/Http/Controllers/Faq/FaqController.php:20
 * @route '/dashboard/faqs'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::store
-* @see app/Http/Controllers/Faq/FaqController.php:32
+* @see app/Http/Controllers/Faq/FaqController.php:33
 * @route '/dashboard/faqs'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +97,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::store
-* @see app/Http/Controllers/Faq/FaqController.php:32
+* @see app/Http/Controllers/Faq/FaqController.php:33
 * @route '/dashboard/faqs'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::store
-* @see app/Http/Controllers/Faq/FaqController.php:32
+* @see app/Http/Controllers/Faq/FaqController.php:33
 * @route '/dashboard/faqs'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +116,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::store
-* @see app/Http/Controllers/Faq/FaqController.php:32
+* @see app/Http/Controllers/Faq/FaqController.php:33
 * @route '/dashboard/faqs'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +126,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::store
-* @see app/Http/Controllers/Faq/FaqController.php:32
+* @see app/Http/Controllers/Faq/FaqController.php:33
 * @route '/dashboard/faqs'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -138,7 +138,7 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::assign
-* @see app/Http/Controllers/Faq/FaqController.php:53
+* @see app/Http/Controllers/Faq/FaqController.php:54
 * @route '/dashboard/faqs/assign'
 */
 export const assign = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -153,7 +153,7 @@ assign.definition = {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::assign
-* @see app/Http/Controllers/Faq/FaqController.php:53
+* @see app/Http/Controllers/Faq/FaqController.php:54
 * @route '/dashboard/faqs/assign'
 */
 assign.url = (options?: RouteQueryOptions) => {
@@ -162,7 +162,7 @@ assign.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::assign
-* @see app/Http/Controllers/Faq/FaqController.php:53
+* @see app/Http/Controllers/Faq/FaqController.php:54
 * @route '/dashboard/faqs/assign'
 */
 assign.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -172,7 +172,7 @@ assign.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::assign
-* @see app/Http/Controllers/Faq/FaqController.php:53
+* @see app/Http/Controllers/Faq/FaqController.php:54
 * @route '/dashboard/faqs/assign'
 */
 const assignForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -182,7 +182,7 @@ const assignForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =>
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::assign
-* @see app/Http/Controllers/Faq/FaqController.php:53
+* @see app/Http/Controllers/Faq/FaqController.php:54
 * @route '/dashboard/faqs/assign'
 */
 assignForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -193,11 +193,189 @@ assignForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 assign.form = assignForm
 
 /**
+* @see \App\Http\Controllers\Faq\FaqController::unassign
+* @see app/Http/Controllers/Faq/FaqController.php:61
+* @route '/dashboard/faqs/unassign'
+*/
+export const unassign = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: unassign.url(options),
+    method: 'post',
+})
+
+unassign.definition = {
+    methods: ["post"],
+    url: '/dashboard/faqs/unassign',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::unassign
+* @see app/Http/Controllers/Faq/FaqController.php:61
+* @route '/dashboard/faqs/unassign'
+*/
+unassign.url = (options?: RouteQueryOptions) => {
+    return unassign.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::unassign
+* @see app/Http/Controllers/Faq/FaqController.php:61
+* @route '/dashboard/faqs/unassign'
+*/
+unassign.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: unassign.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::unassign
+* @see app/Http/Controllers/Faq/FaqController.php:61
+* @route '/dashboard/faqs/unassign'
+*/
+const unassignForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unassign.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::unassign
+* @see app/Http/Controllers/Faq/FaqController.php:61
+* @route '/dashboard/faqs/unassign'
+*/
+unassignForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unassign.url(options),
+    method: 'post',
+})
+
+unassign.form = unassignForm
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkStatus
+* @see app/Http/Controllers/Faq/FaqController.php:68
+* @route '/dashboard/faqs/bulk-status'
+*/
+export const bulkStatus = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: bulkStatus.url(options),
+    method: 'post',
+})
+
+bulkStatus.definition = {
+    methods: ["post"],
+    url: '/dashboard/faqs/bulk-status',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkStatus
+* @see app/Http/Controllers/Faq/FaqController.php:68
+* @route '/dashboard/faqs/bulk-status'
+*/
+bulkStatus.url = (options?: RouteQueryOptions) => {
+    return bulkStatus.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkStatus
+* @see app/Http/Controllers/Faq/FaqController.php:68
+* @route '/dashboard/faqs/bulk-status'
+*/
+bulkStatus.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: bulkStatus.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkStatus
+* @see app/Http/Controllers/Faq/FaqController.php:68
+* @route '/dashboard/faqs/bulk-status'
+*/
+const bulkStatusForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkStatus.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkStatus
+* @see app/Http/Controllers/Faq/FaqController.php:68
+* @route '/dashboard/faqs/bulk-status'
+*/
+bulkStatusForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkStatus.url(options),
+    method: 'post',
+})
+
+bulkStatus.form = bulkStatusForm
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkDestroy
+* @see app/Http/Controllers/Faq/FaqController.php:76
+* @route '/dashboard/faqs'
+*/
+export const bulkDestroy = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDestroy.url(options),
+    method: 'delete',
+})
+
+bulkDestroy.definition = {
+    methods: ["delete"],
+    url: '/dashboard/faqs',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkDestroy
+* @see app/Http/Controllers/Faq/FaqController.php:76
+* @route '/dashboard/faqs'
+*/
+bulkDestroy.url = (options?: RouteQueryOptions) => {
+    return bulkDestroy.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkDestroy
+* @see app/Http/Controllers/Faq/FaqController.php:76
+* @route '/dashboard/faqs'
+*/
+bulkDestroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDestroy.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkDestroy
+* @see app/Http/Controllers/Faq/FaqController.php:76
+* @route '/dashboard/faqs'
+*/
+const bulkDestroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDestroy.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Faq\FaqController::bulkDestroy
+* @see app/Http/Controllers/Faq/FaqController.php:76
+* @route '/dashboard/faqs'
+*/
+bulkDestroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDestroy.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDestroy.form = bulkDestroyForm
+
+/**
 * @see \App\Http\Controllers\Faq\FaqController::update
-* @see app/Http/Controllers/Faq/FaqController.php:39
+* @see app/Http/Controllers/Faq/FaqController.php:40
 * @route '/dashboard/faqs/{faq}'
 */
-export const update = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -209,10 +387,10 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::update
-* @see app/Http/Controllers/Faq/FaqController.php:39
+* @see app/Http/Controllers/Faq/FaqController.php:40
 * @route '/dashboard/faqs/{faq}'
 */
-update.url = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { faq: args }
     }
@@ -242,20 +420,20 @@ update.url = (args: { faq: string | number | { id: string | number } } | [faq: s
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::update
-* @see app/Http/Controllers/Faq/FaqController.php:39
+* @see app/Http/Controllers/Faq/FaqController.php:40
 * @route '/dashboard/faqs/{faq}'
 */
-update.put = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::update
-* @see app/Http/Controllers/Faq/FaqController.php:39
+* @see app/Http/Controllers/Faq/FaqController.php:40
 * @route '/dashboard/faqs/{faq}'
 */
-const updateForm = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -267,10 +445,10 @@ const updateForm = (args: { faq: string | number | { id: string | number } } | [
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::update
-* @see app/Http/Controllers/Faq/FaqController.php:39
+* @see app/Http/Controllers/Faq/FaqController.php:40
 * @route '/dashboard/faqs/{faq}'
 */
-updateForm.put = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -284,10 +462,10 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::destroy
-* @see app/Http/Controllers/Faq/FaqController.php:46
+* @see app/Http/Controllers/Faq/FaqController.php:47
 * @route '/dashboard/faqs/{faq}'
 */
-export const destroy = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -299,10 +477,10 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::destroy
-* @see app/Http/Controllers/Faq/FaqController.php:46
+* @see app/Http/Controllers/Faq/FaqController.php:47
 * @route '/dashboard/faqs/{faq}'
 */
-destroy.url = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { faq: args }
     }
@@ -332,20 +510,20 @@ destroy.url = (args: { faq: string | number | { id: string | number } } | [faq: 
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::destroy
-* @see app/Http/Controllers/Faq/FaqController.php:46
+* @see app/Http/Controllers/Faq/FaqController.php:47
 * @route '/dashboard/faqs/{faq}'
 */
-destroy.delete = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::destroy
-* @see app/Http/Controllers/Faq/FaqController.php:46
+* @see app/Http/Controllers/Faq/FaqController.php:47
 * @route '/dashboard/faqs/{faq}'
 */
-const destroyForm = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -357,10 +535,10 @@ const destroyForm = (args: { faq: string | number | { id: string | number } } | 
 
 /**
 * @see \App\Http\Controllers\Faq\FaqController::destroy
-* @see app/Http/Controllers/Faq/FaqController.php:46
+* @see app/Http/Controllers/Faq/FaqController.php:47
 * @route '/dashboard/faqs/{faq}'
 */
-destroyForm.delete = (args: { faq: string | number | { id: string | number } } | [faq: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { faq: number | { id: number } } | [faq: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -372,6 +550,6 @@ destroyForm.delete = (args: { faq: string | number | { id: string | number } } |
 
 destroy.form = destroyForm
 
-const FaqController = { index, store, assign, update, destroy }
+const FaqController = { index, store, assign, unassign, bulkStatus, bulkDestroy, update, destroy }
 
 export default FaqController

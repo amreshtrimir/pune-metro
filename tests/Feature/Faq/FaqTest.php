@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Services\Faq\FaqService;
 use Database\Seeders\FaqSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 
 uses(RefreshDatabase::class);
 
@@ -128,4 +129,56 @@ it('keeps basic formatting in answers but strips scripts and attributes', functi
     ]);
 
     expect(Faq::firstOrFail()->answer)->toBe('<p>Hi <strong>there</strong></p><ul><li>One</li></ul>link');
+});
+
+it('removes selected faqs from a page without touching the others', function (): void {
+    [$a, $b] = Faq::factory()->count(2)->create();
+    $admin = faqAdminUser();
+    app(FaqService::class)->assignToPage('contact', [$a->id, $b->id]);
+
+    $this->actingAs($admin)
+        ->post(route('dashboard.faqs.unassign'), ['page' => 'contact', 'faq_ids' => [$a->id]])
+        ->assertRedirect(route('dashboard.faqs.index'));
+
+    expect(app(FaqService::class)->getActiveFaqsForPage('contact')->pluck('id')->all())->toBe([$b->id]);
+});
+
+it('shows or hides selected faqs in bulk', function (): void {
+    [$a, $b, $c] = Faq::factory()->count(3)->create();
+    $admin = faqAdminUser();
+
+    $this->actingAs($admin)
+        ->post(route('dashboard.faqs.bulk-status'), ['faq_ids' => [$a->id, $b->id], 'is_active' => false])
+        ->assertRedirect(route('dashboard.faqs.index'));
+
+    expect($a->fresh()->is_active)->toBeFalse()
+        ->and($b->fresh()->is_active)->toBeFalse()
+        ->and($c->fresh()->is_active)->toBeTrue();
+
+    $this->actingAs($admin)
+        ->post(route('dashboard.faqs.bulk-status'), ['faq_ids' => [$a->id], 'is_active' => true]);
+
+    expect($a->fresh()->is_active)->toBeTrue();
+});
+
+it('deletes selected faqs in bulk along with their page links', function (): void {
+    [$a, $b] = Faq::factory()->count(2)->create();
+    app(FaqService::class)->assignToPage('home', [$a->id, $b->id]);
+
+    $this->actingAs(faqAdminUser())
+        ->delete(route('dashboard.faqs.bulk-destroy'), ['faq_ids' => [$a->id]])
+        ->assertRedirect(route('dashboard.faqs.index'));
+
+    expect(Faq::pluck('id')->all())->toBe([$b->id])
+        ->and(DB::table('faq_pages')->pluck('faq_id')->all())->toBe([$b->id]);
+});
+
+it('forbids bulk actions for non-admins', function (): void {
+    $faq = Faq::factory()->create();
+    $user = User::factory()->create();
+
+    $this->actingAs($user)->delete(route('dashboard.faqs.bulk-destroy'), ['faq_ids' => [$faq->id]])->assertForbidden();
+    $this->actingAs($user)->post(route('dashboard.faqs.bulk-status'), ['faq_ids' => [$faq->id], 'is_active' => false])->assertForbidden();
+
+    expect($faq->fresh()->is_active)->toBeTrue();
 });

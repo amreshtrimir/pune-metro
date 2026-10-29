@@ -18,6 +18,8 @@ type MultiSelectProps = {
     onCreateOption?: (label: string) => Promise<string | null>;
     createLabel?: string;
     className?: string;
+    /** Open the list above the input (for fields near the bottom of a dialog or screen) */
+    dropUp?: boolean;
 };
 
 export function MultiSelect({
@@ -29,6 +31,7 @@ export function MultiSelect({
     onCreateOption,
     createLabel = 'Create',
     className,
+    dropUp = false,
 }: MultiSelectProps) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState('');
@@ -173,7 +176,7 @@ export function MultiSelect({
 
             {/* Dropdown */}
             {open && (
-                <div className="absolute z-50 mt-1 w-full rounded-md border bg-popover text-popover-foreground shadow-md">
+                <div className={cn('absolute z-50 w-full rounded-md border bg-popover text-popover-foreground shadow-md', dropUp ? 'bottom-full mb-1' : 'mt-1')}>
                     <ul className="max-h-52 overflow-y-auto py-1 text-sm">
                         {filteredOptions.length === 0 && !showCreateRow && (
                             <li className="px-3 py-2 text-xs text-muted-foreground">

@@ -1,12 +1,17 @@
 import { Bold, Italic, List, ListOrdered, Pilcrow } from 'lucide-react';
 import { useEffect, useId, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 type RichTextEditorProps = {
     label: string;
     value: string;
     onChange: (value: string) => void;
     helperText?: string;
+    placeholder?: string;
+    error?: string;
+    /** Extra classes for the editable area, e.g. a max height. */
+    editorClassName?: string;
 };
 
 const allowedEmptyValue = '<p><br></p>';
@@ -38,7 +43,7 @@ function getEditorValue(html: string): string {
     return normalizedHtml;
 }
 
-export function RichTextEditor({ label, value, onChange, helperText }: RichTextEditorProps) {
+export function RichTextEditor({ label, value, onChange, helperText, placeholder, error, editorClassName }: RichTextEditorProps) {
     const editorRef = useRef<HTMLDivElement | null>(null);
     const labelId = useId();
     const lastSyncedValueRef = useRef('');
@@ -146,6 +151,7 @@ export function RichTextEditor({ label, value, onChange, helperText }: RichTextE
                 ref={editorRef}
                 role="textbox"
                 aria-labelledby={labelId}
+                data-placeholder={placeholder}
                 contentEditable
                 suppressContentEditableWarning
                 onInput={(event) => {
@@ -153,8 +159,13 @@ export function RichTextEditor({ label, value, onChange, helperText }: RichTextE
                     lastSyncedValueRef.current = normalizeHtml(nextValue);
                     onChange(nextValue);
                 }}
-                className="min-h-36 rounded-md border bg-background px-3 py-2 text-left text-sm leading-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-0 [&_p]:py-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:my-1"
+                className={cn(
+                    "min-h-36 rounded-md border bg-background px-3 py-2 text-left text-sm leading-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring empty:before:text-muted-foreground empty:before:content-[attr(data-placeholder)] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-0 [&_p]:py-1 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:my-1",
+                    error && "border-destructive",
+                    editorClassName,
+                )}
             />
+            {error && <p className="text-xs text-destructive">{error}</p>}
             {helperText && <p className="text-xs text-muted-foreground">{helperText}</p>}
         </div>
     );

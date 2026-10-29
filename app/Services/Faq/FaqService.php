@@ -3,6 +3,7 @@
 namespace App\Services\Faq;
 
 use App\Models\Faq;
+use App\Models\FaqPage;
 use Illuminate\Database\Eloquent\Collection;
 
 class FaqService
@@ -73,6 +74,30 @@ class FaqService
         $answer = strip_tags($answer, '<p><br><strong><b><em><i><ul><ol><li>');
 
         return trim(preg_replace('/<(\w+)\b[^>]*>/', '<$1>', $answer) ?? $answer);
+    }
+
+    /**
+     * @param  array<int, int>  $faqIds
+     */
+    public function removeFromPage(string $page, array $faqIds): void
+    {
+        FaqPage::where('page', $page)->whereIn('faq_id', $faqIds)->delete();
+    }
+
+    /**
+     * @param  array<int, int>  $faqIds
+     */
+    public function setActive(array $faqIds, bool $isActive): void
+    {
+        Faq::whereIn('id', $faqIds)->update(['is_active' => $isActive]);
+    }
+
+    /**
+     * @param  array<int, int>  $faqIds
+     */
+    public function deleteMany(array $faqIds): void
+    {
+        Faq::whereIn('id', $faqIds)->delete();
     }
 
     /**
