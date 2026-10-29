@@ -1,5 +1,5 @@
 import { Head, Form, router } from '@inertiajs/react';
-import { Pencil, Trash2 } from 'lucide-react';
+import { Eye, EyeOff, Pencil, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import * as FaqController from '@/actions/App/Http/Controllers/Faq/FaqController';
 import { Badge } from '@/components/ui/badge';
@@ -102,6 +102,17 @@ export default function FaqsIndex({ faqs, pages }: Props) {
             onFinish: () => setSaving(false),
         });
     };
+
+    const handleToggle = (faq: Faq) =>
+        router.put(
+            FaqController.update.url(faq.id),
+            {
+                question: faq.question,
+                answer: faq.answer,
+                is_active: !faq.is_active,
+            },
+            { preserveScroll: true },
+        );
 
     const handleDelete = (faq: Faq) => {
         if (!confirm(`Delete "${faq.question}"?`)) {
@@ -301,6 +312,25 @@ export default function FaqsIndex({ faqs, pages }: Props) {
                                         </td>
                                         <td className="px-4 py-3 text-right">
                                             <div className="flex items-center justify-end gap-2">
+                                                <Button
+                                                    variant="ghost"
+                                                    size="icon"
+                                                    className="size-8"
+                                                    title={
+                                                        faq.is_active
+                                                            ? 'Hide'
+                                                            : 'Show'
+                                                    }
+                                                    onClick={() =>
+                                                        handleToggle(faq)
+                                                    }
+                                                >
+                                                    {faq.is_active ? (
+                                                        <Eye className="size-3.5" />
+                                                    ) : (
+                                                        <EyeOff className="size-3.5" />
+                                                    )}
+                                                </Button>
                                                 <Button
                                                     variant="ghost"
                                                     size="icon"
