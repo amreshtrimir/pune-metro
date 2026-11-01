@@ -45,7 +45,7 @@ Route::prefix('passenger-info')->name('passenger-info.')->group(function (): voi
     Route::get('/fare-table', [PagesController::class, 'fareTable'])->name('fare-table');
     Route::get('/dos-and-donts', [PagesController::class, 'dosAndDonts'])->name('dos-and-donts');
     Route::get('/items-not-to-carry', [PagesController::class, 'itemsNotToCarry'])->name('items-not-to-carry');
-    Route::get('/offences-and-penalties', [PagesController::class, 'offencesAndPenalties'])->name('offences-and-penalties');
+    Route::get('/offences-and-contraventions', [PagesController::class, 'offencesAndPenalties'])->name('offences-and-penalties');
     Route::get('/lost-and-found', [PagesController::class, 'lostAndFound'])->name('lost-and-found');
     Route::get('/customer-service', [PagesController::class, 'customerService'])->name('customer-service');
     Route::post('/customer-service', [CustomerServiceSubmissionController::class, 'store'])->name('customer-service.store');
