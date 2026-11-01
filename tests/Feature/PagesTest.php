@@ -54,3 +54,8 @@ test('fare table page source carries the fare intro paragraph', function () {
         ->toContain('Tickets can be purchased using NCMC card, WhatsApp QR, Ticket Vending Machine or manual counter at every station.')
         ->toContain('Refer to the fare chart below for complete details.');
 });
+
+test('time table page ships the time table image and pdf', function () {
+    expect(public_path('time-table/pink-line-time-table.png'))->toBeFile()
+        ->and(public_path('documents/pink-line-time-table.pdf'))->toBeFile();
+});

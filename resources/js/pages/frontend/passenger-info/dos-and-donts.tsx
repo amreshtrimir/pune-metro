@@ -10,6 +10,7 @@ const dos = [
             'Allow passengers to alight first, then board in an orderly queue',
             'Stand behind the platform safety line until the train stops',
             'Mind the gap while boarding/alighting',
+            'No person shall, while travelling in the metro railway, carry with him any goods other than 2 baggage containing personal belongings not exceeding such volume and weight as may be prescribed'
         ],
     },
     {
@@ -47,6 +48,7 @@ const donts = [
             'Do not carry prohibited items (flammables, explosives, sharp weapons)',
             'Do not cross tracks, enter restricted areas, or trespass near technical areas',
             'Do not board or deboard after the door-closing alarm',
+            'Do not bring pets or animals inside metro stations or trains'
         ],
     },
     {

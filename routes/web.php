@@ -69,7 +69,7 @@ Route::prefix('legal')->name('legal.')->group(function (): void {
     Route::get('/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacy-policy');
 });
 
-Route::get('/policies', [PagesController::class, 'policies'])->name('policies');
+Route::get('/resources', [PagesController::class, 'resources'])->name('resources');
 
 // Environment routes and pages
 Route::prefix('environment')->name('environment.')->group(function (): void {
