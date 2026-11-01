@@ -173,7 +173,7 @@ export default function KeyHighlights() {
                         {/* Right: image */}
                         <div className="overflow-hidden rounded-3xl lg:order-2 lg:ml-auto" style={{ background: 'rgba(109,0,58,0.1)', maxWidth: '592px', width: '100%' }}>
                             <img
-                                src="/project-profile/key-high-point-new.png"
+                                src="/project-profile/key-highlights-train.png"
                                 alt="Pune Metro Line 3 Project Highlights"
                                 className="h-full w-full object-cover"
                             />
