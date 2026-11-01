@@ -69,17 +69,7 @@ export default function RouteMap() {
                         >
                             All line
                         </button>
-                        <button
-                            onClick={() => setActiveTab('line3')}
-                            className="cursor-pointer rounded-full px-6 py-2 font-montserrat text-sm font-medium transition-colors"
-                            style={
-                                activeTab === 'line3'
-                                    ? { background: '#e8449a', color: '#fff' }
-                                    : { background: 'rgba(196,110,156,0.14)', color: '#e8449a' }
-                            }
-                        >
-                            Line 3
-                        </button>
+                        {/* Line 3 tab hidden for now */}
                     </div>
                 </div>
             </section>
