@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import {
     contact,
-    policies,
+    resources,
     fareTable,
     keyHighlights,
     overview,
@@ -22,7 +22,7 @@ const footerLinks = [
     // { label: 'Time Table', href: timeTable.url() },
     // { label: 'Fare Table', href: fareTable.url() },
     { label: 'Station List', href: stationList.url() },
-     { label: 'Policies', href: policies.url() },
+     { label: 'Resources', href: resources.url() },
     { label: 'Photo Gallery', href: photoGallery.url() },
     { label: 'Contact Us', href: contact.url() },
     { label: 'Terms & Conditions', href: termsAndConditions.url() },
