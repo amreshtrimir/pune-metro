@@ -299,76 +299,76 @@ contactForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 contact.form = contactForm
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-export const policies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: policies.url(options),
+export const resources = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: resources.url(options),
     method: 'get',
 })
 
-policies.definition = {
+resources.definition = {
     methods: ["get","head"],
-    url: '/policies',
+    url: '/resources',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policies.url = (options?: RouteQueryOptions) => {
-    return policies.definition.url + queryParams(options)
+resources.url = (options?: RouteQueryOptions) => {
+    return resources.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: policies.url(options),
+resources.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: resources.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: policies.url(options),
+resources.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: resources.url(options),
     method: 'head',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-const policiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: policies.url(options),
+const resourcesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: resources.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: policies.url(options),
+resourcesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: resources.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: policies.url({
+resourcesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: resources.url({
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -377,7 +377,7 @@ policiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
     method: 'get',
 })
 
-policies.form = policiesForm
+resources.form = resourcesForm
 
 /**
 * @see \App\Http\Controllers\SitemapController::sitemap

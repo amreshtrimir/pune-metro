@@ -1154,7 +1154,7 @@ itemsNotToCarry.form = itemsNotToCarryForm
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 export const offencesAndPenalties = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: offencesAndPenalties.url(options),
@@ -1163,13 +1163,13 @@ export const offencesAndPenalties = (options?: RouteQueryOptions): RouteDefiniti
 
 offencesAndPenalties.definition = {
     methods: ["get","head"],
-    url: '/passenger-info/offences-and-penalties',
+    url: '/passenger-info/offences-and-contraventions',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenalties.url = (options?: RouteQueryOptions) => {
     return offencesAndPenalties.definition.url + queryParams(options)
@@ -1178,7 +1178,7 @@ offencesAndPenalties.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenalties.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: offencesAndPenalties.url(options),
@@ -1188,7 +1188,7 @@ offencesAndPenalties.get = (options?: RouteQueryOptions): RouteDefinition<'get'>
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: offencesAndPenalties.url(options),
@@ -1198,7 +1198,7 @@ offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: offencesAndPenalties.url(options),
@@ -1208,7 +1208,7 @@ const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinit
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: offencesAndPenalties.url(options),
@@ -1218,7 +1218,7 @@ offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinitio
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenaltiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: offencesAndPenalties.url({
@@ -2205,76 +2205,76 @@ privacyPolicyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get
 privacyPolicy.form = privacyPolicyForm
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-export const policies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: policies.url(options),
+export const resources = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: resources.url(options),
     method: 'get',
 })
 
-policies.definition = {
+resources.definition = {
     methods: ["get","head"],
-    url: '/policies',
+    url: '/resources',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policies.url = (options?: RouteQueryOptions) => {
-    return policies.definition.url + queryParams(options)
+resources.url = (options?: RouteQueryOptions) => {
+    return resources.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: policies.url(options),
+resources.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: resources.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: policies.url(options),
+resources.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: resources.url(options),
     method: 'head',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-const policiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: policies.url(options),
+const resourcesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: resources.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: policies.url(options),
+resourcesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: resources.url(options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\PagesController::policies
+* @see \App\Http\Controllers\PagesController::resources
 * @see app/Http/Controllers/PagesController.php:185
-* @route '/policies'
+* @route '/resources'
 */
-policiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: policies.url({
+resourcesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: resources.url({
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -2283,7 +2283,7 @@ policiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
     method: 'get',
 })
 
-policies.form = policiesForm
+resources.form = resourcesForm
 
 /**
 * @see \App\Http\Controllers\PagesController::eiaReports
@@ -2609,6 +2609,6 @@ greenInitiativesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 greenInitiatives.form = greenInitiativesForm
 
-const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, nonFareBusinessRevenue, stationFullNamingSemiNamingOpportunities, stationInternalAdvertising, termsAndConditions, privacyPolicy, policies, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
+const PagesController = { home, contact, overview, board, projectUpdate, keyHighlights, routeMap, photoGallery, stationList, stationDetail, timeTable, fareTable, dosAndDonts, itemsNotToCarry, offencesAndPenalties, lostAndFound, customerService, lastMileConnectivity, retailFnb, stationAreaMap, passengerAmenities, stationRetail, nonFareBusinessRevenue, stationFullNamingSemiNamingOpportunities, stationInternalAdvertising, termsAndConditions, privacyPolicy, resources, eiaReports, carbonCredit, artFromScrap, greenInitiatives }
 
 export default PagesController

@@ -327,7 +327,7 @@ itemsNotToCarry.form = itemsNotToCarryForm
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 export const offencesAndPenalties = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: offencesAndPenalties.url(options),
@@ -336,13 +336,13 @@ export const offencesAndPenalties = (options?: RouteQueryOptions): RouteDefiniti
 
 offencesAndPenalties.definition = {
     methods: ["get","head"],
-    url: '/passenger-info/offences-and-penalties',
+    url: '/passenger-info/offences-and-contraventions',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenalties.url = (options?: RouteQueryOptions) => {
     return offencesAndPenalties.definition.url + queryParams(options)
@@ -351,7 +351,7 @@ offencesAndPenalties.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenalties.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: offencesAndPenalties.url(options),
@@ -361,7 +361,7 @@ offencesAndPenalties.get = (options?: RouteQueryOptions): RouteDefinition<'get'>
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: offencesAndPenalties.url(options),
@@ -371,7 +371,7 @@ offencesAndPenalties.head = (options?: RouteQueryOptions): RouteDefinition<'head
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: offencesAndPenalties.url(options),
@@ -381,7 +381,7 @@ const offencesAndPenaltiesForm = (options?: RouteQueryOptions): RouteFormDefinit
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: offencesAndPenalties.url(options),
@@ -391,7 +391,7 @@ offencesAndPenaltiesForm.get = (options?: RouteQueryOptions): RouteFormDefinitio
 /**
 * @see \App\Http\Controllers\PagesController::offencesAndPenalties
 * @see app/Http/Controllers/PagesController.php:140
-* @route '/passenger-info/offences-and-penalties'
+* @route '/passenger-info/offences-and-contraventions'
 */
 offencesAndPenaltiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: offencesAndPenalties.url({
