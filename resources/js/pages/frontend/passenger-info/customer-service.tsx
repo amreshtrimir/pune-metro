@@ -30,7 +30,7 @@ const commitments = [
     'Through these efforts, Pune Metro Line 3 aims to build lasting trust and deliver a world-class urban transit experience.',
 ];
 
-const feedbackTypes = ['Appreciation', 'Comment', 'Complaint', 'Enquiry'];
+const feedbackTypes = ['Appreciation', 'Comment', 'Complaint', 'Enquiry', "Lost and found"];
 
 export default function CustomerService() {
     const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
