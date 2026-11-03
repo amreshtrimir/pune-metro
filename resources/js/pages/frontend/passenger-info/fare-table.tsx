@@ -14,7 +14,7 @@ export default function FareTable() {
     return (
         <>
             <Head>
-                <title>Fare Table / Ticket Rules - Pune Metro Line 3</title>
+                <title>Fare Table - Pune Metro Line 3</title>
                 <meta
                     name="description"
                     content="View the Pune Metro Line 3 fare table and ticket rules for all routes."
@@ -33,7 +33,7 @@ export default function FareTable() {
             <section className="bg-white pt-10 pb-0">
                 <div className="mx-auto max-w-[1303px] px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <PageSectionHeading>
-                        Fare Table / Ticket Rules
+                        Fare Table
                     </PageSectionHeading>
                     <p className="font-inter mt-3 text-sm leading-relaxed text-black">
                         Pune Metro Line 3 offers distance-based fares for all
