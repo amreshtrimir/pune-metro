@@ -10,7 +10,9 @@ import {
     eiaReports,
     fareTable,
     greenInitiatives,
+    itemsNotToCarry,
     keyHighlights,
+    lastMileConnectivity,
     lostAndFound,
     offencesAndPenalties,
     overview,
@@ -27,7 +29,7 @@ import {
 import { nonFareBusinessRevenue, stationFullNamingSemiNamingOpportunities, stationInternalAdvertising } from '@/routes/business-development';
 
 const quickLinks = [
-    // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
+    { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
     { label: 'Lost & Found', href: lostAndFound.url() },
     { label: 'Metro Stations', href: stationList.url() },
 ];
@@ -65,11 +67,11 @@ const mainNavLinks: NavLink[] = [
             { label: 'Time Table', href: timeTable.url() },
             { label: 'Fare Table / Ticket Rules', href: fareTable.url() },
             { label: "Do's and Don'ts", href: dosAndDonts.url() },
-            // { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
+            { label: 'Items Not to Carry', href: itemsNotToCarry.url() },
             { label: 'Offences and Contraventions', href: offencesAndPenalties.url() },
             { label: 'Lost and Found Enquiry', href: lostAndFound.url() },
             { label: 'Customer Service', href: customerService.url() },
-            // { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
+            { label: 'Last Mile Connectivity', href: lastMileConnectivity.url() },
             { label: 'Passenger Amenities', href: passengerAmenities.url() },
             // { label: 'Station Area Map', href: stationAreaMap.url() },
 
