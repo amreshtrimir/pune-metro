@@ -47,7 +47,7 @@ export default function LostAndFound() {
                             </h2>
                             <ul className="space-y-2">
                                 {[
-                                    'Visit the Customer Care Centre at any metro station immediately or call the helpline at 020 65525000 to report the loss.',
+                                    'Visit the Customer Care Centre at any metro station immediately or call the helpline at 020-65520100 to report the loss.',
                                     'Provide complete details such as item description, date and time, and station or location of loss.',
                                     'You can also report via email or through the website. Our team will respond within one business day.',
                                 ].map((item) => (
