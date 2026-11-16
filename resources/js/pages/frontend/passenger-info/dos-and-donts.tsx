@@ -10,7 +10,8 @@ const dos = [
             'Allow passengers to alight first, then board in an orderly queue',
             'Stand behind the platform safety line until the train stops',
             'Mind the gap while boarding/alighting',
-            'No person shall, while travelling in the metro railway, carry with him any goods other than 2 baggage containing personal belongings not exceeding such volume and weight as may be prescribed'
+            'No person shall, while travelling in the metro railway, carry with him any goods other than 2 baggage containing personal belongings not exceeding such volume and weight as may be prescribed',
+           'Bicycles are allowed in Pune Metro Line 3'
         ],
     },
     {
@@ -19,6 +20,7 @@ const dos = [
             'Carry a valid ticket (NCMC card / QR ticket / mobile-based ticket)',
             'Tap in and tap out at AFC gates',
             'Keep your ticket accessible for inspection by metro staff',
+
         ],
     },
     {
@@ -49,7 +51,7 @@ const donts = [
             'Do not cross tracks, enter restricted areas, or trespass near technical areas',
             'Do not board or deboard after the door-closing alarm',
             'Do not bring pets or animals inside metro stations or trains',
-            'Bicycles and kick scooters are not allowed inside metro stations or on metro trains.'
+            'Kick scooters are not allowed inside metro stations or on metro trains.'
         ],
     },
     {
