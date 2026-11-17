@@ -51,7 +51,6 @@ const donts = [
             'Do not cross tracks, enter restricted areas, or trespass near technical areas',
             'Do not board or deboard after the door-closing alarm',
             'Do not bring pets or animals inside metro stations or trains',
-            'Kick scooters are not allowed inside metro stations or on metro trains.'
         ],
     },
     {
