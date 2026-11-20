@@ -79,7 +79,7 @@ export default function TimeTable() {
                         Pune Metro Line 3: First and Last Train Timings
                     </p>
                     <a
-                        href="/documents/first-and-last-train-timings.pdf"
+                        href="/documents/pune-metro-line-3-first-last-train-timings.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#e8449a] px-6 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
