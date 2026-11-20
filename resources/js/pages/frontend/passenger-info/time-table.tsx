@@ -74,6 +74,18 @@ export default function TimeTable() {
                         </svg>
                         Download Time Table (PDF)
                     </a>
+
+                    <p className="mt-8 font-montserrat text-base font-semibold text-gray-800">
+                        Pune Metro Line 3: First and Last Train Timings
+                    </p>
+                    <a
+                        href="/documents/first-and-last-train-timings.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center rounded-lg bg-[#e8449a] px-6 py-3 font-montserrat text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                    >
+                        First &amp; Last Train
+                    </a>
                 </div>
             </section>
         </>
