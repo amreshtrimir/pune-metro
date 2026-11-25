@@ -181,7 +181,7 @@ export default function PopupsIndex({ popups, pages }: Props) {
             >
                 <DialogContent
                     aria-describedby={undefined}
-                    className="max-h-[90dvh] overflow-y-auto"
+                    className="max-h-[90dvh] overflow-y-auto sm:max-w-4xl"
                 >
                     <DialogHeader>
                         <DialogTitle>
@@ -228,62 +228,69 @@ function PopupForm({ popup, pages, onDone }: PopupFormProps) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-1">
-                <Label htmlFor="popup-title">Title</Label>
-                <Input
-                    id="popup-title"
-                    value={form.data.title}
-                    onChange={(e) => form.setData('title', e.target.value)}
-                />
-                <InputError message={form.errors.title} />
+        <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid items-start gap-4 md:grid-cols-[2fr_2fr_1fr]">
+                <div className="space-y-1">
+                    <Label htmlFor="popup-title">Title</Label>
+                    <Input
+                        id="popup-title"
+                        value={form.data.title}
+                        onChange={(e) => form.setData('title', e.target.value)}
+                    />
+                    <InputError message={form.errors.title} />
+                </div>
+
+                <div className="space-y-1">
+                    <Label htmlFor="popup-page">Show on page</Label>
+                    <select
+                        id="popup-page"
+                        value={form.data.page}
+                        onChange={(e) => form.setData('page', e.target.value)}
+                        className="h-9 w-full rounded-md border bg-background px-3 text-sm"
+                    >
+                        {Object.entries(pages).map(([key, name]) => (
+                            <option key={key} value={key}>
+                                {name}
+                            </option>
+                        ))}
+                    </select>
+                    <InputError message={form.errors.page} />
+                </div>
+
+                <div className="space-y-1">
+                    <Label htmlFor="popup-delay">Show after (seconds)</Label>
+                    <Input
+                        id="popup-delay"
+                        type="number"
+                        min={0}
+                        max={600}
+                        value={form.data.delay_seconds}
+                        onChange={(e) =>
+                            form.setData(
+                                'delay_seconds',
+                                Number(e.target.value),
+                            )
+                        }
+                    />
+                    <InputError message={form.errors.delay_seconds} />
+                </div>
             </div>
 
-            <ImageField
-                label="Landscape image (desktop)"
-                initialUrl={popup?.media?.url ?? null}
-                error={form.errors.media_id}
-                onChange={(id) => form.setData('media_id', id)}
-            />
-
-            <ImageField
-                label="Portrait image (phones, optional)"
-                initialUrl={popup?.mobile_media?.url ?? null}
-                error={form.errors.mobile_media_id}
-                onChange={(id) => form.setData('mobile_media_id', id)}
-                removable
-            />
-
-            <div className="space-y-1">
-                <Label htmlFor="popup-page">Show on page</Label>
-                <select
-                    id="popup-page"
-                    value={form.data.page}
-                    onChange={(e) => form.setData('page', e.target.value)}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                >
-                    {Object.entries(pages).map(([key, name]) => (
-                        <option key={key} value={key}>
-                            {name}
-                        </option>
-                    ))}
-                </select>
-                <InputError message={form.errors.page} />
-            </div>
-
-            <div className="space-y-1">
-                <Label htmlFor="popup-delay">Show after (seconds)</Label>
-                <Input
-                    id="popup-delay"
-                    type="number"
-                    min={0}
-                    max={600}
-                    value={form.data.delay_seconds}
-                    onChange={(e) =>
-                        form.setData('delay_seconds', Number(e.target.value))
-                    }
+            <div className="grid items-start gap-4 sm:grid-cols-2">
+                <ImageField
+                    label="Landscape image (desktop)"
+                    initialUrl={popup?.media?.url ?? null}
+                    error={form.errors.media_id}
+                    onChange={(id) => form.setData('media_id', id)}
                 />
-                <InputError message={form.errors.delay_seconds} />
+
+                <ImageField
+                    label="Portrait image (phones, optional)"
+                    initialUrl={popup?.mobile_media?.url ?? null}
+                    error={form.errors.mobile_media_id}
+                    onChange={(id) => form.setData('mobile_media_id', id)}
+                    removable
+                />
             </div>
 
             <div className="flex justify-end gap-2">
@@ -333,13 +340,19 @@ function ImageField({
     return (
         <div className="space-y-1">
             <Label>{label}</Label>
-            {imageUrl && (
-                <img
-                    src={imageUrl}
-                    alt=""
-                    className="max-h-32 rounded-lg border object-contain"
-                />
-            )}
+            <div className="flex h-56 items-center justify-center rounded-lg border border-dashed bg-muted/30 p-2">
+                {imageUrl ? (
+                    <img
+                        src={imageUrl}
+                        alt=""
+                        className="max-h-full max-w-full rounded object-contain"
+                    />
+                ) : (
+                    <span className="text-sm text-muted-foreground">
+                        No image selected
+                    </span>
+                )}
+            </div>
             <div className="flex gap-2">
                 <Button
                     type="button"
