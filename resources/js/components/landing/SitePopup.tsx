@@ -34,7 +34,7 @@ export default function SitePopup({ popup }: { popup: PagePopup }) {
              */}
             <DialogContent
                 aria-describedby={undefined}
-                className="w-max max-w-none border-0 bg-transparent p-0 shadow-none sm:max-w-none [&>button]:-top-3 [&>button]:-right-3 [&>button]:flex [&>button]:size-9 [&>button]:cursor-pointer [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-lg [&>button]:hover:bg-neutral-100"
+                className="w-max max-w-none border-0 bg-transparent p-0 shadow-none sm:max-w-none [&>button]:top-3 [&>button]:right-3 [&>button]:flex [&>button]:size-8 [&>button]:cursor-pointer [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-black/55 [&>button]:text-white [&>button]:opacity-100 [&>button]:backdrop-blur-sm [&>button]:hover:bg-black/75"
             >
                 <DialogTitle className="sr-only">{popup.title}</DialogTitle>
                 <picture>
