@@ -14,6 +14,8 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { SearchSelect } from '@/components/ui/search-select';
+import type { SearchSelectOption } from '@/components/ui/search-select';
 import type { Popup, SelectedMedia } from '@/types/cms';
 
 type Props = {
@@ -181,6 +183,14 @@ export default function PopupsIndex({ popups, pages }: Props) {
             >
                 <DialogContent
                     aria-describedby={undefined}
+                    // Escape should close an open page list before the dialog.
+                    onEscapeKeyDown={(event) => {
+                        const target = event.target as HTMLElement;
+
+                        if (target.getAttribute('aria-expanded') === 'true') {
+                            event.preventDefault();
+                        }
+                    }}
                     className="max-h-[90dvh] overflow-y-auto sm:max-w-4xl"
                 >
                     <DialogHeader>
@@ -199,6 +209,19 @@ export default function PopupsIndex({ popups, pages }: Props) {
             </Dialog>
         </>
     );
+}
+
+/** Turns "Section - Page" names from config into grouped options. */
+function toPageOptions(pages: Record<string, string>): SearchSelectOption[] {
+    return Object.entries(pages).map(([value, name]) => {
+        const [section, ...rest] = name.split(' - ');
+
+        if (rest.length === 0) {
+            return { value, label: name };
+        }
+
+        return { value, group: section, label: rest.join(' - ') };
+    });
 }
 
 type PopupFormProps = {
@@ -242,18 +265,13 @@ function PopupForm({ popup, pages, onDone }: PopupFormProps) {
 
                 <div className="space-y-1">
                     <Label htmlFor="popup-page">Show on page</Label>
-                    <select
+                    <SearchSelect
                         id="popup-page"
+                        options={toPageOptions(pages)}
                         value={form.data.page}
-                        onChange={(e) => form.setData('page', e.target.value)}
-                        className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    >
-                        {Object.entries(pages).map(([key, name]) => (
-                            <option key={key} value={key}>
-                                {name}
-                            </option>
-                        ))}
-                    </select>
+                        onChange={(page) => form.setData('page', page)}
+                        className="w-full"
+                    />
                     <InputError message={form.errors.page} />
                 </div>
 
