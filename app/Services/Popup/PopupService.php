@@ -13,15 +13,15 @@ class PopupService
      */
     public function listPopups(): Collection
     {
-        return Popup::with('media')->latest('id')->get();
+        return Popup::with(['media', 'mobileMedia'])->latest('id')->get();
     }
 
     /**
-     * @return array{id: int, title: string, image_url: string, delay_seconds: int, version: string}|null
+     * @return array{id: int, title: string, image_url: string, mobile_image_url: string|null, delay_seconds: int, version: string}|null
      */
     public function getPublishedPopupForPage(string $page): ?array
     {
-        $popup = Popup::with('media')
+        $popup = Popup::with(['media', 'mobileMedia'])
             ->where('page', $page)
             ->where('is_published', true)
             ->whereHas('media')
@@ -35,6 +35,7 @@ class PopupService
             'id' => $popup->id,
             'title' => $popup->title,
             'image_url' => $popup->media->url,
+            'mobile_image_url' => $popup->mobileMedia?->url,
             'delay_seconds' => $popup->delay_seconds,
             // Changes on every edit, so visitors who closed the old popup see the new one.
             'version' => $popup->id.'-'.$popup->updated_at->timestamp,

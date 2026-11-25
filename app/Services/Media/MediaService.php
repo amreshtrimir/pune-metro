@@ -173,7 +173,7 @@ class MediaService
             ->whereRaw("JSON_SEARCH(content, 'one', ?, NULL, '$.items[*].media_id') IS NOT NULL", [(string) $id])
             ->count();
 
-        $popupCount = Popup::where('media_id', $id)->count();
+        $popupCount = Popup::where('media_id', $id)->orWhere('mobile_media_id', $id)->count();
 
         $items = [
             ['label' => 'Post featured image', 'count' => $featuredImageCount],

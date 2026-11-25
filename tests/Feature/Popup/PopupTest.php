@@ -103,6 +103,25 @@ it('shares the published popup only with its own page', function (): void {
     $this->get(route('contact'))->assertInertia(fn ($page) => $page->where('pagePopup', null));
 });
 
+it('saves an optional portrait image and shares it with the page', function (): void {
+    $popup = makePopup(['is_published' => true]);
+    $portrait = popupImage();
+
+    $this->get(route('home'))->assertInertia(fn ($page) => $page->where('pagePopup.mobile_image_url', null));
+
+    $this->actingAs(popupAdminUser())
+        ->put(route('dashboard.popups.update', $popup), [
+            'title' => 'Offer',
+            'media_id' => $popup->media_id,
+            'mobile_media_id' => $portrait->id,
+            'page' => 'home',
+            'delay_seconds' => 5,
+        ])
+        ->assertSessionHasNoErrors();
+
+    $this->get(route('home'))->assertInertia(fn ($page) => $page->where('pagePopup.mobile_image_url', $portrait->url));
+});
+
 it('lets an admin list and delete popups', function (): void {
     $popup = makePopup();
     $admin = popupAdminUser();

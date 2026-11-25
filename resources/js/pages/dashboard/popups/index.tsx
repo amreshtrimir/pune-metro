@@ -208,22 +208,13 @@ type PopupFormProps = {
 };
 
 function PopupForm({ popup, pages, onDone }: PopupFormProps) {
-    const [pickerOpen, setPickerOpen] = useState(false);
-    const [imageUrl, setImageUrl] = useState(popup?.media?.url ?? null);
     const form = useForm({
         title: popup?.title ?? '',
         media_id: popup?.media_id ?? null,
+        mobile_media_id: popup?.mobile_media_id ?? null,
         page: popup?.page ?? 'home',
         delay_seconds: popup?.delay_seconds ?? 3,
     });
-
-    const handleSelect = (selected: SelectedMedia) => {
-        form.setData('media_id', selected.media_id);
-        setImageUrl(
-            selected.variant.url ?? `/storage/${selected.variant.file_path}`,
-        );
-        setPickerOpen(false);
-    };
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -248,27 +239,20 @@ function PopupForm({ popup, pages, onDone }: PopupFormProps) {
                 <InputError message={form.errors.title} />
             </div>
 
-            <div className="space-y-1">
-                <Label>Image</Label>
-                {imageUrl && (
-                    <img
-                        src={imageUrl}
-                        alt=""
-                        className="max-h-40 rounded-lg border object-contain"
-                    />
-                )}
-                <div>
-                    <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setPickerOpen(true)}
-                    >
-                        Choose from media library
-                    </Button>
-                </div>
-                <InputError message={form.errors.media_id} />
-            </div>
+            <ImageField
+                label="Landscape image (desktop)"
+                initialUrl={popup?.media?.url ?? null}
+                error={form.errors.media_id}
+                onChange={(id) => form.setData('media_id', id)}
+            />
+
+            <ImageField
+                label="Portrait image (phones, optional)"
+                initialUrl={popup?.mobile_media?.url ?? null}
+                error={form.errors.mobile_media_id}
+                onChange={(id) => form.setData('mobile_media_id', id)}
+                removable
+            />
 
             <div className="space-y-1">
                 <Label htmlFor="popup-page">Show on page</Label>
@@ -310,12 +294,78 @@ function PopupForm({ popup, pages, onDone }: PopupFormProps) {
                     {popup ? 'Save' : 'Save as draft'}
                 </Button>
             </div>
+        </form>
+    );
+}
 
+type ImageFieldProps = {
+    label: string;
+    initialUrl: string | null;
+    error?: string;
+    onChange: (mediaId: number | null) => void;
+    removable?: boolean;
+};
+
+/** An image chosen from the media library, with its preview. */
+function ImageField({
+    label,
+    initialUrl,
+    error,
+    onChange,
+    removable = false,
+}: ImageFieldProps) {
+    const [pickerOpen, setPickerOpen] = useState(false);
+    const [imageUrl, setImageUrl] = useState(initialUrl);
+
+    const handleSelect = (selected: SelectedMedia) => {
+        onChange(selected.media_id);
+        setImageUrl(
+            selected.variant.url ?? `/storage/${selected.variant.file_path}`,
+        );
+        setPickerOpen(false);
+    };
+
+    const handleRemove = () => {
+        onChange(null);
+        setImageUrl(null);
+    };
+
+    return (
+        <div className="space-y-1">
+            <Label>{label}</Label>
+            {imageUrl && (
+                <img
+                    src={imageUrl}
+                    alt=""
+                    className="max-h-32 rounded-lg border object-contain"
+                />
+            )}
+            <div className="flex gap-2">
+                <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setPickerOpen(true)}
+                >
+                    Choose from media library
+                </Button>
+                {removable && imageUrl && (
+                    <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleRemove}
+                    >
+                        Remove
+                    </Button>
+                )}
+            </div>
+            <InputError message={error} />
             <MediaPicker
                 open={pickerOpen}
                 onClose={() => setPickerOpen(false)}
                 onSelect={handleSelect}
             />
-        </form>
+        </div>
     );
 }

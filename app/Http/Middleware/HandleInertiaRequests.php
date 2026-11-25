@@ -69,7 +69,7 @@ class HandleInertiaRequests extends Middleware
     /**
      * Published popup for the page being visited.
      *
-     * @return array{id: int, title: string, image_url: string, delay_seconds: int, version: string}|null
+     * @return array{id: int, title: string, image_url: string, mobile_image_url: string|null, delay_seconds: int, version: string}|null
      */
     private function pagePopup(Request $request): ?array
     {

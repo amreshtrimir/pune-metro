@@ -37,11 +37,19 @@ export default function SitePopup({ popup }: { popup: PagePopup }) {
                 className="w-max max-w-none border-0 bg-transparent p-0 shadow-none sm:max-w-none [&>button]:-top-3 [&>button]:-right-3 [&>button]:flex [&>button]:size-9 [&>button]:cursor-pointer [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-lg [&>button]:hover:bg-neutral-100"
             >
                 <DialogTitle className="sr-only">{popup.title}</DialogTitle>
-                <img
-                    src={popup.image_url}
-                    alt={popup.title}
-                    className="max-h-[85dvh] max-w-[min(calc(100vw-2rem),48rem)] rounded-2xl shadow-2xl"
-                />
+                <picture>
+                    {popup.mobile_image_url && (
+                        <source
+                            media="(orientation: portrait) and (max-width: 1024px)"
+                            srcSet={popup.mobile_image_url}
+                        />
+                    )}
+                    <img
+                        src={popup.image_url}
+                        alt={popup.title}
+                        className="max-h-[85dvh] max-w-[min(calc(100vw-2rem),48rem)] rounded-2xl shadow-2xl"
+                    />
+                </picture>
             </DialogContent>
         </Dialog>
     );

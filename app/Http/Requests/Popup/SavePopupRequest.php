@@ -17,6 +17,7 @@ class SavePopupRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'media_id' => ['required', 'integer', 'exists:media,id'],
+            'mobile_media_id' => ['nullable', 'integer', 'exists:media,id'],
             'page' => ['required', 'string', Rule::in(array_keys(config('faq_pages')))],
             'delay_seconds' => ['required', 'integer', 'min:0', 'max:600'],
         ];

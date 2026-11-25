@@ -107,6 +107,8 @@ export type Popup = {
     title: string;
     media_id: number | null;
     media: { url: string } | null;
+    mobile_media_id: number | null;
+    mobile_media: { url: string } | null;
     page: string;
     delay_seconds: number;
     is_published: boolean;
@@ -116,6 +118,7 @@ export type PagePopup = {
     id: number;
     title: string;
     image_url: string;
+    mobile_image_url: string | null;
     delay_seconds: number;
     version: string;
 };
