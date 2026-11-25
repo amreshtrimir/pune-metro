@@ -27,15 +27,20 @@ export default function SitePopup({ popup }: { popup: PagePopup }) {
 
     return (
         <Dialog open={open} onOpenChange={(isOpen) => !isOpen && close()}>
+            {/*
+             * The image is the whole popup. It is sized in viewport units because a
+             * percentage width collapses to half the screen inside a centred dialog.
+             * [&>button] styles the dialog's built-in close button.
+             */}
             <DialogContent
                 aria-describedby={undefined}
-                className="w-auto bg-white p-2 pt-12 text-black sm:max-w-2xl"
+                className="w-max max-w-none border-0 bg-transparent p-0 shadow-none sm:max-w-none [&>button]:-top-3 [&>button]:-right-3 [&>button]:flex [&>button]:size-9 [&>button]:cursor-pointer [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-lg [&>button]:hover:bg-neutral-100"
             >
                 <DialogTitle className="sr-only">{popup.title}</DialogTitle>
                 <img
                     src={popup.image_url}
                     alt={popup.title}
-                    className="max-h-[75vh] w-full rounded-md object-contain"
+                    className="max-h-[85dvh] max-w-[min(calc(100vw-2rem),48rem)] rounded-2xl shadow-2xl"
                 />
             </DialogContent>
         </Dialog>

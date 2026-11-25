@@ -179,7 +179,10 @@ export default function PopupsIndex({ popups, pages }: Props) {
                 open={editing !== null}
                 onOpenChange={(open) => !open && setEditing(null)}
             >
-                <DialogContent aria-describedby={undefined}>
+                <DialogContent
+                    aria-describedby={undefined}
+                    className="max-h-[90dvh] overflow-y-auto"
+                >
                     <DialogHeader>
                         <DialogTitle>
                             {editing === 'new' ? 'Add Popup' : 'Edit Popup'}
