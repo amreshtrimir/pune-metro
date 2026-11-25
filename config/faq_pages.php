@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Frontend pages an FAQ can be assigned to: route name => display name.
+ * Frontend pages that FAQs and popups can be assigned to: route name => display name.
  */
 return [
     'home' => 'Home',

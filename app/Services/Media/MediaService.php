@@ -5,6 +5,7 @@ namespace App\Services\Media;
 use App\Models\Media;
 use App\Models\MediaDimension;
 use App\Models\MediaVariant;
+use App\Models\Popup;
 use App\Models\Post;
 use App\Models\PostSection;
 use App\Models\User;
@@ -172,15 +173,18 @@ class MediaService
             ->whereRaw("JSON_SEARCH(content, 'one', ?, NULL, '$.items[*].media_id') IS NOT NULL", [(string) $id])
             ->count();
 
+        $popupCount = Popup::where('media_id', $id)->orWhere('mobile_media_id', $id)->count();
+
         $items = [
             ['label' => 'Post featured image', 'count' => $featuredImageCount],
             ['label' => 'Post card image', 'count' => $cardImageCount],
             ['label' => 'Post section block', 'count' => $sectionDirectCount + $sectionGalleryCount],
+            ['label' => 'Popup image', 'count' => $popupCount],
         ];
 
         return [
             'items' => $items,
-            'total' => $featuredImageCount + $cardImageCount + $sectionDirectCount + $sectionGalleryCount,
+            'total' => $featuredImageCount + $cardImageCount + $sectionDirectCount + $sectionGalleryCount + $popupCount,
         ];
     }
 

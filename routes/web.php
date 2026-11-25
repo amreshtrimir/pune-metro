@@ -13,6 +13,7 @@ use App\Http\Controllers\Gallery\GalleryAlbumController;
 use App\Http\Controllers\Marquee\MarqueeItemController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Popup\PopupController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Slider\SliderController;
 use App\Http\Controllers\Station\StationController;
@@ -166,6 +167,13 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::put('/marquee/{marqueeItem}', [MarqueeItemController::class, 'update'])->name('marquee.update');
         Route::delete('/marquee/{marqueeItem}', [MarqueeItemController::class, 'destroy'])->name('marquee.destroy');
         Route::post('/marquee/reorder', [MarqueeItemController::class, 'reorder'])->name('marquee.reorder');
+
+        // Popups
+        Route::get('/popups', [PopupController::class, 'index'])->name('popups.index');
+        Route::post('/popups', [PopupController::class, 'store'])->name('popups.store');
+        Route::put('/popups/{popup}', [PopupController::class, 'update'])->name('popups.update');
+        Route::patch('/popups/{popup}/publish', [PopupController::class, 'publish'])->name('popups.publish');
+        Route::delete('/popups/{popup}', [PopupController::class, 'destroy'])->name('popups.destroy');
 
         // FAQs
         Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');

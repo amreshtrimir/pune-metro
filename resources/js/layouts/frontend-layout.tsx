@@ -3,10 +3,14 @@ import type { PropsWithChildren } from 'react';
 import FaqSection from '@/components/landing/FaqSection';
 import FooterSection from '@/components/landing/FooterSection';
 import Navbar from '@/components/landing/Navbar';
-import type { PageFaq } from '@/types/cms';
+import SitePopup from '@/components/landing/SitePopup';
+import type { PageFaq, PagePopup } from '@/types/cms';
 
 export default function FrontendLayout({ children }: PropsWithChildren) {
-    const { pageFaqs } = usePage<{ pageFaqs: PageFaq[] }>().props;
+    const { pageFaqs, pagePopup } = usePage<{
+        pageFaqs: PageFaq[];
+        pagePopup: PagePopup | null;
+    }>().props;
 
     return (
         <>
@@ -24,6 +28,9 @@ export default function FrontendLayout({ children }: PropsWithChildren) {
                 <main>{children}</main>
                 <FaqSection faqs={pageFaqs ?? []} />
                 <FooterSection />
+                {pagePopup && (
+                    <SitePopup key={pagePopup.version} popup={pagePopup} />
+                )}
             </div>
         </>
     );

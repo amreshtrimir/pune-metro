@@ -102,6 +102,27 @@ export type PageFaq = {
 
 export type FaqPageOption = { key: string; name: string };
 
+export type Popup = {
+    id: number;
+    title: string;
+    media_id: number | null;
+    media: { url: string } | null;
+    mobile_media_id: number | null;
+    mobile_media: { url: string } | null;
+    page: string;
+    delay_seconds: number;
+    is_published: boolean;
+};
+
+export type PagePopup = {
+    id: number;
+    title: string;
+    image_url: string;
+    mobile_image_url: string | null;
+    delay_seconds: number;
+    version: string;
+};
+
 export type MediaDimension = {
     id: number;
     name: string;
