@@ -141,7 +141,7 @@ store.form = storeForm
 * @see app/Http/Controllers/Popup/PopupController.php:33
 * @route '/dashboard/popups/{popup}'
 */
-export const update = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -156,7 +156,7 @@ update.definition = {
 * @see app/Http/Controllers/Popup/PopupController.php:33
 * @route '/dashboard/popups/{popup}'
 */
-update.url = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { popup: args }
     }
@@ -189,7 +189,7 @@ update.url = (args: { popup: string | number | { id: string | number } } | [popu
 * @see app/Http/Controllers/Popup/PopupController.php:33
 * @route '/dashboard/popups/{popup}'
 */
-update.put = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -199,7 +199,7 @@ update.put = (args: { popup: string | number | { id: string | number } } | [popu
 * @see app/Http/Controllers/Popup/PopupController.php:33
 * @route '/dashboard/popups/{popup}'
 */
-const updateForm = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -214,7 +214,7 @@ const updateForm = (args: { popup: string | number | { id: string | number } } |
 * @see app/Http/Controllers/Popup/PopupController.php:33
 * @route '/dashboard/popups/{popup}'
 */
-updateForm.put = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -231,7 +231,7 @@ update.form = updateForm
 * @see app/Http/Controllers/Popup/PopupController.php:40
 * @route '/dashboard/popups/{popup}/publish'
 */
-export const publish = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const publish = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: publish.url(args, options),
     method: 'patch',
 })
@@ -246,7 +246,7 @@ publish.definition = {
 * @see app/Http/Controllers/Popup/PopupController.php:40
 * @route '/dashboard/popups/{popup}/publish'
 */
-publish.url = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+publish.url = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { popup: args }
     }
@@ -279,7 +279,7 @@ publish.url = (args: { popup: string | number | { id: string | number } } | [pop
 * @see app/Http/Controllers/Popup/PopupController.php:40
 * @route '/dashboard/popups/{popup}/publish'
 */
-publish.patch = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+publish.patch = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: publish.url(args, options),
     method: 'patch',
 })
@@ -289,7 +289,7 @@ publish.patch = (args: { popup: string | number | { id: string | number } } | [p
 * @see app/Http/Controllers/Popup/PopupController.php:40
 * @route '/dashboard/popups/{popup}/publish'
 */
-const publishForm = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const publishForm = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: publish.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -304,7 +304,7 @@ const publishForm = (args: { popup: string | number | { id: string | number } } 
 * @see app/Http/Controllers/Popup/PopupController.php:40
 * @route '/dashboard/popups/{popup}/publish'
 */
-publishForm.patch = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+publishForm.patch = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: publish.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -321,7 +321,7 @@ publish.form = publishForm
 * @see app/Http/Controllers/Popup/PopupController.php:48
 * @route '/dashboard/popups/{popup}'
 */
-export const destroy = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -336,7 +336,7 @@ destroy.definition = {
 * @see app/Http/Controllers/Popup/PopupController.php:48
 * @route '/dashboard/popups/{popup}'
 */
-destroy.url = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { popup: args }
     }
@@ -369,7 +369,7 @@ destroy.url = (args: { popup: string | number | { id: string | number } } | [pop
 * @see app/Http/Controllers/Popup/PopupController.php:48
 * @route '/dashboard/popups/{popup}'
 */
-destroy.delete = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -379,7 +379,7 @@ destroy.delete = (args: { popup: string | number | { id: string | number } } | [
 * @see app/Http/Controllers/Popup/PopupController.php:48
 * @route '/dashboard/popups/{popup}'
 */
-const destroyForm = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -394,7 +394,7 @@ const destroyForm = (args: { popup: string | number | { id: string | number } } 
 * @see app/Http/Controllers/Popup/PopupController.php:48
 * @route '/dashboard/popups/{popup}'
 */
-destroyForm.delete = (args: { popup: string | number | { id: string | number } } | [popup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { popup: number | { id: number } } | [popup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
