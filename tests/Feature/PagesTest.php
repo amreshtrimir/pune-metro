@@ -58,5 +58,7 @@ test('fare table page source carries the fare intro paragraph', function () {
 test('time table page ships its downloadable files', function () {
     expect(public_path('time-table/pink-line-frequency-desktop.png'))->toBeFile()
         ->and(public_path('time-table/pink-line-frequency-mobile.png'))->toBeFile()
+        ->and(public_path('time-table/last-train-maan-to-district-court.png'))->toBeFile()
+        ->and(public_path('time-table/last-train-district-court-to-maan.png'))->toBeFile()
         ->and(public_path('documents/pune-metro-line-3-last-train-timings.pdf'))->toBeFile();
 });
