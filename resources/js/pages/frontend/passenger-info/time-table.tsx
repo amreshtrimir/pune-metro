@@ -88,7 +88,7 @@ export default function TimeTable() {
 
             {/* ── Downloads ── */}
             <section className="bg-white pt-8 pb-10 md:pt-10 md:pb-24">
-                <div className="mx-auto flex max-w-[1303px] flex-wrap gap-3 px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
+                <div className="mx-auto flex max-w-[1303px] flex-col items-start gap-3 px-6 min-[1303px]:px-8 min-[1440px]:max-w-[1440px]">
                     <DownloadButton href={shownSrc}>Download Time Table</DownloadButton>
                     <DownloadButton href="/documents/pune-metro-line-3-last-train-timings.pdf">Download Last Train Timings</DownloadButton>
                 </div>
