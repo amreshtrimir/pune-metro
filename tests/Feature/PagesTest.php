@@ -55,7 +55,8 @@ test('fare table page source carries the fare intro paragraph', function () {
         ->toContain('Refer to the fare chart below for complete details.');
 });
 
-test('time table page ships the time table images', function () {
+test('time table page ships its downloadable files', function () {
     expect(public_path('time-table/pink-line-frequency-desktop.png'))->toBeFile()
-        ->and(public_path('time-table/pink-line-frequency-mobile.png'))->toBeFile();
+        ->and(public_path('time-table/pink-line-frequency-mobile.png'))->toBeFile()
+        ->and(public_path('documents/pune-metro-line-3-last-train-timings.pdf'))->toBeFile();
 });
